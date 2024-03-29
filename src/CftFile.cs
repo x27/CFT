@@ -9,11 +9,11 @@ namespace CFT
     public class CftFile
     {
         const uint SIGNATURE = 0x46544643; // "CFTF"
-        const ushort VERSION = 0x1;
+        const uint VERSION = 1;
         const int MAX_ITEMS = 1000;
 
         public string Filename { get; set; }
-        public ushort Version { get; set; } = VERSION;
+        public uint Version { get; set; } = VERSION;
 
         public Licensing Licensing { get; set; } = new Licensing();
 
@@ -27,7 +27,7 @@ namespace CFT
                 var sig = br.ReadUInt32();
                 if (SIGNATURE != sig)
                     throw new Exception($"Wrong Signature. File: {filename}");
-                f.Version = br.ReadUInt16();
+                f.Version = Swap(br.ReadUInt32());
                 if (VERSION < f.Version)
                     throw new Exception($"Not Supported Version({f.Version}) File.");
 
@@ -40,7 +40,7 @@ namespace CFT
 
                 br.BaseStream.Position = 0x110;
 
-                var dmrItemsCount = br.ReadUInt32();
+                var dmrItemsCount = Swap(br.ReadUInt32());
                 if (MAX_ITEMS < dmrItemsCount)
                     throw new Exception($"Too Many DMR Encryption Method Items.");
 
@@ -49,16 +49,16 @@ namespace CFT
                 {
                     var item = new DmrEncryptionMethodItem
                     {
-                        Options = (DmrNeedOptionsEnum)br.ReadUInt32(),
+                        Options = (DmrNeedOptionsEnum)Swap(br.ReadUInt32()),
                         TrunkSystem = (DmrTrunkSystemEnum)br.ReadByte(),
                         Mfid = (DmrMfidEnum)br.ReadByte(),
-                        Frequency = FreqToUint32(br.ReadUInt32()),
+                        Frequency = FreqToUint32(Swap(br.ReadUInt32())),
                         ColorCode = (DmrColorCodeEnum)br.ReadByte(),
-                        Tgid = br.ReadUInt32(),
+                        Tgid = Swap(br.ReadUInt32()),
                         TimeSlot = (DmrTimeSlotEnum)br.ReadByte(),
                         EncryptionValue = (DmrEncyptionValueEnum)br.ReadByte(),
                         EncryptionMethod = (DmrEncryptionMethodEnum)br.ReadByte(),
-                        KeyLength = br.ReadUInt16(),
+                        KeyLength = Swap(br.ReadUInt32()),
                     };
 
                     bs = br.ReadBytes(DmrEncryptionMethodItem.ENC_METHOD_KEY_LEN);
@@ -78,24 +78,24 @@ namespace CFT
             using (BinaryWriter bw = new BinaryWriter(new FileStream(Filename, FileMode.Create, FileAccess.Write)))
             {
                 bw.Write(SIGNATURE);
-                bw.Write(VERSION);
+                bw.Write(Swap(VERSION));
                 bw.BaseStream.Position = 0x10;
                 bw.Write(Licensing.HyteraBPUnlockKey);
                 bw.Write(Licensing.MotorolaBPUnlockKey);
                 bw.BaseStream.Position = 0x110;
-                bw.Write(DmrEncryptionMethodItems.Count);
+                bw.Write(Swap((uint)DmrEncryptionMethodItems.Count));
                 foreach (var item in DmrEncryptionMethodItems)
                 {
-                    bw.Write((uint)item.Options);
+                    bw.Write(Swap((uint)item.Options));
                     bw.Write((byte)item.TrunkSystem);
                     bw.Write((byte)item.Mfid);
-                    bw.Write(UInt32ToFreq(item.Frequency));
+                    bw.Write(Swap(UInt32ToFreq(item.Frequency)));
                     bw.Write((byte)item.ColorCode);
-                    bw.Write(item.Tgid);
+                    bw.Write(Swap(item.Tgid));
                     bw.Write((byte)item.TimeSlot);
                     bw.Write((byte)item.EncryptionValue);
                     bw.Write((byte)item.EncryptionMethod);
-                    bw.Write(item.KeyLength);
+                    bw.Write(Swap(item.KeyLength));
                     bw.Write(item.Key);
                 }
             }
@@ -106,10 +106,15 @@ namespace CFT
             return uint.Parse($"{value:X8}00");
         }
 
-        public static UInt32 UInt32ToFreq(UInt32 value)
+        private static UInt32 UInt32ToFreq(UInt32 value)
         {
             return uint.Parse((value / 100).ToString(), NumberStyles.HexNumber);
         }
 
+        private static uint Swap(uint value)
+        {
+            value = (value >> 16) | (value << 16);
+            return ((value & 0xFF00FF00) >> 8) | ((value & 0x00FF00FF) << 8);
+        }
     }
 }

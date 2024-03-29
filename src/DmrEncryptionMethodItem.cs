@@ -16,7 +16,7 @@ namespace CFT
         public DmrTimeSlotEnum TimeSlot { get; set; }
         public DmrEncyptionValueEnum EncryptionValue { get; set; }
         public DmrEncryptionMethodEnum EncryptionMethod { get; set; }
-        public ushort KeyLength { get; set; }
+        public uint KeyLength { get; set; }
         public byte[] Key { get; private set; } = new byte[ENC_METHOD_KEY_LEN];
     }
 }

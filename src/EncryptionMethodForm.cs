@@ -64,7 +64,7 @@ namespace CFT
 
                 tbTgid.Text = item.Tgid.ToString();
                 tbFrequency.Text = item.Frequency.ToString();
-                tbKey.Text = Utils.BytesToHexString(item.Key).Substring(0, item.KeyLength / 4);
+                tbKey.Text = Utils.BytesToHexString(item.Key).Substring(0, (int)item.KeyLength / 4);
             }
 
             ControlsUpdate();
