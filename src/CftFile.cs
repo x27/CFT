@@ -11,6 +11,8 @@ namespace CFT
         const uint SIGNATURE = 0x46544643; // "CFTF"
         const uint VERSION = 1;
         const int MAX_ITEMS = 1000;
+        const int UNLOCK_KEY_STORAGE_OFFSET = 0x10;
+        const int AGLO_TABLE_OFFSET = 0x200;
 
         public string Filename { get; set; }
         public uint Version { get; set; } = VERSION;
@@ -31,14 +33,14 @@ namespace CFT
                 if (VERSION < f.Version)
                     throw new Exception($"Not Supported Version({f.Version}) File.");
 
-                br.BaseStream.Position = 0x10;
+                br.BaseStream.Position = UNLOCK_KEY_STORAGE_OFFSET;
 
                 var bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
                 Buffer.BlockCopy(bs, 0, f.Licensing.HyteraBPUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
                 bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
                 Buffer.BlockCopy(bs, 0, f.Licensing.MotorolaBPUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
 
-                br.BaseStream.Position = 0x110;
+                br.BaseStream.Position = AGLO_TABLE_OFFSET;
 
                 var dmrItemsCount = Swap(br.ReadUInt32());
                 if (MAX_ITEMS < dmrItemsCount)
@@ -79,10 +81,10 @@ namespace CFT
             {
                 bw.Write(SIGNATURE);
                 bw.Write(Swap(VERSION));
-                bw.BaseStream.Position = 0x10;
+                bw.BaseStream.Position = UNLOCK_KEY_STORAGE_OFFSET;
                 bw.Write(Licensing.HyteraBPUnlockKey);
                 bw.Write(Licensing.MotorolaBPUnlockKey);
-                bw.BaseStream.Position = 0x110;
+                bw.BaseStream.Position = AGLO_TABLE_OFFSET;
                 bw.Write(Swap((uint)DmrEncryptionMethodItems.Count));
                 foreach (var item in DmrEncryptionMethodItems)
                 {

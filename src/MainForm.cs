@@ -303,5 +303,10 @@ namespace CFT
         {
             CheckFileChangedAndAskAboutSaving();
         }
+
+        private void debugLogsFilteringToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new DebugLogsFilteringForm().ShowDialog();
+        }
     }
 }

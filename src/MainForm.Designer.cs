@@ -50,6 +50,7 @@
             this.coTgid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colEncryptionValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colEncryption = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.debugLogsFilteringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -130,7 +131,8 @@
             // toolsToolStripMenuItem
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.licensingToolStripMenuItem});
+            this.licensingToolStripMenuItem,
+            this.debugLogsFilteringToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -138,7 +140,7 @@
             // licensingToolStripMenuItem
             // 
             this.licensingToolStripMenuItem.Name = "licensingToolStripMenuItem";
-            this.licensingToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.licensingToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.licensingToolStripMenuItem.Text = "Licensing...";
             this.licensingToolStripMenuItem.Click += new System.EventHandler(this.licensingToolStripMenuItem_Click);
             // 
@@ -327,6 +329,13 @@
             this.colEncryption.Text = "Encryption method";
             this.colEncryption.Width = 160;
             // 
+            // debugLogsFilteringToolStripMenuItem
+            // 
+            this.debugLogsFilteringToolStripMenuItem.Name = "debugLogsFilteringToolStripMenuItem";
+            this.debugLogsFilteringToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.debugLogsFilteringToolStripMenuItem.Text = "Debug Logs Filtering ...";
+            this.debugLogsFilteringToolStripMenuItem.Click += new System.EventHandler(this.debugLogsFilteringToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -390,6 +399,7 @@
         private System.Windows.Forms.ColumnHeader colEncryptionValue;
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem licensingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem debugLogsFilteringToolStripMenuItem;
     }
 }
 
