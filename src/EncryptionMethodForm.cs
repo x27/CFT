@@ -47,6 +47,8 @@ namespace CFT
                 cbTimeSlot.Checked = (item.Options & DmrNeedOptionsEnum.TimeSlot) == DmrNeedOptionsEnum.TimeSlot;
                 cbEncryptionValue.Checked = (item.Options & DmrNeedOptionsEnum.EncryptValue) == DmrNeedOptionsEnum.EncryptValue;
 
+                nudMotoKey.Value = item.Key[0];
+
                 if (!SetComboBoxData(cbbEncryptionMethod, item.EncryptionMethod))
                     cbbEncryptionMethod.SelectedIndex = 0;
                 if (!SetComboBoxData(cbbKeyLength, (HyteraKeyLengthEnum)item.KeyLength))
@@ -64,7 +66,10 @@ namespace CFT
 
                 tbTgid.Text = item.Tgid.ToString();
                 tbFrequency.Text = item.Frequency.ToString();
-                tbKey.Text = Utils.BytesToHexString(item.Key).Substring(0, (int)item.KeyLength / 4);
+                if (Utils.IsArrayEmpty(item.Key))
+                    tbKey.Text = string.Empty;
+                else
+                    tbKey.Text = Utils.BytesToHexString(item.Key).Substring(0, (int)item.KeyLength / 4);
             }
 
             ControlsUpdate();
@@ -73,8 +78,49 @@ namespace CFT
         private void ControlsUpdate()
         {
             var me = cbbEncryptionMethod.SelectedItem as DisplayTagObject;
-            cbbKeyLength.Enabled = me != null && ((DmrEncryptionMethodEnum)me.Tag == DmrEncryptionMethodEnum.HyteraBP);
-            tbKey.Enabled = me != null && ((DmrEncryptionMethodEnum)me.Tag != DmrEncryptionMethodEnum.NoEncrypt);
+
+            if (me == null)
+            {
+                cbbKeyLength.Visible = false;
+                tbKey.Visible = false;
+                lblKey.Visible = false;
+                lblKeyExt.Visible = false;
+                nudMotoKey.Visible = false;
+                lblLen.Visible = false;
+            }
+            else
+            {
+                var method = (DmrEncryptionMethodEnum)me.Tag;
+                switch(method)
+                {
+                    case DmrEncryptionMethodEnum.NoEncrypt:
+                        cbbKeyLength.Visible = false;
+                        tbKey.Visible = false;
+                        lblKey.Visible = false;
+                        lblKeyExt.Visible = false;
+                        nudMotoKey.Visible = false;
+                        lblLen.Visible = false;
+                        break;
+                    case DmrEncryptionMethodEnum.HyteraBP:
+                        cbbKeyLength.Visible = true;
+                        tbKey.Visible = true;
+                        lblKey.Visible = true;
+                        lblKeyExt.Text = "Key Length:";
+                        lblKeyExt.Visible = true;
+                        nudMotoKey.Visible = false;
+                        lblLen.Visible = true;
+                        break;
+                    case DmrEncryptionMethodEnum.MotorolaBP:
+                        cbbKeyLength.Visible = false;
+                        tbKey.Visible = false;
+                        lblKey.Visible = false;
+                        lblKeyExt.Text = "Key (DEC):";
+                        lblKeyExt.Visible = true;
+                        nudMotoKey.Visible = true;
+                        lblLen.Visible = false;
+                        break;
+                }
+            }
 
             cbbTrunkSystem.Enabled = cbTrunkSystem.Checked;
             cbbMfid.Enabled = cbMfid.Checked;
@@ -171,22 +217,32 @@ namespace CFT
 
             item.Frequency = frequency;
 
+            var method = (DmrEncryptionMethodEnum)(cbbEncryptionMethod.SelectedItem as DisplayTagObject).Tag;
+
             item.Options = (DmrNeedOptionsEnum)options;
             item.TrunkSystem = (DmrTrunkSystemEnum)(cbbTrunkSystem.SelectedItem as DisplayTagObject).Tag;
             item.Mfid = (DmrMfidEnum)(cbbMfid.SelectedItem as DisplayTagObject).Tag;
             item.ColorCode = (DmrColorCodeEnum)(cbbColorCode.SelectedItem as DisplayTagObject).Tag;
             item.TimeSlot = (DmrTimeSlotEnum)(cbbTimeSlot.SelectedItem as DisplayTagObject).Tag;
             item.EncryptionValue = (DmrEncyptionValueEnum)(cbbEncryptionValue.SelectedItem as DisplayTagObject).Tag;
-            item.EncryptionMethod = (DmrEncryptionMethodEnum)(cbbEncryptionMethod.SelectedItem as DisplayTagObject).Tag;
-            item.KeyLength = (ushort)(cbbKeyLength.SelectedItem as DisplayTagObject).Tag;
+            item.EncryptionMethod = method;
+
+            if (method == DmrEncryptionMethodEnum.HyteraBP)
+                item.KeyLength = (ushort)(cbbKeyLength.SelectedItem as DisplayTagObject).Tag;
+            else
+                item.KeyLength = 0;
             item.Tgid = tgid;
-            var bs = Utils.HexStringToBytes(tbKey.Text);
-            if (item.KeyLength > 0 && item.EncryptionMethod != DmrEncryptionMethodEnum.NoEncrypt)
+
+            if (method == DmrEncryptionMethodEnum.NoEncrypt)
+                Array.Clear(item.Key, 0, DmrEncryptionMethodItem.ENC_METHOD_KEY_LEN);
+            else if (method == DmrEncryptionMethodEnum.MotorolaBP)
+                item.Key[0] = (byte)nudMotoKey.Value;
+            else
             {
+                var bs = Utils.HexStringToBytes(tbKey.Text);
                 Buffer.BlockCopy(bs, 0, item.Key, 0, key.Length > DmrEncryptionMethodItem.ENC_METHOD_KEY_LEN ? DmrEncryptionMethodItem.ENC_METHOD_KEY_LEN : key.Length);
             }
-            else
-                Array.Clear(item.Key, 0, DmrEncryptionMethodItem.ENC_METHOD_KEY_LEN);
+
             Item = item;
 
             DialogResult = DialogResult.OK;

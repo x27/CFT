@@ -43,16 +43,18 @@
             this.cbbEncryptionValue = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbbEncryptionMethod = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblKeyExt = new System.Windows.Forms.Label();
             this.tbTgid = new System.Windows.Forms.TextBox();
             this.tbKey = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblKey = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.cbbKeyLength = new System.Windows.Forms.ComboBox();
             this.lblLen = new System.Windows.Forms.Label();
+            this.nudMotoKey = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMotoKey)).BeginInit();
             this.SuspendLayout();
             // 
             // cbTrunkSystem
@@ -203,14 +205,14 @@
             this.cbbEncryptionMethod.TabIndex = 15;
             this.cbbEncryptionMethod.SelectedIndexChanged += new System.EventHandler(this.cb_CheckedChanged);
             // 
-            // label2
+            // lblKeyExt
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(64, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 17);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Key Length:";
+            this.lblKeyExt.AutoSize = true;
+            this.lblKeyExt.Location = new System.Drawing.Point(64, 52);
+            this.lblKeyExt.Name = "lblKeyExt";
+            this.lblKeyExt.Size = new System.Drawing.Size(75, 17);
+            this.lblKeyExt.TabIndex = 16;
+            this.lblKeyExt.Text = "Key Length:";
             // 
             // tbTgid
             // 
@@ -230,14 +232,14 @@
             this.tbKey.Tag = "";
             this.tbKey.TextChanged += new System.EventHandler(this.tbKey_TextChanged);
             // 
-            // label3
+            // lblKey
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(71, 80);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 17);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "Key (Hex):";
+            this.lblKey.AutoSize = true;
+            this.lblKey.Location = new System.Drawing.Point(71, 80);
+            this.lblKey.Name = "lblKey";
+            this.lblKey.Size = new System.Drawing.Size(66, 17);
+            this.lblKey.TabIndex = 19;
+            this.lblKey.Text = "Key (Hex):";
             // 
             // groupBox1
             // 
@@ -301,20 +303,39 @@
             this.lblLen.TabIndex = 24;
             this.lblLen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // nudMotoKey
+            // 
+            this.nudMotoKey.Location = new System.Drawing.Point(145, 50);
+            this.nudMotoKey.Maximum = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.nudMotoKey.Name = "nudMotoKey";
+            this.nudMotoKey.Size = new System.Drawing.Size(179, 25);
+            this.nudMotoKey.TabIndex = 25;
+            this.nudMotoKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudMotoKey.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // EncryptionMethodForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(450, 497);
+            this.Controls.Add(this.nudMotoKey);
             this.Controls.Add(this.lblLen);
             this.Controls.Add(this.cbbKeyLength);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblKey);
             this.Controls.Add(this.tbKey);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblKeyExt);
             this.Controls.Add(this.cbbEncryptionMethod);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -329,6 +350,7 @@
             this.Text = "Set DMR Encryption Method";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudMotoKey)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -351,14 +373,15 @@
         private System.Windows.Forms.ComboBox cbbEncryptionValue;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbbEncryptionMethod;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblKeyExt;
         private System.Windows.Forms.TextBox tbTgid;
         private System.Windows.Forms.TextBox tbKey;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblKey;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.ComboBox cbbKeyLength;
         private System.Windows.Forms.Label lblLen;
+        private System.Windows.Forms.NumericUpDown nudMotoKey;
     }
 }
