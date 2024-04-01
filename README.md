@@ -26,6 +26,14 @@ The settings are saved in the file "alice.cft", which should be copied to the ro
 
 * Uniden BCD436HP
 
+## WRITE DOCS TOGETHER
+#### Here will be subscribers comments. If you have something to add or remove, write to me by e-mail or create  Issue.
+
+1. Encryption cannot be listened to while Scanning Memories. It can be used only when Scanning a Range of Frequencies, When Entering a Frequency Manually, or with Close-Call.
+
+2. This feature will not find the Encryption Key. It is something that needs to be obtained in other ways.
+
+
 ### Debug Logs
 
 For more precise determination of the parameters of voice traffic decryption activation, control info is output to the scanner debug logs.
