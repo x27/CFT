@@ -8,120 +8,67 @@ The main purpose is to select the parameters of digital protocols that will acti
 
 The program is designed to work with custom firmware version starting from 1.99.08
 
-The settings are saved in the file "alice.cft", which should be copied to the root of the scanner's SD card.
+The settings must be saved in the file "alice.cft". Place this file at the root directory "\\" of the Scanner's memory card (for example, E:\\).
 
 ### Supported decryption protocols
 
 * Hytera BP (Basic Privacy)
-  
     * 10 characters (40 bits) - confirmed
-      
     * 32 characters (128 bits) - confirmed
-      
     * 64 characters (256 bits) - not confirmed
-      
 * Motorola BP (Basic Privacy) key 1-255, confirmed
+* RC4 - comming soon
 
 ### Supported scanner models
 
-* Uniden BCD436HP
+* Uniden BCD436HP with [CF 1.99.09](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.09)
+* Uniden SDS100 soon maybe (17% of funds raised)
+* Uniden SDS200 soon maybe (0% of funds raised)
+* Uniden UBCD3600XLT soon maybe (0% of funds raised)
 
-## WRITE DOCS TOGETHER
-#### Here will be subscribers comments. If you have something to add or remove, write to me by e-mail or create  Issue.
+### About Encryption Key
 
-1. Encryption cannot be listened to while Scanning Memories. It can be used only when Scanning a Range of Frequencies, When Entering a Frequency Manually, or with Close-Call.
-
-2. This feature will not find the Encryption Key. It is something that needs to be obtained in other ways.
-
+Custom Firmware will not find the Encryption Key. It is something that needs to be obtained in other ways.
 
 ### Debug Logs
 
-For more precise determination of the parameters of voice traffic decryption activation, control info is output to the scanner debug logs.
+If you have any problems with signal decryption (or some other problem with my firmware ) and can't figure it out, you need to create debug files and send them to my email.
 
-You can activate debug logging via the scanner menu Settings - Set Debug Logs Mode - SD Card (File). 
+Separate debug files for each problem separately. Enable logging. Take multiple calls together with pauses. Disable logging. Send Email with problem's description and attached logs.
 
-The generated debug logs can then be found on the scanner SD Card in the /BCDx36HP/debug/ directory.
-
-#### Debug Log String Format
-
-0201377 :D1 04404400 1 1F 0 01 C 8 68 0000214D 002628B2 0000 1 1 0 0000 0000 0000 D E1F9DA3443BF80 27C2718F2D3600 2F18B5E5C67080 
-
-The debug output string consists of 23 fields separated by a space.
-
-```
-1 - Time stamp in microseconds
-2 - Signature ":D1" - DMR protocol, version 1
-3 - Frequency in 100 Hz scale (DEC)
-4 - Data type
-    0 - PI Header
-    1 - Voice LC Header
-    2 - Terminator with LC
-    3 - CSBK
-    4 - MBC Header
-    5 - MBC Continuation
-    6 - Data Header
-    7 - Rate 1/2 Data
-    8 - Rate 3/4 Data
-    9 - Idle
-    A - Rate 1 Data
-    B - Unified Single Block Data
-    C - Reserved for future use
-    D - Reserved for future use
-    E - Reserved for future use
-    F - Reserved for future use
-5 - Trunk system type
-    0 - DMR One?
-    1 - Simple DMR
-    2 - Capacity+
-    3 - Connect+
-    4 - DMR Tier III
-    5 - Hytera XPT
-6 - TDMA channel number
-7 - Call type (HEX)
-8 - Color code (HEX)
-    0 - F
-9 - Superframe number (HEX)
-    0 - B
-10 - EMB FID manufacturer identifier (HEX)
-    10 - Motorola
-    68 - Hytera
-11 - EMB TGID talkgroup number (HEX)
-12 - EMB User ID (HEX)
-13 - C-CH 
-14 - Encrypt Value
-    1 - Non encrypted
-    2 - Encrypted
-15 - Privacy
-16 - EMB Privacy
-17 - SLC LCN
-18 - SLC NID
-19 - SLC SID
-20 - Voice traffic decryption identifier
-  D - Parameters are not defined
-  U - Protocol unlocked
-  A - Allowed
-  S - Time session restriction
-21 - Voice packet 0, 49 bits (HEX)
-22 - Voice packet 1, 49 bits (HEX)
-23 - Voice packet 2, 49 bits (HEX)
-```
+[More about Debug Logs](DEBUG.md)
 
 ### Demo
 
-* Time limit - 2 minutes of decrypted voice. Reset the scanner for restart.
+* Time limit - 2 minutes of decrypted voice of any protocols. Reboot the scanner for reset limitation.
+* Key limit - 5 pcs
 
-* Key limit - 5
+If you are not satisfied with the limitations of the demo mode, you can purchase unlock keys for the protocol you need. Each unlock key is unique per the Scanner's ESN.
 
-### Debug Logs Filtering Tool
+### Donation / Payments
 
-![filering](img/filtering.png)
+If your scanner model is not supported but you want the claimed features to be there or you just want to support the project, donate or purchase unlock keys for the future.
+But before you do, write me an e-mail.
 
-### Other
+Each unlock key costs 30USD, a pair of keys - 50USD. If you can't afford it with a scanner costing several hundred dollars, write me an email and tell about it. Maybe I can get into your position and lower the price.
 
-crypto:
+For obvious reasons, I would like to remain conditionally anonymous, so payments are only accepted in crypto.
 
-USDT TRC20 TFvBYegAgMR5c5CtLCd8NQK1CKmroHHjHq
+Tether (USDT) TRC20
 
-text:
+TFvBYegAgMR5c5CtLCd8NQK1CKmroHHjHq
 
-n3617400@yahoo.com
+![wallet](img/wallet.png)
+
+If you don't know what it is try starting here [TrustWallet](https://trustwallet.com/)
+
+### Support
+
+You can support the project not only financially. My mailbox is ready to receive from you any wishes, advice, feedback on the use of the custom firmware and CFT.
+
+### Links
+
+* email: n3617400@yahoo.com
+* twitter: https://x.com/openscanner
+* telegram: https://t.me/openscanner
+
