@@ -2,6 +2,8 @@
 {
     public enum DmrTrunkSystemEnum
     {
+        [DisplayName("DMR MS (0)")]
+        DMRMS = 0,
         [DisplayName("Simple DMR (1)")]
         DMR = 1,
         [DisplayName("Capacity+ (2)")]
