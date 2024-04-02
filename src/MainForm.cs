@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 
 
@@ -33,6 +34,7 @@ namespace CFT
             tsbAdd.Enabled = mEnable;
             tsbDelete.Enabled = mEnable && (index != -1);
             tsbUp.Enabled = mEnable && (index > 0);
+            tsbDuplicate.Enabled = tsbDelete.Enabled;
             tsbDown.Enabled = mEnable && (index >= 0 && index < _cftFile.DmrEncryptionMethodItems.Count - 1);
             listView.Enabled = mEnable;
 
@@ -64,16 +66,7 @@ namespace CFT
 
         private void tsbAdd_Click(object sender, EventArgs e)
         {
-            var frm = new EncryptionMethodForm();
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                _cftFile.DmrEncryptionMethodItems.Add(frm.Item);
-                listView.VirtualListSize = _cftFile.DmrEncryptionMethodItems.Count;
-                listView.Items[_cftFile.DmrEncryptionMethodItems.Count - 1].Selected = true;
-                listView.Items[_cftFile.DmrEncryptionMethodItems.Count - 1].Focused = true;
-                listView.Select();
-                ControlsUpdate();
-            }
+            cmdAddItem();
         }
 
         private void tsbDelete_Click(object sender, EventArgs e)
@@ -282,6 +275,29 @@ namespace CFT
             listView.VirtualListSize = _cftFile.DmrEncryptionMethodItems.Count;
         }
 
+        private void cmdAddItem(bool duplicate = false)
+        {
+            EncryptionMethodForm frm;
+            if (duplicate)
+            {
+                var index = GetListViewCurrentItemIndex();
+                frm = new EncryptionMethodForm(_cftFile.DmrEncryptionMethodItems[index]);
+            }
+            else
+                frm = new EncryptionMethodForm();
+            
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                _cftFile.DmrEncryptionMethodItems.Add(frm.Item);
+                listView.VirtualListSize = _cftFile.DmrEncryptionMethodItems.Count;
+                listView.Items[_cftFile.DmrEncryptionMethodItems.Count - 1].Selected = true;
+                listView.Items[_cftFile.DmrEncryptionMethodItems.Count - 1].Focused = true;
+                listView.Select();
+                ControlsUpdate();
+            }
+        }
+
+
         private void CheckFileChangedAndAskAboutSaving()
         {
             if (!IsCftFileChanged())
@@ -307,6 +323,11 @@ namespace CFT
         private void debugLogsFilteringToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new DebugLogsFilteringForm().ShowDialog();
+        }
+
+        private void tsbDuplicate_Click(object sender, EventArgs e)
+        {
+            cmdAddItem(true);
         }
     }
 }

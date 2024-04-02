@@ -29,6 +29,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.licensingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.debugLogsFilteringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -50,7 +51,7 @@
             this.coTgid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colEncryptionValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colEncryption = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.debugLogsFilteringToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbDuplicate = new System.Windows.Forms.ToolStripButton();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -144,6 +145,13 @@
             this.licensingToolStripMenuItem.Text = "Licensing...";
             this.licensingToolStripMenuItem.Click += new System.EventHandler(this.licensingToolStripMenuItem_Click);
             // 
+            // debugLogsFilteringToolStripMenuItem
+            // 
+            this.debugLogsFilteringToolStripMenuItem.Name = "debugLogsFilteringToolStripMenuItem";
+            this.debugLogsFilteringToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.debugLogsFilteringToolStripMenuItem.Text = "Debug Logs Filtering ...";
+            this.debugLogsFilteringToolStripMenuItem.Click += new System.EventHandler(this.debugLogsFilteringToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -176,6 +184,7 @@
             this.tsbSave,
             this.toolStripSeparator2,
             this.tsbAdd,
+            this.tsbDuplicate,
             this.tsbDelete,
             this.toolStripSeparator3,
             this.tsbUp,
@@ -329,12 +338,15 @@
             this.colEncryption.Text = "Encryption method";
             this.colEncryption.Width = 160;
             // 
-            // debugLogsFilteringToolStripMenuItem
+            // tsbDuplicate
             // 
-            this.debugLogsFilteringToolStripMenuItem.Name = "debugLogsFilteringToolStripMenuItem";
-            this.debugLogsFilteringToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.debugLogsFilteringToolStripMenuItem.Text = "Debug Logs Filtering ...";
-            this.debugLogsFilteringToolStripMenuItem.Click += new System.EventHandler(this.debugLogsFilteringToolStripMenuItem_Click);
+            this.tsbDuplicate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbDuplicate.Image = global::CFT.Properties.Resources.duplicate;
+            this.tsbDuplicate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDuplicate.Name = "tsbDuplicate";
+            this.tsbDuplicate.Size = new System.Drawing.Size(23, 22);
+            this.tsbDuplicate.Text = "Duplicate";
+            this.tsbDuplicate.Click += new System.EventHandler(this.tsbDuplicate_Click);
             // 
             // MainForm
             // 
@@ -400,6 +412,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem licensingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem debugLogsFilteringToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton tsbDuplicate;
     }
 }
 
