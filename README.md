@@ -22,6 +22,7 @@ The settings must be saved in the file "alice.cft". Place this file at the root 
 ### Supported scanner models
 
 * Uniden BCD436HP with [CF 1.99.09](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.09)
+* Uniden BCD536HP coming soon
 * Uniden SDS100 soon maybe (17% of funds raised)
 * Uniden SDS200 soon maybe (0% of funds raised)
 * Uniden UBCD3600XLT soon maybe (0% of funds raised)
