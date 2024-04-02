@@ -14,6 +14,7 @@ The settings must be saved in the file "alice.cft". Place this file at the root 
 
 * Hytera BP (Basic Privacy)
     * 10 characters (40 bits) - confirmed
+    * 10 characters (40 bits) with OTA Encryption - confirmed
     * 32 characters (128 bits) - confirmed
     * 64 characters (256 bits) - not confirmed
 * Motorola BP (Basic Privacy) key 1-255, confirmed
