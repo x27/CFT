@@ -82,6 +82,9 @@
             // cbFrequency
             // 
             this.cbFrequency.AutoSize = true;
+            this.cbFrequency.Checked = true;
+            this.cbFrequency.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbFrequency.Enabled = false;
             this.cbFrequency.Location = new System.Drawing.Point(31, 103);
             this.cbFrequency.Name = "cbFrequency";
             this.cbFrequency.Size = new System.Drawing.Size(113, 21);

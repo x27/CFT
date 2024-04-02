@@ -35,13 +35,11 @@ namespace CFT
                 cbTrunkSystem.Checked = true;
                 cbMfid.Checked = true;
                 cbColorCode.Checked = true;
-                cbFrequency.Checked = true;
             }
             else
             {
                 cbTrunkSystem.Checked = (item.Options & DmrNeedOptionsEnum.TrunkSystem) == DmrNeedOptionsEnum.TrunkSystem;
                 cbMfid.Checked = (item.Options & DmrNeedOptionsEnum.Mfid) == DmrNeedOptionsEnum.Mfid;
-                cbFrequency.Checked = (item.Options & DmrNeedOptionsEnum.Frequency) == DmrNeedOptionsEnum.Frequency;
                 cbColorCode.Checked = (item.Options & DmrNeedOptionsEnum.ColorCode) == DmrNeedOptionsEnum.ColorCode;
                 cbTgid.Checked = (item.Options & DmrNeedOptionsEnum.Tgid) == DmrNeedOptionsEnum.Tgid;
                 cbTimeSlot.Checked = (item.Options & DmrNeedOptionsEnum.TimeSlot) == DmrNeedOptionsEnum.TimeSlot;
