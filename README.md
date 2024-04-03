@@ -32,6 +32,7 @@ The settings must be saved in the file "alice.cft". Place this file at the root 
 
 * Custom Search - confirmed
 * Close Call - confirmed
+* Quick Search - confirmed
 * Memory Scan - not confirmed, [bug](https://github.com/x27/CFT/issues/3)
 
 ### About Encryption Key
