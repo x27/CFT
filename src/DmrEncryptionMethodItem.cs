@@ -18,5 +18,11 @@ namespace CFT
         public DmrEncryptionMethodEnum EncryptionMethod { get; set; }
         public uint KeyLength { get; set; }
         public byte[] Key { get; private set; } = new byte[ENC_METHOD_KEY_LEN];
+
+
+        public bool IsActiveOption(DmrNeedOptionsEnum option)
+        {
+            return (Options & option) == option;
+        }
     }
 }

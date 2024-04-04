@@ -120,23 +120,23 @@ namespace CFT
             listViewItem.Text = Utils.GetFrequencyString(item.Frequency);
 
             var listViewSubItem0 = new ListViewItem.ListViewSubItem();
-            listViewSubItem0.Text = item.TrunkSystem.ToString();
+            listViewSubItem0.Text = item.IsActiveOption(DmrNeedOptionsEnum.TrunkSystem) ? DisplayNameAttribute.GetName(item.TrunkSystem) : "-";
             listViewItem.SubItems.Add(listViewSubItem0);
 
             var listViewSubItem1 = new ListViewItem.ListViewSubItem();
-            listViewSubItem1.Text = item.Mfid.ToString();
+            listViewSubItem1.Text = item.IsActiveOption(DmrNeedOptionsEnum.Mfid) ? item.Mfid.ToString() : "-";
             listViewItem.SubItems.Add(listViewSubItem1);
 
             var listViewSubItem2 = new ListViewItem.ListViewSubItem();
-            listViewSubItem2.Text = DisplayNameAttribute.GetName(item.ColorCode);
+            listViewSubItem2.Text = item.IsActiveOption(DmrNeedOptionsEnum.ColorCode) ? DisplayNameAttribute.GetName(item.ColorCode) : "-";
             listViewItem.SubItems.Add(listViewSubItem2);
 
             var listViewSubItem3 = new ListViewItem.ListViewSubItem();
-            listViewSubItem3.Text = item.Tgid.ToString();
+            listViewSubItem3.Text = item.IsActiveOption(DmrNeedOptionsEnum.Tgid) ? item.Tgid.ToString() : "-";
             listViewItem.SubItems.Add(listViewSubItem3);
 
             var listViewSubItem4 = new ListViewItem.ListViewSubItem();
-            listViewSubItem4.Text = item.EncryptionValue.ToString();
+            listViewSubItem4.Text = item.IsActiveOption(DmrNeedOptionsEnum.EncryptValue) ? item.EncryptionValue.ToString() : "-";
             listViewItem.SubItems.Add(listViewSubItem4);
 
             var listViewSubItem5 = new ListViewItem.ListViewSubItem();

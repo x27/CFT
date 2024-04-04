@@ -2,9 +2,9 @@
 {
     public enum DmrMfidEnum
     {
-        [DisplayName("Motorola (0x10)")]
+        [DisplayName("Motorola")]
         Motorola = 0x10,
-        [DisplayName("Hytera (0x68)")]
+        [DisplayName("Hytera")]
         Hytera = 0x68
     }
 }

@@ -23,7 +23,7 @@ namespace CFT
             {
                 cbbEncryptionMethod.SelectedIndex = 0;
                 cbbKeyLength.SelectedIndex = 0;
-                cbbTrunkSystem.SelectedIndex = 0;
+                cbbTrunkSystem.SelectedIndex = 1;
                 cbbMfid.SelectedIndex = 0;
                 cbbColorCode.SelectedIndex = 0;
                 cbbTimeSlot.SelectedIndex = 0;
