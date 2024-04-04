@@ -19,6 +19,7 @@ namespace CFT
         public uint KeyLength { get; set; }
         public byte[] Key { get; private set; } = new byte[ENC_METHOD_KEY_LEN];
 
+        public string Notes { get; set; }
 
         public bool IsActiveOption(DmrNeedOptionsEnum option)
         {

@@ -52,6 +52,7 @@
             this.coTgid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colEncryptionValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colEncryption = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colNotes = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +67,7 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(710, 24);
+            this.menuStrip.Size = new System.Drawing.Size(832, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -172,7 +173,7 @@
             this.statusStrip.Location = new System.Drawing.Point(0, 415);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusStrip.Size = new System.Drawing.Size(710, 22);
+            this.statusStrip.Size = new System.Drawing.Size(832, 22);
             this.statusStrip.TabIndex = 1;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -191,7 +192,7 @@
             this.tsbDown});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(710, 25);
+            this.toolStrip.Size = new System.Drawing.Size(832, 25);
             this.toolStrip.TabIndex = 2;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -294,7 +295,8 @@
             this.colColorCode,
             this.coTgid,
             this.colEncryptionValue,
-            this.colEncryption});
+            this.colEncryption,
+            this.colNotes});
             this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView.FullRowSelect = true;
             this.listView.HideSelection = false;
@@ -303,7 +305,7 @@
             this.listView.MultiSelect = false;
             this.listView.Name = "listView";
             this.listView.ShowGroups = false;
-            this.listView.Size = new System.Drawing.Size(710, 366);
+            this.listView.Size = new System.Drawing.Size(832, 366);
             this.listView.TabIndex = 3;
             this.listView.TileSize = new System.Drawing.Size(168, 30);
             this.listView.UseCompatibleStateImageBehavior = false;
@@ -327,17 +329,17 @@
             // colMfid
             // 
             this.colMfid.Text = "MFID";
-            this.colMfid.Width = 103;
+            this.colMfid.Width = 89;
             // 
             // colColorCode
             // 
             this.colColorCode.Text = "CC";
-            this.colColorCode.Width = 61;
+            this.colColorCode.Width = 46;
             // 
             // coTgid
             // 
             this.coTgid.Text = "Tgid";
-            this.coTgid.Width = 101;
+            this.coTgid.Width = 88;
             // 
             // colEncryptionValue
             // 
@@ -347,13 +349,18 @@
             // colEncryption
             // 
             this.colEncryption.Text = "Encryption method";
-            this.colEncryption.Width = 160;
+            this.colEncryption.Width = 126;
+            // 
+            // colNotes
+            // 
+            this.colNotes.Text = "Notes";
+            this.colNotes.Width = 167;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 437);
+            this.ClientSize = new System.Drawing.Size(832, 437);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.statusStrip);
@@ -414,6 +421,7 @@
         private System.Windows.Forms.ToolStripMenuItem licensingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem debugLogsFilteringToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton tsbDuplicate;
+        private System.Windows.Forms.ColumnHeader colNotes;
     }
 }
 

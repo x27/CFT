@@ -68,6 +68,8 @@ namespace CFT
                     tbKey.Text = string.Empty;
                 else
                     tbKey.Text = Utils.BytesToHexString(item.Key).Substring(0, (int)item.KeyLength / 4);
+
+                tbNotes.Text = item.Notes;
             }
 
             ControlsUpdate();
@@ -240,7 +242,7 @@ namespace CFT
                 var bs = Utils.HexStringToBytes(tbKey.Text);
                 Buffer.BlockCopy(bs, 0, item.Key, 0, key.Length > DmrEncryptionMethodItem.ENC_METHOD_KEY_LEN ? DmrEncryptionMethodItem.ENC_METHOD_KEY_LEN : key.Length);
             }
-
+            item.Notes = tbNotes.Text;
             Item = item;
 
             DialogResult = DialogResult.OK;

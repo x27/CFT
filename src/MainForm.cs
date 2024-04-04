@@ -143,6 +143,10 @@ namespace CFT
             listViewSubItem5.Text = DisplayNameAttribute.GetName(item.EncryptionMethod);
             listViewItem.SubItems.Add(listViewSubItem5);
 
+            var listViewSubItem6 = new ListViewItem.ListViewSubItem();
+            listViewSubItem6.Text = item.Notes;
+            listViewItem.SubItems.Add(listViewSubItem6);
+
             e.Item = listViewItem;
         }
 
@@ -262,8 +266,13 @@ namespace CFT
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     _cftFile = CftFile.Load(dlg.FileName);
-                    _cftFileCopy = Utils.DeepClone(_cftFile);
-                    listView.VirtualListSize = _cftFile.DmrEncryptionMethodItems.Count;
+                    if (_cftFile != null)
+                    {
+                        _cftFileCopy = Utils.DeepClone(_cftFile);
+                        listView.VirtualListSize = _cftFile.DmrEncryptionMethodItems.Count;
+                    }
+                    else
+                        listView.VirtualListSize = 0;
                     ControlsUpdate();
                 }
             }

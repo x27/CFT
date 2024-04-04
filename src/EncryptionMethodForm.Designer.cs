@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EncryptionMethodForm));
             this.cbTrunkSystem = new System.Windows.Forms.CheckBox();
             this.cbMfid = new System.Windows.Forms.CheckBox();
             this.cbFrequency = new System.Windows.Forms.CheckBox();
@@ -53,6 +55,9 @@
             this.cbbKeyLength = new System.Windows.Forms.ComboBox();
             this.lblLen = new System.Windows.Forms.Label();
             this.nudMotoKey = new System.Windows.Forms.NumericUpDown();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.tbNotes = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMotoKey)).BeginInit();
             this.SuspendLayout();
@@ -134,6 +139,7 @@
             this.cbEncryptionValue.Size = new System.Drawing.Size(123, 21);
             this.cbEncryptionValue.TabIndex = 6;
             this.cbEncryptionValue.Text = "Encryption Value";
+            this.toolTip.SetToolTip(this.cbEncryptionValue, resources.GetString("cbEncryptionValue.ToolTip"));
             this.cbEncryptionValue.UseVisualStyleBackColor = true;
             this.cbEncryptionValue.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
             // 
@@ -262,7 +268,7 @@
             this.groupBox1.Controls.Add(this.cbTrunkSystem);
             this.groupBox1.Location = new System.Drawing.Point(20, 150);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(407, 277);
+            this.groupBox1.Size = new System.Drawing.Size(407, 278);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Options for activate encryption method (AND)";
@@ -271,7 +277,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(20, 450);
+            this.btnCancel.Location = new System.Drawing.Point(20, 510);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(154, 35);
             this.btnCancel.TabIndex = 21;
@@ -281,7 +287,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(273, 450);
+            this.btnOK.Location = new System.Drawing.Point(273, 510);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(154, 35);
             this.btnOK.TabIndex = 22;
@@ -324,12 +330,31 @@
             0,
             0});
             // 
+            // tbNotes
+            // 
+            this.tbNotes.Location = new System.Drawing.Point(20, 462);
+            this.tbNotes.MaxLength = 32;
+            this.tbNotes.Name = "tbNotes";
+            this.tbNotes.Size = new System.Drawing.Size(407, 25);
+            this.tbNotes.TabIndex = 14;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(17, 442);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 17);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Notes:";
+            // 
             // EncryptionMethodForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(450, 497);
+            this.ClientSize = new System.Drawing.Size(450, 557);
+            this.Controls.Add(this.tbNotes);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.nudMotoKey);
             this.Controls.Add(this.lblLen);
             this.Controls.Add(this.cbbKeyLength);
@@ -386,5 +411,8 @@
         private System.Windows.Forms.ComboBox cbbKeyLength;
         private System.Windows.Forms.Label lblLen;
         private System.Windows.Forms.NumericUpDown nudMotoKey;
+        private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.TextBox tbNotes;
+        private System.Windows.Forms.Label label2;
     }
 }

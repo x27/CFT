@@ -23,53 +23,65 @@ namespace CFT
 
         public static CftFile Load(string filename)
         {
-            var f = new CftFile { Filename = filename };
-            using (BinaryReader br = new BinaryReader(new FileStream(filename, FileMode.Open, FileAccess.Read)))
+            try
             {
-                var sig = br.ReadUInt32();
-                if (SIGNATURE != sig)
-                    throw new Exception($"Wrong Signature. File: {filename}");
-                f.Version = Swap(br.ReadUInt32());
-                if (VERSION < f.Version)
-                    throw new Exception($"Not Supported Version({f.Version}) File.");
-
-                br.BaseStream.Position = KEY_STORAGE_OFFSET;
-
-                var bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
-                Buffer.BlockCopy(bs, 0, f.Licensing.HyteraBPUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
-                bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
-                Buffer.BlockCopy(bs, 0, f.Licensing.MotorolaBPUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
-
-                br.BaseStream.Position = AGLO_TABLE_OFFSET;
-
-                var dmrItemsCount = Swap(br.ReadUInt32());
-                if (MAX_ITEMS < dmrItemsCount)
-                    throw new Exception($"Too Many DMR Encryption Method Items.");
-
-                f.DmrEncryptionMethodItems = new List<DmrEncryptionMethodItem>();
-                for (var i = 0; i < dmrItemsCount; i++)
+                var f = new CftFile { Filename = filename };
+                using (BinaryReader br = new BinaryReader(new FileStream(filename, FileMode.Open, FileAccess.Read)))
                 {
-                    var item = new DmrEncryptionMethodItem
+                    var sig = br.ReadUInt32();
+                    if (SIGNATURE != sig)
+                        throw new Exception($"Wrong Signature. File: {filename}");
+                    f.Version = Swap(br.ReadUInt32());
+                    if (VERSION < f.Version)
+                        throw new Exception($"Not Supported Version({f.Version}) File.");
+
+                    br.BaseStream.Position = KEY_STORAGE_OFFSET;
+
+                    var bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
+                    Buffer.BlockCopy(bs, 0, f.Licensing.HyteraBPUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
+                    bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
+                    Buffer.BlockCopy(bs, 0, f.Licensing.MotorolaBPUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
+
+                    br.BaseStream.Position = AGLO_TABLE_OFFSET;
+
+                    var dmrItemsCount = Swap(br.ReadUInt32());
+                    if (MAX_ITEMS < dmrItemsCount)
+                        throw new Exception($"Too Many DMR Encryption Method Items.");
+
+                    f.DmrEncryptionMethodItems = new List<DmrEncryptionMethodItem>();
+                    for (var i = 0; i < dmrItemsCount; i++)
                     {
-                        Options = (DmrNeedOptionsEnum)Swap(br.ReadUInt32()),
-                        TrunkSystem = (DmrTrunkSystemEnum)br.ReadByte(),
-                        Mfid = (DmrMfidEnum)br.ReadByte(),
-                        Frequency = FreqToUint32(Swap(br.ReadUInt32())),
-                        ColorCode = (DmrColorCodeEnum)br.ReadByte(),
-                        Tgid = Swap(br.ReadUInt32()),
-                        TimeSlot = (DmrTimeSlotEnum)br.ReadByte(),
-                        EncryptionValue = (DmrEncyptionValueEnum)br.ReadByte(),
-                        EncryptionMethod = (DmrEncryptionMethodEnum)br.ReadByte(),
-                        KeyLength = Swap(br.ReadUInt32()),
-                    };
+                        var item = new DmrEncryptionMethodItem
+                        {
+                            Options = (DmrNeedOptionsEnum)Swap(br.ReadUInt32()),
+                            TrunkSystem = (DmrTrunkSystemEnum)br.ReadByte(),
+                            Mfid = (DmrMfidEnum)br.ReadByte(),
+                            Frequency = FreqToUint32(Swap(br.ReadUInt32())),
+                            ColorCode = (DmrColorCodeEnum)br.ReadByte(),
+                            Tgid = Swap(br.ReadUInt32()),
+                            TimeSlot = (DmrTimeSlotEnum)br.ReadByte(),
+                            EncryptionValue = (DmrEncyptionValueEnum)br.ReadByte(),
+                            EncryptionMethod = (DmrEncryptionMethodEnum)br.ReadByte(),
+                            KeyLength = Swap(br.ReadUInt32()),
+                        };
 
-                    bs = br.ReadBytes(DmrEncryptionMethodItem.ENC_METHOD_KEY_LEN);
-                    Buffer.BlockCopy(bs, 0, item.Key, 0, DmrEncryptionMethodItem.ENC_METHOD_KEY_LEN);
+                        bs = br.ReadBytes(DmrEncryptionMethodItem.ENC_METHOD_KEY_LEN);
+                        Buffer.BlockCopy(bs, 0, item.Key, 0, DmrEncryptionMethodItem.ENC_METHOD_KEY_LEN);
 
-                    f.DmrEncryptionMethodItems.Add(item);
+                        f.DmrEncryptionMethodItems.Add(item);
+                    }
+
+                    foreach (var item in f.DmrEncryptionMethodItems)
+                    {
+                        item.Notes = br.ReadString();
+                    }
                 }
-            }
             return f;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public void Write()
@@ -99,6 +111,12 @@ namespace CFT
                     bw.Write((byte)item.EncryptionMethod);
                     bw.Write(Swap(item.KeyLength));
                     bw.Write(item.Key);
+                }
+
+                // write notes
+                foreach (var item in DmrEncryptionMethodItems)
+                {
+                    bw.Write(item.Notes);
                 }
             }
         }
