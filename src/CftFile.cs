@@ -118,5 +118,10 @@ namespace CFT
             value = (value >> 16) | (value << 16);
             return ((value & 0xFF00FF00) >> 8) | ((value & 0x00FF00FF) << 8);
         }
+
+        public void SortItemsByFrequency(bool ascending)
+        {
+            DmrEncryptionMethodItems.Sort((a, b) => ascending ? b.Frequency.CompareTo(a.Frequency) : a.Frequency.CompareTo(b.Frequency));
+        }
     }
 }

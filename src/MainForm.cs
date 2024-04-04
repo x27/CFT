@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Reflection;
-using System.Security.Cryptography;
 using System.Windows.Forms;
 
 
@@ -13,6 +12,7 @@ namespace CFT
 
         private CftFile _cftFile;
         private CftFile _cftFileCopy;
+        private SortOrder _colFreqSortOrder = SortOrder.None;
 
         public MainForm()
         {
@@ -82,6 +82,7 @@ namespace CFT
                     listView.Items[index - 1].Selected = true;
                     listView.Items[index - 1].Focused = true;
                 }
+                ListViewNoSort();
                 ControlsUpdate();
             }
         }
@@ -95,6 +96,7 @@ namespace CFT
             listView.Invalidate();
             listView.Items[index].Selected = true;
             listView.Items[index].Focused = true;
+            ListViewNoSort();
         }
 
         private void tsbDown_Click(object sender, EventArgs e)
@@ -106,6 +108,8 @@ namespace CFT
             listView.Invalidate();
             listView.Items[index].Selected = true;
             listView.Items[index].Focused = true;
+
+            ListViewNoSort();
         }
 
         private void listView_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
@@ -293,10 +297,11 @@ namespace CFT
                 listView.Items[_cftFile.DmrEncryptionMethodItems.Count - 1].Selected = true;
                 listView.Items[_cftFile.DmrEncryptionMethodItems.Count - 1].Focused = true;
                 listView.Select();
+
+                ListViewNoSort();
                 ControlsUpdate();
             }
         }
-
 
         private void CheckFileChangedAndAskAboutSaving()
         {
@@ -328,6 +333,33 @@ namespace CFT
         private void tsbDuplicate_Click(object sender, EventArgs e)
         {
             cmdAddItem(true);
+        }
+
+        private void ListViewNoSort()
+        {
+            _colFreqSortOrder = SortOrder.None;
+            ListViewExtensions.SetSortIcon(listView, 0, _colFreqSortOrder);
+        }
+
+        private void listView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            if (e.Column == 0)
+            {
+                if (_colFreqSortOrder == SortOrder.None || _colFreqSortOrder == SortOrder.Ascending)
+                {
+                    _colFreqSortOrder = SortOrder.Descending;
+                    ListViewExtensions.SetSortIcon(listView, 0, _colFreqSortOrder);
+                    _cftFile.SortItemsByFrequency(false);
+                }
+                else
+                {
+                    _colFreqSortOrder = SortOrder.Ascending;
+                    ListViewExtensions.SetSortIcon(listView, 0, _colFreqSortOrder);
+                    _cftFile.SortItemsByFrequency(true);
+                }
+                listView.Invalidate();
+                ControlsUpdate();
+            }
         }
     }
 }

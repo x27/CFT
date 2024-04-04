@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CftFile.cs" />
+    <Compile Include="ListViewExtensions.cs" />
     <Compile Include="DisplayNameAttribute.cs" />
     <Compile Include="DisplayTagObject.cs" />
     <Compile Include="DmrColorCodeEnum.cs" />

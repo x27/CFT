@@ -39,6 +39,7 @@
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbAdd = new System.Windows.Forms.ToolStripButton();
+            this.tsbDuplicate = new System.Windows.Forms.ToolStripButton();
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbUp = new System.Windows.Forms.ToolStripButton();
@@ -51,7 +52,6 @@
             this.coTgid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colEncryptionValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colEncryption = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tsbDuplicate = new System.Windows.Forms.ToolStripButton();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -240,6 +240,16 @@
             this.tsbAdd.Text = "Add";
             this.tsbAdd.Click += new System.EventHandler(this.tsbAdd_Click);
             // 
+            // tsbDuplicate
+            // 
+            this.tsbDuplicate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbDuplicate.Image = global::CFT.Properties.Resources.duplicate;
+            this.tsbDuplicate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDuplicate.Name = "tsbDuplicate";
+            this.tsbDuplicate.Size = new System.Drawing.Size(23, 22);
+            this.tsbDuplicate.Text = "Duplicate";
+            this.tsbDuplicate.Click += new System.EventHandler(this.tsbDuplicate_Click);
+            // 
             // tsbDelete
             // 
             this.tsbDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -299,6 +309,7 @@
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
             this.listView.VirtualMode = true;
+            this.listView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView_ColumnClick);
             this.listView.RetrieveVirtualItem += new System.Windows.Forms.RetrieveVirtualItemEventHandler(this.listView_RetrieveVirtualItem);
             this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
             this.listView.DoubleClick += new System.EventHandler(this.listView_DoubleClick);
@@ -337,16 +348,6 @@
             // 
             this.colEncryption.Text = "Encryption method";
             this.colEncryption.Width = 160;
-            // 
-            // tsbDuplicate
-            // 
-            this.tsbDuplicate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbDuplicate.Image = global::CFT.Properties.Resources.duplicate;
-            this.tsbDuplicate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbDuplicate.Name = "tsbDuplicate";
-            this.tsbDuplicate.Size = new System.Drawing.Size(23, 22);
-            this.tsbDuplicate.Text = "Duplicate";
-            this.tsbDuplicate.Click += new System.EventHandler(this.tsbDuplicate_Click);
             // 
             // MainForm
             // 
