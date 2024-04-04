@@ -2,9 +2,9 @@
 {
     public enum DmrEncyptionValueEnum
     {
-        [DisplayName("Value1 (1)")]
+        [DisplayName("Non Encrypted (1)")]
         Value1 = 1,
-        [DisplayName("Value2 (2)")]
+        [DisplayName("Encrypted (2)")]
         Value2 = 2
     }
 }
