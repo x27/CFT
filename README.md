@@ -4,9 +4,9 @@
 
 ### Purpose
 
-The main purpose is to select the parameters of digital protocols that will activate the decryption of encrypted voice traffic. 
+The main purpose of CFT is to select the parameters of digital protocols that will activate the decryption of encrypted voice traffic. 
 
-The program is designed to work with custom firmware version starting from 1.99.08
+The software is developed to work with Custom Firmware (CF) starting from v1.99.08
 
 The settings must be saved in the file "alice.cft". Place this file at the root directory "\\" of the Scanner's memory card (for example, E:\\).
 
@@ -14,18 +14,35 @@ The settings must be saved in the file "alice.cft". Place this file at the root 
 
 * Hytera BP (Basic Privacy)
     * 10 characters (40 bits) - confirmed
+    * 10 characters (40 bits) with OTA Encryption - confirmed
     * 32 characters (128 bits) - confirmed
     * 64 characters (256 bits) - not confirmed
-* Motorola BP (Basic Privacy) key 1-255, confirmed
+* Motorola BP (Basic Privacy) key 1-255 - confirmed
 * RC4 - comming soon
 
 ### Supported scanner models
 
 * Uniden BCD436HP with [CF 1.99.09](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.09)
 * Uniden BCD536HP coming soon
-* Uniden SDS100 soon maybe (17% of funds raised)
+* Uniden SDS100 soon maybe (23% of funds raised)
 * Uniden SDS200 soon maybe (0% of funds raised)
 * Uniden UBCD3600XLT soon maybe (0% of funds raised)
+
+### Supported scanner modes
+
+* Direct freq entry - confirmed
+* Custom Search - confirmed
+* Close Call - confirmed
+* Quick Search - confirmed
+* Memory Scan as a Conventional - confirmed
+* Memory Scan as a DIgital - not confirmed, [bug](https://github.com/x27/CFT/issues/3)
+
+## Supported trunking modes
+
+* Conventional repeater - confirmed
+* CAP+ - no data
+* Connect+ - data
+* TII - no data
 
 ### About Encryption Key
 
@@ -33,13 +50,22 @@ Custom Firmware will not find the Encryption Key. It is something that needs to 
 
 ### Debug Logs
 
-If you have any problems with signal decryption (or some other problem with my firmware ) and can't figure it out, you need to create debug files and send them to my email.
+If you have any problems with signal decryption (or some other problem with my firmware ) and can't figure it out, you need to create debug files and send it to my email.
 
-Separate debug files for each problem separately. Enable logging. Take multiple calls together with pauses. Disable logging. Send Email with problem's description and attached logs.
+Separate debug files for each problem separately.
+
+How create the debug logs:
+* Enable logging.
+   - Enable logging by pressing the side Menu button > Settings > Set Debug Log Mode > SD Card (File). Select by pressing on the Volume button.
+* Include multiple calls together with pauses.
+* Disable logging.
+   - Deactivate debug logging via the scanner menu Settings - Set Debug Logs Mode - Off.        
+* Send Email with problem's description and attached logs.
+   - Debug logs can be found on the scanner SD Card in the /BCDx36HP/debug/ directory.   
 
 [More about Debug Logs](DEBUG.md)
 
-### Demo
+### Demo Limitations
 
 * Time limit - 2 minutes of decrypted voice of any protocols. Reboot the scanner for reset limitation.
 * Key limit - 5 pcs
@@ -48,12 +74,12 @@ If you are not satisfied with the limitations of the demo mode, you can purchase
 
 ### Donation / Payments
 
-If your scanner model is not supported but you want the claimed features to be there or you just want to support the project, donate or purchase unlock keys for the future.
+If your scanner model is not supported, but you want to enjoy these features, or you just want to support the project, you are more than welcome to donate or purchase unlock keys.
 But before you do, write me an e-mail.
 
-Each unlock key costs 30USD, a pair of keys - 50USD. If you can't afford it with a scanner costing several hundred dollars, write me an email and tell about it. Maybe I can get into your position and lower the price.
+Licenses for unlocking Hytera BP and Motorola BP keys are currently available. Each license costs 30USD, a pair of licenses - 50USD. 
 
-For obvious reasons, I would like to remain conditionally anonymous, so payments are only accepted in crypto.
+For obvious reasons, I would like to remain anonymous, so payments are only accepted in cryptocurrency
 
 Tether (USDT) TRC20
 
@@ -65,7 +91,7 @@ If you don't know what it is try starting here [TrustWallet](https://trustwallet
 
 ### Support
 
-You can support the project not only financially. My mailbox is ready to receive from you any wishes, advice, feedback on the use of the custom firmware and CFT.
+Any suggestions, wishes, advice, feedback - email me.
 
 ### Links
 
