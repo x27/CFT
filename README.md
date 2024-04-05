@@ -18,6 +18,7 @@ The settings must be saved in the file "alice.cft". Place this file at the root 
     * 32 characters (128 bits) - confirmed
     * 64 characters (256 bits) - not confirmed
 * Motorola BP (Basic Privacy) key 1-255 - confirmed
+* Motorola BP (Basic Privacy) key 1-255 Mixed with Clear voice - confirmed
 * RC4 - comming soon
 
 ### Supported scanner models
@@ -35,14 +36,14 @@ The settings must be saved in the file "alice.cft". Place this file at the root 
 * Close Call - confirmed
 * Quick Search - confirmed
 * Memory Scan as a Conventional - confirmed
-* Memory Scan as a DIgital - not confirmed, [bug](https://github.com/x27/CFT/issues/3)
+* Memory Scan as a Digital - not confirmed, [bug](https://github.com/x27/CFT/issues/3)
 
 ## Supported trunking modes
 
 * Conventional repeater - confirmed
 * CAP+ - no data
-* Connect+ - data
-* TII - no data
+* Connect+ - no data
+* TIII - no data
 
 ### About Encryption Key
 
@@ -54,12 +55,12 @@ If you have any problems with signal decryption (or some other problem with my f
 
 Separate debug files for each problem separately.
 
-How create the debug logs:
+How to create the debug logs:
 * Enable logging.
    - Enable logging by pressing the side Menu button > Settings > Set Debug Log Mode > SD Card (File). Select by pressing on the Volume button.
 * Include multiple calls together with pauses.
 * Disable logging.
-   - Deactivate debug logging via the scanner menu Settings - Set Debug Logs Mode - Off.        
+   - Deactivate debug logging via the scanner menu Settings > Set Debug Logs Mode > Off.        
 * Send Email with problem's description and attached logs.
    - Debug logs can be found on the scanner SD Card in the /BCDx36HP/debug/ directory.   
 
