@@ -71,10 +71,14 @@ namespace CFT
                         f.DmrEncryptionMethodItems.Add(item);
                     }
 
-                    foreach (var item in f.DmrEncryptionMethodItems)
+                    try
                     {
-                        item.Notes = br.ReadString();
+                        foreach (var item in f.DmrEncryptionMethodItems)
+                        {
+                            item.Notes = br.ReadString();
+                        }
                     }
+                    catch { }
                 }
             return f;
             }
