@@ -29,7 +29,7 @@ namespace CFT
                 cbbTimeSlot.SelectedIndex = 0;
                 cbbEncryptionValue.SelectedIndex = 0;
                 tbTgid.Text = "1";
-                tbFrequency.Text = "145500000";
+                tbFrequency.Text = Utils.GetFrequencyString(145500000);
                 tbKey.Text = string.Empty;
 
                 cbTrunkSystem.Checked = true;
@@ -63,7 +63,7 @@ namespace CFT
                     cbbEncryptionValue.SelectedIndex = 0;
 
                 tbTgid.Text = item.Tgid.ToString();
-                tbFrequency.Text = item.Frequency.ToString();
+                tbFrequency.Text = Utils.GetFrequencyString(item.Frequency);
                 if (Utils.IsArrayEmpty(item.Key))
                     tbKey.Text = string.Empty;
                 else
@@ -180,14 +180,16 @@ namespace CFT
                 return;
             }
 
-            if (!uint.TryParse(tbFrequency.Text.Trim(), out uint frequency))
+            if (!double.TryParse(tbFrequency.Text.Trim(), out double frequency))
             {
                 tbFrequency.Focus();
                 MessageBox.Show("Wrong frequency value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (frequency <= 25e6 ||  frequency > 1300e6)
+            var uintFreq = (uint)(frequency * 1e6);
+
+            if (uintFreq <= 25e6 || uintFreq > 1300e6)
             {
                 tbFrequency.Focus();
                 MessageBox.Show("Wrong frequency value (must be between 25MHz and 1300Mhz)!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -215,7 +217,7 @@ namespace CFT
 
             var item = new DmrEncryptionMethodItem();
 
-            item.Frequency = frequency;
+            item.Frequency = uintFreq;
 
             var method = (DmrEncryptionMethodEnum)(cbbEncryptionMethod.SelectedItem as DisplayTagObject).Tag;
 

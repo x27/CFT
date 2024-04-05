@@ -68,7 +68,7 @@
             this.cbTrunkSystem.Location = new System.Drawing.Point(31, 41);
             this.cbTrunkSystem.Name = "cbTrunkSystem";
             this.cbTrunkSystem.Size = new System.Drawing.Size(103, 21);
-            this.cbTrunkSystem.TabIndex = 0;
+            this.cbTrunkSystem.TabIndex = 4;
             this.cbTrunkSystem.Text = "Trunk System";
             this.cbTrunkSystem.UseVisualStyleBackColor = true;
             this.cbTrunkSystem.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
@@ -79,7 +79,7 @@
             this.cbMfid.Location = new System.Drawing.Point(31, 72);
             this.cbMfid.Name = "cbMfid";
             this.cbMfid.Size = new System.Drawing.Size(57, 21);
-            this.cbMfid.TabIndex = 1;
+            this.cbMfid.TabIndex = 6;
             this.cbMfid.Text = "MFID";
             this.cbMfid.UseVisualStyleBackColor = true;
             this.cbMfid.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
@@ -92,9 +92,9 @@
             this.cbFrequency.Enabled = false;
             this.cbFrequency.Location = new System.Drawing.Point(31, 103);
             this.cbFrequency.Name = "cbFrequency";
-            this.cbFrequency.Size = new System.Drawing.Size(113, 21);
-            this.cbFrequency.TabIndex = 2;
-            this.cbFrequency.Text = "Frequency (Hz)";
+            this.cbFrequency.Size = new System.Drawing.Size(125, 21);
+            this.cbFrequency.TabIndex = 8;
+            this.cbFrequency.Text = "Frequency (MHz)";
             this.cbFrequency.UseVisualStyleBackColor = true;
             this.cbFrequency.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
             // 
@@ -104,7 +104,7 @@
             this.cbColorCode.Location = new System.Drawing.Point(31, 134);
             this.cbColorCode.Name = "cbColorCode";
             this.cbColorCode.Size = new System.Drawing.Size(94, 21);
-            this.cbColorCode.TabIndex = 3;
+            this.cbColorCode.TabIndex = 10;
             this.cbColorCode.Text = "Color Code";
             this.cbColorCode.UseVisualStyleBackColor = true;
             this.cbColorCode.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
@@ -115,7 +115,7 @@
             this.cbTgid.Location = new System.Drawing.Point(31, 165);
             this.cbTgid.Name = "cbTgid";
             this.cbTgid.Size = new System.Drawing.Size(88, 21);
-            this.cbTgid.TabIndex = 4;
+            this.cbTgid.TabIndex = 12;
             this.cbTgid.Text = "TGID (Dec)";
             this.cbTgid.UseVisualStyleBackColor = true;
             this.cbTgid.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
@@ -126,7 +126,7 @@
             this.cbTimeSlot.Location = new System.Drawing.Point(31, 196);
             this.cbTimeSlot.Name = "cbTimeSlot";
             this.cbTimeSlot.Size = new System.Drawing.Size(81, 21);
-            this.cbTimeSlot.TabIndex = 5;
+            this.cbTimeSlot.TabIndex = 14;
             this.cbTimeSlot.Text = "Time Slot";
             this.cbTimeSlot.UseVisualStyleBackColor = true;
             this.cbTimeSlot.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
@@ -137,7 +137,7 @@
             this.cbEncryptionValue.Location = new System.Drawing.Point(31, 227);
             this.cbEncryptionValue.Name = "cbEncryptionValue";
             this.cbEncryptionValue.Size = new System.Drawing.Size(123, 21);
-            this.cbEncryptionValue.TabIndex = 6;
+            this.cbEncryptionValue.TabIndex = 16;
             this.cbEncryptionValue.Text = "Encryption Value";
             this.toolTip.SetToolTip(this.cbEncryptionValue, resources.GetString("cbEncryptionValue.ToolTip"));
             this.cbEncryptionValue.UseVisualStyleBackColor = true;
@@ -150,7 +150,7 @@
             this.cbbTrunkSystem.Location = new System.Drawing.Point(191, 39);
             this.cbbTrunkSystem.Name = "cbbTrunkSystem";
             this.cbbTrunkSystem.Size = new System.Drawing.Size(179, 25);
-            this.cbbTrunkSystem.TabIndex = 7;
+            this.cbbTrunkSystem.TabIndex = 5;
             // 
             // cbbMfid
             // 
@@ -159,7 +159,7 @@
             this.cbbMfid.Location = new System.Drawing.Point(191, 70);
             this.cbbMfid.Name = "cbbMfid";
             this.cbbMfid.Size = new System.Drawing.Size(179, 25);
-            this.cbbMfid.TabIndex = 8;
+            this.cbbMfid.TabIndex = 7;
             // 
             // tbFrequency
             // 
@@ -175,7 +175,7 @@
             this.cbbColorCode.Location = new System.Drawing.Point(191, 132);
             this.cbbColorCode.Name = "cbbColorCode";
             this.cbbColorCode.Size = new System.Drawing.Size(179, 25);
-            this.cbbColorCode.TabIndex = 10;
+            this.cbbColorCode.TabIndex = 11;
             // 
             // cbbTimeSlot
             // 
@@ -184,7 +184,7 @@
             this.cbbTimeSlot.Location = new System.Drawing.Point(191, 194);
             this.cbbTimeSlot.Name = "cbbTimeSlot";
             this.cbbTimeSlot.Size = new System.Drawing.Size(179, 25);
-            this.cbbTimeSlot.TabIndex = 12;
+            this.cbbTimeSlot.TabIndex = 15;
             // 
             // cbbEncryptionValue
             // 
@@ -193,7 +193,7 @@
             this.cbbEncryptionValue.Location = new System.Drawing.Point(191, 225);
             this.cbbEncryptionValue.Name = "cbbEncryptionValue";
             this.cbbEncryptionValue.Size = new System.Drawing.Size(179, 25);
-            this.cbbEncryptionValue.TabIndex = 13;
+            this.cbbEncryptionValue.TabIndex = 17;
             // 
             // label1
             // 
@@ -211,7 +211,7 @@
             this.cbbEncryptionMethod.Location = new System.Drawing.Point(145, 18);
             this.cbbEncryptionMethod.Name = "cbbEncryptionMethod";
             this.cbbEncryptionMethod.Size = new System.Drawing.Size(179, 25);
-            this.cbbEncryptionMethod.TabIndex = 15;
+            this.cbbEncryptionMethod.TabIndex = 1;
             this.cbbEncryptionMethod.SelectedIndexChanged += new System.EventHandler(this.cb_CheckedChanged);
             // 
             // lblKeyExt
@@ -228,7 +228,7 @@
             this.tbTgid.Location = new System.Drawing.Point(191, 163);
             this.tbTgid.Name = "tbTgid";
             this.tbTgid.Size = new System.Drawing.Size(179, 25);
-            this.tbTgid.TabIndex = 11;
+            this.tbTgid.TabIndex = 13;
             // 
             // tbKey
             // 
@@ -237,7 +237,7 @@
             this.tbKey.Name = "tbKey";
             this.tbKey.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbKey.Size = new System.Drawing.Size(282, 49);
-            this.tbKey.TabIndex = 18;
+            this.tbKey.TabIndex = 3;
             this.tbKey.Tag = "";
             this.tbKey.TextChanged += new System.EventHandler(this.tbKey_TextChanged);
             // 
@@ -280,7 +280,7 @@
             this.btnCancel.Location = new System.Drawing.Point(20, 510);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(154, 35);
-            this.btnCancel.TabIndex = 21;
+            this.btnCancel.TabIndex = 19;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -290,7 +290,7 @@
             this.btnOK.Location = new System.Drawing.Point(273, 510);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(154, 35);
-            this.btnOK.TabIndex = 22;
+            this.btnOK.TabIndex = 20;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -322,7 +322,7 @@
             0});
             this.nudMotoKey.Name = "nudMotoKey";
             this.nudMotoKey.Size = new System.Drawing.Size(179, 25);
-            this.nudMotoKey.TabIndex = 25;
+            this.nudMotoKey.TabIndex = 2;
             this.nudMotoKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nudMotoKey.Value = new decimal(new int[] {
             1,
@@ -336,7 +336,7 @@
             this.tbNotes.MaxLength = 32;
             this.tbNotes.Name = "tbNotes";
             this.tbNotes.Size = new System.Drawing.Size(407, 25);
-            this.tbNotes.TabIndex = 14;
+            this.tbNotes.TabIndex = 18;
             // 
             // label2
             // 

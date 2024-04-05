@@ -136,7 +136,7 @@ namespace CFT
             listViewItem.SubItems.Add(listViewSubItem3);
 
             var listViewSubItem4 = new ListViewItem.ListViewSubItem();
-            listViewSubItem4.Text = item.IsActiveOption(DmrNeedOptionsEnum.EncryptValue) ? item.EncryptionValue.ToString() : "-";
+            listViewSubItem4.Text = item.IsActiveOption(DmrNeedOptionsEnum.EncryptValue) ? DisplayNameAttribute.GetName(item.EncryptionValue) : "-";
             listViewItem.SubItems.Add(listViewSubItem4);
 
             var listViewSubItem5 = new ListViewItem.ListViewSubItem();

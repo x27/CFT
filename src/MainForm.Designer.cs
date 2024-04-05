@@ -67,7 +67,7 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(832, 24);
+            this.menuStrip.Size = new System.Drawing.Size(846, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -170,10 +170,10 @@
             // 
             // statusStrip
             // 
-            this.statusStrip.Location = new System.Drawing.Point(0, 415);
+            this.statusStrip.Location = new System.Drawing.Point(0, 455);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-            this.statusStrip.Size = new System.Drawing.Size(832, 22);
+            this.statusStrip.Size = new System.Drawing.Size(846, 22);
             this.statusStrip.TabIndex = 1;
             this.statusStrip.Text = "statusStrip1";
             // 
@@ -192,7 +192,7 @@
             this.tsbDown});
             this.toolStrip.Location = new System.Drawing.Point(0, 24);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(832, 25);
+            this.toolStrip.Size = new System.Drawing.Size(846, 25);
             this.toolStrip.TabIndex = 2;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -305,7 +305,7 @@
             this.listView.MultiSelect = false;
             this.listView.Name = "listView";
             this.listView.ShowGroups = false;
-            this.listView.Size = new System.Drawing.Size(832, 366);
+            this.listView.Size = new System.Drawing.Size(846, 406);
             this.listView.TabIndex = 3;
             this.listView.TileSize = new System.Drawing.Size(168, 30);
             this.listView.UseCompatibleStateImageBehavior = false;
@@ -318,13 +318,13 @@
             // 
             // colFrequency
             // 
-            this.colFrequency.Text = "Frequency, Hz";
-            this.colFrequency.Width = 100;
+            this.colFrequency.Text = "Frequency, MHz";
+            this.colFrequency.Width = 113;
             // 
             // colTrunkSystem
             // 
             this.colTrunkSystem.Text = "Trunk system";
-            this.colTrunkSystem.Width = 100;
+            this.colTrunkSystem.Width = 94;
             // 
             // colMfid
             // 
@@ -360,7 +360,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 437);
+            this.ClientSize = new System.Drawing.Size(846, 477);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.statusStrip);

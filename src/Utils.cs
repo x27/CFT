@@ -81,9 +81,8 @@ namespace CFT
         public static string GetFrequencyString(uint frequency)
         {
             int mhz = (int)(frequency / 1e6);
-            var khz = (int)(frequency % 1e6 / 1e3);
-            var hz = (int)(frequency % 1e3);
-            return $"{mhz:D03}.{khz:D03}.{hz:D03}";
+            var khz = (int)(frequency % 1e6 / 1e2);
+            return $"{mhz:D03}.{khz:D04}";
         }
 
     }
