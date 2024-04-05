@@ -94,6 +94,8 @@ If you don't know what it is try starting here [TrustWallet](https://trustwallet
 
 Any suggestions, wishes, advice, feedback - email me.
 
+You can also ask your questions in the discussions under any post in my [Telegram channel](https://t.me/openscanner). 
+
 ### Links
 
 * email: n3617400@yahoo.com
