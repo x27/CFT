@@ -94,7 +94,7 @@ If you don't know what it is try starting here [TrustWallet](https://trustwallet
 
 Any suggestions, wishes, advice, feedback - email me.
 
-You can also ask your questions in the discussions under any post in my [Telegram channel](https://t.me/openscanner). 
+You can also ask your questions or discuss issues with the users' community in the [Telegram chat](https://t.me/+lBpGtQr1FgI0ZWU6) or in the discussion under any post in the [Telegram channel](https://t.me/openscanner)
 
 ### Links
 
