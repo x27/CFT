@@ -16,14 +16,14 @@ The settings must be saved in the file "alice.cft". Place this file at the root 
     * 10 characters (40 bits) - confirmed
     * 10 characters (40 bits) with OTA Encryption - confirmed
     * 32 characters (128 bits) - confirmed
-    * 64 characters (256 bits) - not confirmed
+    * 64 characters (256 bits) - confirmed
 * Motorola BP (Basic Privacy) key 1-255 - confirmed
 * Motorola BP (Basic Privacy) key 1-255 Mixed with Clear voice - confirmed
 * RC4 - comming soon
 
 ### Supported scanner models
 
-* Uniden BCD436HP with [CF 1.99.09](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.09)
+* Uniden BCD436HP with [CF 1.99.10](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.10)
 * Uniden BCD536HP coming soon
 * Uniden SDS100 soon maybe (23% of funds raised)
 * Uniden SDS200 soon maybe (0% of funds raised)
@@ -36,7 +36,7 @@ The settings must be saved in the file "alice.cft". Place this file at the root 
 * Close Call - confirmed
 * Quick Search - confirmed
 * Memory Scan as a Conventional - confirmed
-* Memory Scan as a Digital - not confirmed, [bug](https://github.com/x27/CFT/issues/3)
+* Memory Scan as a Digital - confirmed
 
 ## Supported trunking modes
 
@@ -65,6 +65,10 @@ How to create the debug logs:
    - Debug logs can be found on the scanner SD Card in the /BCDx36HP/debug/ directory.   
 
 [More about Debug Logs](DEBUG.md)
+
+### Virus/Trojan false warning
+
+Some Windows users are triggered by the built-in antivirus when working with the file "alice.cft". This warning is false, which you can verify by checking this file with [VirusTotal](https://www.virustotal.com/gui/home/upload), an online service that combines a huge number of antivirus checks.
 
 ### Demo Limitations
 
@@ -100,5 +104,6 @@ You can also ask your questions or discuss issues with the users' community in t
 
 * email: n3617400@yahoo.com
 * twitter: https://x.com/openscanner
-* telegram: https://t.me/openscanner
+* telegram channel: https://t.me/openscanner
+* telegram chat: https://t.me/+lBpGtQr1FgI0ZWU6
 
