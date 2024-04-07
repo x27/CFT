@@ -1,4 +1,4 @@
-# CFT - Custom Firmware Tuner for Uniden BCD436HP
+# CFT - Custom Firmware Tuner for Uniden BCD436HP/BCD536HP
 
 ![screenshot](img/image.png)
 
