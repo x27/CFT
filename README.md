@@ -10,6 +10,10 @@ The software is developed to work with Custom Firmware (CF) starting from v1.99.
 
 The settings must be saved in the file "alice.cft". Place this file at the root directory "\\" of the Scanner's memory card (for example, E:\\).
 
+### Terms and conditions
+
+Requires an installed paid [DMR upgrade](https://info.uniden.com/twiki/bin/view/UnidenMan4/DigitalMobileRadioUpgrade) on the scanner.
+
 ### Supported decryption protocols
 
 * Hytera BP (Basic Privacy)
@@ -17,6 +21,7 @@ The settings must be saved in the file "alice.cft". Place this file at the root 
     * 10 characters (40 bits) with OTA Encryption - confirmed
     * 32 characters (128 bits) - confirmed
     * 64 characters (256 bits) - confirmed
+    * 64 characters (256 bits) with OTA Encryption - confirmed
 * Motorola BP (Basic Privacy) key 1-255 - confirmed
 * Motorola BP (Basic Privacy) key 1-255 Mixed with Clear voice - confirmed
 * RC4 - comming soon
@@ -24,7 +29,7 @@ The settings must be saved in the file "alice.cft". Place this file at the root 
 ### Supported scanner models
 
 * Uniden BCD436HP with [CF 1.99.10](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.10)
-* Uniden BCD536HP coming soon
+* Uniden BCD536HP with [CF 1.99.10](https://github.com/x27/openscanner/releases/tag/BCD536HP_1.99.10)
 * Uniden SDS100 soon maybe (23% of funds raised)
 * Uniden SDS200 soon maybe (0% of funds raised)
 * Uniden UBCD3600XLT soon maybe (0% of funds raised)
@@ -40,10 +45,10 @@ The settings must be saved in the file "alice.cft". Place this file at the root 
 
 ## Supported trunking modes
 
-* Conventional repeater - confirmed
-* CAP+ - no data
+* Conventional repeater (Hytera/Motorola) - confirmed
+* CAP+ - confirmed
 * Connect+ - no data
-* TIII - no data
+* DMR Tier III - no data
 
 ### About Encryption Key
 
