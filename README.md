@@ -99,6 +99,10 @@ TFvBYegAgMR5c5CtLCd8NQK1CKmroHHjHq
 
 If you don't know what it is try starting here [TrustWallet](https://trustwallet.com/)
 
+Donators: 3
+
+Donations: 200USDT
+
 ### Support
 
 Any suggestions, wishes, advice, feedback - email me.
