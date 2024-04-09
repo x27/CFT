@@ -35,3 +35,7 @@ In this case we have to create two data rows where we have the same frequency bu
 Suppose that there are many broadcasts that are encrypted with a key but one of the radio station does not have a key and the broadcast is not encrypted. For this purpose, when selecting Encryption Method, the value is "No encrypt".  You must also select "Non Encrypted" in the Encryption Value field
 
 ![screenshot](img/man3.png)
+
+### Unprocessed cases
+
+There are cases when all parameters of signals coincide but in one case the transmission is encrypted and in the other case it is not. Yes, it happens that there is an encrypted signal, but there is no encryption flag and vice versa. In general, the current set of parameters does not allow processing such cases.
