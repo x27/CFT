@@ -10,7 +10,7 @@ The CFT program allows you to enter decryption keys to specific frequencies. Sav
 
 The upper ribbon and icons of the CFT program are quite self explanatory. 
 Create a New setting by going to File > New, or by clicking on ![New](img/new.png).
-Open an already saved file by going to File > Open..., or by clicking on ![Save](img/save.png).
+Open an already saved file by going to File > Open..., or by clicking on ![Open](img/open.png).
 Make sure to Save your file from time to time, by going to File > Save or Save As..., or by clicking on ![Save](img/save.png).
 You may have issues Saving the file to your Documents directory, so Save it to a different location such as Downloads.
 You will be prompted to Save your work when Exiting.
@@ -47,7 +47,7 @@ Initially it is assumed that you have an encryption key, you know what encryptio
 
 Try to minimize the number of parameters you select.
 
-If you have selected a value, it must be present when transmitting the digitalsignal is received, if it is not, the method with these parameters will not be used by the firmware.
+If you have selected a value, it must be present when transmitting the digital signal is received, if it is not, the method with these parameters will not be used by the firmware.
 
 Sorting the rows in the list for complex cases is important.
 
