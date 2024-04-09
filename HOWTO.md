@@ -9,18 +9,18 @@ The CFT program allows you to enter decryption keys to specific frequencies. Sav
 **Make sure to backup your alice.cft file from time to time as it contains important data & your purchased License Key(s).** You can do so by manually creating a copy of the **alice.cft** file and naming it meaningfully, such as "alice - Backup 20240229.cft". Save it locally on your computer or in the cloud. To use that backup later, if needed, rename it back to **alice.cft** and copy it to the root of the scanner's memory card.
 
 The upper ribbon and icons of the CFT program are quite self explanatory. 
-Create a New setting by going to File > New, or by clicking on the ![New](img/new.png).
-Open an already saved file by going to File > Open..., or by clicking on the ![Save](img/save.png).
-Make sure to Save your file from time to time, by going to File > Save or Save As..., or by clicking on the ![Save](img/save.png).
+Create a New setting by going to File > New, or by clicking on ![New](img/new.png).
+Open an already saved file by going to File > Open..., or by clicking on ![Save](img/save.png).
+Make sure to Save your file from time to time, by going to File > Save or Save As..., or by clicking on ![Save](img/save.png).
 You may have issues Saving the file to your Documents directory, so Save it to a different location such as Downloads.
 You will be prompted to Save your work when Exiting.
 
-To Add a line to the alice.cft file click on the ![Add](img/add.png).
-To Duplicate an existing line, including all its data, select that line and click on the ![Duplicate](img/duplicate.png).
-To Delete an existing line, select that line and click on the ![Delete](img/delete.png). Note that this action is irreversible.
+To Add a line to the alice.cft file click on ![Add](img/add.png).
+To Duplicate an existing line, including all its data, select that line and click on ![Duplicate](img/duplicate.png).
+To Delete an existing line, select that line and click on ![Delete](img/delete.png). Note that this action is irreversible.
 
 To Sort the lines according to their frequency, click on the "Frequency, MHz" column title.
-To manually move a line up or down, select that line and click on the ![Up](img/up.png) or ![Down](img/down.png).
+To manually move a line up or down, select that line and click on ![Up](img/up.png) or ![Down](img/down.png).
 
 Tools > Licensing... enables you to enter the License Key(s) you have purchased. Make sure to press OK after pasting the long License text.
 
