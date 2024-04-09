@@ -30,9 +30,8 @@ Requires an installed paid [DMR upgrade](https://info.uniden.com/twiki/bin/view/
 
 * Uniden BCD436HP with [CF 1.99.10](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.10)
 * Uniden BCD536HP with [CF 1.99.10](https://github.com/x27/openscanner/releases/tag/BCD536HP_1.99.10)
-* Uniden SDS100 soon maybe (23% of funds raised)
-* Uniden SDS200 soon maybe (0% of funds raised)
-* Uniden UBCD3600XLT soon maybe (8% of funds raised)
+* Uniden SDS100 soon maybe
+* Uniden UBCD3600XLT soon maybe
 
 ### Supported scanner modes
 
@@ -106,6 +105,8 @@ If you don't know what it is try starting here [TrustWallet](https://trustwallet
 Donators: 4
 
 Donations: 250USDT
+* Uniden SDS100 (23% of funds raised)
+* Uniden UBCD3600XLT (8% of funds raised)
 
 ### Support
 
