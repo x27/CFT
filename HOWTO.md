@@ -25,7 +25,7 @@ You may have issues Saving the file to your Documents directory, so Save it to a
 
 You will be prompted to Save your work when Exiting.
 
-To Add a line to the alice.cft file click on the green + icon.
+To Add a line to the alice.cft file click on the ![Add](img/add.png) icon.
 
 To Duplicate an existing line, including all its data, select that line and click on the pink Duplicate icon.
 
