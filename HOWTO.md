@@ -6,12 +6,12 @@
 
 The CFT program allows you to enter decryption keys to specific frequencies. Saving these settings creates the alice.cft file.
 
-Do not change this file's name when saving it to the scanner. Place alice.cft in the root directory "\" of the Scanner's memory card (for example, E:\).
+Do not change this file's name when saving it to the scanner. Place **alice.cft** in the root directory "\\" of the Scanner's memory card (for example, E:\\).
 
 **Make sure to backup your alice.cft file from time to time as it contains important data & your purchased License Key(s).**
 
-You can do so by manually creating a copy of the alice.cft file and naming it meaningfully, such as "alice - Backup 20240229.cft". Save it locally on your computer or in the cloud.
-To use that backup later, if needed, rename it back to alice.cft and copy it to the root of the scanner's memory card.
+You can do so by manually creating a copy of the **alice.cft** file and naming it meaningfully, such as "alice - Backup 20240229.cft". Save it locally on your computer or in the cloud.
+To use that backup later, if needed, rename it back to **alice.cft** and copy it to the root of the scanner's memory card.
 
 The upper ribbon and icons of the CFT program are quite self explanatory.
 
