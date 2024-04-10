@@ -39,7 +39,7 @@ namespace CFT
             listView.Enabled = mEnable;
 
             saveToolStripMenuItem.Enabled = mEnable && needSave;
-            saveAsToolStripMenuItem.Enabled = mEnable && needSave;
+            saveAsToolStripMenuItem.Enabled = mEnable;
             licensingToolStripMenuItem.Enabled = mEnable;
 
             Text = mEnable ? $"{TITLE} : {(_cftFile.Filename == null ? "New" : _cftFile.Filename)} {(IsCftFileChanged()?"*":"")}" : TITLE;
