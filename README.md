@@ -52,9 +52,7 @@ Requires an installed paid [DMR upgrade](https://info.uniden.com/twiki/bin/view/
 
 Custom Firmware will not find the Encryption Key. It is something that needs to be obtained in other ways.
 
-### How To Use CFT
-
-[How to use](HOWTO.md)
+### [How To Use CFT](HOWTO.md)
 
 ### Debug Logs
 
