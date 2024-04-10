@@ -47,7 +47,7 @@ Initially it is assumed that you have an encryption key, you know what encryptio
 
 Try to minimize the number of parameters you select.
 
-If you have selected a value, it must be present when transmitting the digital signal is received, if it is not, the method with these parameters will not be used by the firmware.
+If you have selected a value, it must be present when the digital signal is received, if it is not, the method with these parameters will not be used by the firmware.
 
 Sorting the rows in the list for complex cases is important.
 
@@ -60,6 +60,9 @@ It's simple. We choose the values that we initially know. In this case, we have 
 ![screenshot](img/man0.png)
 
 ### General but more complex case
+
+You may encounter a scenario where on one frequency there are two DMR repeaters. One with Color Code 1 and the second with Color Code 2. They are not related to each other. CC1 is Encrypted, but CC2 is not Encrypted. In that case we need only one entry in CFT:
+Encryption Method with the Key; Frequency of course; and Color Code is marked with "CC 1" (in this case, because that is the encrypted CC).
 
 This and the other more complex cases are similar. We must select the conditions under which the right encryption key is chosen.
 
@@ -85,6 +88,8 @@ one is with no key entered (Encryption Method = No Encrypt), with the specific T
 and another entry with the same frequency, with the correct Encryption Method and Key entered, without marking any TGID.
 
 ![screenshot](img/man8.png)
+
+### Mixed use-case
 
 In case that different users of the same Talk Group use encrypted and clear voices at the same time, we call that a Mixed situation.
 We only need to enter one entry. That entry contains the single encryption key, the single frequency (no need to mark or enter a TGID), and the Encryption Value should be "Encrypted".
