@@ -75,13 +75,22 @@ In this case we have to create two data rows where we have the same frequency bu
 
 Suppose that there are many Talk Groups that are encrypted with a key, but only one specific Talk Group does not use a key and its broadcast is clear. For this purpose, when selecting the Encryption Method for that specific Talk Group, the value should be "No encrypt". You must also select "Non Encrypted" in the Encryption Value field. 
 At the end, you will have two entries for the same frequency: 
+
+![screenshot](img/man10.png)
+
 one is with no key entered (Encryption Method = No Encrypt), with the specific TGID that is clear, and with an Encryption Value of "Non Encrypted"; 
+
+![screenshot](img/man9.png)
+
 and another entry with the same frequency, with the correct Encryption Method and Key entered, without marking any TGID.
 
-In case that different users of the same Talk Group use encrypted and clear voices at the same time, we call that a Mixed situation. 
+![screenshot](img/man8.png)
+
+In case that different users of the same Talk Group use encrypted and clear voices at the same time, we call that a Mixed situation.
 We only need to enter one entry. That entry contains the single encryption key, the single frequency (no need to mark or enter a TGID), and the Encryption Value should be "Encrypted".
 
-![screenshot](img/man3.png)
+![screenshot](img/man11.png)
+
 
 ### Unprocessed cases
 
