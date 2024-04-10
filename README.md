@@ -6,13 +6,13 @@
 
 The main purpose of CFT is to select the parameters of digital protocols that will activate the decryption of encrypted voice traffic. 
 
-The software is developed to work with Custom Firmware (CF) starting from v1.99.08
-
-The settings must be saved in the file "alice.cft". Place this file at the root directory "\\" of the Scanner's memory card (for example, E:\\).
+### [How To Use CFT](HOWTO.md)
 
 ### Terms and conditions
 
 Requires an installed paid [DMR upgrade](https://info.uniden.com/twiki/bin/view/UnidenMan4/DigitalMobileRadioUpgrade) on the scanner.
+
+Requires an installed custom firmware at least version 1.99.08 on the scanner ([BCD436HP](https://github.com/x27/openscanner/tree/main/uniden/bcd436hp/fw/mod), [BCD536HP](https://github.com/x27/openscanner/tree/main/uniden/bcd536hp/fw/mod)).
 
 ### Supported decryption protocols
 
@@ -51,8 +51,6 @@ Requires an installed paid [DMR upgrade](https://info.uniden.com/twiki/bin/view/
 ### About Encryption Key
 
 Custom Firmware will not find the Encryption Key. It is something that needs to be obtained in other ways.
-
-### [How To Use CFT](HOWTO.md)
 
 ### Debug Logs
 
