@@ -101,9 +101,7 @@ TFvBYegAgMR5c5CtLCd8NQK1CKmroHHjHq
 
 If you don't know what it is try starting here [TrustWallet](https://trustwallet.com/)
 
-Donators: 4
-
-Donations: 250USDT
+Donations: 250USDT (4)
 * Uniden SDS100 (23% of funds raised)
 * Uniden UBCD3600XLT (8% of funds raised)
 
