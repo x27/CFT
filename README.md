@@ -75,7 +75,7 @@ Some Windows users are triggered by the built-in antivirus when working with the
 
 ### Demo Limitations
 
-* Time limit - 2 minutes of decrypted voice of any protocols. Reboot the scanner for reset limitation.
+* Session time limit - 2 minutes of decrypted voice of any protocols (then turn Off and On device, up to a total of 2 hours)
 * Key limit - 5 pcs
 
 If you are not satisfied with the limitations of the demo mode, you can purchase unlock keys for the protocol you need. Each unlock key is unique per the Scanner's ESN.
