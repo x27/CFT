@@ -6,9 +6,9 @@
 
 The main purpose of CFT is to select the parameters of digital protocols that will activate the decryption of encrypted voice traffic. 
 
-### [How To Use CFT](HOWTO.md)
+Please read the instructions about [How To Get Started with CFT](HOWTO.md).
 
-### Terms and conditions
+### Prerequisites
 
 Requires an installed paid [DMR upgrade](https://info.uniden.com/twiki/bin/view/UnidenMan4/DigitalMobileRadioUpgrade) on the scanner.
 
@@ -85,7 +85,7 @@ If you are not satisfied with the limitations of the demo mode, you can purchase
 If your scanner model is not supported, but you want to enjoy these features, or you just want to support the project, you are more than welcome to donate or purchase unlock keys.
 But before you do, write me an e-mail.
 
-Licenses for unlocking Hytera BP and Motorola BP keys are currently available. Each license costs 30USD, a pair of licenses - 50USD. 
+Licenses for unlocking Hytera BP and Motorola BP keys are currently available. Each license costs $30USD, a pair of licenses - $50USD. 
 
 For obvious reasons, I would like to remain anonymous, so payments are only accepted in cryptocurrency
 
