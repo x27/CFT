@@ -95,7 +95,7 @@ You will be prompted to Proceed anyway or optionally, Backup your funds. You can
 Make sure to enter the correct Wallet/Address.
 In the Address or Domain Name field, you can use the barcode/camera icon to scan the Wallet's Q-code 
 
-![Wallet](img/wallet,png)
+![Wallet](img/wallet.png)
 
 or copy the long address and paste it.
 
