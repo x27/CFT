@@ -13,6 +13,7 @@ namespace CFT
         const int MAX_ITEMS = 1000;
         const int KEY_STORAGE_OFFSET = 0x10;
         const int AGLO_TABLE_OFFSET = 0x200;
+        const int ZIPKEY_OFFSET = 0x1FE;
 
         public string Filename { get; set; }
         public uint Version { get; set; } = VERSION;
@@ -20,6 +21,9 @@ namespace CFT
         public Licensing Licensing { get; set; } = new Licensing();
 
         public List<DmrEncryptionMethodItem> DmrEncryptionMethodItems { get; set; } = new List<DmrEncryptionMethodItem>();
+
+        public ZipKeyAssigmentEnum ZipKeyAssigment { get; set; } = ZipKeyAssigmentEnum.Default;
+        public ZipKeyAssigmentEnum FZipKeyAssigment { get; set; } = ZipKeyAssigmentEnum.Default;
 
         public static CftFile Load(string filename)
         {
@@ -36,14 +40,16 @@ namespace CFT
                         throw new Exception($"Not Supported Version({f.Version}) File.");
 
                     br.BaseStream.Position = KEY_STORAGE_OFFSET;
-
                     var bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
                     Buffer.BlockCopy(bs, 0, f.Licensing.HyteraBPUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
                     bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
                     Buffer.BlockCopy(bs, 0, f.Licensing.MotorolaBPUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
 
-                    br.BaseStream.Position = AGLO_TABLE_OFFSET;
+                    br.BaseStream.Position = ZIPKEY_OFFSET;
+                    f.ZipKeyAssigment = (ZipKeyAssigmentEnum)br.ReadByte();
+                    f.FZipKeyAssigment = (ZipKeyAssigmentEnum)br.ReadByte();
 
+                    br.BaseStream.Position = AGLO_TABLE_OFFSET;
                     var dmrItemsCount = Swap(br.ReadUInt32());
                     if (MAX_ITEMS < dmrItemsCount)
                         throw new Exception($"Too Many DMR Encryption Method Items.");
@@ -100,6 +106,11 @@ namespace CFT
                 bw.BaseStream.Position = KEY_STORAGE_OFFSET;
                 bw.Write(Licensing.HyteraBPUnlockKey);
                 bw.Write(Licensing.MotorolaBPUnlockKey);
+
+                bw.BaseStream.Position = ZIPKEY_OFFSET;
+                bw.Write((byte)ZipKeyAssigment);
+                bw.Write((byte)FZipKeyAssigment);
+
                 bw.BaseStream.Position = AGLO_TABLE_OFFSET;
                 bw.Write(Swap((uint)DmrEncryptionMethodItems.Count));
                 foreach (var item in DmrEncryptionMethodItems)

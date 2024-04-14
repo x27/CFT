@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("CFT")]
-[assembly: AssemblyDescription("Custom Firmware Tuner for Uniden BCD436HP")]
+[assembly: AssemblyDescription("Custom Firmware Tuner for Uniden BCDx36HP/SDS100")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("JD")]
 [assembly: AssemblyProduct("CFT")]
@@ -15,5 +15,5 @@ using System.Runtime.InteropServices;
 
 [assembly: Guid("51339c61-6d91-40fa-b107-0f97095a1b94")]
 
-[assembly: AssemblyVersion("1.0.0.7")]
-[assembly: AssemblyFileVersion("1.0.0.7")]
+[assembly: AssemblyVersion("1.0.0.8")]
+[assembly: AssemblyFileVersion("1.0.0.8")]
