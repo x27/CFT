@@ -1,4 +1,4 @@
-# CFT - Custom Firmware Tuner for Uniden BCDx36HP
+# CFT - Custom Firmware Tuner for Uniden BCDx36HP/SDS100
 
 ![screenshot](img/image.png)
 
@@ -29,7 +29,7 @@ Requires an installed custom firmware at least version 1.99.08 on the scanner ([
 
 * Uniden BCD436HP with [CF 1.99.10](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.10)
 * Uniden BCD536HP with [CF 1.99.10](https://github.com/x27/openscanner/releases/tag/BCD536HP_1.99.10)
-* Uniden SDS100 soon maybe
+* Uniden SDS100 with [CF 1.99.10](https://github.com/x27/openscanner/releases/tag/SDS100_1.99.10)
 * Uniden UBCD3600XLT soon maybe
 
 ### Supported scanner modes
@@ -96,6 +96,8 @@ TFvBYegAgMR5c5CtLCd8NQK1CKmroHHjHq
 ![wallet](img/wallet.png)
 
 If you don't know what it is try starting here [TrustWallet](https://trustwallet.com/)
+
+Big [How to buy the License(s) with Cryptocurrency](HOWTOCRYPTO.md) with images from well-wisher
 
 Donations: 300USDT (5)
 * Uniden SDS100 (29% of funds raised)
