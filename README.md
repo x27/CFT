@@ -18,7 +18,7 @@ OS: Windows XP or higher with installed .Net Framework 2.0
 
 ### Download 
 
-[CFT.zip](https://github.com/x27/CFT/releases/download/1.0.0.7/CFT.zip) The last executable version for Windows
+[CFT.zip](https://github.com/x27/CFT/releases/download/1.0.0.8/CFT.zip) The last executable version for Windows
 
 ### Supported decryption protocols
 
