@@ -105,8 +105,8 @@ If you don't know what it is try starting here [TrustWallet](https://trustwallet
 
 Big [How to buy the License(s) with Cryptocurrency](HOWTOCRYPTO.md) with images from well-wisher
 
-Donations: 300USDT (5)
-* Uniden SDS100 (29% of funds raised)
+Donations: 350USDT (6)
+* Uniden SDS100 (35% of funds raised)
 * Uniden UBCD3600XLT (8% of funds raised)
 
 ### Support
