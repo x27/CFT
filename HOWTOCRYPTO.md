@@ -59,7 +59,14 @@ Press the Send button.
 You will be prompted to Proceed anyway or optionally, Backup your funds. You can press Proceed anyway, or backup by pressing the "Back up your secret phrase" button  >  Google Drive active >  Verify Backup > Enter your password from step 2. No need to do so all the time.
 
 **10.** In the Send screen, select the Tether USDT Tron currency. You will now be asked to fill out the address to send it to.
-In the Address or Domain Name field, you can use the barcode/camera icon to scan the Wallet's Q-code at https://github.com/x27/CFT#donation--payments, or copy the long address from there and paste it.
+In the Address or Domain Name field, you can use the barcode/camera icon to scan the Wallet's Q-code 
+
+![Wallet](img/wallet.png)
+
+or copy the long address and paste it
+
+**TFvBYegAgMR5c5CtLCd8NQK1CKmroHHjHq**
+
 Enter the amount 30 or 50 USDT. (By now you already have more than 30 or 50 to cover additional fees/commissions).
 
 ![Send screen for 30USDT for example](img/crypto3.jpg)
@@ -95,9 +102,9 @@ You will be prompted to Proceed anyway or optionally, Backup your funds. You can
 Make sure to enter the correct Wallet/Address.
 In the Address or Domain Name field, you can use the barcode/camera icon to scan the Wallet's Q-code 
 
-![Wallet](img/wallet,png)
+![Wallet](img/wallet.png)
 
-or copy the long address and paste it.
+or copy the long address and paste it
 
 **TFvBYegAgMR5c5CtLCd8NQK1CKmroHHjHq**
 
