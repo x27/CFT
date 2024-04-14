@@ -49,7 +49,7 @@ namespace CFT
                 Utils.IsArrayEmpty(_cftFile.Licensing.HyteraBPUnlockKey) && 
                 Utils.IsArrayEmpty(_cftFile.Licensing.MotorolaBPUnlockKey) &&
                 listView.Items.Count>5)
-                statusLabel.Text = "WARNING: In DEMO mode, the firmware consider the first 5 rows only.";
+                statusLabel.Text = "WARNING: In DEMO mode, the firmware considers the first 5 rows only.";
             else
                 statusLabel.Text = string.Empty;
         }
