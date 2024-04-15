@@ -51,7 +51,7 @@ Depending on the company you buy from, you might need to verify your identity. T
 
 **8.** Confirm the method of payment and enter the relevant (card/bank etc.) details in the screen of the purchase company.
 Press Confirm.
-Depending on your payment method you may need to perform another confirmation of the purchase via email/text/screen, or you might even need to confirm your identity by filling out your personal details and taking pics of your official ID and selfie.
+Depending on your payment method you may need to perform another confirmation of the purchase via email/text/screen, or you might even need to confirm your identity by filling out your personal details and taking pics of your official ID and selfie. If and when you are asked about your identity, they may also ask why you are buying the crypto. We can answer by way of elimination: We are not going to trade with it, and we are not going to buy NFT. So the answer that is left is for dApps, or something like that.
 
 **9.** You now have obtained the Tether USDT Tron. And it will appear in your Trust Wallet.
 Now we need to Send it.
@@ -83,7 +83,7 @@ Press the orange prompt "You do not have enough Tron (TRX) to cover network fees
 
 **12.** We will need to buy at least $5USD of Tron TRX to cover the transfer and fees/commissions.
 Because we are purchasing such a small amount, the options will be very limited and expensive.
-The process will probably include entering your complete details (email+email verification - check Spam box, name, full address) and verifying your ID with an official ID and selfie. If and when you are asked about your identity, they may also ask why you are buying the crypto. We can answer by way of elimination: We are not going to trade with it, and we are not going to buy NFT. So the answer that is left is for dApps, or something like that. This process takes a couple of minutes.
+The process will probably include entering your complete details (email+email verification - check Spam box, name, full address) and verifying your ID with an official ID and selfie.  This process takes a couple of minutes. If and when you are asked about your identity, they may also ask why you are buying the crypto. We can answer by way of elimination: We are not going to trade with it, and we are not going to buy NFT. So the answer that is left is for dApps, or something like that.
 
 ![Verify your ID](img/crypto8.jpg)
 
