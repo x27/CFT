@@ -18,7 +18,7 @@ OS: Windows XP or higher with installed .Net Framework 2.0
 
 ### Download 
 
-[CFT.zip](https://github.com/x27/CFT/releases/download/1.0.0.8/CFT.zip) The last executable version for Windows
+The last executable version for Windows you can download [HERE](https://github.com/x27/CFT/releases/latest), placed in the file **CFT.zip**
 
 ### Supported decryption protocols
 
@@ -105,8 +105,8 @@ If you don't know what it is try starting here [TrustWallet](https://trustwallet
 
 Big [How to buy the License(s) with Cryptocurrency](HOWTOCRYPTO.md) with images from well-wisher
 
-Donations: 350USDT (6)
-* Uniden SDS100 (35% of funds raised)
+Donations: 430USDT (8)
+* Uniden SDS100 (39% of funds raised)
 * Uniden UBCD3600XLT (8% of funds raised)
 
 ### Support
