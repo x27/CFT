@@ -91,9 +91,13 @@ If you are not satisfied with the limitations of the demo mode, you can purchase
 If your scanner model is not supported, but you want to enjoy these features, or you just want to support the project, you are more than welcome to donate or purchase unlock keys.
 But before you do, write me an e-mail.
 
-Licenses for unlocking Hytera BP and Motorola BP keys are currently available. Each license costs $30USD, a pair of licenses - $50USD. 
+Licenses for unlocking Hytera BP and Motorola BP keys are currently available. 
 
 For obvious reasons, I would like to remain anonymous, so payments are only accepted in cryptocurrency
+
+#### Crypto payment
+
+Each license costs $30USD, a pair of licenses - $50USD. 
 
 Tether (USDT) TRC20
 
@@ -104,6 +108,15 @@ TFvBYegAgMR5c5CtLCd8NQK1CKmroHHjHq
 If you don't know what it is try starting here [TrustWallet](https://trustwallet.com/)
 
 Big [How to buy the License(s) with Cryptocurrency](HOWTOCRYPTO.md) with images from well-wisher
+
+#### Payment via Paypal (through an intermediary)
+
+Each license costs $40USD, a pair of licenses - $70USD. 
+
+Paypal address is given on request via my email: n3617400@yahoo.com
+
+In your e-mail, please specify the serial number of the scanner and which license(s) you want to buy.
+
 
 Donations: 480USDT (9)
 * Uniden SDS100 (45% of funds raised)
