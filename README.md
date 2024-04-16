@@ -113,7 +113,7 @@ Big [How to buy the License(s) with Cryptocurrency](HOWTOCRYPTO.md) with images 
 
 Each license costs $40USD, a pair of licenses - $70USD. 
 
-Paypal address is given on request via my email: n3617400@yahoo.com
+To receive the Paypal payment address, please first write to my an email and I will give it to you.
 
 In your e-mail, please specify the serial number of the scanner and which license(s) you want to buy.
 
