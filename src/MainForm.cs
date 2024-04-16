@@ -41,8 +41,17 @@ namespace CFT
             saveToolStripMenuItem.Enabled = mEnable && needSave;
             saveAsToolStripMenuItem.Enabled = mEnable;
             licensingToolStripMenuItem.Enabled = mEnable;
+            firmwareOptionsToolStripMenuItem.Enabled = mEnable;
 
             Text = mEnable ? $"{TITLE} : {(_cftFile.Filename == null ? "New" : _cftFile.Filename)} {(IsCftFileChanged()?"*":"")}" : TITLE;
+
+            if (mEnable &&
+                Utils.IsArrayEmpty(_cftFile.Licensing.HyteraBPUnlockKey) && 
+                Utils.IsArrayEmpty(_cftFile.Licensing.MotorolaBPUnlockKey) &&
+                listView.Items.Count>5)
+                statusLabel.Text = "WARNING: In DEMO mode, the firmware considers the first 5 rows only.";
+            else
+                statusLabel.Text = string.Empty;
         }
 
         private bool IsCftFileChanged()
@@ -367,6 +376,14 @@ namespace CFT
                     _cftFile.SortItemsByFrequency(true);
                 }
                 listView.Invalidate();
+                ControlsUpdate();
+            }
+        }
+
+        private void firmwareOptionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (new FirmwareOptions(_cftFile).ShowDialog() == DialogResult.OK)
+            {
                 ControlsUpdate();
             }
         }

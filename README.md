@@ -1,4 +1,4 @@
-# CFT - Custom Firmware Tuner for Uniden BCDx36HP
+# CFT - Custom Firmware Tuner for Uniden BCDx36HP/SDS100
 
 ![screenshot](img/image.png)
 
@@ -6,13 +6,19 @@
 
 The main purpose of CFT is to select the parameters of digital protocols that will activate the decryption of encrypted voice traffic. 
 
-The software is developed to work with Custom Firmware (CF) starting from v1.99.08
+Please read the instructions about [How To Get Started with CFT](HOWTO.md).
 
-The settings must be saved in the file "alice.cft". Place this file at the root directory "\\" of the Scanner's memory card (for example, E:\\).
-
-### Terms and conditions
+### Prerequisites
 
 Requires an installed paid [DMR upgrade](https://info.uniden.com/twiki/bin/view/UnidenMan4/DigitalMobileRadioUpgrade) on the scanner.
+
+Requires an installed custom firmware at least version 1.99.08 on the scanner ([BCD436HP](https://github.com/x27/openscanner/tree/main/uniden/bcd436hp/fw/mod), [BCD536HP](https://github.com/x27/openscanner/tree/main/uniden/bcd536hp/fw/mod), [SDS100](https://github.com/x27/openscanner/tree/main/uniden/sds100/fw/mod)).
+
+OS: Windows XP or higher with installed .Net Framework 2.0
+
+### Download 
+
+The last executable version for Windows you can download [HERE](https://github.com/x27/CFT/releases/latest), placed in the file **CFT.zip**
 
 ### Supported decryption protocols
 
@@ -29,7 +35,7 @@ Requires an installed paid [DMR upgrade](https://info.uniden.com/twiki/bin/view/
 
 * Uniden BCD436HP with [CF 1.99.10](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.10)
 * Uniden BCD536HP with [CF 1.99.10](https://github.com/x27/openscanner/releases/tag/BCD536HP_1.99.10)
-* Uniden SDS100 soon maybe
+* Uniden SDS100 with [CF 1.99.10](https://github.com/x27/openscanner/releases/tag/SDS100_1.99.10)
 * Uniden UBCD3600XLT soon maybe
 
 ### Supported scanner modes
@@ -51,10 +57,6 @@ Requires an installed paid [DMR upgrade](https://info.uniden.com/twiki/bin/view/
 ### About Encryption Key
 
 Custom Firmware will not find the Encryption Key. It is something that needs to be obtained in other ways.
-
-### How To Use CFT
-
-[How to use](HOWTO.md)
 
 ### Debug Logs
 
@@ -79,7 +81,7 @@ Some Windows users are triggered by the built-in antivirus when working with the
 
 ### Demo Limitations
 
-* Time limit - 2 minutes of decrypted voice of any protocols. Reboot the scanner for reset limitation.
+* Session time limit - 2 minutes of decrypted voice of any protocols (then turn Off and On device, up to a total of 2 hours)
 * Key limit - 5 pcs
 
 If you are not satisfied with the limitations of the demo mode, you can purchase unlock keys for the protocol you need. Each unlock key is unique per the Scanner's ESN.
@@ -89,7 +91,7 @@ If you are not satisfied with the limitations of the demo mode, you can purchase
 If your scanner model is not supported, but you want to enjoy these features, or you just want to support the project, you are more than welcome to donate or purchase unlock keys.
 But before you do, write me an e-mail.
 
-Licenses for unlocking Hytera BP and Motorola BP keys are currently available. Each license costs 30USD, a pair of licenses - 50USD. 
+Licenses for unlocking Hytera BP and Motorola BP keys are currently available. Each license costs $30USD, a pair of licenses - $50USD. 
 
 For obvious reasons, I would like to remain anonymous, so payments are only accepted in cryptocurrency
 
@@ -101,10 +103,10 @@ TFvBYegAgMR5c5CtLCd8NQK1CKmroHHjHq
 
 If you don't know what it is try starting here [TrustWallet](https://trustwallet.com/)
 
-Donators: 4
+Big [How to buy the License(s) with Cryptocurrency](HOWTOCRYPTO.md) with images from well-wisher
 
-Donations: 250USDT
-* Uniden SDS100 (23% of funds raised)
+Donations: 480USDT (9)
+* Uniden SDS100 (45% of funds raised)
 * Uniden UBCD3600XLT (8% of funds raised)
 
 ### Support
