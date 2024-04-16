@@ -17,6 +17,10 @@
         [DisplayName("Set Dimmer")]
         SetDimmerMenu = 6,
         [DisplayName("Set CC Mode")]
-        SetCCModeMenu = 7
+        SetCCModeMenu = 7,
+        [DisplayName("Waterfall")]
+        WaterfallMenu = 8,
+        [DisplayName("Filter")]
+        FilterMenu = 9,
     }
 }
