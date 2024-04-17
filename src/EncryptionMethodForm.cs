@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace CFT
@@ -180,7 +181,10 @@ namespace CFT
                 return;
             }
 
-            if (!double.TryParse(tbFrequency.Text.Trim(), out double frequency))
+            var freqStr = tbFrequency.Text.Trim();
+            if (!double.TryParse(freqStr, NumberStyles.Any, CultureInfo.CurrentCulture, out double frequency) &&
+                !double.TryParse(freqStr, NumberStyles.Any, CultureInfo.GetCultureInfo("en-US"), out frequency) &&
+                !double.TryParse(freqStr, NumberStyles.Any, CultureInfo.InvariantCulture, out frequency))
             {
                 tbFrequency.Focus();
                 MessageBox.Show("Wrong frequency value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
