@@ -93,7 +93,7 @@ But before you do, write me an e-mail.
 
 Licenses for unlocking Hytera BP and Motorola BP keys are currently available. 
 
-For obvious reasons, I would like to remain anonymous, so payments are only accepted in cryptocurrency
+For obvious reasons, I would like to remain anonymous, so payments are only accepted in cryptocurrency or via intermediary's PayPal
 
 #### Crypto payment
 
@@ -118,8 +118,8 @@ To receive the Paypal payment address, please first write to me an email and I w
 In your e-mail, please specify the serial number of the scanner and which license(s) you want to buy.
 
 
-Donations: 660USDT (12)
-* Uniden SDS100 (66% of funds raised)
+Donations: 710USDT (13)
+* Uniden SDS100 (74% of funds raised)
 * Uniden UBCD3600XLT (8% of funds raised)
 
 ### Support
