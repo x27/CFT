@@ -118,8 +118,8 @@ To receive the Paypal payment address, please first write to me an email and I w
 In your e-mail, please specify the serial number of the scanner and which license(s) you want to buy.
 
 
-Donations: 800USDT (14)
-* Uniden SDS100 (85% of funds raised)
+Donations: 890USDT (15)
+* Uniden SDS100 (96% of funds raised)
 * Uniden UBCD3600XLT (8% of funds raised)
 
 ### Support
