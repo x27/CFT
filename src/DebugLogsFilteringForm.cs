@@ -6,7 +6,7 @@ namespace CFT
 {
     public partial class DebugLogsFilteringForm : Form
     {
-        const string DEBUG_LINE_SIGNATURE = " :D1 ";
+        static readonly string [] DEBUG_LINE_SIGNATURES = { ":D", ":B", ":N", ":R" };
 
         public DebugLogsFilteringForm()
         {
@@ -42,7 +42,16 @@ namespace CFT
                     {
                         count++;
 
-                        if (!line.Contains(DEBUG_LINE_SIGNATURE))
+                        var foundSignature = false;
+                        foreach (var sig in DEBUG_LINE_SIGNATURES)
+                        {
+                            if (line.Contains(sig))
+                            {
+                                foundSignature = true;
+                                break;
+                            }
+                        }
+                        if (!foundSignature)
                             continue;
 
                         if (cbInsertSpaceLine.Checked)
