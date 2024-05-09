@@ -1,138 +1,268 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
+using System;
 using System.IO;
+using System.Collections.Generic;
 
 namespace CFT
 {
-    [Serializable]
-    public class CftFile
+    public class CFTFile
     {
         const uint SIGNATURE = 0x46544643; // "CFTF"
         const uint VERSION = 1;
         const int MAX_ITEMS = 1000;
         const int KEY_STORAGE_OFFSET = 0x10;
         const int AGLO_TABLE_OFFSET = 0x200;
-        const int ZIPKEY_OFFSET = 0x1FE;
+        const int ZIPKEY_OFFSET = 0x1FD;
 
-        public string Filename { get; set; }
-        public uint Version { get; set; } = VERSION;
+        const int ENC_METHOD_STRUCT_SIZE = 54;
+        private enum EncryptionMethodEnum
+        {
+            NoEncrypt = 0,
+            HyteraBP = 1,
+            MotorolaBP = 2,
+            NxdnScrambler = 3
+        }
 
-        public Licensing Licensing { get; set; } = new Licensing();
+        public static void Export(Project project, Scanner scanner, string filename)
+        {
+            if (project.EcryptionRows.Count > MAX_ITEMS)
+                throw new Exception($"Too Many Encryption Rows.");
 
-        public List<DmrEncryptionMethodItem> DmrEncryptionMethodItems { get; set; } = new List<DmrEncryptionMethodItem>();
+            using (BinaryWriter bw = new BinaryWriter(new FileStream(filename, FileMode.Create, FileAccess.Write)))
+            {
+                bw.Write(SIGNATURE);
+                bw.Write(Swap(VERSION));
 
-        public ZipKeyAssigmentEnum ZipKeyAssigment { get; set; } = ZipKeyAssigmentEnum.Default;
-        public ZipKeyAssigmentEnum FZipKeyAssigment { get; set; } = ZipKeyAssigmentEnum.Default;
+                // KEY STORAGE
+                if (scanner != null && scanner.Licensing != null)
+                {
+                    bw.BaseStream.Position = KEY_STORAGE_OFFSET;
+                    bw.Write(scanner.Licensing.HyteraBPUnlockKey);
+                    bw.Write(scanner.Licensing.MotorolaBPUnlockKey);
+                    bw.Write(scanner.Licensing.NxdnScramblerUnlockKey);
+                }
 
-        public static CftFile Load(string filename)
+                // KEY MAPPING
+                if (scanner != null && scanner.KeyMapping != null)
+                {
+                    bw.BaseStream.Position = ZIPKEY_OFFSET;
+                    bw.Write((byte)scanner.KeyMapping.Key3);
+                    bw.Write((byte)scanner.KeyMapping.Key1);
+                    bw.Write((byte)scanner.KeyMapping.Key2);
+                }
+
+                // ENCRYPTION ROWS
+                bw.BaseStream.Position = AGLO_TABLE_OFFSET;
+                bw.Write(Swap((uint)project.EcryptionRows.Count));
+                foreach (var row in project.EcryptionRows)
+                {
+                    if (row is MotorolaBPEncryptionRow)
+                    {
+                        var item = row as MotorolaBPEncryptionRow;
+                        bw.Write(Swap((uint)(item.ActivateOptions.Options | DmrSelectedActivateOptionsEnum.Frequency)));
+                        bw.Write((byte)item.ActivateOptions.TrunkSystem);
+                        bw.Write((byte)item.ActivateOptions.MFID);
+                        bw.Write(Swap(UInt32ToFreq(row.Frequency)));
+                        bw.Write((byte)item.ActivateOptions.ColorCode);
+                        bw.Write(Swap(item.ActivateOptions.TGID));
+                        bw.Write((byte)item.ActivateOptions.TimeSlot);
+                        bw.Write((byte)item.ActivateOptions.EncryptionValue);
+                        bw.Write((byte)EncryptionMethodEnum.MotorolaBP);
+                        bw.Write((uint)0); // fake key length
+                        bw.Write(item.Key); // key 1 byte
+                        bw.Write(new byte[31]); // key remaining part
+                    }
+                    else if (row is HyteraBPEncryptionRow)
+                    {
+                        var item = row as HyteraBPEncryptionRow;
+                        bw.Write(Swap((uint)(item.ActivateOptions.Options | DmrSelectedActivateOptionsEnum.Frequency)));
+                        bw.Write((byte)item.ActivateOptions.TrunkSystem);
+                        bw.Write((byte)item.ActivateOptions.MFID);
+                        bw.Write(Swap(UInt32ToFreq(row.Frequency)));
+                        bw.Write((byte)item.ActivateOptions.ColorCode);
+                        bw.Write(Swap(item.ActivateOptions.TGID));
+                        bw.Write((byte)item.ActivateOptions.TimeSlot);
+                        bw.Write((byte)item.ActivateOptions.EncryptionValue);
+                        bw.Write((byte)EncryptionMethodEnum.HyteraBP);
+                        bw.Write(Swap((uint)item.KeyLength));
+                        bw.Write(item.Key);
+                    }
+                    else if (row is NxdnScramblerEncryptionRow)
+                    {
+                        var item = row as NxdnScramblerEncryptionRow;
+                        bw.Write(Swap((uint)item.ActivateOptions.Options));
+                        bw.Write((byte)0);
+                        bw.Write((byte)0);
+                        bw.Write(Swap(UInt32ToFreq(row.Frequency)));
+                        bw.Write((byte)item.ActivateOptions.RAN);
+                        bw.Write(Swap(item.ActivateOptions.GroupID));
+                        bw.Write((ushort)0); // remaining part tgid
+                        bw.Write((byte)0);
+                        bw.Write((byte)0);
+                        bw.Write((byte)EncryptionMethodEnum.NxdnScrambler);
+                        bw.Write((uint)0); // fake keylen
+                        bw.Write(Swap(item.Key));
+                        bw.Write(new byte[30]); // key remaining part
+                    }
+                    else
+                        bw.BaseStream.Position += ENC_METHOD_STRUCT_SIZE; // enc method struct size
+                }
+
+                // write notes
+                foreach (var item in project.EcryptionRows)
+                {
+                    bw.Write(item.Notes);
+                }
+            }
+        }
+
+        public static Project Import(string filename)
         {
             try
             {
-                var f = new CftFile { Filename = filename };
+                var licensing = new Licensing();
+                licensing.MotorolaBPUnlockKey = new byte[Licensing.UNLOCK_KEY_LEN];
+                licensing.HyteraBPUnlockKey = new byte[Licensing.UNLOCK_KEY_LEN];
+                licensing.NxdnScramblerUnlockKey = new byte[Licensing.UNLOCK_KEY_LEN];
+
+                var keyMapping = new KeyMapping();
+                var rows = new List<IEncryptionRow>();
+
                 using (BinaryReader br = new BinaryReader(new FileStream(filename, FileMode.Open, FileAccess.Read)))
                 {
                     var sig = br.ReadUInt32();
                     if (SIGNATURE != sig)
                         throw new Exception($"Wrong Signature. File: {filename}");
-                    f.Version = Swap(br.ReadUInt32());
-                    if (VERSION < f.Version)
-                        throw new Exception($"Not Supported Version({f.Version}) File.");
+                    var version = Swap(br.ReadUInt32());
+                    if (VERSION < version)
+                        throw new Exception($"Not Supported Version({version}) File.");
 
                     br.BaseStream.Position = KEY_STORAGE_OFFSET;
                     var bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
-                    Buffer.BlockCopy(bs, 0, f.Licensing.HyteraBPUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
+                    Buffer.BlockCopy(bs, 0, licensing.HyteraBPUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
                     bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
-                    Buffer.BlockCopy(bs, 0, f.Licensing.MotorolaBPUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
+                    Buffer.BlockCopy(bs, 0, licensing.MotorolaBPUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
+                    bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
+                    Buffer.BlockCopy(bs, 0, licensing.NxdnScramblerUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
 
                     br.BaseStream.Position = ZIPKEY_OFFSET;
-                    f.ZipKeyAssigment = (ZipKeyAssigmentEnum)br.ReadByte();
-                    f.FZipKeyAssigment = (ZipKeyAssigmentEnum)br.ReadByte();
+                    keyMapping.Key3 = (KeyMapFunctionEnum)br.ReadByte();
+                    keyMapping.Key1 = (KeyMapFunctionEnum)br.ReadByte();
+                    keyMapping.Key2 = (KeyMapFunctionEnum)br.ReadByte();
 
                     br.BaseStream.Position = AGLO_TABLE_OFFSET;
-                    var dmrItemsCount = Swap(br.ReadUInt32());
-                    if (MAX_ITEMS < dmrItemsCount)
-                        throw new Exception($"Too Many DMR Encryption Method Items.");
+                    var rowCount = Swap(br.ReadUInt32());
+                    if (MAX_ITEMS < rowCount)
+                        throw new Exception($"Too Many Encryption Rows.");
 
-                    f.DmrEncryptionMethodItems = new List<DmrEncryptionMethodItem>();
-                    for (var i = 0; i < dmrItemsCount; i++)
+                    var notesSkipList = new List<bool>();
+                    for (var i = 0; i < rowCount; i++)
                     {
-                        var item = new DmrEncryptionMethodItem
+                        var pos = br.BaseStream.Position;
+                        br.BaseStream.Position += 17; // Encryption Method Position
+                        var encMethod = (EncryptionMethodEnum)br.ReadByte();
+                        br.BaseStream.Position = pos;
+                        switch(encMethod)
                         {
-                            Options = (DmrNeedOptionsEnum)Swap(br.ReadUInt32()),
-                            TrunkSystem = (DmrTrunkSystemEnum)br.ReadByte(),
-                            Mfid = (DmrMfidEnum)br.ReadByte(),
-                            Frequency = FreqToUint32(Swap(br.ReadUInt32())),
-                            ColorCode = (DmrColorCodeEnum)br.ReadByte(),
-                            Tgid = Swap(br.ReadUInt32()),
-                            TimeSlot = (DmrTimeSlotEnum)br.ReadByte(),
-                            EncryptionValue = (DmrEncyptionValueEnum)br.ReadByte(),
-                            EncryptionMethod = (DmrEncryptionMethodEnum)br.ReadByte(),
-                            KeyLength = Swap(br.ReadUInt32()),
-                        };
+                            case EncryptionMethodEnum.MotorolaBP:
+                                {
+                                    var row = new MotorolaBPEncryptionRow();
+                                    row.ActivateOptions = new DmrActivateOptions();
+                                    row.ActivateOptions.Options = (DmrSelectedActivateOptionsEnum)Swap(br.ReadUInt32());
+                                    row.ActivateOptions.TrunkSystem = (DmrTrunkSystemEnum)br.ReadByte();
+                                    row.ActivateOptions.MFID = (DmrMfidEnum)br.ReadByte();
+                                    row.Frequency = FreqToUint32(Swap(br.ReadUInt32()));
+                                    row.ActivateOptions.ColorCode = (DmrColorCodeEnum)br.ReadByte();
+                                    row.ActivateOptions.TGID = Swap(br.ReadUInt32());
+                                    row.ActivateOptions.TimeSlot = (DmrTimeSlotEnum)br.ReadByte();
+                                    row.ActivateOptions.EncryptionValue = (DmrEncyptionValueEnum)br.ReadByte();
+                                    br.ReadByte(); // skip enc method
+                                    br.ReadUInt32(); // skip key len
+                                    row.Key = br.ReadByte();
+                                    br.ReadBytes(31); // key remaining part
+                                    rows.Add(row);
+                                    notesSkipList.Add(false);
+                                    break;
+                                }
 
-                        bs = br.ReadBytes(DmrEncryptionMethodItem.ENC_METHOD_KEY_LEN);
-                        Buffer.BlockCopy(bs, 0, item.Key, 0, DmrEncryptionMethodItem.ENC_METHOD_KEY_LEN);
+                            case EncryptionMethodEnum.HyteraBP:
+                                {
+                                    var row = new HyteraBPEncryptionRow();
+                                    row.ActivateOptions = new DmrActivateOptions();
+                                    row.ActivateOptions.Options = (DmrSelectedActivateOptionsEnum)Swap(br.ReadUInt32());
+                                    row.ActivateOptions.TrunkSystem = (DmrTrunkSystemEnum)br.ReadByte();
+                                    row.ActivateOptions.MFID = (DmrMfidEnum)br.ReadByte();
+                                    row.Frequency = FreqToUint32(Swap(br.ReadUInt32()));
+                                    row.ActivateOptions.ColorCode = (DmrColorCodeEnum)br.ReadByte();
+                                    row.ActivateOptions.TGID = Swap(br.ReadUInt32());
+                                    row.ActivateOptions.TimeSlot = (DmrTimeSlotEnum)br.ReadByte();
+                                    row.ActivateOptions.EncryptionValue = (DmrEncyptionValueEnum)br.ReadByte();
+                                    br.ReadByte(); // skip enc method
+                                    row.KeyLength = (HyteraKeyLengthEnum)Swap(br.ReadUInt32());
+                                    row.Key = br.ReadBytes(32);
+                                    rows.Add(row);
+                                    notesSkipList.Add(false);
+                                    break;
+                                }
 
-                        f.DmrEncryptionMethodItems.Add(item);
+                            case EncryptionMethodEnum.NxdnScrambler:
+                                {
+                                    var row = new NxdnScramblerEncryptionRow();
+                                    row.ActivateOptions = new NxdnActivateOptions();
+                                    row.ActivateOptions.Options = (NxdnSelectedActivateOptionsEnum)Swap(br.ReadUInt32());
+                                    br.ReadByte();
+                                    br.ReadByte();
+                                    row.Frequency = FreqToUint32(Swap(br.ReadUInt32()));
+                                    row.ActivateOptions.RAN = br.ReadByte();
+                                    row.ActivateOptions.GroupID = Swap(br.ReadUInt16());
+                                    br.ReadUInt16();
+                                    br.ReadByte();
+                                    br.ReadByte();
+                                    br.ReadByte();
+                                    br.ReadUInt32();
+                                    row.Key = Swap(br.ReadUInt16());
+                                    br.ReadBytes(30); // key remaining part
+                                    rows.Add(row);
+                                    notesSkipList.Add(false);
+                                    break;
+                                }
+
+                            default:
+                                br.BaseStream.Position += ENC_METHOD_STRUCT_SIZE;
+                                notesSkipList.Add(true);
+                                break;
+                        }
                     }
 
                     try
                     {
-                        foreach (var item in f.DmrEncryptionMethodItems)
+                        var countRows = 0;
+                        for(var i=0; i<notesSkipList.Count; i++)
                         {
-                            item.Notes = br.ReadString();
+                            if (!notesSkipList[i])
+                                rows[countRows++].Notes = br.ReadString();
                         }
                     }
                     catch { }
                 }
-            return f;
+
+                return new Project
+                {
+                    Scanners = new List<Scanner> 
+                    {
+                        new Scanner
+                        {
+                            KeyMapping = keyMapping,
+                            Licensing = licensing
+                        }
+
+                    },
+                    EcryptionRows = rows
+                };
             }
             catch
             {
                 return null;
-            }
-        }
-
-        public void Write()
-        {
-            if (MAX_ITEMS < DmrEncryptionMethodItems.Count)
-                throw new Exception($"Too Many DMR Encryption Method Items.");
-
-            using (BinaryWriter bw = new BinaryWriter(new FileStream(Filename, FileMode.Create, FileAccess.Write)))
-            {
-                bw.Write(SIGNATURE);
-                bw.Write(Swap(VERSION));
-                bw.BaseStream.Position = KEY_STORAGE_OFFSET;
-                bw.Write(Licensing.HyteraBPUnlockKey);
-                bw.Write(Licensing.MotorolaBPUnlockKey);
-
-                bw.BaseStream.Position = ZIPKEY_OFFSET;
-                bw.Write((byte)ZipKeyAssigment);
-                bw.Write((byte)FZipKeyAssigment);
-
-                bw.BaseStream.Position = AGLO_TABLE_OFFSET;
-                bw.Write(Swap((uint)DmrEncryptionMethodItems.Count));
-                foreach (var item in DmrEncryptionMethodItems)
-                {
-                    bw.Write(Swap((uint)item.Options));
-                    bw.Write((byte)item.TrunkSystem);
-                    bw.Write((byte)item.Mfid);
-                    bw.Write(Swap(UInt32ToFreq(item.Frequency)));
-                    bw.Write((byte)item.ColorCode);
-                    bw.Write(Swap(item.Tgid));
-                    bw.Write((byte)item.TimeSlot);
-                    bw.Write((byte)item.EncryptionValue);
-                    bw.Write((byte)item.EncryptionMethod);
-                    bw.Write(Swap(item.KeyLength));
-                    bw.Write(item.Key);
-                }
-
-                // write notes
-                foreach (var item in DmrEncryptionMethodItems)
-                {
-                    bw.Write(item.Notes);
-                }
             }
         }
 
@@ -150,11 +280,12 @@ namespace CFT
         {
             value = (value >> 16) | (value << 16);
             return ((value & 0xFF00FF00) >> 8) | ((value & 0x00FF00FF) << 8);
+
         }
 
-        public void SortItemsByFrequency(bool ascending)
+        private static ushort Swap(ushort value)
         {
-            DmrEncryptionMethodItems.Sort((a, b) => ascending ? b.Frequency.CompareTo(a.Frequency) : a.Frequency.CompareTo(b.Frequency));
+            return (ushort)((value >> 8) | (value << 8));
         }
     }
 }

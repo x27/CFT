@@ -1,264 +1,337 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
-
 
 namespace CFT
 {
     public partial class MainForm : Form
     {
-        const string TITLE = "Custom Firmware Tuner";
+        string TITLE = "Custom Firmware Tuner";
+        private FileVersionInfo _versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
 
-        private CftFile _cftFile;
-        private CftFile _cftFileCopy;
+        private Project _project;
+        private Project _projectCopy;
+
         private SortOrder _colFreqSortOrder = SortOrder.None;
 
-        public MainForm()
+        private string _lateLoadFile;
+
+        public MainForm(string lateLoadFile = null)
         {
             InitializeComponent();
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            ControlsUpdate();
+            AllowDrop = true;
+            _lateLoadFile = lateLoadFile;
         }
 
         private void ControlsUpdate()
         {
-            var mEnable = _cftFile != null;
-            var needSave = IsCftFileChanged();
-            var index = GetListViewCurrentItemIndex();
+            var mEnable = _project != null;
+            var needSave = IsProjectChanged();
 
-            tsbSave.Enabled = mEnable && needSave;
-            tsbAdd.Enabled = mEnable;
-            tsbDelete.Enabled = mEnable && (index != -1);
-            tsbUp.Enabled = mEnable && (index > 0);
-            tsbDuplicate.Enabled = tsbDelete.Enabled;
-            tsbDown.Enabled = mEnable && (index >= 0 && index < _cftFile.DmrEncryptionMethodItems.Count - 1);
+            miSaveProject.Enabled = mEnable && needSave;
+            tsbSaveProject.Enabled = mEnable && needSave;
+            miSaveAsProject.Enabled = mEnable;
+
+            tsbAddEncryptionRow.Enabled = mEnable;
+            miAddEncryptionMethodRow.Enabled = mEnable;
+
+            cbScanners.Enabled = mEnable;
+            cbListViewFilter.Enabled = mEnable;
+
+            miScanners.Enabled = mEnable;
+
+            miExportCFTFile.Enabled = mEnable;
+
             listView.Enabled = mEnable;
 
-            saveToolStripMenuItem.Enabled = mEnable && needSave;
-            saveAsToolStripMenuItem.Enabled = mEnable;
-            licensingToolStripMenuItem.Enabled = mEnable;
-            firmwareOptionsToolStripMenuItem.Enabled = mEnable;
+            tsbUp.Enabled = listView.SelectedIndices.Count > 0 && listView.SelectedIndices[0] > 0;
+            tsbDown.Enabled = listView.SelectedIndices.Count > 0 && listView.SelectedIndices[0] < listView.Items.Count-1;
+            tsbDeleteItem.Enabled = listView.SelectedIndices.Count > 0;
+            tsbDuplicateItem.Enabled = listView.SelectedIndices.Count > 0;
 
-            Text = mEnable ? $"{TITLE} : {(_cftFile.Filename == null ? "New" : _cftFile.Filename)} {(IsCftFileChanged()?"*":"")}" : TITLE;
-
-            if (mEnable &&
-                Utils.IsArrayEmpty(_cftFile.Licensing.HyteraBPUnlockKey) && 
-                Utils.IsArrayEmpty(_cftFile.Licensing.MotorolaBPUnlockKey) &&
-                listView.Items.Count>5)
-                statusLabel.Text = "WARNING: In DEMO mode, the firmware considers the first 5 rows only.";
+            if (mEnable && _project.EcryptionRows != null && _project.EcryptionRows.Count > 5) 
+            {
+                var show = true;
+                try
+                {
+                    var licensing = ((cbScanners.Items[cbScanners.SelectedIndex] as DisplayTagObject).Tag as Scanner).Licensing;
+                    if (!Utils.IsArrayEmpty(licensing.MotorolaBPUnlockKey) ||
+                        !Utils.IsArrayEmpty(licensing.HyteraBPUnlockKey) ||
+                        !Utils.IsArrayEmpty(licensing.NxdnScramblerUnlockKey))
+                    {
+                        show = false;
+                    }
+                }
+                catch {}
+                finally
+                {
+                    if (show)
+                        lblStatusL.Text = "WARNING: In DEMO mode, the firmware considers the first 5 rows only.";
+                    else
+                        lblStatusL.Text = string.Empty;
+                }
+            }
             else
-                statusLabel.Text = string.Empty;
+                lblStatusL.Text = string.Empty;
+
+            if (mEnable && _project.EcryptionRows != null)
+                lblStatusR.Text = $"Total rows: {_project.EcryptionRows.Count}";
+            else
+                lblStatusR.Text = string.Empty;
+
+                var title = $"{TITLE} v{_versionInfo.FileVersion}";
+            Text = mEnable ? $"{title} : {(_project.Path == null ? "New" : _project.Path)} {(IsProjectChanged() ? "*" : "")}" : title;
         }
 
-        private bool IsCftFileChanged()
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            if (_cftFile == null && _cftFileCopy == null)
+            Utils.FillComboBoxData(cbListViewFilter, typeof(ProtocolEnum));
+            cbListViewFilter.SelectedIndex = 0;
+
+            if (string.IsNullOrEmpty(_lateLoadFile))
+                ControlsUpdate();
+            else
+                ProcessCftpFile(_lateLoadFile);
+        }
+
+        private bool IsProjectChanged()
+        {
+            if (_project == null && _projectCopy == null)
                 return false;
 
-            if (_cftFile == null && _cftFile != null || _cftFile != null && _cftFileCopy == null)
+            if (_project == null && _project != null || _project != null && _projectCopy == null)
                 return true;
 
-            return !Utils.DeepCompare(_cftFile, _cftFileCopy);
+            return !Utils.JsonCompare(_project, _projectCopy);
         }
 
-        private int GetListViewCurrentItemIndex()
+        private bool CheckFileChangedAndAskAboutSaving()
         {
-            for (var i = 0; i < listView.Items.Count; i++)
-                if (listView.Items[i].Selected)
-                    return i;
-            return -1;
-        }
+            if (!IsProjectChanged())
+                return true;
 
-        private void tsbAdd_Click(object sender, EventArgs e)
-        {
-            cmdAddItem();
-        }
-
-        private void tsbDelete_Click(object sender, EventArgs e)
-        {
-            var index = GetListViewCurrentItemIndex();
-            if (index > -1)
+            var res = MessageBox.Show("Changes found. Save?", "Warning", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            switch(res)
             {
-                _cftFile.DmrEncryptionMethodItems.RemoveAt(index);
-                listView.VirtualListSize = _cftFile.DmrEncryptionMethodItems.Count;
-
-                if (index > 0 && index > _cftFile.DmrEncryptionMethodItems.Count - 1)
-                {
-                    listView.Items[index - 1].Selected = true;
-                    listView.Items[index - 1].Focused = true;
-                }
-                ListViewNoSort();
-                ControlsUpdate();
+                case DialogResult.Yes:
+                    cmdSave();
+                    return true;
+                case DialogResult.No:
+                    return true;
+                case DialogResult.Cancel:
+                    return false;
             }
+            return false;
         }
 
-        private void tsbUp_Click(object sender, EventArgs e)
+        private void miNewProject_Click(object sender, EventArgs e)
         {
-            var index = GetListViewCurrentItemIndex() - 1;
-            var item = _cftFile.DmrEncryptionMethodItems[index];
-            _cftFile.DmrEncryptionMethodItems[index] = _cftFile.DmrEncryptionMethodItems[index + 1];
-            _cftFile.DmrEncryptionMethodItems[index + 1] = item;
-            listView.Invalidate();
-            listView.Items[index].Selected = true;
-            listView.Items[index].Focused = true;
-            ListViewNoSort();
-        }
+            if (!CheckFileChangedAndAskAboutSaving())
+                return;
 
-        private void tsbDown_Click(object sender, EventArgs e)
-        {
-            var index = GetListViewCurrentItemIndex() + 1;
-            var item = _cftFile.DmrEncryptionMethodItems[index];
-            _cftFile.DmrEncryptionMethodItems[index] = _cftFile.DmrEncryptionMethodItems[index - 1];
-            _cftFile.DmrEncryptionMethodItems[index - 1] = item;
-            listView.Invalidate();
-            listView.Items[index].Selected = true;
-            listView.Items[index].Focused = true;
-
-            ListViewNoSort();
-        }
-
-        private void listView_RetrieveVirtualItem(object sender, RetrieveVirtualItemEventArgs e)
-        {
-            var item = _cftFile.DmrEncryptionMethodItems[e.ItemIndex];
-
-            var listViewItem = new ListViewItem();
-            listViewItem.Text = Utils.GetFrequencyString(item.Frequency);
-
-            var listViewSubItem0 = new ListViewItem.ListViewSubItem();
-            listViewSubItem0.Text = item.IsActiveOption(DmrNeedOptionsEnum.TrunkSystem) ? DisplayNameAttribute.GetName(item.TrunkSystem) : "-";
-            listViewItem.SubItems.Add(listViewSubItem0);
-
-            var listViewSubItem1 = new ListViewItem.ListViewSubItem();
-            listViewSubItem1.Text = item.IsActiveOption(DmrNeedOptionsEnum.Mfid) ? item.Mfid.ToString() : "-";
-            listViewItem.SubItems.Add(listViewSubItem1);
-
-            var listViewSubItem2 = new ListViewItem.ListViewSubItem();
-            listViewSubItem2.Text = item.IsActiveOption(DmrNeedOptionsEnum.ColorCode) ? DisplayNameAttribute.GetName(item.ColorCode) : "-";
-            listViewItem.SubItems.Add(listViewSubItem2);
-
-            var listViewSubItem3 = new ListViewItem.ListViewSubItem();
-            listViewSubItem3.Text = item.IsActiveOption(DmrNeedOptionsEnum.Tgid) ? item.Tgid.ToString() : "-";
-            listViewItem.SubItems.Add(listViewSubItem3);
-
-            var listViewSubItem4 = new ListViewItem.ListViewSubItem();
-            listViewSubItem4.Text = item.IsActiveOption(DmrNeedOptionsEnum.EncryptValue) ? DisplayNameAttribute.GetName(item.EncryptionValue) : "-";
-            listViewItem.SubItems.Add(listViewSubItem4);
-
-            var listViewSubItem5 = new ListViewItem.ListViewSubItem();
-            listViewSubItem5.Text = DisplayNameAttribute.GetName(item.EncryptionMethod);
-            listViewItem.SubItems.Add(listViewSubItem5);
-
-            var listViewSubItem6 = new ListViewItem.ListViewSubItem();
-            listViewSubItem6.Text = item.Notes;
-            listViewItem.SubItems.Add(listViewSubItem6);
-
-            e.Item = listViewItem;
-        }
-
-        private void listView_DoubleClick(object sender, EventArgs e)
-        {
-            var index = GetListViewCurrentItemIndex();
-
-            var frm = new EncryptionMethodForm(_cftFile.DmrEncryptionMethodItems[index]);
-            if (frm.ShowDialog() == DialogResult.OK)
-                _cftFile.DmrEncryptionMethodItems[index] = frm.Item;
-            ControlsUpdate();
-        }
-
-        private void listView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ControlsUpdate();
-        }
-
-        private void licensingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var frm = new LicensingForm(_cftFile.Licensing);
-            if (frm.ShowDialog(this) == DialogResult.OK)
-            {
-                _cftFile.Licensing = frm.Licensing;
-                ControlsUpdate();
-            }
-        }
-        private void newMenuItem_Click(object sender, EventArgs e)
-        {
-            CheckFileChangedAndAskAboutSaving();
             cmdNew();
+            FillScannerSelector();
+            UpdateListViewItems();
             ControlsUpdate();
         }
 
-        private void openMenuItem_Click(object sender, EventArgs e)
+        private void miOpenProject_Click(object sender, EventArgs e)
         {
-            CheckFileChangedAndAskAboutSaving();
+            if (!CheckFileChangedAndAskAboutSaving())
+                return;
+
             cmdOpen();
             ControlsUpdate();
         }
 
-        private void saveMenuItem_Click(object sender, EventArgs e)
+        private void miSaveProject_Click(object sender, EventArgs e)
         {
             cmdSave();
             ControlsUpdate();
         }
 
-        private void saveAsMenuItem_Click(object sender, EventArgs e)
+        private void miSaveAsProject_Click(object sender, EventArgs e)
         {
             cmdSave(true);
             ControlsUpdate();
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void miExportCFTFile_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "Custom Firmware Tuner Files (*.cft)|*.cft",
+                FilterIndex = 1,
+                RestoreDirectory = true,
+                FileName = "alice.cft"
+            };
+
+            if (sfd.ShowDialog() != DialogResult.OK)
+                return;
+
+            try
+            {
+                Scanner scanner = null;
+                if (cbScanners.SelectedIndex != -1)
+                    scanner = (cbScanners.SelectedItem as DisplayTagObject).Tag as Scanner;
+                CFTFile.Export(_project, scanner, sfd.FileName);
+
+                MessageBox.Show("File successfully exported.", "Info");
+            }
+            catch 
+            {
+                MessageBox.Show("Can't export file.", "Error");
+            }
+        }
+
+        private void miImportCFTFile_Click(object sender, EventArgs e)
+        {
+            if (!CheckFileChangedAndAskAboutSaving())
+                return;
+
+            try
+            {
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Filter = "Custom Firmware Tuner Files (*.cft)|*.cft|All Files|*.*";
+                dlg.Multiselect = false;
+                dlg.RestoreDirectory = true;
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    ProcessCftpFile(dlg.FileName);
+                    MessageBox.Show("File successfully imported.", "Info");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void miExit_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void tsbNew_Click(object sender, EventArgs e)
+        private void miScanners_Click(object sender, EventArgs e)
         {
-            CheckFileChangedAndAskAboutSaving();
-            cmdNew();
-            ControlsUpdate();
+            var sl = _project.Scanners != null ? Utils.DeepClone(_project.Scanners) : null;
+            var frm = new ScannerListForm(sl);
+            frm.ShowDialog();
+            if (!Utils.JsonCompare(frm.Scanners, _project.Scanners))
+            {
+                _project.Scanners = frm.Scanners;
+                FillScannerSelector();
+                ControlsUpdate();
+            }
         }
 
-        private void tsbOpen_Click(object sender, EventArgs e)
+        private void miMotorolaBPEncryptionMethod_Click(object sender, EventArgs e)
         {
-            CheckFileChangedAndAskAboutSaving();
-            cmdOpen();
-            ControlsUpdate();
+            var frm = new MotorolaBPEncryptionMethodForm(null);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                _project.EcryptionRows.Add(frm.EncryptionRow);
+                UpdateListViewItems();
+                ListViewNoSort();
+                ControlsUpdate();
+            }
         }
 
-        private void tsbSave_Click(object sender, EventArgs e)
+        private void miHyteraBPEncryptionMethod_Click(object sender, EventArgs e)
         {
-            cmdSave();
-            ControlsUpdate();
+            var frm = new HyteraBPEncryptionMethodForm(null);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                _project.EcryptionRows.Add(frm.EncryptionRow);
+                UpdateListViewItems();
+                ListViewNoSort();
+                ControlsUpdate();
+            }
+        }
+
+        private void miNxdnScramblerMethod_Click(object sender, EventArgs e)
+        {
+            var frm = new NxdnScramblerEncryptionMethodForm(null);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                _project.EcryptionRows.Add(frm.EncryptionRow);
+                UpdateListViewItems();
+                ListViewNoSort();
+                ControlsUpdate();
+            }
+        }
+
+        private void tsbDuplicateItem_Click(object sender, EventArgs e)
+        {
+            if (listView.SelectedItems.Count == 0)
+                return;
+
+            var row = Utils.DeepClone(listView.SelectedItems[0].Tag as IEncryptionRow);
+
+            if (row is MotorolaBPEncryptionRow)
+            {
+                var frm = new MotorolaBPEncryptionMethodForm(row as MotorolaBPEncryptionRow);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    _project.EcryptionRows.Add(frm.EncryptionRow);
+                    UpdateListViewItems();
+                    ListViewNoSort();
+                    ControlsUpdate();
+                }
+            }
+            else if (row is HyteraBPEncryptionRow)
+            {
+                var frm = new HyteraBPEncryptionMethodForm(row as HyteraBPEncryptionRow);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    _project.EcryptionRows.Add(frm.EncryptionRow);
+                    UpdateListViewItems();
+                    ListViewNoSort();
+                    ControlsUpdate();
+                }
+            }
+            else if (row is NxdnScramblerEncryptionRow)
+            {
+                var frm = new NxdnScramblerEncryptionMethodForm(row as NxdnScramblerEncryptionRow);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    _project.EcryptionRows.Add(frm.EncryptionRow);
+                    UpdateListViewItems();
+                    ListViewNoSort();
+                    ControlsUpdate();
+                }
+            }
         }
 
         private void cmdSave(bool forceSaveAs = false)
         {
-            if (forceSaveAs || _cftFile != null && string.IsNullOrEmpty(_cftFile.Filename) || _cftFile == null)
+            if (forceSaveAs || _project != null && string.IsNullOrEmpty(_project.Path) || _project == null)
             {
                 SaveFileDialog sfd = new SaveFileDialog
                 {
-                    Filter = "Custom Firmware Tuner Files (*.cft)|*.cft",
+                    Filter = "Custom Firmware Tuner Project Files (*.cfp)|*.cfp",
                     FilterIndex = 1,
                     RestoreDirectory = true,
-                    FileName = string.IsNullOrEmpty(_cftFile.Filename) ? "alice.cft" : _cftFile.Filename,
+                    FileName = string.IsNullOrEmpty(_project.Path) ? "cft.cfp" : _project.Path,
                 };
 
                 if (sfd.ShowDialog() != DialogResult.OK)
                     return;
 
-                _cftFile.Filename = sfd.FileName;
+                _project.Path = sfd.FileName;
             }
 
             try
             {
-                _cftFile.Write();
-                _cftFileCopy = Utils.DeepClone(_cftFile);
+                _project.Save();
+                _projectCopy = Utils.DeepClone(_project);
                 MessageBox.Show("File successfully saved.", "Info");
             }
-            catch 
+            catch
             {
                 MessageBox.Show("Can't save file.", "Error");
             }
@@ -269,20 +342,12 @@ namespace CFT
             try
             {
                 OpenFileDialog dlg = new OpenFileDialog();
-                dlg.Filter = "Custom Firmware Tuner Files (*.cft)|*.cft|All Files|*.*";
+                dlg.Filter = "Custom Firmware Tuner Project Files (*.cfp)|*.cfp|All Files|*.*";
                 dlg.Multiselect = false;
                 dlg.RestoreDirectory = true;
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    _cftFile = CftFile.Load(dlg.FileName);
-                    if (_cftFile != null)
-                    {
-                        _cftFileCopy = Utils.DeepClone(_cftFile);
-                        listView.VirtualListSize = _cftFile.DmrEncryptionMethodItems.Count;
-                    }
-                    else
-                        listView.VirtualListSize = 0;
-                    ControlsUpdate();
+                    ProcessCftpFile(dlg.FileName);
                 }
             }
             catch (Exception ex)
@@ -293,64 +358,300 @@ namespace CFT
 
         private void cmdNew()
         {
-            _cftFile = new CftFile();
-            listView.VirtualListSize = _cftFile.DmrEncryptionMethodItems.Count;
+            _project = new Project();
+            _project.EcryptionRows = new List<IEncryptionRow>();
         }
 
-        private void cmdAddItem(bool duplicate = false)
+        private void FillScannerSelector()
         {
-            EncryptionMethodForm frm;
-            if (duplicate)
-            {
-                var index = GetListViewCurrentItemIndex();
-                frm = new EncryptionMethodForm(_cftFile.DmrEncryptionMethodItems[index]);
-            }
-            else
-                frm = new EncryptionMethodForm();
-            
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                _cftFile.DmrEncryptionMethodItems.Add(frm.Item);
-                listView.VirtualListSize = _cftFile.DmrEncryptionMethodItems.Count;
-                listView.Items[_cftFile.DmrEncryptionMethodItems.Count - 1].Selected = true;
-                listView.Items[_cftFile.DmrEncryptionMethodItems.Count - 1].Focused = true;
-                listView.Select();
+            cbScanners.Items.Clear();
 
-                ListViewNoSort();
-                ControlsUpdate();
+            if (_project == null || _project.Scanners == null)
+                return;
+
+            foreach (var item in _project.Scanners)
+            {
+                cbScanners.Items.Add(new DisplayTagObject(item));
+            }
+            if (cbScanners.Items.Count > 0)
+            {
+                cbScanners.SelectedIndex = 0;
             }
         }
 
-        private void CheckFileChangedAndAskAboutSaving()
+        private void BuildListViewColumns()
         {
-            if (!IsCftFileChanged())
-                return;
+            listView.Items.Clear();
+            listView.Columns.Clear();
 
-            if (MessageBox.Show("Changes found. Save?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.No)
-                return;
+            var currentFilter = (ProtocolEnum)Utils.GetComboBoxData(cbListViewFilter.SelectedItem);
 
-            cmdSave();
+            listView.Columns.Add("#", 40, HorizontalAlignment.Left);
+            listView.Columns.Add("Frequency, MHz", 113, HorizontalAlignment.Left);
+
+            switch (currentFilter)
+            {
+                case ProtocolEnum.All:
+                    {
+                        listView.Columns.Add("Notes", 150, HorizontalAlignment.Left);
+                        var colDesc = listView.Columns.Add("Description", 150, HorizontalAlignment.Left);
+                        colDesc.AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+                        break;
+                    }
+                case ProtocolEnum.DMR:
+                    {
+                        listView.Columns.Add("Trunk System", 94, HorizontalAlignment.Left);
+                        listView.Columns.Add("MFID", 89, HorizontalAlignment.Left);
+                        listView.Columns.Add("CC", 46, HorizontalAlignment.Left);
+                        listView.Columns.Add("TGID", 88, HorizontalAlignment.Left);
+                        listView.Columns.Add("EnV", 76, HorizontalAlignment.Left);
+                        listView.Columns.Add("Encryption Method", 126, HorizontalAlignment.Left);
+                        var colNotes = listView.Columns.Add("Notes", 150, HorizontalAlignment.Left);
+                        colNotes.AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+                        break;
+                    }
+                case ProtocolEnum.NXDN:
+                    {
+                        listView.Columns.Add("RAN", 100, HorizontalAlignment.Left);
+                        listView.Columns.Add("Group ID", 150, HorizontalAlignment.Left);
+                        listView.Columns.Add("Encryption Method", 126, HorizontalAlignment.Left);
+                        var colNotes = listView.Columns.Add("Notes", 150, HorizontalAlignment.Left);
+                        colNotes.AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+                        break;
+                    }
+            }
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private ListViewItem CreateListViewRow(ProtocolEnum filter, IEncryptionRow row)
         {
-            var fvi = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
-            MessageBox.Show($"Custom Firmware Tuner (CFT)\r\n{fvi.FileVersion}\r\nJD\r\n2024", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var listViewItem = new ListViewItem();
+            listViewItem.Tag = row;
+
+            var freqItem = new ListViewItem.ListViewSubItem();
+            freqItem.Text = Utils.GetFrequencyString(row.Frequency);
+            listViewItem.SubItems.Add(freqItem);
+
+            switch (filter)
+            {
+                case ProtocolEnum.All:
+                    {
+                        var notesItem = new ListViewItem.ListViewSubItem();
+                        notesItem.Text = row.Notes;
+                        listViewItem.SubItems.Add(notesItem);
+                        var descItem = new ListViewItem.ListViewSubItem();
+                        descItem.Text = row.Description;
+                        listViewItem.SubItems.Add(descItem);
+                        break;
+                    }
+                case ProtocolEnum.DMR:
+                    {
+                        if (row.Protocol != ProtocolEnum.DMR)
+                            return null;
+
+                        var options = ((DmrEncryptionRow)row).ActivateOptions;
+
+                        var listViewSubItem0 = new ListViewItem.ListViewSubItem();
+                        listViewSubItem0.Text = options.IsActivated(DmrSelectedActivateOptionsEnum.TrunkSystem) ? DisplayNameAttribute.GetName(options.TrunkSystem) : "-";
+                        listViewItem.SubItems.Add(listViewSubItem0);
+
+                        var listViewSubItem1 = new ListViewItem.ListViewSubItem();
+                        listViewSubItem1.Text = options.IsActivated(DmrSelectedActivateOptionsEnum.MFID) ? options.MFID.ToString() : "-";
+                        listViewItem.SubItems.Add(listViewSubItem1);
+
+                        var listViewSubItem2 = new ListViewItem.ListViewSubItem();
+                        listViewSubItem2.Text = options.IsActivated(DmrSelectedActivateOptionsEnum.ColorCode) ? DisplayNameAttribute.GetName(options.ColorCode) : "-";
+                        listViewItem.SubItems.Add(listViewSubItem2);
+
+                        var listViewSubItem3 = new ListViewItem.ListViewSubItem();
+                        listViewSubItem3.Text = options.IsActivated(DmrSelectedActivateOptionsEnum.TGID) ? options.TGID.ToString() : "-";
+                        listViewItem.SubItems.Add(listViewSubItem3);
+
+                        var listViewSubItem4 = new ListViewItem.ListViewSubItem();
+                        listViewSubItem4.Text = options.IsActivated(DmrSelectedActivateOptionsEnum.EncryptValue) ? DisplayNameAttribute.GetName(options.EncryptionValue) : "-";
+                        listViewItem.SubItems.Add(listViewSubItem4);
+
+                        var listViewSubItem5 = new ListViewItem.ListViewSubItem();
+                        listViewSubItem5.Text = DisplayNameAttribute.GetName(row);
+                        listViewItem.SubItems.Add(listViewSubItem5);
+
+                        var listViewSubItem6 = new ListViewItem.ListViewSubItem();
+                        listViewSubItem6.Text = row.Notes;
+                        listViewItem.SubItems.Add(listViewSubItem6);
+
+                        break;
+                    }
+                case ProtocolEnum.NXDN:
+                    {
+                        if (row.Protocol != ProtocolEnum.NXDN)
+                            return null;
+
+                        var options = ((NxdnScramblerEncryptionRow)row).ActivateOptions;
+
+                        var listViewSubItem4 = new ListViewItem.ListViewSubItem();
+                        listViewSubItem4.Text = options.IsActivated(NxdnSelectedActivateOptionsEnum.RAN) ? options.RAN.ToString() : "-";
+                        listViewItem.SubItems.Add(listViewSubItem4);
+
+                        var listViewSubItem3 = new ListViewItem.ListViewSubItem();
+                        listViewSubItem3.Text = options.IsActivated(NxdnSelectedActivateOptionsEnum.GroupID) ? options.GroupID.ToString() : "-";
+                        listViewItem.SubItems.Add(listViewSubItem3);
+
+                        var listViewSubItem5 = new ListViewItem.ListViewSubItem();
+                        listViewSubItem5.Text = DisplayNameAttribute.GetName(row);
+                        listViewItem.SubItems.Add(listViewSubItem5);
+
+                        var listViewSubItem6 = new ListViewItem.ListViewSubItem();
+                        listViewSubItem6.Text = row.Notes;
+                        listViewItem.SubItems.Add(listViewSubItem6);
+
+                        break;
+                    }
+            }
+            return listViewItem;
+        }
+
+        private void UpdateListViewItems()
+        {
+            listView.Items.Clear();
+            if (_project == null)
+                return;
+
+            var currentFilter = (ProtocolEnum)Utils.GetComboBoxData(cbListViewFilter.SelectedItem);
+
+            var count = 1;
+            foreach (var row in _project.EcryptionRows)
+            {
+                var item = CreateListViewRow(currentFilter, row);
+                if (item != null)
+                {
+                    item.Text = count++.ToString();
+                    listView.Items.Add(item);
+                }
+            }
+        }
+
+        private void cbListViewFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BuildListViewColumns();
+            UpdateListViewItems();
+            ControlsUpdate();
+        }
+
+        private void listView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ControlsUpdate();
+            Message m = Message.Create(Handle, 0x127, new IntPtr(0x10001), new IntPtr(0));
+            WndProc(ref m);
+        }
+
+        private void listView_Enter(object sender, EventArgs e)
+        {
+            base.OnEnter(e);
+            Message m = Message.Create(Handle, 0x127, new IntPtr(0x10001), new IntPtr(0));
+            WndProc(ref m);
+        }
+
+        private void listView_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView.SelectedItems.Count == 0)
+                return;
+
+            var row = listView.SelectedItems[0].Tag;
+            var filter = (ProtocolEnum)Utils.GetComboBoxData(cbListViewFilter.SelectedItem);
+
+            if (row is MotorolaBPEncryptionRow)
+            {
+                var frm = new MotorolaBPEncryptionMethodForm((MotorolaBPEncryptionRow)row);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var item = CreateListViewRow(filter, frm.EncryptionRow);
+                    item.Text = listView.SelectedItems[0].Text;
+                    item.Selected = true;
+                    listView.Items[listView.SelectedIndices[0]] = item;
+                    ControlsUpdate();
+                }
+            } 
+            else if (row is HyteraBPEncryptionRow)
+            {
+                var frm = new HyteraBPEncryptionMethodForm((HyteraBPEncryptionRow)row);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var item = CreateListViewRow(filter, frm.EncryptionRow);
+                    item.Text = listView.SelectedItems[0].Text;
+                    item.Selected = true;
+                    listView.Items[listView.SelectedIndices[0]] = item;
+                    ControlsUpdate();
+                }
+            }
+            else if (row is NxdnScramblerEncryptionRow)
+            {
+                var frm = new NxdnScramblerEncryptionMethodForm((NxdnScramblerEncryptionRow)row);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var item = CreateListViewRow(filter, frm.EncryptionRow);
+                    item.Text = listView.SelectedItems[0].Text;
+                    item.Selected = true;
+                    listView.Items[listView.SelectedIndices[0]] = item;
+                    ControlsUpdate();
+                }
+            }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            CheckFileChangedAndAskAboutSaving();
+            if (!CheckFileChangedAndAskAboutSaving())
+                e.Cancel = true; 
         }
 
-        private void debugLogsFilteringToolStripMenuItem_Click(object sender, EventArgs e)
+        private int GetProjectEncryptionRowIndex(IEncryptionRow row)
         {
-            new DebugLogsFilteringForm().ShowDialog();
+            if (_project == null || _project.EcryptionRows == null)
+                return -1;
+
+            for(var i=0;i<_project.EcryptionRows.Count;i++)
+            {
+                if (row.Equals(_project.EcryptionRows[i]))
+                    return i;
+            }
+            return -1;
         }
 
-        private void tsbDuplicate_Click(object sender, EventArgs e)
+        private void SwapListViewItems(int indexA, int indexB)
         {
-            cmdAddItem(true);
+            var curItem = listView.Items[indexA];
+            var nextItem = listView.Items[indexB];
+
+            var curRowIndex = GetProjectEncryptionRowIndex(curItem.Tag as IEncryptionRow);
+            var nextRowIndex = GetProjectEncryptionRowIndex(nextItem.Tag as IEncryptionRow);
+
+            _project.EcryptionRows[nextRowIndex] = curItem.Tag as IEncryptionRow;
+            _project.EcryptionRows[curRowIndex] = nextItem.Tag as IEncryptionRow;
+
+            var filter = (ProtocolEnum)Utils.GetComboBoxData(cbListViewFilter.SelectedItem);
+
+            listView.Items[indexA] = CreateListViewRow(filter, nextItem.Tag as IEncryptionRow);
+            listView.Items[indexA].Text = curItem.Text;
+            var row = CreateListViewRow(filter, curItem.Tag as IEncryptionRow);
+            row.Selected = true;
+            listView.Items[indexB] = row;
+            listView.Items[indexB].Text = nextItem.Text;
+        }
+
+        private void tsbDown_Click(object sender, EventArgs e)
+        {
+            if (listView.SelectedIndices.Count == 0)
+                return;
+
+            SwapListViewItems(listView.SelectedIndices[0], listView.SelectedIndices[0] + 1);
+            ListViewNoSort();
+        }
+
+        private void tsbUp_Click(object sender, EventArgs e)
+        {
+            if (listView.SelectedIndices.Count == 0)
+                return;
+
+            SwapListViewItems(listView.SelectedIndices[0], listView.SelectedIndices[0] - 1);
+            ListViewNoSort();
         }
 
         private void ListViewNoSort()
@@ -361,31 +662,148 @@ namespace CFT
 
         private void listView_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            if (e.Column == 0)
+            if (e.Column == 1)
             {
                 if (_colFreqSortOrder == SortOrder.None || _colFreqSortOrder == SortOrder.Ascending)
                 {
                     _colFreqSortOrder = SortOrder.Descending;
-                    ListViewExtensions.SetSortIcon(listView, 0, _colFreqSortOrder);
-                    _cftFile.SortItemsByFrequency(false);
+                    ListViewExtensions.SetSortIcon(listView, 1, _colFreqSortOrder);
+                    _project.EcryptionRows.Sort((a, b) => a.Frequency.CompareTo(b.Frequency));
                 }
                 else
                 {
                     _colFreqSortOrder = SortOrder.Ascending;
-                    ListViewExtensions.SetSortIcon(listView, 0, _colFreqSortOrder);
-                    _cftFile.SortItemsByFrequency(true);
+                    ListViewExtensions.SetSortIcon(listView, 1, _colFreqSortOrder);
+                    _project.EcryptionRows.Sort((a, b) => b.Frequency.CompareTo(a.Frequency));
                 }
+                UpdateListViewItems();
                 listView.Invalidate();
                 ControlsUpdate();
             }
         }
 
-        private void firmwareOptionsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void tsbDeleteItem_Click(object sender, EventArgs e)
         {
-            if (new FirmwareOptions(_cftFile).ShowDialog() == DialogResult.OK)
+            if (listView.SelectedIndices.Count == 0)
+                return;
+
+            if (MessageBox.Show("Are you sure?", "Delete row", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
+                return;
+
+            var index = listView.SelectedIndices[0];
+            _project.EcryptionRows.Remove(listView.Items[index].Tag as IEncryptionRow);
+            listView.Items.RemoveAt(index);
+            ListViewNoSort();
+            ControlsUpdate();
+        }
+
+        private void miDebugLogsFiltering_Click(object sender, EventArgs e)
+        {
+            new DebugLogsFilteringForm().ShowDialog();
+        }
+
+        private void miAbout_Click(object sender, EventArgs e)
+        {
+            new AboutForm().ShowDialog();
+        }
+
+        private void listView_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch(e.KeyCode)
             {
-                ControlsUpdate();
+                case Keys.Enter:
+                    listView_DoubleClick(sender, e);
+                    break;
+                case Keys.Delete:
+                    tsbDeleteItem_Click(sender, e);
+                    break;
+                case Keys.Insert:
+                    var frm = new SelectEncryptionMethodForm();
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        switch(frm.Selection)
+                        {
+                            case 0:
+                                miMotorolaBPEncryptionMethod_Click(sender, e);
+                                break;
+                            case 1:
+                                miHyteraBPEncryptionMethod_Click(sender, e);
+                                break;
+                            case 2:
+                                miNxdnScramblerMethod_Click(sender, e);
+                                break;
+                        }
+                    }
+                    break;
             }
+        }
+
+        private void MainForm_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+            else
+                e.Effect = DragDropEffects.None;
+        }
+
+        private void MainForm_DragDrop(object sender, DragEventArgs e)
+        {
+            try
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                if (files == null || files.Length != 1)
+                    return;
+
+                if (!CheckFileChangedAndAskAboutSaving())
+                    return;
+
+                if (_project != null && _project.Path == files[0])
+                {
+                    ControlsUpdate();
+                    return;
+                }
+
+                if (!ProcessCftpFile(files[0]))
+                    return;
+
+                MessageBox.Show("File loaded", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch
+            {
+            }
+        }
+
+        private bool ProcessCftpFile(string filename)
+        {
+            if (!File.Exists(filename))
+                return false;
+
+            var ext = Path.GetExtension(filename).ToLower();
+            switch(ext)
+            {
+                case ".cft":
+                    _project = CFTFile.Import(filename);
+                    FillScannerSelector();
+                    UpdateListViewItems();
+                    ControlsUpdate();
+                    return true;
+                case ".cfp":
+                    _project = Project.Load(filename);
+                    if (_project.EcryptionRows == null)
+                        _project.EcryptionRows = new List<IEncryptionRow>();
+                    if (_project != null)
+                        _projectCopy = Utils.DeepClone(_project);
+                    FillScannerSelector();
+                    BuildListViewColumns();
+                    UpdateListViewItems();
+                    ControlsUpdate();
+                    return true;
+                default:
+                    MessageBox.Show("Wrong file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+            }
+            return false;
         }
     }
 }

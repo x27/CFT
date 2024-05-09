@@ -7,7 +7,8 @@ namespace CFT
     {
         public const int UNLOCK_KEY_LEN = 32;
 
-        public byte[] HyteraBPUnlockKey { get; private set; } = new byte[UNLOCK_KEY_LEN];
-        public byte[] MotorolaBPUnlockKey { get; private set; } = new byte[UNLOCK_KEY_LEN];
+        public byte[] HyteraBPUnlockKey { get; set; }
+        public byte[] MotorolaBPUnlockKey { get; set; }
+        public byte[] NxdnScramblerUnlockKey { get; set; }
     }
 }

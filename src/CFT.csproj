@@ -4,28 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{51339C61-6D91-40FA-B107-0F97095A1B94}</ProjectGuid>
+    <ProjectGuid>{5ABFC518-FDBC-4864-B546-AE52ABA4BF63}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>CFT</RootNamespace>
     <AssemblyName>CFT</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,7 +34,11 @@
   <PropertyGroup>
     <ApplicationIcon>app.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net20\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -58,44 +47,79 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CftFile.cs" />
-    <Compile Include="ZipKeyAssigmentEnum.cs" />
-    <Compile Include="FirmwareOptions.cs">
+    <Compile Include="AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FirmwareOptions.Designer.cs">
-      <DependentUpon>FirmwareOptions.cs</DependentUpon>
+    <Compile Include="AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListViewExtensions.cs" />
-    <Compile Include="DisplayNameAttribute.cs" />
-    <Compile Include="DisplayTagObject.cs" />
-    <Compile Include="DmrColorCodeEnum.cs" />
-    <Compile Include="DmrEncryptionMethodEnum.cs" />
-    <Compile Include="DmrEncryptionMethodItem.cs" />
-    <Compile Include="DmrMfidEnum.cs" />
-    <Compile Include="DmrNeedOptionsEnum.cs" />
-    <Compile Include="DmrTimeSlotEnum.cs" />
-    <Compile Include="DmrTrunkSystemEnum.cs" />
-    <Compile Include="EncryptionMethodForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EncryptionMethodForm.Designer.cs">
-      <DependentUpon>EncryptionMethodForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DmrEncyptionValueEnum.cs" />
-    <Compile Include="KeyLengthEnum.cs" />
-    <Compile Include="Licensing.cs" />
+    <Compile Include="CFTFile.cs" />
     <Compile Include="DebugLogsFilteringForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DebugLogsFilteringForm.Designer.cs">
       <DependentUpon>DebugLogsFilteringForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DmrEncryptionRow.cs" />
+    <Compile Include="DmrActivateOptions.cs" />
+    <Compile Include="DmrActivateOptionsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DmrActivateOptionsControl.Designer.cs">
+      <DependentUpon>DmrActivateOptionsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DmrColorCodeEnum.cs" />
+    <Compile Include="DmrEncyptionValueEnum.cs" />
+    <Compile Include="DmrMfidEnum.cs" />
+    <Compile Include="HyteraBPEncryptionMethodForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HyteraBPEncryptionMethodForm.Designer.cs">
+      <DependentUpon>HyteraBPEncryptionMethodForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListViewExtensions.cs" />
+    <Compile Include="NxdnScramblerEncryptionMethodForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NxdnScramblerEncryptionMethodForm.Designer.cs">
+      <DependentUpon>NxdnScramblerEncryptionMethodForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MotorolaBPEncryptionMethodForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MotorolaBPEncryptionMethodForm.Designer.cs">
+      <DependentUpon>MotorolaBPEncryptionMethodForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NxdnActivateOptions.cs" />
+    <Compile Include="NxdnSelectedActivateOptionsEnum.cs" />
+    <Compile Include="DmrSelectedActivateOptionsEnum.cs" />
+    <Compile Include="DmrTimeSlotEnum.cs" />
+    <Compile Include="DmrTrunkSystemEnum.cs" />
+    <Compile Include="BaseEncryptionRow.cs" />
+    <Compile Include="NxdnScramblerEncryptionRow.cs" />
+    <Compile Include="MotorolaBPEncryptionRow.cs" />
+    <Compile Include="HyteraBPEncryptionRow.cs" />
+    <Compile Include="HyteraKeyLengthEnum.cs" />
+    <Compile Include="Licensing.cs" />
     <Compile Include="LicensingForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LicensingForm.Designer.cs">
       <DependentUpon>LicensingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProtocolEnum.cs" />
+    <Compile Include="ScannerAttribute.cs" />
+    <Compile Include="DisplayNameAttribute.cs" />
+    <Compile Include="DisplayTagObject.cs" />
+    <Compile Include="IActivateOptions.cs" />
+    <Compile Include="IEncryptionRow.cs" />
+    <Compile Include="KeyMapFunctionEnum.cs" />
+    <Compile Include="KeyMapping.cs" />
+    <Compile Include="KeyMappingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeyMappingForm.Designer.cs">
+      <DependentUpon>KeyMappingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -104,22 +128,55 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scanner.cs" />
+    <Compile Include="ScannerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScannerForm.Designer.cs">
+      <DependentUpon>ScannerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScannerListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScannerListForm.Designer.cs">
+      <DependentUpon>ScannerListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScannerModelEnum.cs" />
+    <Compile Include="SelectEncryptionMethodForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectEncryptionMethodForm.Designer.cs">
+      <DependentUpon>SelectEncryptionMethodForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils.cs" />
-    <EmbeddedResource Include="EncryptionMethodForm.resx">
-      <DependentUpon>EncryptionMethodForm.cs</DependentUpon>
+    <EmbeddedResource Include="AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DebugLogsFilteringForm.resx">
-      <DependentUpon>DebugLogsFilteringForm.cs</DependentUpon>
+    <EmbeddedResource Include="DmrActivateOptionsControl.resx">
+      <DependentUpon>DmrActivateOptionsControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FirmwareOptions.resx">
-      <DependentUpon>FirmwareOptions.cs</DependentUpon>
+    <EmbeddedResource Include="KeyMappingForm.resx">
+      <DependentUpon>KeyMappingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LicensingForm.resx">
       <DependentUpon>LicensingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HyteraBPEncryptionMethodForm.resx">
+      <DependentUpon>HyteraBPEncryptionMethodForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NxdnScramblerEncryptionMethodForm.resx">
+      <DependentUpon>NxdnScramblerEncryptionMethodForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MotorolaBPEncryptionMethodForm.resx">
+      <DependentUpon>MotorolaBPEncryptionMethodForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -131,6 +188,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ScannerListForm.resx">
+      <DependentUpon>ScannerListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectEncryptionMethodForm.resx">
+      <DependentUpon>SelectEncryptionMethodForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -142,24 +206,32 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\up.png" />
-    <None Include="images\save.png" />
-    <None Include="images\open.png" />
-    <None Include="images\new.png" />
-    <None Include="images\down.png" />
-    <None Include="images\delete.png" />
     <None Include="images\add.png" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
+    <None Include="images\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\duplicate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\up.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.ico" />
-    <None Include="images\duplicate.png" />
+    <None Include="images\JD.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

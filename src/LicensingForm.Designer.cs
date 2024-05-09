@@ -34,6 +34,8 @@
             this.tbHyteraBPUnlockKey = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
+            this.tbNxdnScramblerUnlockKey = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -74,7 +76,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(25, 232);
+            this.btnCancel.Location = new System.Drawing.Point(25, 325);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(102, 32);
             this.btnCancel.TabIndex = 4;
@@ -84,7 +86,7 @@
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(412, 232);
+            this.btnOk.Location = new System.Drawing.Point(412, 325);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(102, 32);
             this.btnOk.TabIndex = 5;
@@ -92,12 +94,31 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
+            // tbNxdnScramblerUnlockKey
+            // 
+            this.tbNxdnScramblerUnlockKey.Location = new System.Drawing.Point(27, 232);
+            this.tbNxdnScramblerUnlockKey.Multiline = true;
+            this.tbNxdnScramblerUnlockKey.Name = "tbNxdnScramblerUnlockKey";
+            this.tbNxdnScramblerUnlockKey.Size = new System.Drawing.Size(489, 72);
+            this.tbNxdnScramblerUnlockKey.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 212);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(200, 17);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Unlock Key for NXDN Scrambler:";
+            // 
             // LicensingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(540, 285);
+            this.ClientSize = new System.Drawing.Size(540, 378);
+            this.Controls.Add(this.tbNxdnScramblerUnlockKey);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.tbHyteraBPUnlockKey);
@@ -127,5 +148,7 @@
         private System.Windows.Forms.TextBox tbHyteraBPUnlockKey;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.TextBox tbNxdnScramblerUnlockKey;
+        private System.Windows.Forms.Label label3;
     }
 }
