@@ -210,7 +210,7 @@ namespace CFT
                                     var row = new NxdnScramblerEncryptionRow();
                                     row.ActivateOptions = new NxdnActivateOptions();
                                     row.ActivateOptions.Options = (NxdnSelectedActivateOptionsEnum)Swap(br.ReadUInt32());
-                                    br.ReadByte();
+                                    row.ActivateOptions.KeyId = br.ReadByte();
                                     br.ReadByte();
                                     row.Frequency = FreqToUint32(Swap(br.ReadUInt32()));
                                     row.ActivateOptions.RAN = br.ReadByte();
