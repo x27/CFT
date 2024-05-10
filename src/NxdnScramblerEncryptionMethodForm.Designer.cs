@@ -37,13 +37,13 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbKeyId = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cbKeyId = new System.Windows.Forms.CheckBox();
             this.cbGroupID = new System.Windows.Forms.CheckBox();
             this.tbGroupID = new System.Windows.Forms.TextBox();
             this.tbRAN = new System.Windows.Forms.TextBox();
             this.cbRAN = new System.Windows.Forms.CheckBox();
-            this.cbKeyId = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tbKeyId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudKey)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -94,7 +94,6 @@
             0,
             0,
             0});
-            this.nudKey.ValueChanged += new System.EventHandler(this.nudKey_ValueChanged);
             // 
             // label3
             // 
@@ -156,6 +155,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "NXDN Activate Options";
             // 
+            // tbKeyId
+            // 
+            this.tbKeyId.Enabled = false;
+            this.tbKeyId.Location = new System.Drawing.Point(189, 107);
+            this.tbKeyId.Name = "tbKeyId";
+            this.tbKeyId.Size = new System.Drawing.Size(197, 25);
+            this.tbKeyId.TabIndex = 5;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(189, 107);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(197, 25);
+            this.textBox1.TabIndex = 5;
+            // 
+            // cbKeyId
+            // 
+            this.cbKeyId.AutoSize = true;
+            this.cbKeyId.Location = new System.Drawing.Point(19, 109);
+            this.cbKeyId.Name = "cbKeyId";
+            this.cbKeyId.Size = new System.Drawing.Size(64, 21);
+            this.cbKeyId.TabIndex = 4;
+            this.cbKeyId.Text = "Key ID";
+            this.cbKeyId.UseVisualStyleBackColor = true;
+            this.cbKeyId.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
+            // 
             // cbGroupID
             // 
             this.cbGroupID.AutoSize = true;
@@ -191,31 +216,6 @@
             this.cbRAN.Text = "RAN";
             this.cbRAN.UseVisualStyleBackColor = true;
             this.cbRAN.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
-            // 
-            // cbKeyId
-            // 
-            this.cbKeyId.AutoSize = true;
-            this.cbKeyId.Location = new System.Drawing.Point(19, 109);
-            this.cbKeyId.Name = "cbKeyId";
-            this.cbKeyId.Size = new System.Drawing.Size(64, 21);
-            this.cbKeyId.TabIndex = 4;
-            this.cbKeyId.Text = "Key ID";
-            this.cbKeyId.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(189, 107);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(197, 25);
-            this.textBox1.TabIndex = 5;
-            // 
-            // tbKeyId
-            // 
-            this.tbKeyId.Enabled = false;
-            this.tbKeyId.Location = new System.Drawing.Point(189, 107);
-            this.tbKeyId.Name = "tbKeyId";
-            this.tbKeyId.Size = new System.Drawing.Size(197, 25);
-            this.tbKeyId.TabIndex = 5;
             // 
             // NxdnScramblerEncryptionMethodForm
             // 

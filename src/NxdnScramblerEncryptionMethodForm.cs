@@ -29,10 +29,11 @@ namespace CFT
                     tbRAN.Text = row.ActivateOptions.RAN.ToString();
                 if (cbGroupID.Checked)
                     tbGroupID.Text = row.ActivateOptions.GroupID.ToString();
+                if (cbKeyId.Checked)
+                    tbKeyId.Text = row.ActivateOptions.KeyId.ToString();
                 nudKey.Value = row.Key;
                 tbNotes.Text = row.Notes;
             }
-            tbKeyId.Text = nudKey.Value.ToString();
             cb_CheckedChanged(this, null);
         }
 
@@ -41,6 +42,7 @@ namespace CFT
             string errorStr;
             byte ran = 0;
             ushort groupID = 0;
+            byte keyId = 0;
 
             if (!Utils.ParseFrequency(tbFrequency.Text, out uint freq, out errorStr))
             {
@@ -70,6 +72,20 @@ namespace CFT
                 return;
             }
 
+            if (cbKeyId.Checked && !byte.TryParse(tbKeyId.Text.Trim(), System.Globalization.NumberStyles.Number, null, out keyId))
+            {
+                tbKeyId.Focus();
+                MessageBox.Show("Wrong Key ID value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (keyId > 63)
+            {
+                tbKeyId.Focus();
+                MessageBox.Show("Key Id value must be less 64!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             EncryptionRow.ActivateOptions.Options = 0;
             if (cbGroupID.Checked)
                 EncryptionRow.ActivateOptions.Options |= NxdnSelectedActivateOptionsEnum.GroupID;
@@ -81,6 +97,7 @@ namespace CFT
             EncryptionRow.Frequency = freq;
             EncryptionRow.ActivateOptions.RAN = ran;
             EncryptionRow.ActivateOptions.GroupID = groupID;
+            EncryptionRow.ActivateOptions.KeyId = keyId;
             EncryptionRow.Key = (ushort)nudKey.Value;
             EncryptionRow.Notes = tbNotes.Text.Trim();
 
@@ -91,12 +108,8 @@ namespace CFT
         private void cb_CheckedChanged(object sender, EventArgs e)
         {
             tbRAN.Enabled = cbRAN.Checked;
-            tbGroupID.Enabled = cbGroupID.Checked;  
-        }
-
-        private void nudKey_ValueChanged(object sender, EventArgs e)
-        {
-            tbKeyId.Text = nudKey.Value.ToString();
+            tbGroupID.Enabled = cbGroupID.Checked;
+            tbKeyId.Enabled = cbKeyId.Checked;
         }
     }
 }

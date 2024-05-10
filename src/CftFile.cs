@@ -91,10 +91,10 @@ namespace CFT
                     {
                         var item = row as NxdnScramblerEncryptionRow;
                         bw.Write(Swap((uint)item.ActivateOptions.Options));
-                        bw.Write((byte)0);
+                        bw.Write(item.ActivateOptions.KeyId);
                         bw.Write((byte)0);
                         bw.Write(Swap(UInt32ToFreq(row.Frequency)));
-                        bw.Write((byte)item.ActivateOptions.RAN);
+                        bw.Write(item.ActivateOptions.RAN);
                         bw.Write(Swap(item.ActivateOptions.GroupID));
                         bw.Write((ushort)0); // remaining part tgid
                         bw.Write((byte)0);

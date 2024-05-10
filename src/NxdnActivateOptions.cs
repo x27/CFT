@@ -7,8 +7,9 @@ namespace CFT
     public class NxdnActivateOptions : IActivateOptions
     {
         public NxdnSelectedActivateOptionsEnum Options { get; set; }
-        public ushort RAN { get; set; }
+        public byte RAN { get; set; }
         public ushort GroupID { get; set; }
+        public byte KeyId { get; set; }
 
         public bool IsActivated(NxdnSelectedActivateOptionsEnum option)
         {
@@ -28,7 +29,7 @@ namespace CFT
             if (IsActivated(NxdnSelectedActivateOptionsEnum.GroupID))
                 sb.Append($"GroupID({GroupID}) ");
             if (IsActivated(NxdnSelectedActivateOptionsEnum.KeyId))
-                sb.Append($"KeyId ");
+                sb.Append($"KeyId({KeyId}) ");
             return sb.ToString();
         }
 
