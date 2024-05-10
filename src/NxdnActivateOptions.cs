@@ -27,6 +27,8 @@ namespace CFT
                 sb.Append($"RAN({RAN}) ");
             if (IsActivated(NxdnSelectedActivateOptionsEnum.GroupID))
                 sb.Append($"GroupID({GroupID}) ");
+            if (IsActivated(NxdnSelectedActivateOptionsEnum.KeyId))
+                sb.Append($"KeyId ");
             return sb.ToString();
         }
 

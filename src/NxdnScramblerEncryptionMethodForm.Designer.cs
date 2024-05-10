@@ -41,6 +41,9 @@
             this.tbGroupID = new System.Windows.Forms.TextBox();
             this.tbRAN = new System.Windows.Forms.TextBox();
             this.cbRAN = new System.Windows.Forms.CheckBox();
+            this.cbKeyId = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbKeyId = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudKey)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -91,11 +94,14 @@
             0,
             0,
             0});
+            this.nudKey.ValueChanged += new System.EventHandler(this.nudKey_ValueChanged);
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 197);
+            this.label3.Location = new System.Drawing.Point(26, 238);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 17);
             this.label3.TabIndex = 6;
@@ -103,15 +109,19 @@
             // 
             // tbNotes
             // 
-            this.tbNotes.Location = new System.Drawing.Point(29, 218);
+            this.tbNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbNotes.Location = new System.Drawing.Point(29, 259);
             this.tbNotes.Name = "tbNotes";
             this.tbNotes.Size = new System.Drawing.Size(406, 25);
             this.tbNotes.TabIndex = 3;
             // 
             // btnClose
             // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(29, 262);
+            this.btnClose.Location = new System.Drawing.Point(29, 303);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(126, 30);
             this.btnClose.TabIndex = 4;
@@ -120,7 +130,9 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(309, 262);
+            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOK.Location = new System.Drawing.Point(309, 303);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(126, 30);
             this.btnOK.TabIndex = 0;
@@ -130,13 +142,16 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.tbKeyId);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.cbKeyId);
             this.groupBox1.Controls.Add(this.cbGroupID);
             this.groupBox1.Controls.Add(this.tbGroupID);
             this.groupBox1.Controls.Add(this.tbRAN);
             this.groupBox1.Controls.Add(this.cbRAN);
             this.groupBox1.Location = new System.Drawing.Point(29, 72);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(406, 116);
+            this.groupBox1.Size = new System.Drawing.Size(406, 153);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "NXDN Activate Options";
@@ -177,12 +192,37 @@
             this.cbRAN.UseVisualStyleBackColor = true;
             this.cbRAN.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
             // 
+            // cbKeyId
+            // 
+            this.cbKeyId.AutoSize = true;
+            this.cbKeyId.Location = new System.Drawing.Point(19, 109);
+            this.cbKeyId.Name = "cbKeyId";
+            this.cbKeyId.Size = new System.Drawing.Size(64, 21);
+            this.cbKeyId.TabIndex = 4;
+            this.cbKeyId.Text = "Key ID";
+            this.cbKeyId.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(189, 107);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(197, 25);
+            this.textBox1.TabIndex = 5;
+            // 
+            // tbKeyId
+            // 
+            this.tbKeyId.Enabled = false;
+            this.tbKeyId.Location = new System.Drawing.Point(189, 107);
+            this.tbKeyId.Name = "tbKeyId";
+            this.tbKeyId.Size = new System.Drawing.Size(197, 25);
+            this.tbKeyId.TabIndex = 5;
+            // 
             // NxdnScramblerEncryptionMethodForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(468, 314);
+            this.ClientSize = new System.Drawing.Size(468, 355);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnClose);
@@ -224,5 +264,8 @@
         private System.Windows.Forms.TextBox tbGroupID;
         private System.Windows.Forms.TextBox tbRAN;
         private System.Windows.Forms.CheckBox cbRAN;
+        private System.Windows.Forms.TextBox tbKeyId;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox cbKeyId;
     }
 }

@@ -23,6 +23,8 @@ namespace CFT
                 tbFrequency.Text = Utils.GetFrequencyString(row.Frequency);
                 cbRAN.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.RAN);
                 cbGroupID.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.GroupID);
+                cbKeyId.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.KeyId);
+
                 if (cbRAN.Checked) 
                     tbRAN.Text = row.ActivateOptions.RAN.ToString();
                 if (cbGroupID.Checked)
@@ -30,6 +32,7 @@ namespace CFT
                 nudKey.Value = row.Key;
                 tbNotes.Text = row.Notes;
             }
+            tbKeyId.Text = nudKey.Value.ToString();
             cb_CheckedChanged(this, null);
         }
 
@@ -72,6 +75,8 @@ namespace CFT
                 EncryptionRow.ActivateOptions.Options |= NxdnSelectedActivateOptionsEnum.GroupID;
             if (cbRAN.Checked)
                 EncryptionRow.ActivateOptions.Options |= NxdnSelectedActivateOptionsEnum.RAN;
+            if (cbKeyId.Checked)
+                EncryptionRow.ActivateOptions.Options |= NxdnSelectedActivateOptionsEnum.KeyId;
 
             EncryptionRow.Frequency = freq;
             EncryptionRow.ActivateOptions.RAN = ran;
@@ -87,6 +92,11 @@ namespace CFT
         {
             tbRAN.Enabled = cbRAN.Checked;
             tbGroupID.Enabled = cbGroupID.Checked;  
+        }
+
+        private void nudKey_ValueChanged(object sender, EventArgs e)
+        {
+            tbKeyId.Text = nudKey.Value.ToString();
         }
     }
 }
