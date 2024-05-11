@@ -6,7 +6,7 @@
 
 The main purpose of CFT is to select the parameters of digital protocols that will activate the decryption of encrypted voice traffic. 
 
-Please read the instructions about [How To Get Started with CFT v1)](HOWTO.md).
+Please read the instructions about [How To Get Started with CFT v1](HOWTO.md).
 
 ### Prerequisites
 
