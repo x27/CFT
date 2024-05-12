@@ -13,6 +13,8 @@ namespace CFT
 
         public KeyMapping KeyMapping { get; set; }
 
+        public bool MuteEncryptedVoiceTraffic { get; set; }
+
         public Scanner()
         {
             Model = ScannerModelEnum.BCD436HP;

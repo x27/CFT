@@ -12,7 +12,7 @@ namespace CFT
         const int MAX_ITEMS = 1000;
         const int KEY_STORAGE_OFFSET = 0x10;
         const int AGLO_TABLE_OFFSET = 0x200;
-        const int ZIPKEY_OFFSET = 0x1FD;
+        const int ZIPKEY_OFFSET = 0x1FC;
 
         const int ENC_METHOD_STRUCT_SIZE = 54;
         private enum EncryptionMethodEnum
@@ -42,10 +42,12 @@ namespace CFT
                     bw.Write(scanner.Licensing.NxdnScramblerUnlockKey);
                 }
 
-                // KEY MAPPING
+                // KEY MAPPING && MUTE
                 if (scanner != null && scanner.KeyMapping != null)
                 {
                     bw.BaseStream.Position = ZIPKEY_OFFSET;
+
+                    bw.Write((byte)(scanner.MuteEncryptedVoiceTraffic?1:0));
                     bw.Write((byte)scanner.KeyMapping.Key3);
                     bw.Write((byte)scanner.KeyMapping.Key1);
                     bw.Write((byte)scanner.KeyMapping.Key2);
@@ -128,6 +130,8 @@ namespace CFT
                 var keyMapping = new KeyMapping();
                 var rows = new List<IEncryptionRow>();
 
+                var muteEncrypted = false;
+
                 using (BinaryReader br = new BinaryReader(new FileStream(filename, FileMode.Open, FileAccess.Read)))
                 {
                     var sig = br.ReadUInt32();
@@ -146,6 +150,7 @@ namespace CFT
                     Buffer.BlockCopy(bs, 0, licensing.NxdnScramblerUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
 
                     br.BaseStream.Position = ZIPKEY_OFFSET;
+                    muteEncrypted = br.ReadByte() == 1;
                     keyMapping.Key3 = (KeyMapFunctionEnum)br.ReadByte();
                     keyMapping.Key1 = (KeyMapFunctionEnum)br.ReadByte();
                     keyMapping.Key2 = (KeyMapFunctionEnum)br.ReadByte();
@@ -253,7 +258,8 @@ namespace CFT
                         new Scanner
                         {
                             KeyMapping = keyMapping,
-                            Licensing = licensing
+                            Licensing = licensing,
+                            MuteEncryptedVoiceTraffic = muteEncrypted
                         }
 
                     },

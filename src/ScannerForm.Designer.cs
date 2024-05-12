@@ -37,6 +37,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.cbMute = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,11 +97,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbMute);
             this.groupBox1.Controls.Add(this.btnKeyMappings);
             this.groupBox1.Controls.Add(this.btnLicenses);
             this.groupBox1.Location = new System.Drawing.Point(29, 112);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(293, 134);
+            this.groupBox1.Size = new System.Drawing.Size(293, 166);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
@@ -109,7 +111,7 @@
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(220, 261);
+            this.btnOk.Location = new System.Drawing.Point(220, 294);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(102, 32);
             this.btnOk.TabIndex = 8;
@@ -121,12 +123,22 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(28, 261);
+            this.btnCancel.Location = new System.Drawing.Point(28, 294);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(102, 32);
             this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // cbMute
+            // 
+            this.cbMute.AutoSize = true;
+            this.cbMute.Location = new System.Drawing.Point(19, 133);
+            this.cbMute.Name = "cbMute";
+            this.cbMute.Size = new System.Drawing.Size(193, 21);
+            this.cbMute.TabIndex = 6;
+            this.cbMute.Text = "Mute Encrypted Voice Traffic";
+            this.cbMute.UseVisualStyleBackColor = true;
             // 
             // ScannerForm
             // 
@@ -134,7 +146,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(354, 316);
+            this.ClientSize = new System.Drawing.Size(354, 349);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.groupBox1);
@@ -153,6 +165,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Scanner";
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,5 +182,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.CheckBox cbMute;
     }
 }

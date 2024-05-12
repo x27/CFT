@@ -17,7 +17,9 @@ namespace CFT
             Utils.FillComboBoxData(cbModel, typeof(ScannerModelEnum));
             if (!Utils.SetComboBoxData(cbModel, Scanner.Model))
                 cbModel.SelectedIndex = 0;
-            
+
+            cbMute.Checked = Scanner.MuteEncryptedVoiceTraffic;
+
             tbName.Text = Scanner.Name;
         }
 
@@ -26,6 +28,7 @@ namespace CFT
             Scanner.Model = (ScannerModelEnum)Utils.GetComboBoxData(cbModel.SelectedItem);
             Scanner.Name = tbName.Text.Trim();
             Scanner.KeyMapping = _keyMapping;
+            Scanner.MuteEncryptedVoiceTraffic = cbMute.Checked;
         }
 
         private void btnLicenses_Click(object sender, System.EventArgs e)
