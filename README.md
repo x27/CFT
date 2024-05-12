@@ -6,7 +6,7 @@
 
 The main purpose of CFT is to select the parameters of digital protocols that will activate the decryption of encrypted voice traffic. 
 
-Please read the instructions about [How To Get Started with CFT](HOWTO.md).
+Please read the instructions about [How To Get Started with CFT v1](HOWTO.md).
 
 ### Prerequisites
 
@@ -118,8 +118,8 @@ To receive the Paypal payment address, please first write to me an email and I w
 In your e-mail, please specify the serial number of the scanner and which license(s) you want to buy.
 
 
-Donations: 1020USDT (18)
-* Uniden SDS200 (8% of funds raised)
+Donations: 1120USDT (19)
+* Uniden SDS200 (16% of funds raised)
 * Uniden UBCD3600XLT (8% of funds raised)
 * Uniden SDS100 (purchased, 900USD)
 
