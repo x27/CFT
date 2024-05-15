@@ -23,14 +23,18 @@ namespace CFT
                 tbFrequency.Text = Utils.GetFrequencyString(row.Frequency);
                 cbRAN.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.RAN);
                 cbGroupID.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.GroupID);
-                cbKeyId.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.KeyId);
+                cbKeyId.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.KeyID);
+                cbSourceID.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.SourceID);
+                cbSilence.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.Silence);
 
                 if (cbRAN.Checked) 
                     tbRAN.Text = row.ActivateOptions.RAN.ToString();
                 if (cbGroupID.Checked)
                     tbGroupID.Text = row.ActivateOptions.GroupID.ToString();
                 if (cbKeyId.Checked)
-                    tbKeyId.Text = row.ActivateOptions.KeyId.ToString();
+                    tbKeyId.Text = row.ActivateOptions.KeyID.ToString();
+                if (cbSourceID.Checked)
+                    tbSourceID.Text = row.ActivateOptions.SourceID.ToString();
                 nudKey.Value = row.Key;
                 tbNotes.Text = row.Notes;
             }
@@ -42,7 +46,8 @@ namespace CFT
             string errorStr;
             byte ran = 0;
             ushort groupID = 0;
-            byte keyId = 0;
+            byte keyID = 0;
+            ushort sourceID = 0;
 
             if (!Utils.ParseFrequency(tbFrequency.Text, out uint freq, out errorStr))
             {
@@ -72,19 +77,27 @@ namespace CFT
                 return;
             }
 
-            if (cbKeyId.Checked && !byte.TryParse(tbKeyId.Text.Trim(), System.Globalization.NumberStyles.Number, null, out keyId))
+            if (cbKeyId.Checked && !byte.TryParse(tbKeyId.Text.Trim(), System.Globalization.NumberStyles.Number, null, out keyID))
             {
                 tbKeyId.Focus();
                 MessageBox.Show("Wrong Key ID value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (keyId > 63)
+            if (keyID > 63)
             {
                 tbKeyId.Focus();
                 MessageBox.Show("Key Id value must be less 64!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            if (cbSourceID.Checked && !ushort.TryParse(tbSourceID.Text.Trim(), System.Globalization.NumberStyles.Number, null, out sourceID))
+            {
+                tbSourceID.Focus();
+                MessageBox.Show("Wrong Source ID value!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
 
             EncryptionRow.ActivateOptions.Options = 0;
             if (cbGroupID.Checked)
@@ -92,12 +105,17 @@ namespace CFT
             if (cbRAN.Checked)
                 EncryptionRow.ActivateOptions.Options |= NxdnSelectedActivateOptionsEnum.RAN;
             if (cbKeyId.Checked)
-                EncryptionRow.ActivateOptions.Options |= NxdnSelectedActivateOptionsEnum.KeyId;
+                EncryptionRow.ActivateOptions.Options |= NxdnSelectedActivateOptionsEnum.KeyID;
+            if (cbSourceID.Checked)
+                EncryptionRow.ActivateOptions.Options |= NxdnSelectedActivateOptionsEnum.SourceID;
+            if (cbSilence.Checked)
+                EncryptionRow.ActivateOptions.Options |= NxdnSelectedActivateOptionsEnum.Silence;
 
             EncryptionRow.Frequency = freq;
             EncryptionRow.ActivateOptions.RAN = ran;
             EncryptionRow.ActivateOptions.GroupID = groupID;
-            EncryptionRow.ActivateOptions.KeyId = keyId;
+            EncryptionRow.ActivateOptions.SourceID = sourceID;
+            EncryptionRow.ActivateOptions.KeyID = keyID;
             EncryptionRow.Key = (ushort)nudKey.Value;
             EncryptionRow.Notes = tbNotes.Text.Trim();
 
@@ -110,6 +128,8 @@ namespace CFT
             tbRAN.Enabled = cbRAN.Checked;
             tbGroupID.Enabled = cbGroupID.Checked;
             tbKeyId.Enabled = cbKeyId.Checked;
+            tbSourceID.Enabled = cbSourceID.Checked;
+            nudKey.Enabled = !cbSilence.Checked;
         }
     }
 }

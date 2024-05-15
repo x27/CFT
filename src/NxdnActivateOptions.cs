@@ -9,7 +9,8 @@ namespace CFT
         public NxdnSelectedActivateOptionsEnum Options { get; set; }
         public byte RAN { get; set; }
         public ushort GroupID { get; set; }
-        public byte KeyId { get; set; }
+        public byte KeyID { get; set; }
+        public ushort SourceID { get; set; }
 
         public bool IsActivated(NxdnSelectedActivateOptionsEnum option)
         {
@@ -28,8 +29,12 @@ namespace CFT
                 sb.Append($"RAN({RAN}) ");
             if (IsActivated(NxdnSelectedActivateOptionsEnum.GroupID))
                 sb.Append($"GroupID({GroupID}) ");
-            if (IsActivated(NxdnSelectedActivateOptionsEnum.KeyId))
-                sb.Append($"KeyId({KeyId}) ");
+            if (IsActivated(NxdnSelectedActivateOptionsEnum.KeyID))
+                sb.Append($"KeyID({KeyID}) ");
+            if (IsActivated(NxdnSelectedActivateOptionsEnum.SourceID))
+                sb.Append($"SourceID({SourceID}) ");
+            if (IsActivated(NxdnSelectedActivateOptionsEnum.Silence))
+                sb.Append($"Silence");
             return sb.ToString();
         }
 

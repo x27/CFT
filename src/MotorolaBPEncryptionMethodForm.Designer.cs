@@ -87,13 +87,14 @@
             this.optionsControl.Location = new System.Drawing.Point(25, 70);
             this.optionsControl.Name = "optionsControl";
             this.optionsControl.Options = null;
-            this.optionsControl.Size = new System.Drawing.Size(419, 259);
+            this.optionsControl.Size = new System.Drawing.Size(419, 286);
             this.optionsControl.TabIndex = 1;
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 331);
+            this.label3.Location = new System.Drawing.Point(26, 351);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 17);
             this.label3.TabIndex = 6;
@@ -101,15 +102,17 @@
             // 
             // tbNotes
             // 
-            this.tbNotes.Location = new System.Drawing.Point(29, 352);
+            this.tbNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.tbNotes.Location = new System.Drawing.Point(29, 372);
             this.tbNotes.Name = "tbNotes";
             this.tbNotes.Size = new System.Drawing.Size(406, 25);
             this.tbNotes.TabIndex = 2;
             // 
             // btnClose
             // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(29, 396);
+            this.btnClose.Location = new System.Drawing.Point(29, 416);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(126, 30);
             this.btnClose.TabIndex = 3;
@@ -118,7 +121,8 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(309, 396);
+            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnOK.Location = new System.Drawing.Point(309, 416);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(126, 30);
             this.btnOK.TabIndex = 0;
@@ -131,7 +135,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(468, 444);
+            this.ClientSize = new System.Drawing.Size(468, 464);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.tbNotes);

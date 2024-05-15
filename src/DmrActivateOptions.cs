@@ -35,6 +35,8 @@ namespace CFT
                 sb.Append($"MFID({DisplayNameAttribute.GetName(MFID)}) ");
             if (IsActivated(DmrSelectedActivateOptionsEnum.ColorCode))
                 sb.Append($"CC({(int)ColorCode}) ");
+            if (IsActivated(DmrSelectedActivateOptionsEnum.Silence))
+                sb.Append($"Silence");
             return sb.ToString();
         }
     }

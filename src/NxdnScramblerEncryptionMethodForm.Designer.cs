@@ -37,6 +37,9 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbSilence = new System.Windows.Forms.CheckBox();
+            this.cbSourceID = new System.Windows.Forms.CheckBox();
+            this.tbSourceID = new System.Windows.Forms.TextBox();
             this.tbKeyId = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.cbKeyId = new System.Windows.Forms.CheckBox();
@@ -100,7 +103,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 238);
+            this.label3.Location = new System.Drawing.Point(26, 306);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 17);
             this.label3.TabIndex = 6;
@@ -110,7 +113,7 @@
             // 
             this.tbNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbNotes.Location = new System.Drawing.Point(29, 259);
+            this.tbNotes.Location = new System.Drawing.Point(29, 327);
             this.tbNotes.Name = "tbNotes";
             this.tbNotes.Size = new System.Drawing.Size(406, 25);
             this.tbNotes.TabIndex = 3;
@@ -120,7 +123,7 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(29, 303);
+            this.btnClose.Location = new System.Drawing.Point(29, 371);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(126, 30);
             this.btnClose.TabIndex = 4;
@@ -131,7 +134,7 @@
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(309, 303);
+            this.btnOK.Location = new System.Drawing.Point(309, 371);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(126, 30);
             this.btnOK.TabIndex = 0;
@@ -141,6 +144,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbSilence);
+            this.groupBox1.Controls.Add(this.cbSourceID);
+            this.groupBox1.Controls.Add(this.tbSourceID);
             this.groupBox1.Controls.Add(this.tbKeyId);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.cbKeyId);
@@ -150,10 +156,41 @@
             this.groupBox1.Controls.Add(this.cbRAN);
             this.groupBox1.Location = new System.Drawing.Point(29, 72);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(406, 153);
+            this.groupBox1.Size = new System.Drawing.Size(406, 220);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "NXDN Activate Options";
+            // 
+            // cbSilence
+            // 
+            this.cbSilence.AutoSize = true;
+            this.cbSilence.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbSilence.Location = new System.Drawing.Point(19, 184);
+            this.cbSilence.Name = "cbSilence";
+            this.cbSilence.Size = new System.Drawing.Size(68, 21);
+            this.cbSilence.TabIndex = 8;
+            this.cbSilence.Text = "Silence";
+            this.cbSilence.UseVisualStyleBackColor = true;
+            this.cbSilence.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
+            // 
+            // cbSourceID
+            // 
+            this.cbSourceID.AutoSize = true;
+            this.cbSourceID.Location = new System.Drawing.Point(19, 148);
+            this.cbSourceID.Name = "cbSourceID";
+            this.cbSourceID.Size = new System.Drawing.Size(83, 21);
+            this.cbSourceID.TabIndex = 7;
+            this.cbSourceID.Text = "Source ID";
+            this.cbSourceID.UseVisualStyleBackColor = true;
+            this.cbSourceID.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
+            // 
+            // tbSourceID
+            // 
+            this.tbSourceID.Enabled = false;
+            this.tbSourceID.Location = new System.Drawing.Point(189, 146);
+            this.tbSourceID.Name = "tbSourceID";
+            this.tbSourceID.Size = new System.Drawing.Size(197, 25);
+            this.tbSourceID.TabIndex = 6;
             // 
             // tbKeyId
             // 
@@ -222,7 +259,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(468, 355);
+            this.ClientSize = new System.Drawing.Size(468, 423);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnClose);
@@ -267,5 +304,8 @@
         private System.Windows.Forms.TextBox tbKeyId;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox cbKeyId;
+        private System.Windows.Forms.CheckBox cbSilence;
+        private System.Windows.Forms.CheckBox cbSourceID;
+        private System.Windows.Forms.TextBox tbSourceID;
     }
 }

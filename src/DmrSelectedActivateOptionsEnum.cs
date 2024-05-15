@@ -10,5 +10,7 @@
         TGID                = 1 << 4,
         TimeSlot            = 1 << 5,
         EncryptValue        = 1 << 6,
+
+        Silence             = 1 << 15
     }
 }

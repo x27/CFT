@@ -6,6 +6,9 @@
         RAN                 = 1 << 0,
         GroupID             = 1 << 1,
         Frequency           = 1 << 2,
-        KeyId               = 1 << 3,
+        KeyID               = 1 << 3,
+        SourceID              = 1 << 4,
+
+        Silence             = 1 << 15
     }
 }

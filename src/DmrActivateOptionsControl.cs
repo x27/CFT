@@ -51,6 +51,7 @@ namespace CFT
             cbTGID.Checked = Options.IsActivated(DmrSelectedActivateOptionsEnum.TGID);
             cbTimeSlot.Checked = Options.IsActivated(DmrSelectedActivateOptionsEnum.TimeSlot);
             cbEncryptionValue.Checked = Options.IsActivated(DmrSelectedActivateOptionsEnum.EncryptValue);
+            cbSilence.Checked = Options.IsActivated(DmrSelectedActivateOptionsEnum.Silence);
 
             if (!Utils.SetComboBoxData(cbbTrunkSystem, Options.TrunkSystem))
                 cbbTrunkSystem.SelectedIndex = 0;
@@ -86,6 +87,8 @@ namespace CFT
                 options |= (int)DmrSelectedActivateOptionsEnum.TimeSlot;
             if (cbEncryptionValue.Checked)
                 options |= (int)DmrSelectedActivateOptionsEnum.EncryptValue;
+            if (cbSilence.Checked)
+                options |= (int)DmrSelectedActivateOptionsEnum.Silence;
 
             Options.Options = (DmrSelectedActivateOptionsEnum)options;
 

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DmrActivateOptionsControl));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbSilence = new System.Windows.Forms.CheckBox();
             this.cbbEncryptionValue = new System.Windows.Forms.ComboBox();
             this.cbbTimeSlot = new System.Windows.Forms.ComboBox();
             this.tbTGID = new System.Windows.Forms.TextBox();
@@ -49,6 +50,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbSilence);
             this.groupBox1.Controls.Add(this.cbbEncryptionValue);
             this.groupBox1.Controls.Add(this.cbbTimeSlot);
             this.groupBox1.Controls.Add(this.tbTGID);
@@ -64,10 +66,22 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(407, 248);
+            this.groupBox1.Size = new System.Drawing.Size(407, 268);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DMR Activate Options";
+            // 
+            // cbSilence
+            // 
+            this.cbSilence.AutoSize = true;
+            this.cbSilence.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbSilence.Location = new System.Drawing.Point(31, 230);
+            this.cbSilence.Name = "cbSilence";
+            this.cbSilence.Size = new System.Drawing.Size(68, 21);
+            this.cbSilence.TabIndex = 18;
+            this.cbSilence.Text = "Silence";
+            this.cbSilence.UseVisualStyleBackColor = true;
+            this.cbSilence.CheckedChanged += new System.EventHandler(this.eventOptionChanged);
             // 
             // cbbEncryptionValue
             // 
@@ -199,7 +213,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Controls.Add(this.groupBox1);
             this.Name = "DmrActivateOptionsControl";
-            this.Size = new System.Drawing.Size(419, 259);
+            this.Size = new System.Drawing.Size(419, 277);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -222,5 +236,6 @@
         private System.Windows.Forms.ComboBox cbbTimeSlot;
         private System.Windows.Forms.CheckBox cbTimeSlot;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.CheckBox cbSilence;
     }
 }

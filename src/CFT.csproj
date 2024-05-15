@@ -91,6 +91,7 @@
       <DependentUpon>MotorolaBPEncryptionMethodForm.cs</DependentUpon>
     </Compile>
     <Compile Include="NxdnActivateOptions.cs" />
+    <Compile Include="NxdnCypherTypeEnum.cs" />
     <Compile Include="NxdnSelectedActivateOptionsEnum.cs" />
     <Compile Include="DmrSelectedActivateOptionsEnum.cs" />
     <Compile Include="DmrTimeSlotEnum.cs" />

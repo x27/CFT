@@ -93,12 +93,12 @@ namespace CFT
                     {
                         var item = row as NxdnScramblerEncryptionRow;
                         bw.Write(Swap((uint)item.ActivateOptions.Options));
-                        bw.Write(item.ActivateOptions.KeyId);
+                        bw.Write(item.ActivateOptions.KeyID);
                         bw.Write((byte)0);
                         bw.Write(Swap(UInt32ToFreq(row.Frequency)));
                         bw.Write(item.ActivateOptions.RAN);
                         bw.Write(Swap(item.ActivateOptions.GroupID));
-                        bw.Write((ushort)0); // remaining part tgid
+                        bw.Write(Swap(item.ActivateOptions.SourceID));
                         bw.Write((byte)0);
                         bw.Write((byte)0);
                         bw.Write((byte)EncryptionMethodEnum.NxdnScrambler);
@@ -215,12 +215,12 @@ namespace CFT
                                     var row = new NxdnScramblerEncryptionRow();
                                     row.ActivateOptions = new NxdnActivateOptions();
                                     row.ActivateOptions.Options = (NxdnSelectedActivateOptionsEnum)Swap(br.ReadUInt32());
-                                    row.ActivateOptions.KeyId = br.ReadByte();
+                                    row.ActivateOptions.KeyID = br.ReadByte();
                                     br.ReadByte();
                                     row.Frequency = FreqToUint32(Swap(br.ReadUInt32()));
                                     row.ActivateOptions.RAN = br.ReadByte();
                                     row.ActivateOptions.GroupID = Swap(br.ReadUInt16());
-                                    br.ReadUInt16();
+                                    row.ActivateOptions.SourceID = Swap(br.ReadUInt16());
                                     br.ReadByte();
                                     br.ReadByte();
                                     br.ReadByte();
