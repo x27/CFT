@@ -30,13 +30,21 @@ The last executable version for Windows you can download [HERE](https://github.c
     * 64 characters (256 bits) with OTA Encryption - confirmed
 * Motorola BP (Basic Privacy) key 1-255 - confirmed
 * Motorola BP (Basic Privacy) key 1-255 Mixed with Clear voice - confirmed
+* NXDN Scrambler - confirmed (test mode)
 
 ### Supported scanner models
+
+#### DMR
 
 * Uniden BCD436HP with [CF 1.99.11](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.11)
 * Uniden BCD536HP with [CF 1.99.11](https://github.com/x27/openscanner/releases/tag/BCD536HP_1.99.11)
 * Uniden SDS100 with [CF 1.99.11](https://github.com/x27/openscanner/releases/tag/SDS100_1.99.11)
-* Uniden UBCD3600XLT soon maybe
+
+#### NXDN
+
+* Uniden BCD436HP with [CF 1.99.14](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.14)
+* Uniden BCD536HP with [CF 1.99.14](https://github.com/x27/openscanner/releases/tag/BCD536HP_1.99.14)
+* Uniden SDS100 with [CF 1.99.14](https://github.com/x27/openscanner/releases/tag/SDS100_1.99.14)
 
 ### Supported scanner modes
 
@@ -48,6 +56,8 @@ The last executable version for Windows you can download [HERE](https://github.c
 * Memory Scan as a Digital - confirmed
 
 ## Supported trunking modes
+
+### DMR
 
 * Conventional repeater (Hytera/Motorola) - confirmed
 * CAP+ - confirmed
@@ -117,10 +127,11 @@ To receive the Paypal payment address, please first write to me an email and I w
 
 In your e-mail, please specify the serial number of the scanner and which license(s) you want to buy.
 
+### Funds
 
-Donations: 1120USDT (19)
-* Uniden SDS200 (16% of funds raised)
-* Uniden UBCD3600XLT (8% of funds raised)
+Total: 1270USD (21)
+* Uniden SDS200 (18% of funds raised)
+* Uniden UBCD3600XLT (31% of funds raised)
 * Uniden SDS100 (purchased, 900USD)
 
 ### Support
