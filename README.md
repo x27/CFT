@@ -121,7 +121,7 @@ Big [How to buy the License(s) with Cryptocurrency](HOWTOCRYPTO.md) with images 
 
 #### Payment via Paypal (through an intermediary)
 
-Each license costs $40USD, a pair of licenses - $70USD. 
+Each license costs $40USD, a pair of licenses - $70USD.
 
 To receive the Paypal payment address, please first write to me an email and I will give it to you.
 
@@ -129,9 +129,9 @@ In your e-mail, please specify the serial number of the scanner and which licens
 
 ### Funds
 
-Total: 1270USD (21)
-* Uniden SDS200 (18% of funds raised)
-* Uniden UBCD3600XLT (31% of funds raised)
+Total: 1400USD (23)
+* Uniden SDS200 (21% of funds raised)
+* Uniden UBCD3600XLT (45% of funds raised)
 * Uniden SDS100 (purchased, 900USD)
 
 ### Support
