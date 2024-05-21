@@ -99,7 +99,10 @@ namespace CFT
 
         public static bool IsArrayEmpty(byte[] data)
         {
-            foreach(var b in data)
+            if (data == null)
+                return true;
+
+            foreach (var b in data)
                 if (b != 0)
                     return false;
             return true;
