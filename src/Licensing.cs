@@ -9,6 +9,7 @@ namespace CFT
 
         public byte[] HyteraBPUnlockKey { get; set; }
         public byte[] MotorolaBPUnlockKey { get; set; }
+        public byte[] MotorolaEPUnlockKey { get; set; }
         public byte[] NxdnScramblerUnlockKey { get; set; }
     }
 }

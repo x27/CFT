@@ -36,12 +36,14 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.tbNxdnScramblerUnlockKey = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.tbMotoEPUnlockKey = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 22);
+            this.label1.Location = new System.Drawing.Point(25, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(173, 17);
             this.label1.TabIndex = 0;
@@ -58,7 +60,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 117);
+            this.label2.Location = new System.Drawing.Point(25, 212);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(156, 17);
             this.label2.TabIndex = 2;
@@ -66,7 +68,7 @@
             // 
             // tbHyteraBPUnlockKey
             // 
-            this.tbHyteraBPUnlockKey.Location = new System.Drawing.Point(25, 137);
+            this.tbHyteraBPUnlockKey.Location = new System.Drawing.Point(25, 232);
             this.tbHyteraBPUnlockKey.Multiline = true;
             this.tbHyteraBPUnlockKey.Name = "tbHyteraBPUnlockKey";
             this.tbHyteraBPUnlockKey.Size = new System.Drawing.Size(489, 72);
@@ -76,7 +78,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(25, 325);
+            this.btnCancel.Location = new System.Drawing.Point(25, 422);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(102, 32);
             this.btnCancel.TabIndex = 4;
@@ -86,7 +88,7 @@
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(412, 325);
+            this.btnOk.Location = new System.Drawing.Point(412, 422);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(102, 32);
             this.btnOk.TabIndex = 5;
@@ -96,7 +98,7 @@
             // 
             // tbNxdnScramblerUnlockKey
             // 
-            this.tbNxdnScramblerUnlockKey.Location = new System.Drawing.Point(27, 232);
+            this.tbNxdnScramblerUnlockKey.Location = new System.Drawing.Point(25, 327);
             this.tbNxdnScramblerUnlockKey.Multiline = true;
             this.tbNxdnScramblerUnlockKey.Name = "tbNxdnScramblerUnlockKey";
             this.tbNxdnScramblerUnlockKey.Size = new System.Drawing.Size(489, 72);
@@ -105,18 +107,37 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 212);
+            this.label3.Location = new System.Drawing.Point(25, 307);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(200, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "Unlock Key for NXDN Scrambler:";
+            // 
+            // tbMotoEPUnlockKey
+            // 
+            this.tbMotoEPUnlockKey.Location = new System.Drawing.Point(25, 137);
+            this.tbMotoEPUnlockKey.Multiline = true;
+            this.tbMotoEPUnlockKey.Name = "tbMotoEPUnlockKey";
+            this.tbMotoEPUnlockKey.Size = new System.Drawing.Size(489, 72);
+            this.tbMotoEPUnlockKey.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(22, 117);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(173, 17);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Unlock Key for Motorola EP:";
             // 
             // LicensingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(540, 378);
+            this.ClientSize = new System.Drawing.Size(540, 475);
+            this.Controls.Add(this.tbMotoEPUnlockKey);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.tbNxdnScramblerUnlockKey);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnOk);
@@ -150,5 +171,7 @@
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.TextBox tbNxdnScramblerUnlockKey;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tbMotoEPUnlockKey;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -241,6 +241,18 @@ namespace CFT
             }
         }
 
+        private void miMotorolaEPEncryptionMethod_Click(object sender, EventArgs e)
+        {
+            var frm = new MotorolaEPEncryptionMethodForm(null);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                _project.EcryptionRows.Add(frm.EncryptionRow);
+                UpdateListViewItems();
+                ListViewNoSort();
+                ControlsUpdate();
+            }
+        }
+
         private void miHyteraBPEncryptionMethod_Click(object sender, EventArgs e)
         {
             var frm = new HyteraBPEncryptionMethodForm(null);
@@ -275,6 +287,17 @@ namespace CFT
             if (row is MotorolaBPEncryptionRow)
             {
                 var frm = new MotorolaBPEncryptionMethodForm(row as MotorolaBPEncryptionRow);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    _project.EcryptionRows.Add(frm.EncryptionRow);
+                    UpdateListViewItems();
+                    ListViewNoSort();
+                    ControlsUpdate();
+                }
+            }
+            else if (row is MotorolaEPEncryptionRow)
+            {
+                var frm = new MotorolaEPEncryptionMethodForm(row as MotorolaEPEncryptionRow);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     _project.EcryptionRows.Add(frm.EncryptionRow);
@@ -569,7 +592,19 @@ namespace CFT
                     listView.Items[listView.SelectedIndices[0]] = item;
                     ControlsUpdate();
                 }
-            } 
+            }
+            else if (row is MotorolaEPEncryptionRow)
+            {
+                var frm = new MotorolaEPEncryptionMethodForm((MotorolaEPEncryptionRow)row);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var item = CreateListViewRow(filter, frm.EncryptionRow);
+                    item.Text = listView.SelectedItems[0].Text;
+                    item.Selected = true;
+                    listView.Items[listView.SelectedIndices[0]] = item;
+                    ControlsUpdate();
+                }
+            }
             else if (row is HyteraBPEncryptionRow)
             {
                 var frm = new HyteraBPEncryptionMethodForm((HyteraBPEncryptionRow)row);
@@ -732,6 +767,9 @@ namespace CFT
                             case 2:
                                 miNxdnScramblerMethod_Click(sender, e);
                                 break;
+                            case 3:
+                                miMotorolaEPEncryptionMethod_Click(sender, e);
+                                break;
                         }
                     }
                     break;
@@ -805,5 +843,6 @@ namespace CFT
             }
             return false;
         }
+
     }
 }

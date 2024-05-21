@@ -13,6 +13,7 @@ namespace CFT
             listBox.Items.Add("Motorola BP");
             listBox.Items.Add("Hytera BP");
             listBox.Items.Add("NXDN Scrambler");
+            listBox.Items.Add("Motorola EP");
             listBox.SelectedIndex = 0;
         }
 

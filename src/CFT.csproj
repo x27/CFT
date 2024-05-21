@@ -71,12 +71,19 @@
     <Compile Include="DmrColorCodeEnum.cs" />
     <Compile Include="DmrEncyptionValueEnum.cs" />
     <Compile Include="DmrMfidEnum.cs" />
+    <Compile Include="MotorolaEPEncryptionMethodForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MotorolaEPEncryptionMethodForm.Designer.cs">
+      <DependentUpon>MotorolaEPEncryptionMethodForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HyteraBPEncryptionMethodForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HyteraBPEncryptionMethodForm.Designer.cs">
       <DependentUpon>HyteraBPEncryptionMethodForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MotorolaEPEncryptionRow.cs" />
     <Compile Include="ListViewExtensions.cs" />
     <Compile Include="NxdnScramblerEncryptionMethodForm.cs">
       <SubType>Form</SubType>
@@ -157,6 +164,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DmrActivateOptionsControl.resx">
       <DependentUpon>DmrActivateOptionsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MotorolaEPEncryptionMethodForm.resx">
+      <DependentUpon>MotorolaEPEncryptionMethodForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="KeyMappingForm.resx">
       <DependentUpon>KeyMappingForm.cs</DependentUpon>

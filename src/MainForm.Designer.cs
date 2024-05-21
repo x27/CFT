@@ -43,7 +43,7 @@
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
             this.miEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.miAddEncryptionMethodRow = new System.Windows.Forms.ToolStripMenuItem();
-            this.motorolaBPEncryptionMethodToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miMotorolaBPEncryptionMethod = new System.Windows.Forms.ToolStripMenuItem();
             this.miHyteraBPEncryptionMethod = new System.Windows.Forms.ToolStripMenuItem();
             this.miNxdnScramblerMethod = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
@@ -54,6 +54,8 @@
             this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.mainStatus = new System.Windows.Forms.StatusStrip();
             this.lblStatusL = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblStatusM = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblStatusR = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainToolbar = new System.Windows.Forms.ToolStrip();
             this.tsbNewProject = new System.Windows.Forms.ToolStripButton();
             this.tsbOpenProject = new System.Windows.Forms.ToolStripButton();
@@ -73,8 +75,8 @@
             this.tslFilter = new System.Windows.Forms.ToolStripLabel();
             this.cbListViewFilter = new System.Windows.Forms.ToolStripComboBox();
             this.listView = new System.Windows.Forms.ListView();
-            this.lblStatusR = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lblStatusM = new System.Windows.Forms.ToolStripStatusLabel();
+            this.miMotorolaEPEncryptionMethod = new System.Windows.Forms.ToolStripMenuItem();
+            this.motorolaEPEnhancedPrivacyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.mainStatus.SuspendLayout();
             this.mainToolbar.SuspendLayout();
@@ -116,7 +118,7 @@
             this.miNewProject.Image = global::CFT.Properties.Resources._new;
             this.miNewProject.Name = "miNewProject";
             this.miNewProject.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.miNewProject.Size = new System.Drawing.Size(164, 22);
+            this.miNewProject.Size = new System.Drawing.Size(166, 22);
             this.miNewProject.Text = "New";
             this.miNewProject.Click += new System.EventHandler(this.miNewProject_Click);
             // 
@@ -125,59 +127,59 @@
             this.miOpenProject.Image = global::CFT.Properties.Resources.open;
             this.miOpenProject.Name = "miOpenProject";
             this.miOpenProject.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.miOpenProject.Size = new System.Drawing.Size(164, 22);
+            this.miOpenProject.Size = new System.Drawing.Size(166, 22);
             this.miOpenProject.Text = "Open ...";
             this.miOpenProject.Click += new System.EventHandler(this.miOpenProject_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(161, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(163, 6);
             // 
             // miSaveProject
             // 
             this.miSaveProject.Image = global::CFT.Properties.Resources.save;
             this.miSaveProject.Name = "miSaveProject";
             this.miSaveProject.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.miSaveProject.Size = new System.Drawing.Size(164, 22);
+            this.miSaveProject.Size = new System.Drawing.Size(166, 22);
             this.miSaveProject.Text = "Save";
             this.miSaveProject.Click += new System.EventHandler(this.miSaveProject_Click);
             // 
             // miSaveAsProject
             // 
             this.miSaveAsProject.Name = "miSaveAsProject";
-            this.miSaveAsProject.Size = new System.Drawing.Size(164, 22);
+            this.miSaveAsProject.Size = new System.Drawing.Size(166, 22);
             this.miSaveAsProject.Text = "Save as ...";
             this.miSaveAsProject.Click += new System.EventHandler(this.miSaveAsProject_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(161, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(163, 6);
             // 
             // miExportCFTFile
             // 
             this.miExportCFTFile.Name = "miExportCFTFile";
-            this.miExportCFTFile.Size = new System.Drawing.Size(164, 22);
+            this.miExportCFTFile.Size = new System.Drawing.Size(166, 22);
             this.miExportCFTFile.Text = "Export CFT file ...";
             this.miExportCFTFile.Click += new System.EventHandler(this.miExportCFTFile_Click);
             // 
             // miImportCFTFile
             // 
             this.miImportCFTFile.Name = "miImportCFTFile";
-            this.miImportCFTFile.Size = new System.Drawing.Size(164, 22);
+            this.miImportCFTFile.Size = new System.Drawing.Size(166, 22);
             this.miImportCFTFile.Text = "Import CFT file ...";
             this.miImportCFTFile.Click += new System.EventHandler(this.miImportCFTFile_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(161, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(163, 6);
             // 
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(164, 22);
+            this.miExit.Size = new System.Drawing.Size(166, 22);
             this.miExit.Text = "Exit";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
@@ -194,44 +196,45 @@
             // miAddEncryptionMethodRow
             // 
             this.miAddEncryptionMethodRow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.motorolaBPEncryptionMethodToolStripMenuItem,
+            this.miMotorolaBPEncryptionMethod,
+            this.miMotorolaEPEncryptionMethod,
             this.miHyteraBPEncryptionMethod,
             this.miNxdnScramblerMethod});
             this.miAddEncryptionMethodRow.Name = "miAddEncryptionMethodRow";
-            this.miAddEncryptionMethodRow.Size = new System.Drawing.Size(239, 22);
+            this.miAddEncryptionMethodRow.Size = new System.Drawing.Size(243, 22);
             this.miAddEncryptionMethodRow.Text = "Add Encryption Row";
             // 
-            // motorolaBPEncryptionMethodToolStripMenuItem
+            // miMotorolaBPEncryptionMethod
             // 
-            this.motorolaBPEncryptionMethodToolStripMenuItem.Name = "motorolaBPEncryptionMethodToolStripMenuItem";
-            this.motorolaBPEncryptionMethodToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.motorolaBPEncryptionMethodToolStripMenuItem.Text = "Motorola BP (Basic Privacy) ...";
-            this.motorolaBPEncryptionMethodToolStripMenuItem.Click += new System.EventHandler(this.miMotorolaBPEncryptionMethod_Click);
+            this.miMotorolaBPEncryptionMethod.Name = "miMotorolaBPEncryptionMethod";
+            this.miMotorolaBPEncryptionMethod.Size = new System.Drawing.Size(255, 22);
+            this.miMotorolaBPEncryptionMethod.Text = "Motorola BP (Basic Privacy) ...";
+            this.miMotorolaBPEncryptionMethod.Click += new System.EventHandler(this.miMotorolaBPEncryptionMethod_Click);
             // 
             // miHyteraBPEncryptionMethod
             // 
             this.miHyteraBPEncryptionMethod.Name = "miHyteraBPEncryptionMethod";
-            this.miHyteraBPEncryptionMethod.Size = new System.Drawing.Size(231, 22);
+            this.miHyteraBPEncryptionMethod.Size = new System.Drawing.Size(255, 22);
             this.miHyteraBPEncryptionMethod.Text = "Hytera BP (Basic Privacy) ...";
             this.miHyteraBPEncryptionMethod.Click += new System.EventHandler(this.miHyteraBPEncryptionMethod_Click);
             // 
             // miNxdnScramblerMethod
             // 
             this.miNxdnScramblerMethod.Name = "miNxdnScramblerMethod";
-            this.miNxdnScramblerMethod.Size = new System.Drawing.Size(231, 22);
+            this.miNxdnScramblerMethod.Size = new System.Drawing.Size(255, 22);
             this.miNxdnScramblerMethod.Text = "NXDN Scrambler ...";
             this.miNxdnScramblerMethod.Click += new System.EventHandler(this.miNxdnScramblerMethod_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(236, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(240, 6);
             // 
             // miScanners
             // 
             this.miScanners.Name = "miScanners";
             this.miScanners.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.miScanners.Size = new System.Drawing.Size(239, 22);
+            this.miScanners.Size = new System.Drawing.Size(243, 22);
             this.miScanners.Text = "Scanners and Licenses ...";
             this.miScanners.Click += new System.EventHandler(this.miScanners_Click);
             // 
@@ -281,6 +284,17 @@
             // 
             this.lblStatusL.Name = "lblStatusL";
             this.lblStatusL.Size = new System.Drawing.Size(0, 17);
+            // 
+            // lblStatusM
+            // 
+            this.lblStatusM.Name = "lblStatusM";
+            this.lblStatusM.Size = new System.Drawing.Size(746, 17);
+            this.lblStatusM.Spring = true;
+            // 
+            // lblStatusR
+            // 
+            this.lblStatusR.Name = "lblStatusR";
+            this.lblStatusR.Size = new System.Drawing.Size(0, 17);
             // 
             // mainToolbar
             // 
@@ -345,6 +359,7 @@
             this.tsbAddEncryptionRow.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbAddEncryptionRow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.motorolaBPToolStripMenuItem,
+            this.motorolaEPEnhancedPrivacyToolStripMenuItem,
             this.hyteraBPBasicPrivacyToolStripMenuItem,
             this.nXDNScramblerToolStripMenuItem});
             this.tsbAddEncryptionRow.Image = global::CFT.Properties.Resources.add;
@@ -356,21 +371,21 @@
             // motorolaBPToolStripMenuItem
             // 
             this.motorolaBPToolStripMenuItem.Name = "motorolaBPToolStripMenuItem";
-            this.motorolaBPToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.motorolaBPToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
             this.motorolaBPToolStripMenuItem.Text = "Motorola BP (Basic Privacy) ...";
             this.motorolaBPToolStripMenuItem.Click += new System.EventHandler(this.miMotorolaBPEncryptionMethod_Click);
             // 
             // hyteraBPBasicPrivacyToolStripMenuItem
             // 
             this.hyteraBPBasicPrivacyToolStripMenuItem.Name = "hyteraBPBasicPrivacyToolStripMenuItem";
-            this.hyteraBPBasicPrivacyToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.hyteraBPBasicPrivacyToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
             this.hyteraBPBasicPrivacyToolStripMenuItem.Text = "Hytera BP (Basic Privacy) ...";
             this.hyteraBPBasicPrivacyToolStripMenuItem.Click += new System.EventHandler(this.miHyteraBPEncryptionMethod_Click);
             // 
             // nXDNScramblerToolStripMenuItem
             // 
             this.nXDNScramblerToolStripMenuItem.Name = "nXDNScramblerToolStripMenuItem";
-            this.nXDNScramblerToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.nXDNScramblerToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
             this.nXDNScramblerToolStripMenuItem.Text = "NXDN Scrambler ...";
             this.nXDNScramblerToolStripMenuItem.Click += new System.EventHandler(this.miNxdnScramblerMethod_Click);
             // 
@@ -464,16 +479,19 @@
             this.listView.Enter += new System.EventHandler(this.listView_Enter);
             this.listView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView_KeyDown);
             // 
-            // lblStatusR
+            // miMotorolaEPEncryptionMethod
             // 
-            this.lblStatusR.Name = "lblStatusR";
-            this.lblStatusR.Size = new System.Drawing.Size(0, 17);
+            this.miMotorolaEPEncryptionMethod.Name = "miMotorolaEPEncryptionMethod";
+            this.miMotorolaEPEncryptionMethod.Size = new System.Drawing.Size(255, 22);
+            this.miMotorolaEPEncryptionMethod.Text = "Motorola EP (Enhanced Privacy) ...";
+            this.miMotorolaEPEncryptionMethod.Click += new System.EventHandler(this.miMotorolaEPEncryptionMethod_Click);
             // 
-            // lblStatusM
+            // motorolaEPEnhancedPrivacyToolStripMenuItem
             // 
-            this.lblStatusM.Name = "lblStatusM";
-            this.lblStatusM.Size = new System.Drawing.Size(715, 17);
-            this.lblStatusM.Spring = true;
+            this.motorolaEPEnhancedPrivacyToolStripMenuItem.Name = "motorolaEPEnhancedPrivacyToolStripMenuItem";
+            this.motorolaEPEnhancedPrivacyToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.motorolaEPEnhancedPrivacyToolStripMenuItem.Text = "Motorola EP (Enhanced Privacy) ...";
+            this.motorolaEPEnhancedPrivacyToolStripMenuItem.Click += new System.EventHandler(this.miMotorolaEPEncryptionMethod_Click);
             // 
             // MainForm
             // 
@@ -539,7 +557,7 @@
         private System.Windows.Forms.ToolStripComboBox cbListViewFilter;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem miAddEncryptionMethodRow;
-        private System.Windows.Forms.ToolStripMenuItem motorolaBPEncryptionMethodToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem miMotorolaBPEncryptionMethod;
         private System.Windows.Forms.ToolStripMenuItem miHyteraBPEncryptionMethod;
         private System.Windows.Forms.ToolStripMenuItem miNxdnScramblerMethod;
         private System.Windows.Forms.ToolStripMenuItem miTools;
@@ -553,6 +571,8 @@
         private System.Windows.Forms.ToolStripMenuItem debugLogsFilteringToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel lblStatusM;
         private System.Windows.Forms.ToolStripStatusLabel lblStatusR;
+        private System.Windows.Forms.ToolStripMenuItem miMotorolaEPEncryptionMethod;
+        private System.Windows.Forms.ToolStripMenuItem motorolaEPEnhancedPrivacyToolStripMenuItem;
     }
 }
 
