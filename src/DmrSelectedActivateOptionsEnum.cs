@@ -10,7 +10,8 @@
         TGID                = 1 << 4,
         TimeSlot            = 1 << 5,
         EncryptValue        = 1 << 6,
+        KeyId               = 1 << 7,
 
-        Silence             = 1 << 15
+        Silence = 1 << 15
     }
 }

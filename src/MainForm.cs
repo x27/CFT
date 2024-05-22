@@ -181,7 +181,7 @@ namespace CFT
 
                 MessageBox.Show("File successfully exported.", "Info");
             }
-            catch 
+            catch (Exception ex)
             {
                 MessageBox.Show("Can't export file.", "Error");
             }

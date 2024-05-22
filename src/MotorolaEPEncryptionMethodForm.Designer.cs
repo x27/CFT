@@ -30,13 +30,17 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.tbFrequency = new System.Windows.Forms.TextBox();
-            this.optionsControl = new CFT.DmrActivateOptionsControl();
             this.label3 = new System.Windows.Forms.Label();
             this.tbNotes = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.tbKey = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbKeyID = new System.Windows.Forms.CheckBox();
+            this.tbKeyID = new System.Windows.Forms.TextBox();
+            this.optionsControl = new CFT.DmrActivateOptionsControl();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -55,19 +59,11 @@
             this.tbFrequency.Size = new System.Drawing.Size(138, 25);
             this.tbFrequency.TabIndex = 1;
             // 
-            // optionsControl
-            // 
-            this.optionsControl.Location = new System.Drawing.Point(29, 69);
-            this.optionsControl.Name = "optionsControl";
-            this.optionsControl.Options = null;
-            this.optionsControl.Size = new System.Drawing.Size(419, 283);
-            this.optionsControl.TabIndex = 4;
-            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 352);
+            this.label3.Location = new System.Drawing.Point(26, 449);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 17);
             this.label3.TabIndex = 6;
@@ -76,7 +72,7 @@
             // tbNotes
             // 
             this.tbNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.tbNotes.Location = new System.Drawing.Point(29, 373);
+            this.tbNotes.Location = new System.Drawing.Point(29, 470);
             this.tbNotes.Name = "tbNotes";
             this.tbNotes.Size = new System.Drawing.Size(406, 25);
             this.tbNotes.TabIndex = 5;
@@ -85,7 +81,7 @@
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(29, 417);
+            this.btnClose.Location = new System.Drawing.Point(29, 514);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(126, 30);
             this.btnClose.TabIndex = 6;
@@ -95,7 +91,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOK.Location = new System.Drawing.Point(309, 417);
+            this.btnOK.Location = new System.Drawing.Point(309, 514);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(126, 30);
             this.btnOK.TabIndex = 0;
@@ -120,12 +116,50 @@
             this.tbKey.Size = new System.Drawing.Size(262, 25);
             this.tbKey.TabIndex = 3;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tbKeyID);
+            this.groupBox1.Controls.Add(this.cbKeyID);
+            this.groupBox1.Location = new System.Drawing.Point(29, 350);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(410, 81);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "DMR Activate Options (Additional)";
+            // 
+            // cbKeyID
+            // 
+            this.cbKeyID.AutoSize = true;
+            this.cbKeyID.Location = new System.Drawing.Point(33, 34);
+            this.cbKeyID.Name = "cbKeyID";
+            this.cbKeyID.Size = new System.Drawing.Size(64, 21);
+            this.cbKeyID.TabIndex = 0;
+            this.cbKeyID.Text = "Key ID";
+            this.cbKeyID.UseVisualStyleBackColor = true;
+            this.cbKeyID.CheckedChanged += new System.EventHandler(this.cbKeyID_CheckedChanged);
+            // 
+            // tbKeyID
+            // 
+            this.tbKeyID.Location = new System.Drawing.Point(191, 32);
+            this.tbKeyID.Name = "tbKeyID";
+            this.tbKeyID.Size = new System.Drawing.Size(179, 25);
+            this.tbKeyID.TabIndex = 1;
+            // 
+            // optionsControl
+            // 
+            this.optionsControl.Location = new System.Drawing.Point(29, 69);
+            this.optionsControl.Name = "optionsControl";
+            this.optionsControl.Options = null;
+            this.optionsControl.Size = new System.Drawing.Size(419, 283);
+            this.optionsControl.TabIndex = 4;
+            // 
             // MotorolaEPEncryptionMethodForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(468, 466);
+            this.ClientSize = new System.Drawing.Size(468, 563);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.tbKey);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnOK);
@@ -136,6 +170,7 @@
             this.Controls.Add(this.tbFrequency);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -144,6 +179,8 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Motorola EP Encryption ";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,5 +197,8 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbKey;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox tbKeyID;
+        private System.Windows.Forms.CheckBox cbKeyID;
     }
 }

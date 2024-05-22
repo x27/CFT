@@ -24,6 +24,10 @@ namespace CFT
                 tbFrequency.Text = Utils.GetFrequencyString(row.Frequency);
                 optionsControl.SetOptions(row.ActivateOptions);
 
+                cbKeyID.Checked = row.ActivateOptions.IsActivated(DmrSelectedActivateOptionsEnum.KeyId);
+                if (cbKeyID.Checked)
+                    tbKeyID.Text = row.ActivateOptions.KeyId.ToString();
+
                 if (Utils.IsArrayEmpty(row.Key))
                     tbKey.Text = string.Empty;
                 else
@@ -31,6 +35,7 @@ namespace CFT
 
                 tbNotes.Text = row.Notes;
             }
+            cbKeyID_CheckedChanged(this, null);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -50,8 +55,20 @@ namespace CFT
                 return;
             }
 
-            EncryptionRow.Frequency = freq;
-            EncryptionRow.ActivateOptions = optionsControl.Options;
+            byte keyID = 0;
+            if (cbKeyID.Checked)
+            {
+                try
+                {
+                    keyID = byte.Parse(tbKeyID.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Wrong KeyID", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    tbKeyID.Focus();
+                    return;
+                }
+            }
 
             byte[] key;
             try
@@ -66,13 +83,30 @@ namespace CFT
             }
 
             Array.Clear(EncryptionRow.Key, 0, 5);
-            if (key.Length > 0 )
+            if (key.Length > 0)
                 Buffer.BlockCopy(key, 0, EncryptionRow.Key, 0, key.Length > MotorolaEPEncryptionRow.KEY_SIZE ? MotorolaEPEncryptionRow.KEY_SIZE : key.Length);
+
+            EncryptionRow.Frequency = freq;
+            EncryptionRow.ActivateOptions = optionsControl.Options;
+            if (cbKeyID.Checked)
+            {
+                EncryptionRow.ActivateOptions.Activate(DmrSelectedActivateOptionsEnum.KeyId);
+                EncryptionRow.ActivateOptions.KeyId = keyID;
+            }
+            else
+            {
+                EncryptionRow.ActivateOptions.Deactivate(DmrSelectedActivateOptionsEnum.KeyId);
+            }
 
             EncryptionRow.Notes = tbNotes.Text.Trim();
 
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void cbKeyID_CheckedChanged(object sender, EventArgs e)
+        {
+            tbKeyID.Enabled = cbKeyID.Checked;
         }
     }
 }

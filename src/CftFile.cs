@@ -90,7 +90,8 @@ namespace CFT
                         bw.Write((byte)EncryptionMethodEnum.MotorolaEP);
                         bw.Write((uint)0); // fake key length
                         bw.Write(item.Key); // key 5 byte
-                        bw.Write(new byte[27]); // key remaining part
+                        bw.Write(item.ActivateOptions.KeyId);
+                        bw.Write(new byte[26]); // key remaining part
                     }
                     else if (row is HyteraBPEncryptionRow)
                     {
@@ -226,7 +227,8 @@ namespace CFT
                                     br.ReadByte(); // skip enc method
                                     br.ReadUInt32(); // skip key len
                                     row.Key = br.ReadBytes(5);
-                                    br.ReadBytes(27); // key remaining part
+                                    row.ActivateOptions.KeyId = br.ReadByte();
+                                    br.ReadBytes(26); // key remaining part
                                     rows.Add(row);
                                     notesSkipList.Add(false);
                                     break;

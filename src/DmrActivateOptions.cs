@@ -14,6 +14,8 @@ namespace CFT
         public DmrTimeSlotEnum TimeSlot { get; set; }
         public DmrEncyptionValueEnum EncryptionValue { get; set; }
 
+        public byte KeyId { get; set; }
+
         public bool IsActivated(DmrSelectedActivateOptionsEnum option)
         {
             return (Options & option) == option;
@@ -21,7 +23,7 @@ namespace CFT
 
         public void Activate(DmrSelectedActivateOptionsEnum option)
         {
-            Options = option | option;
+            Options |= option;
         }
 
         public override string ToString()
@@ -35,9 +37,16 @@ namespace CFT
                 sb.Append($"MFID({DisplayNameAttribute.GetName(MFID)}) ");
             if (IsActivated(DmrSelectedActivateOptionsEnum.ColorCode))
                 sb.Append($"CC({(int)ColorCode}) ");
+            if (IsActivated(DmrSelectedActivateOptionsEnum.KeyId))
+                sb.Append($"KeyID({KeyId}) ");
             if (IsActivated(DmrSelectedActivateOptionsEnum.Silence))
                 sb.Append($"Silence");
             return sb.ToString();
+        }
+
+        internal void Deactivate(DmrSelectedActivateOptionsEnum option)
+        {
+            Options &= ~option;
         }
     }
 }
