@@ -127,8 +127,8 @@ In your e-mail, please specify the serial number of the scanner and which licens
 
 ### Funds
 
-Total: 1755USD (29)
-* Uniden SDS200 (48% of funds raised)
+Total: 1785USD (30)
+* Uniden SDS200 (51% of funds raised)
 * Uniden UBCD3600XLT (45% of funds raised)
 * Uniden SDS100 (purchased, 900USD)
 
