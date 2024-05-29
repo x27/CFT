@@ -60,7 +60,7 @@ The last executable version for Windows you can download [HERE](https://github.c
 * Conventional repeater (Hytera/Motorola) - confirmed
 * CAP+ - confirmed
 * Connect+ - no data
-* DMR Tier III - confirmed
+* DMR Tier III (Motorola CapMax/Hytera/other ETSI compatible) - confirmed
 
 ### About Encryption Key
 
