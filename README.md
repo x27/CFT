@@ -10,7 +10,9 @@ Please read the instructions about [How To Get Started with CFT v1](HOWTO.md).
 
 ### Prerequisites
 
-Requires an installed paid [DMR upgrade](https://info.uniden.com/twiki/bin/view/UnidenMan4/DigitalMobileRadioUpgrade) on the scanner.
+Requires an installed paid [DMR upgrade](https://info.uniden.com/twiki/bin/view/UnidenMan4/DigitalMobileRadioUpgrade) on the scanner for Motorola BP, Motorola EP or Hytera BP.
+
+Requires an installed paid [NXDN upgrade](https://info.uniden.com/twiki/bin/view/UnidenMan4/DigitalMobileRadioUpgrade) on the scanner for NXDN Scrambler.
 
 Requires an installed custom firmware at least version 1.99.08 on the scanner ([BCD436HP](https://github.com/x27/openscanner/tree/main/uniden/bcd436hp/fw/mod), [BCD536HP](https://github.com/x27/openscanner/tree/main/uniden/bcd536hp/fw/mod), [SDS100](https://github.com/x27/openscanner/tree/main/uniden/sds100/fw/mod)).
 
@@ -22,25 +24,21 @@ The last executable version for Windows you can download [HERE](https://github.c
 
 ### Supported decryption protocols
 
-* Hytera BP (Basic Privacy)
+* Hytera BP (Basic Privacy) CF v1.99.11 and above
     * 10 characters (40 bits) - confirmed
     * 10 characters (40 bits) with OTA Encryption - confirmed
     * 32 characters (128 bits) - confirmed
     * 64 characters (256 bits) - confirmed
     * 64 characters (256 bits) with OTA Encryption - confirmed
-* Motorola BP (Basic Privacy) key 1-255 - confirmed
-* Motorola BP (Basic Privacy) key 1-255 Mixed with Clear voice - confirmed
-* NXDN Scrambler - confirmed (test mode)
+* Motorola BP (Basic Privacy) CF v1.99.11 and above
+   * key 1-255 - confirmed
+   * key 1-255 Mixed with Clear voice - confirmed
+* Motorola EP (Enhanced Privacy) CF v1.99.16 (test) and above
+   * key 40 bit - confirmed
+* NXDN Scrambler, CF v1.99.14 (test) and above
+   * key 1-32766 - confirmed
 
 ### Supported scanner models
-
-#### DMR
-
-* Uniden BCD436HP with [CF 1.99.11](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.11)
-* Uniden BCD536HP with [CF 1.99.11](https://github.com/x27/openscanner/releases/tag/BCD536HP_1.99.11)
-* Uniden SDS100 with [CF 1.99.11](https://github.com/x27/openscanner/releases/tag/SDS100_1.99.11)
-
-#### NXDN
 
 * Uniden BCD436HP with [CF 1.99.14](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.14)
 * Uniden BCD536HP with [CF 1.99.14](https://github.com/x27/openscanner/releases/tag/BCD536HP_1.99.14)
@@ -91,8 +89,8 @@ Some Windows users are triggered by the built-in antivirus when working with the
 
 ### Demo Limitations
 
-* Session time limit - 2 minutes of decrypted voice of any protocols (then turn Off and On device, up to a total of 2 hours)
-* Key limit - 5 pcs
+* Session time limit - **2 minutes** of decrypted voice of any protocols (then turn Off and On device, up to a total of **2 hours**)
+* Key limit - **5 pcs**
 
 If you are not satisfied with the limitations of the demo mode, you can purchase unlock keys for the protocol you need. Each unlock key is unique per the Scanner's ESN.
 
