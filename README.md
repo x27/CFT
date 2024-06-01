@@ -125,6 +125,10 @@ To receive the Paypal payment address, please first write to me an email and I w
 
 In your e-mail, please specify the serial number of the scanner and which license(s) you want to buy.
 
+> [!CAUTION]
+> **Please do not include the shipping address when paying via Paypal as the license is a digital service.**
+
+
 ### Funds
 
 Total: 2235USD 
