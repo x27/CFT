@@ -40,9 +40,9 @@ The last executable version for Windows you can download [HERE](https://github.c
 
 ### Supported scanner models
 
-* Uniden BCD436HP with [CF 1.99.14](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.14)
-* Uniden BCD536HP with [CF 1.99.14](https://github.com/x27/openscanner/releases/tag/BCD536HP_1.99.14)
-* Uniden SDS100 with [CF 1.99.14](https://github.com/x27/openscanner/releases/tag/SDS100_1.99.14)
+* Uniden BCD436HP with [CF 1.99.17](https://github.com/x27/openscanner/releases/tag/v1.99.17)
+* Uniden BCD536HP with [CF 1.99.17](https://github.com/x27/openscanner/releases/tag/v1.99.17)
+* Uniden SDS100 with [CF 1.99.17](https://github.com/x27/openscanner/releases/tag/v1.99.17)
 
 ### Supported scanner modes
 
@@ -127,8 +127,8 @@ In your e-mail, please specify the serial number of the scanner and which licens
 
 ### Funds
 
-Total: 1785USD (30)
-* Uniden SDS200 (51% of funds raised)
+Total: 2235USD 
+* Uniden SDS200 (86% of funds raised)
 * Uniden UBCD3600XLT (45% of funds raised)
 * Uniden SDS100 (purchased, 900USD)
 
