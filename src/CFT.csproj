@@ -71,6 +71,15 @@
     <Compile Include="DmrColorCodeEnum.cs" />
     <Compile Include="DmrEncyptionValueEnum.cs" />
     <Compile Include="DmrMfidEnum.cs" />
+    <Compile Include="DsdImport.cs" />
+    <Compile Include="EncryptionMethodEnum.cs" />
+    <Compile Include="ImportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportForm.Designer.cs">
+      <DependentUpon>ImportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportItem.cs" />
     <Compile Include="MotorolaEPEncryptionMethodForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DmrActivateOptionsControl.resx">
       <DependentUpon>DmrActivateOptionsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportForm.resx">
+      <DependentUpon>ImportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MotorolaEPEncryptionMethodForm.resx">
       <DependentUpon>MotorolaEPEncryptionMethodForm.cs</DependentUpon>

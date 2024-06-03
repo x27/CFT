@@ -189,9 +189,6 @@ namespace CFT
 
         private void miImportCFTFile_Click(object sender, EventArgs e)
         {
-            if (!CheckFileChangedAndAskAboutSaving())
-                return;
-
             try
             {
                 OpenFileDialog dlg = new OpenFileDialog();
@@ -208,7 +205,6 @@ namespace CFT
             {
                 MessageBox.Show(ex.Message + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void miExit_Click(object sender, EventArgs e)
@@ -792,15 +788,6 @@ namespace CFT
                 if (files == null || files.Length != 1)
                     return;
 
-                if (!CheckFileChangedAndAskAboutSaving())
-                    return;
-
-                if (_project != null && _project.Path == files[0])
-                {
-                    ControlsUpdate();
-                    return;
-                }
-
                 if (!ProcessCftpFile(files[0]))
                     return;
 
@@ -821,7 +808,15 @@ namespace CFT
             switch(ext)
             {
                 case ".cft":
-                    _project = CFTFile.Import(filename);
+                    var project = CFTFile.Import(filename);
+                    if (_project == null)
+                        _project = project;
+                    else
+                    {
+                        foreach(var row in project.EcryptionRows)
+                            _project.EcryptionRows.Add(row);
+                    }
+
                     FillScannerSelector();
                     UpdateListViewItems();
                     ControlsUpdate();
@@ -844,5 +839,49 @@ namespace CFT
             return false;
         }
 
+        private void dSDFrequencyCSVFIleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Filter = "DSD Frequency File (*.csv)|*.csv|All Files|*.*";
+                dlg.Multiselect = false;
+                dlg.RestoreDirectory = true;
+                if (dlg.ShowDialog() != DialogResult.OK)
+                    return;
+
+                var items = DsdImport.Import(dlg.FileName);
+
+                if (items == null || items.Count ==0)
+                {
+                    MessageBox.Show("No data rows for Export", "Export Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                var frm = new ImportForm(items);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    if (_project == null)
+                        cmdNew();
+
+                    foreach(var item in frm.ImportItems)
+                    {
+                        var row = Utils.DeepClone(item.EncryptionRow);
+                        row.Frequency = item.Frequency;
+                        row.Notes = item.Notes;
+                        _project.EcryptionRows.Add(row);
+                    }
+
+                    FillScannerSelector();
+                    UpdateListViewItems();
+                    ControlsUpdate();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }

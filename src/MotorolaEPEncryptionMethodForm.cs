@@ -6,22 +6,33 @@ namespace CFT
     public partial class MotorolaEPEncryptionMethodForm : Form
     {
         public MotorolaEPEncryptionRow EncryptionRow { get; private set; }
+        public bool IsBatchMode { get; private set; }
 
-        public MotorolaEPEncryptionMethodForm(MotorolaEPEncryptionRow row = null)
+        public MotorolaEPEncryptionMethodForm(MotorolaEPEncryptionRow row = null, bool batchMode = false)
         {
             InitializeComponent();
+
+            IsBatchMode = batchMode;
+            if (IsBatchMode)
+            {
+                Text += " (Batch mode)";
+                tbFrequency.Enabled = false;
+                tbNotes.Enabled = false;
+            }
 
             if (row == null)
             {
                 EncryptionRow = new MotorolaEPEncryptionRow();
                 EncryptionRow.Key = new byte[MotorolaEPEncryptionRow.KEY_SIZE];
-                tbFrequency.Text = Utils.GetFrequencyString(145500000);
+                if (!IsBatchMode)
+                    tbFrequency.Text = Utils.GetFrequencyString(145500000);
                 optionsControl.SetOptions(null);
             }
             else
             {
                 EncryptionRow = row;
-                tbFrequency.Text = Utils.GetFrequencyString(row.Frequency);
+                if (!IsBatchMode)
+                    tbFrequency.Text = Utils.GetFrequencyString(row.Frequency);
                 optionsControl.SetOptions(row.ActivateOptions);
 
                 cbKeyID.Checked = row.ActivateOptions.IsActivated(DmrSelectedActivateOptionsEnum.KeyId);
@@ -48,7 +59,8 @@ namespace CFT
                 return;
             }
 
-            if (!Utils.ParseFrequency(tbFrequency.Text, out uint freq, out errorStr))
+            uint freq = 0;
+            if (!IsBatchMode && !Utils.ParseFrequency(tbFrequency.Text, out freq, out errorStr))
             {
                 tbFrequency.Focus();
                 MessageBox.Show(errorStr, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);

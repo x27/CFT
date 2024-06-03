@@ -6,10 +6,19 @@ namespace CFT
     public partial class HyteraBPEncryptionMethodForm : Form
     {
         public HyteraBPEncryptionRow EncryptionRow { get; private set; }
+        public bool IsBatchMode { get; private set; }
 
-        public HyteraBPEncryptionMethodForm(HyteraBPEncryptionRow row = null)
+        public HyteraBPEncryptionMethodForm(HyteraBPEncryptionRow row = null, bool batchMode = false)
         {
             InitializeComponent();
+
+            IsBatchMode = batchMode;
+            if (IsBatchMode)
+            {
+                Text += " (Batch mode)";
+                tbFrequency.Enabled = false;
+                tbNotes.Enabled = false;
+            }
 
             Utils.FillComboBoxData(cbKeyLength, typeof(HyteraKeyLengthEnum));
             cbKeyLength.SelectedIndex = 0;
@@ -18,13 +27,15 @@ namespace CFT
             {
                 EncryptionRow = new HyteraBPEncryptionRow();
                 EncryptionRow.Key = new byte[HyteraBPEncryptionRow.KEY_SIZE];
-                tbFrequency.Text = Utils.GetFrequencyString(145500000);
+                if (!IsBatchMode)
+                    tbFrequency.Text = Utils.GetFrequencyString(145500000);
                 optionsControl.SetOptions(null);
             }
             else
             {
                 EncryptionRow = row;
-                tbFrequency.Text = Utils.GetFrequencyString(row.Frequency);
+                if (!IsBatchMode)
+                    tbFrequency.Text = Utils.GetFrequencyString(row.Frequency);
                 optionsControl.SetOptions(row.ActivateOptions);
 
                 if (!Utils.SetComboBoxData(cbKeyLength, row.KeyLength))
@@ -49,7 +60,8 @@ namespace CFT
                 return;
             }
 
-            if (!Utils.ParseFrequency(tbFrequency.Text, out uint freq, out errorStr))
+            uint freq = 0;
+            if (!IsBatchMode && !Utils.ParseFrequency(tbFrequency.Text, out freq, out errorStr))
             {
                 tbFrequency.Focus();
                 MessageBox.Show(errorStr, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);

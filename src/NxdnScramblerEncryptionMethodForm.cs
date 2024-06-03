@@ -6,21 +6,32 @@ namespace CFT
     public partial class NxdnScramblerEncryptionMethodForm : Form
     {
         public NxdnScramblerEncryptionRow EncryptionRow { get; private set; }
+        public bool IsBatchMode { get; private set; }
 
-        public NxdnScramblerEncryptionMethodForm(NxdnScramblerEncryptionRow row = null)
+        public NxdnScramblerEncryptionMethodForm(NxdnScramblerEncryptionRow row = null, bool batchMode = false)
         {
             InitializeComponent();
+
+            IsBatchMode = batchMode;
+            if (IsBatchMode)
+            {
+                Text += " (Batch mode)";
+                tbFrequency.Enabled = false;
+                tbNotes.Enabled = false;
+            }
 
             if (row == null)
             {
                 EncryptionRow = new NxdnScramblerEncryptionRow();
                 EncryptionRow.ActivateOptions = new NxdnActivateOptions();
-                tbFrequency.Text = Utils.GetFrequencyString(145500000);
+                if (!IsBatchMode)
+                    tbFrequency.Text = Utils.GetFrequencyString(145500000);
             }
             else
             {
                 EncryptionRow = row;
-                tbFrequency.Text = Utils.GetFrequencyString(row.Frequency);
+                if (!IsBatchMode)
+                    tbFrequency.Text = Utils.GetFrequencyString(row.Frequency);
                 cbRAN.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.RAN);
                 cbGroupID.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.GroupID);
                 cbKeyId.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.KeyID);
@@ -49,7 +60,8 @@ namespace CFT
             byte keyID = 0;
             ushort sourceID = 0;
 
-            if (!Utils.ParseFrequency(tbFrequency.Text, out uint freq, out errorStr))
+            uint freq = 0;
+            if (!IsBatchMode && !Utils.ParseFrequency(tbFrequency.Text, out freq, out errorStr))
             {
                 tbFrequency.Focus();
                 MessageBox.Show(errorStr, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);

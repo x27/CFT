@@ -7,20 +7,32 @@ namespace CFT
     {
         public MotorolaBPEncryptionRow EncryptionRow { get; private set; }
 
-        public MotorolaBPEncryptionMethodForm(MotorolaBPEncryptionRow row = null)
+        public bool IsBatchMode { get; private set; }
+
+        public MotorolaBPEncryptionMethodForm(MotorolaBPEncryptionRow row = null, bool batchMode = false)
         {
             InitializeComponent();
+
+            IsBatchMode = batchMode;
+            if (IsBatchMode)
+            {
+                Text += " (Batch mode)";
+                tbFrequency.Enabled = false;
+                tbNotes.Enabled = false;
+            }
 
             if (row == null)
             {
                 EncryptionRow = new MotorolaBPEncryptionRow();
-                tbFrequency.Text = Utils.GetFrequencyString(145500000);
+                if (!IsBatchMode)
+                    tbFrequency.Text = Utils.GetFrequencyString(145500000);
                 optionsControl.SetOptions(null);
             }
             else
             {
                 EncryptionRow = row;
-                tbFrequency.Text = Utils.GetFrequencyString(row.Frequency);
+                if (!IsBatchMode)
+                    tbFrequency.Text = Utils.GetFrequencyString(row.Frequency);
                 optionsControl.SetOptions(row.ActivateOptions);
                 nudKey.Value = row.Key;
                 tbNotes.Text = row.Notes;
@@ -37,7 +49,8 @@ namespace CFT
                 return;
             }
 
-            if (!Utils.ParseFrequency(tbFrequency.Text, out uint freq, out errorStr))
+            uint freq = 0;
+            if (!IsBatchMode && !Utils.ParseFrequency(tbFrequency.Text, out freq, out errorStr))
             {
                 tbFrequency.Focus();
                 MessageBox.Show(errorStr, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);

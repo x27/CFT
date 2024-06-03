@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace CFT
 {
@@ -10,10 +11,10 @@ namespace CFT
         {
             InitializeComponent();
 
-            listBox.Items.Add("Motorola BP");
-            listBox.Items.Add("Hytera BP");
-            listBox.Items.Add("NXDN Scrambler");
-            listBox.Items.Add("Motorola EP");
+            foreach(var item in Enum.GetValues(typeof(EncryptionMethodEnum)))
+            {
+                listBox.Items.Add(DisplayNameAttribute.GetName(item));
+            }
             listBox.SelectedIndex = 0;
         }
 
