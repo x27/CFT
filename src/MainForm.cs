@@ -734,14 +734,14 @@ namespace CFT
                     list.Add(row);
             }
             if (list.Count > 0)
-                Clipboard.SetText(JsonConvert.SerializeObject(list, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto }));
+                Clipboard.SetData("CFT", JsonConvert.SerializeObject(list, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto }));
         }
 
         private List<IEncryptionRow> GetEncryptionRowsFromClipboard() 
         {
             try
             {
-                return JsonConvert.DeserializeObject<List<IEncryptionRow>>(Clipboard.GetText(), new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+                return JsonConvert.DeserializeObject<List<IEncryptionRow>>(Clipboard.GetData("CFT").ToString(), new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
 
             }
             catch { }
