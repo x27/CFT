@@ -28,13 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.miFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.miNewProject = new System.Windows.Forms.ToolStripMenuItem();
+            this.miOpenProject = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.miSaveProject = new System.Windows.Forms.ToolStripMenuItem();
             this.miSaveAsProject = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.miExportCFTFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miImportCFTFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.dSDFrequencyCSVFIleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
             this.miEdit = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,19 +61,10 @@
             this.lblStatusM = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblStatusR = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainToolbar = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.tslScanner = new System.Windows.Forms.ToolStripLabel();
-            this.cbScanners = new System.Windows.Forms.ToolStripComboBox();
-            this.tslFilter = new System.Windows.Forms.ToolStripLabel();
-            this.cbListViewFilter = new System.Windows.Forms.ToolStripComboBox();
-            this.listView = new System.Windows.Forms.ListView();
-            this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dSDFrequencyCSVFIleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.miImportCFTFile = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbNewProject = new System.Windows.Forms.ToolStripButton();
             this.tsbOpenProject = new System.Windows.Forms.ToolStripButton();
             this.tsbSaveProject = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbAddEncryptionRow = new System.Windows.Forms.ToolStripDropDownButton();
             this.motorolaBPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.motorolaEPEnhancedPrivacyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,14 +72,32 @@
             this.nXDNScramblerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbDuplicateItem = new System.Windows.Forms.ToolStripButton();
             this.tsbDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbUp = new System.Windows.Forms.ToolStripButton();
             this.tsbDown = new System.Windows.Forms.ToolStripButton();
-            this.miNewProject = new System.Windows.Forms.ToolStripMenuItem();
-            this.miOpenProject = new System.Windows.Forms.ToolStripMenuItem();
-            this.miSaveProject = new System.Windows.Forms.ToolStripMenuItem();
+            this.tslScanner = new System.Windows.Forms.ToolStripLabel();
+            this.cbScanners = new System.Windows.Forms.ToolStripComboBox();
+            this.tslFilter = new System.Windows.Forms.ToolStripLabel();
+            this.cbListViewFilter = new System.Windows.Forms.ToolStripComboBox();
+            this.listView = new System.Windows.Forms.ListView();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.selectAllToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.mainMenu.SuspendLayout();
             this.mainStatus.SuspendLayout();
             this.mainToolbar.SuspendLayout();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -115,51 +131,109 @@
             this.miFile.Size = new System.Drawing.Size(37, 19);
             this.miFile.Text = "File";
             // 
+            // miNewProject
+            // 
+            this.miNewProject.Image = global::CFT.Properties.Resources._new;
+            this.miNewProject.Name = "miNewProject";
+            this.miNewProject.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.miNewProject.Size = new System.Drawing.Size(162, 22);
+            this.miNewProject.Text = "New";
+            this.miNewProject.Click += new System.EventHandler(this.miNewProject_Click);
+            // 
+            // miOpenProject
+            // 
+            this.miOpenProject.Image = global::CFT.Properties.Resources.open;
+            this.miOpenProject.Name = "miOpenProject";
+            this.miOpenProject.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.miOpenProject.Size = new System.Drawing.Size(162, 22);
+            this.miOpenProject.Text = "Open ...";
+            this.miOpenProject.Click += new System.EventHandler(this.miOpenProject_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(159, 6);
+            // 
+            // miSaveProject
+            // 
+            this.miSaveProject.Image = global::CFT.Properties.Resources.save;
+            this.miSaveProject.Name = "miSaveProject";
+            this.miSaveProject.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.miSaveProject.Size = new System.Drawing.Size(162, 22);
+            this.miSaveProject.Text = "Save";
+            this.miSaveProject.Click += new System.EventHandler(this.miSaveProject_Click);
             // 
             // miSaveAsProject
             // 
             this.miSaveAsProject.Name = "miSaveAsProject";
-            this.miSaveAsProject.Size = new System.Drawing.Size(180, 22);
+            this.miSaveAsProject.Size = new System.Drawing.Size(162, 22);
             this.miSaveAsProject.Text = "Save as ...";
             this.miSaveAsProject.Click += new System.EventHandler(this.miSaveAsProject_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(159, 6);
             // 
             // miExportCFTFile
             // 
             this.miExportCFTFile.Name = "miExportCFTFile";
-            this.miExportCFTFile.Size = new System.Drawing.Size(180, 22);
+            this.miExportCFTFile.Size = new System.Drawing.Size(162, 22);
             this.miExportCFTFile.Text = "Export CFT file ...";
             this.miExportCFTFile.Click += new System.EventHandler(this.miExportCFTFile_Click);
+            // 
+            // importToolStripMenuItem
+            // 
+            this.importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miImportCFTFile,
+            this.dSDFrequencyCSVFIleToolStripMenuItem});
+            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.importToolStripMenuItem.Text = "Import";
+            // 
+            // miImportCFTFile
+            // 
+            this.miImportCFTFile.Name = "miImportCFTFile";
+            this.miImportCFTFile.Size = new System.Drawing.Size(211, 22);
+            this.miImportCFTFile.Text = "CFT File ...";
+            this.miImportCFTFile.Click += new System.EventHandler(this.miImportCFTFile_Click);
+            // 
+            // dSDFrequencyCSVFIleToolStripMenuItem
+            // 
+            this.dSDFrequencyCSVFIleToolStripMenuItem.Name = "dSDFrequencyCSVFIleToolStripMenuItem";
+            this.dSDFrequencyCSVFIleToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.dSDFrequencyCSVFIleToolStripMenuItem.Text = "DSD Frequency CSV FIle ...";
+            this.dSDFrequencyCSVFIleToolStripMenuItem.Click += new System.EventHandler(this.dSDFrequencyCSVFIleToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(159, 6);
             // 
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(180, 22);
+            this.miExit.Size = new System.Drawing.Size(162, 22);
             this.miExit.Text = "Exit";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
             // miEdit
             // 
             this.miEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cutToolStripMenuItem1,
+            this.copyToolStripMenuItem1,
+            this.pasteToolStripMenuItem1,
+            this.deleteToolStripMenuItem1,
+            this.toolStripSeparator9,
+            this.selectAllToolStripMenuItem1,
+            this.toolStripSeparator8,
             this.miAddEncryptionMethodRow,
             this.toolStripSeparator6,
             this.miScanners});
             this.miEdit.Name = "miEdit";
             this.miEdit.Size = new System.Drawing.Size(39, 19);
             this.miEdit.Text = "Edit";
+            this.miEdit.DropDownOpening += new System.EventHandler(this.miEdit_DropDownOpening);
             // 
             // miAddEncryptionMethodRow
             // 
@@ -294,84 +368,6 @@
             this.mainToolbar.TabIndex = 2;
             this.mainToolbar.Text = "toolStrip1";
             // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tslScanner
-            // 
-            this.tslScanner.Name = "tslScanner";
-            this.tslScanner.Size = new System.Drawing.Size(52, 22);
-            this.tslScanner.Text = "Scanner:";
-            // 
-            // cbScanners
-            // 
-            this.cbScanners.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbScanners.Name = "cbScanners";
-            this.cbScanners.Size = new System.Drawing.Size(200, 25);
-            // 
-            // tslFilter
-            // 
-            this.tslFilter.Name = "tslFilter";
-            this.tslFilter.Size = new System.Drawing.Size(36, 22);
-            this.tslFilter.Text = "Filter:";
-            // 
-            // cbListViewFilter
-            // 
-            this.cbListViewFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbListViewFilter.Name = "cbListViewFilter";
-            this.cbListViewFilter.Size = new System.Drawing.Size(121, 25);
-            this.cbListViewFilter.SelectedIndexChanged += new System.EventHandler(this.cbListViewFilter_SelectedIndexChanged);
-            // 
-            // listView
-            // 
-            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView.FullRowSelect = true;
-            this.listView.HideSelection = false;
-            this.listView.Location = new System.Drawing.Point(0, 50);
-            this.listView.MultiSelect = false;
-            this.listView.Name = "listView";
-            this.listView.ShowGroups = false;
-            this.listView.ShowItemToolTips = true;
-            this.listView.Size = new System.Drawing.Size(761, 293);
-            this.listView.TabIndex = 3;
-            this.listView.UseCompatibleStateImageBehavior = false;
-            this.listView.View = System.Windows.Forms.View.Details;
-            this.listView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView_ColumnClick);
-            this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
-            this.listView.DoubleClick += new System.EventHandler(this.listView_DoubleClick);
-            this.listView.Enter += new System.EventHandler(this.listView_Enter);
-            this.listView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView_KeyDown);
-            // 
-            // importToolStripMenuItem
-            // 
-            this.importToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.miImportCFTFile,
-            this.dSDFrequencyCSVFIleToolStripMenuItem});
-            this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.importToolStripMenuItem.Text = "Import";
-            // 
-            // dSDFrequencyCSVFIleToolStripMenuItem
-            // 
-            this.dSDFrequencyCSVFIleToolStripMenuItem.Name = "dSDFrequencyCSVFIleToolStripMenuItem";
-            this.dSDFrequencyCSVFIleToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.dSDFrequencyCSVFIleToolStripMenuItem.Text = "DSD Frequency CSV FIle ...";
-            this.dSDFrequencyCSVFIleToolStripMenuItem.Click += new System.EventHandler(this.dSDFrequencyCSVFIleToolStripMenuItem_Click);
-            // 
-            // miImportCFTFile
-            // 
-            this.miImportCFTFile.Name = "miImportCFTFile";
-            this.miImportCFTFile.Size = new System.Drawing.Size(211, 22);
-            this.miImportCFTFile.Text = "CFT File ...";
-            this.miImportCFTFile.Click += new System.EventHandler(this.miImportCFTFile_Click);
-            // 
             // tsbNewProject
             // 
             this.tsbNewProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -401,6 +397,11 @@
             this.tsbSaveProject.Size = new System.Drawing.Size(23, 22);
             this.tsbSaveProject.Text = "Save Project";
             this.tsbSaveProject.Click += new System.EventHandler(this.miSaveProject_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbAddEncryptionRow
             // 
@@ -464,6 +465,11 @@
             this.tsbDeleteItem.Text = "Delete Row";
             this.tsbDeleteItem.Click += new System.EventHandler(this.tsbDeleteItem_Click);
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
             // tsbUp
             // 
             this.tsbUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -484,32 +490,158 @@
             this.tsbDown.Text = "Move Row Down";
             this.tsbDown.Click += new System.EventHandler(this.tsbDown_Click);
             // 
-            // miNewProject
+            // tslScanner
             // 
-            this.miNewProject.Image = global::CFT.Properties.Resources._new;
-            this.miNewProject.Name = "miNewProject";
-            this.miNewProject.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.miNewProject.Size = new System.Drawing.Size(180, 22);
-            this.miNewProject.Text = "New";
-            this.miNewProject.Click += new System.EventHandler(this.miNewProject_Click);
+            this.tslScanner.Name = "tslScanner";
+            this.tslScanner.Size = new System.Drawing.Size(52, 22);
+            this.tslScanner.Text = "Scanner:";
             // 
-            // miOpenProject
+            // cbScanners
             // 
-            this.miOpenProject.Image = global::CFT.Properties.Resources.open;
-            this.miOpenProject.Name = "miOpenProject";
-            this.miOpenProject.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.miOpenProject.Size = new System.Drawing.Size(180, 22);
-            this.miOpenProject.Text = "Open ...";
-            this.miOpenProject.Click += new System.EventHandler(this.miOpenProject_Click);
+            this.cbScanners.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbScanners.Name = "cbScanners";
+            this.cbScanners.Size = new System.Drawing.Size(200, 25);
             // 
-            // miSaveProject
+            // tslFilter
             // 
-            this.miSaveProject.Image = global::CFT.Properties.Resources.save;
-            this.miSaveProject.Name = "miSaveProject";
-            this.miSaveProject.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.miSaveProject.Size = new System.Drawing.Size(180, 22);
-            this.miSaveProject.Text = "Save";
-            this.miSaveProject.Click += new System.EventHandler(this.miSaveProject_Click);
+            this.tslFilter.Name = "tslFilter";
+            this.tslFilter.Size = new System.Drawing.Size(36, 22);
+            this.tslFilter.Text = "Filter:";
+            // 
+            // cbListViewFilter
+            // 
+            this.cbListViewFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbListViewFilter.Name = "cbListViewFilter";
+            this.cbListViewFilter.Size = new System.Drawing.Size(121, 25);
+            this.cbListViewFilter.SelectedIndexChanged += new System.EventHandler(this.cbListViewFilter_SelectedIndexChanged);
+            // 
+            // listView
+            // 
+            this.listView.ContextMenuStrip = this.contextMenuStrip;
+            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView.FullRowSelect = true;
+            this.listView.HideSelection = false;
+            this.listView.Location = new System.Drawing.Point(0, 50);
+            this.listView.Name = "listView";
+            this.listView.ShowGroups = false;
+            this.listView.ShowItemToolTips = true;
+            this.listView.Size = new System.Drawing.Size(761, 293);
+            this.listView.TabIndex = 3;
+            this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView_ColumnClick);
+            this.listView.SelectedIndexChanged += new System.EventHandler(this.listView_SelectedIndexChanged);
+            this.listView.DoubleClick += new System.EventHandler(this.listView_DoubleClick);
+            this.listView.Enter += new System.EventHandler(this.listView_Enter);
+            this.listView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listView_KeyDown);
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cutToolStripMenuItem,
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem,
+            this.deleteToolStripMenuItem,
+            this.toolStripSeparator7,
+            this.selectAllToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(181, 142);
+            this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Opening);
+            // 
+            // cutToolStripMenuItem
+            // 
+            this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
+            this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cutToolStripMenuItem.Text = "Cut";
+            this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem1_Click);
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem1_Click);
+            // 
+            // pasteToolStripMenuItem
+            // 
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pasteToolStripMenuItem.Text = "Paste";
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem1_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.tsbDeleteItem_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
+            // 
+            // selectAllToolStripMenuItem
+            // 
+            this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
+            this.selectAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selectAllToolStripMenuItem.Text = "Select All";
+            this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem1_Click);
+            // 
+            // cutToolStripMenuItem1
+            // 
+            this.cutToolStripMenuItem1.Name = "cutToolStripMenuItem1";
+            this.cutToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(239, 22);
+            this.cutToolStripMenuItem1.Text = "Cut";
+            this.cutToolStripMenuItem1.Click += new System.EventHandler(this.cutToolStripMenuItem1_Click);
+            // 
+            // copyToolStripMenuItem1
+            // 
+            this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
+            this.copyToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(239, 22);
+            this.copyToolStripMenuItem1.Text = "Copy";
+            this.copyToolStripMenuItem1.Click += new System.EventHandler(this.copyToolStripMenuItem1_Click);
+            // 
+            // pasteToolStripMenuItem1
+            // 
+            this.pasteToolStripMenuItem1.Name = "pasteToolStripMenuItem1";
+            this.pasteToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.pasteToolStripMenuItem1.Size = new System.Drawing.Size(239, 22);
+            this.pasteToolStripMenuItem1.Text = "Paste";
+            this.pasteToolStripMenuItem1.Click += new System.EventHandler(this.pasteToolStripMenuItem1_Click);
+            // 
+            // deleteToolStripMenuItem1
+            // 
+            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+            this.deleteToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(239, 22);
+            this.deleteToolStripMenuItem1.Text = "Delete";
+            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.tsbDeleteItem_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(236, 6);
+            // 
+            // selectAllToolStripMenuItem1
+            // 
+            this.selectAllToolStripMenuItem1.Name = "selectAllToolStripMenuItem1";
+            this.selectAllToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.selectAllToolStripMenuItem1.Size = new System.Drawing.Size(239, 22);
+            this.selectAllToolStripMenuItem1.Text = "Select All";
+            this.selectAllToolStripMenuItem1.Click += new System.EventHandler(this.selectAllToolStripMenuItem1_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(236, 6);
             // 
             // MainForm
             // 
@@ -536,6 +668,7 @@
             this.mainStatus.PerformLayout();
             this.mainToolbar.ResumeLayout(false);
             this.mainToolbar.PerformLayout();
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -593,6 +726,20 @@
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem miImportCFTFile;
         private System.Windows.Forms.ToolStripMenuItem dSDFrequencyCSVFIleToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
+        private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
     }
 }
 

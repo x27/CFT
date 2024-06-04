@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -323,6 +325,14 @@ namespace CFT
                     ListViewNoSort();
                     ControlsUpdate();
                 }
+            }
+        }
+
+        private void cmdSelectAll()
+        {
+            foreach(ListViewItem item in listView.Items)
+            {
+                item.Selected = true;
             }
         }
 
@@ -713,18 +723,80 @@ namespace CFT
             }
         }
 
+        private void CopySelectedItemsToClipboard()
+        {
+            var list = new List<IEncryptionRow>();
+            for (var i = 0; i < listView.SelectedIndices.Count; i++)
+            {
+                var index = listView.SelectedIndices[listView.SelectedIndices.Count - i - 1];
+                var row = listView.Items[index].Tag as IEncryptionRow;
+                if (row != null)
+                    list.Add(row);
+            }
+            if (list.Count > 0)
+                Clipboard.SetText(JsonConvert.SerializeObject(list, new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto }));
+        }
+
+        private List<IEncryptionRow> GetEncryptionRowsFromClipboard() 
+        {
+            try
+            {
+                return JsonConvert.DeserializeObject<List<IEncryptionRow>>(Clipboard.GetText(), new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+
+            }
+            catch { }
+            return null;
+        }
+
+        private void InsertItemsFromClipboard()
+        {
+            try
+            {
+                var list = GetEncryptionRowsFromClipboard();
+                if (list != null && list.Count > 0)
+                {
+                    // search insert place
+                    var insertIndex = -1;
+                    if (listView.SelectedIndices.Count > 0)
+                        insertIndex = listView.SelectedIndices[0];
+
+                    foreach (var row in list)
+                    {
+                        if (insertIndex < 0)
+                            _project.EcryptionRows.Add(row);
+                        else
+                            _project.EcryptionRows.Insert(insertIndex++, row);
+                    }
+                    ListViewNoSort();
+                    UpdateListViewItems();
+                    listView.Items[insertIndex--].Selected = true;
+                }
+            }
+            catch { }
+        }
+
         private void tsbDeleteItem_Click(object sender, EventArgs e)
         {
             if (listView.SelectedIndices.Count == 0)
                 return;
 
-            if (MessageBox.Show("Are you sure?", "Delete row", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
+            var mkeys = Control.ModifierKeys;
+
+            if (MessageBox.Show($"Deleting {listView.SelectedIndices.Count} row(s).\r\nAre you sure?", "Delete row(s)", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
                 return;
 
-            var index = listView.SelectedIndices[0];
-            _project.EcryptionRows.Remove(listView.Items[index].Tag as IEncryptionRow);
-            listView.Items.RemoveAt(index);
+            // copy to clip
+            if (mkeys == Keys.Shift)
+                CopySelectedItemsToClipboard();
+
+            for (var i=0; i<listView.SelectedIndices.Count; i++)
+            {
+                var index = listView.SelectedIndices[listView.SelectedIndices.Count - i - 1];
+                _project.EcryptionRows.Remove(listView.Items[index].Tag as IEncryptionRow);
+            }
             ListViewNoSort();
+            UpdateListViewItems();
+            listView.Invalidate();
             ControlsUpdate();
         }
 
@@ -742,6 +814,20 @@ namespace CFT
         {
             switch(e.KeyCode)
             {
+                case Keys.C:
+                    if (e.Control)
+                        CopySelectedItemsToClipboard();
+                    break;
+                case Keys.V:
+                    if (e.Control)
+                        InsertItemsFromClipboard();
+                    break;
+                case Keys.X:
+                    if (e.Control)
+                        CopySelectedItemsToClipboard();
+                        tsbDeleteItem_Click(this, e);
+                    break;
+
                 case Keys.Enter:
                     listView_DoubleClick(sender, e);
                     break;
@@ -749,24 +835,36 @@ namespace CFT
                     tsbDeleteItem_Click(sender, e);
                     break;
                 case Keys.Insert:
-                    var frm = new SelectEncryptionMethodForm();
-                    if (frm.ShowDialog() == DialogResult.OK)
+
+                    if (e.Modifiers == Keys.None)
                     {
-                        switch(frm.Selection)
+                        var frm = new SelectEncryptionMethodForm();
+                        if (frm.ShowDialog() == DialogResult.OK)
                         {
-                            case 0:
-                                miMotorolaBPEncryptionMethod_Click(sender, e);
-                                break;
-                            case 1:
-                                miHyteraBPEncryptionMethod_Click(sender, e);
-                                break;
-                            case 2:
-                                miNxdnScramblerMethod_Click(sender, e);
-                                break;
-                            case 3:
-                                miMotorolaEPEncryptionMethod_Click(sender, e);
-                                break;
+                            switch (frm.Selection)
+                            {
+                                case 0:
+                                    miMotorolaBPEncryptionMethod_Click(sender, e);
+                                    break;
+                                case 1:
+                                    miHyteraBPEncryptionMethod_Click(sender, e);
+                                    break;
+                                case 2:
+                                    miNxdnScramblerMethod_Click(sender, e);
+                                    break;
+                                case 3:
+                                    miMotorolaEPEncryptionMethod_Click(sender, e);
+                                    break;
+                            }
                         }
+                    }
+                    else if(e.Control)
+                    {
+                        CopySelectedItemsToClipboard();
+                    }
+                    else if (e.Shift)
+                    {
+                        InsertItemsFromClipboard();
                     }
                     break;
             }
@@ -882,6 +980,47 @@ namespace CFT
                 MessageBox.Show(ex.Message + ex.StackTrace, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void contextMenuStrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            cutToolStripMenuItem.Enabled = listView.SelectedIndices.Count > 0;
+            copyToolStripMenuItem.Enabled = listView.SelectedIndices.Count > 0;
+            pasteToolStripMenuItem.Enabled = GetEncryptionRowsFromClipboard() != null;
+            deleteToolStripMenuItem.Enabled = listView.SelectedIndices.Count > 0;
+            selectAllToolStripMenuItem.Enabled = listView.Items.Count > 0;
+        }
+
+        private void miEdit_DropDownOpening(object sender, EventArgs e)
+        {
+            cutToolStripMenuItem1.Enabled = listView.SelectedIndices.Count > 0;
+            copyToolStripMenuItem1.Enabled = listView.SelectedIndices.Count > 0;
+            pasteToolStripMenuItem1.Enabled = GetEncryptionRowsFromClipboard() != null;
+            deleteToolStripMenuItem1.Enabled = listView.SelectedIndices.Count > 0;
+            selectAllToolStripMenuItem1.Enabled = listView.Items.Count > 0;
+        }
+
+        private void selectAllToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            cmdSelectAll();
+        }
+
+        private void pasteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            InsertItemsFromClipboard();
+            ControlsUpdate();
+        }
+
+        private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CopySelectedItemsToClipboard();
+        }
+
+        private void cutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CopySelectedItemsToClipboard();
+            tsbDeleteItem_Click(this, e);
+            ControlsUpdate();
         }
     }
 }
