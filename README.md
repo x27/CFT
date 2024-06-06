@@ -131,9 +131,9 @@ In your e-mail, please specify the serial number of the scanner and which licens
 
 ### Funds
 
-Total: 2400USD 
-* Uniden SDS200 (99% of funds raised)
-* Uniden UBCD3600XLT (45% of funds raised)
+Total: 2480USD 
+* Uniden SDS200 (100% of funds raised, searching)
+* Uniden UBCD3600XLT (56% of funds raised)
 * Uniden SDS100 (purchased, 900USD)
 
 ### Support
@@ -147,5 +147,5 @@ You can also ask your questions or discuss issues with the users' community in t
 * email: n3617400@yahoo.com
 * twitter: https://x.com/openscanner
 * telegram channel: https://t.me/openscanner
-* telegram chat: https://t.me/+lBpGtQr1FgI0ZWU6
+* telegram chat: https://t.me/openscannerchat
 
