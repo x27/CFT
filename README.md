@@ -147,5 +147,5 @@ You can also ask your questions or discuss issues with the users' community in t
 * email: n3617400@yahoo.com
 * twitter: https://x.com/openscanner
 * telegram channel: https://t.me/openscanner
-* telegram chat: https://t.me/+lBpGtQr1FgI0ZWU6
+* telegram chat: https://t.me/openscannerchat
 
