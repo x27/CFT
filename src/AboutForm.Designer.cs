@@ -141,10 +141,10 @@
             this.linkLabel4.AutoSize = true;
             this.linkLabel4.Location = new System.Drawing.Point(16, 265);
             this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(201, 17);
+            this.linkLabel4.Size = new System.Drawing.Size(179, 17);
             this.linkLabel4.TabIndex = 9;
             this.linkLabel4.TabStop = true;
-            this.linkLabel4.Text = "https://t.me/+lBpGtQr1FgI0ZWU6";
+            this.linkLabel4.Text = "https://t.me/openscannerchat";
             this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_LinkClicked);
             // 
             // pictureBox1
