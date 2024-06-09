@@ -45,6 +45,13 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
             this.miEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.cutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.selectAllToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.miAddEncryptionMethodRow = new System.Windows.Forms.ToolStripMenuItem();
             this.miMotorolaBPEncryptionMethod = new System.Windows.Forms.ToolStripMenuItem();
             this.miMotorolaEPEncryptionMethod = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,13 +94,8 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.pasteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.selectAllToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.anytoneEncryptorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.anytoneEncryptorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.mainStatus.SuspendLayout();
             this.mainToolbar.SuspendLayout();
@@ -136,7 +138,7 @@
             this.miNewProject.Image = global::CFT.Properties.Resources._new;
             this.miNewProject.Name = "miNewProject";
             this.miNewProject.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.miNewProject.Size = new System.Drawing.Size(162, 22);
+            this.miNewProject.Size = new System.Drawing.Size(166, 22);
             this.miNewProject.Text = "New";
             this.miNewProject.Click += new System.EventHandler(this.miNewProject_Click);
             // 
@@ -145,40 +147,40 @@
             this.miOpenProject.Image = global::CFT.Properties.Resources.open;
             this.miOpenProject.Name = "miOpenProject";
             this.miOpenProject.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.miOpenProject.Size = new System.Drawing.Size(162, 22);
+            this.miOpenProject.Size = new System.Drawing.Size(166, 22);
             this.miOpenProject.Text = "Open ...";
             this.miOpenProject.Click += new System.EventHandler(this.miOpenProject_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(159, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(163, 6);
             // 
             // miSaveProject
             // 
             this.miSaveProject.Image = global::CFT.Properties.Resources.save;
             this.miSaveProject.Name = "miSaveProject";
             this.miSaveProject.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.miSaveProject.Size = new System.Drawing.Size(162, 22);
+            this.miSaveProject.Size = new System.Drawing.Size(166, 22);
             this.miSaveProject.Text = "Save";
             this.miSaveProject.Click += new System.EventHandler(this.miSaveProject_Click);
             // 
             // miSaveAsProject
             // 
             this.miSaveAsProject.Name = "miSaveAsProject";
-            this.miSaveAsProject.Size = new System.Drawing.Size(162, 22);
+            this.miSaveAsProject.Size = new System.Drawing.Size(166, 22);
             this.miSaveAsProject.Text = "Save as ...";
             this.miSaveAsProject.Click += new System.EventHandler(this.miSaveAsProject_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(159, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(163, 6);
             // 
             // miExportCFTFile
             // 
             this.miExportCFTFile.Name = "miExportCFTFile";
-            this.miExportCFTFile.Size = new System.Drawing.Size(162, 22);
+            this.miExportCFTFile.Size = new System.Drawing.Size(166, 22);
             this.miExportCFTFile.Text = "Export CFT file ...";
             this.miExportCFTFile.Click += new System.EventHandler(this.miExportCFTFile_Click);
             // 
@@ -188,7 +190,7 @@
             this.miImportCFTFile,
             this.dSDFrequencyCSVFIleToolStripMenuItem});
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.importToolStripMenuItem.Text = "Import";
             // 
             // miImportCFTFile
@@ -208,12 +210,12 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(159, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(163, 6);
             // 
             // miExit
             // 
             this.miExit.Name = "miExit";
-            this.miExit.Size = new System.Drawing.Size(162, 22);
+            this.miExit.Size = new System.Drawing.Size(166, 22);
             this.miExit.Text = "Exit";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
@@ -235,15 +237,66 @@
             this.miEdit.Text = "Edit";
             this.miEdit.DropDownOpening += new System.EventHandler(this.miEdit_DropDownOpening);
             // 
+            // cutToolStripMenuItem1
+            // 
+            this.cutToolStripMenuItem1.Name = "cutToolStripMenuItem1";
+            this.cutToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(243, 22);
+            this.cutToolStripMenuItem1.Text = "Cut";
+            this.cutToolStripMenuItem1.Click += new System.EventHandler(this.cutToolStripMenuItem1_Click);
+            // 
+            // copyToolStripMenuItem1
+            // 
+            this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
+            this.copyToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(243, 22);
+            this.copyToolStripMenuItem1.Text = "Copy";
+            this.copyToolStripMenuItem1.Click += new System.EventHandler(this.copyToolStripMenuItem1_Click);
+            // 
+            // pasteToolStripMenuItem1
+            // 
+            this.pasteToolStripMenuItem1.Name = "pasteToolStripMenuItem1";
+            this.pasteToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.pasteToolStripMenuItem1.Size = new System.Drawing.Size(243, 22);
+            this.pasteToolStripMenuItem1.Text = "Paste";
+            this.pasteToolStripMenuItem1.Click += new System.EventHandler(this.pasteToolStripMenuItem1_Click);
+            // 
+            // deleteToolStripMenuItem1
+            // 
+            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+            this.deleteToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(243, 22);
+            this.deleteToolStripMenuItem1.Text = "Delete";
+            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.tsbDeleteItem_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(240, 6);
+            // 
+            // selectAllToolStripMenuItem1
+            // 
+            this.selectAllToolStripMenuItem1.Name = "selectAllToolStripMenuItem1";
+            this.selectAllToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.selectAllToolStripMenuItem1.Size = new System.Drawing.Size(243, 22);
+            this.selectAllToolStripMenuItem1.Text = "Select All";
+            this.selectAllToolStripMenuItem1.Click += new System.EventHandler(this.selectAllToolStripMenuItem1_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(240, 6);
+            // 
             // miAddEncryptionMethodRow
             // 
             this.miAddEncryptionMethodRow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miMotorolaBPEncryptionMethod,
             this.miMotorolaEPEncryptionMethod,
             this.miHyteraBPEncryptionMethod,
-            this.miNxdnScramblerMethod});
+            this.miNxdnScramblerMethod,
+            this.anytoneEncryptorToolStripMenuItem});
             this.miAddEncryptionMethodRow.Name = "miAddEncryptionMethodRow";
-            this.miAddEncryptionMethodRow.Size = new System.Drawing.Size(239, 22);
+            this.miAddEncryptionMethodRow.Size = new System.Drawing.Size(243, 22);
             this.miAddEncryptionMethodRow.Text = "Add Encryption Row";
             // 
             // miMotorolaBPEncryptionMethod
@@ -277,13 +330,13 @@
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(236, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(240, 6);
             // 
             // miScanners
             // 
             this.miScanners.Name = "miScanners";
             this.miScanners.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.miScanners.Size = new System.Drawing.Size(239, 22);
+            this.miScanners.Size = new System.Drawing.Size(243, 22);
             this.miScanners.Text = "Scanners and Licenses ...";
             this.miScanners.Click += new System.EventHandler(this.miScanners_Click);
             // 
@@ -410,7 +463,8 @@
             this.motorolaBPToolStripMenuItem,
             this.motorolaEPEnhancedPrivacyToolStripMenuItem,
             this.hyteraBPBasicPrivacyToolStripMenuItem,
-            this.nXDNScramblerToolStripMenuItem});
+            this.nXDNScramblerToolStripMenuItem,
+            this.anytoneEncryptorToolStripMenuItem1});
             this.tsbAddEncryptionRow.Image = global::CFT.Properties.Resources.add;
             this.tsbAddEncryptionRow.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAddEncryptionRow.Name = "tsbAddEncryptionRow";
@@ -545,14 +599,14 @@
             this.toolStripSeparator7,
             this.selectAllToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(181, 142);
+            this.contextMenuStrip.Size = new System.Drawing.Size(173, 120);
             this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Opening);
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.cutToolStripMenuItem.Text = "Cut";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.cutToolStripMenuItem1_Click);
             // 
@@ -560,7 +614,7 @@
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem1_Click);
             // 
@@ -568,7 +622,7 @@
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem1_Click);
             // 
@@ -576,72 +630,36 @@
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.tsbDeleteItem_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(169, 6);
             // 
             // selectAllToolStripMenuItem
             // 
             this.selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
             this.selectAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.selectAllToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.selectAllToolStripMenuItem.Text = "Select All";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem1_Click);
             // 
-            // cutToolStripMenuItem1
+            // anytoneEncryptorToolStripMenuItem
             // 
-            this.cutToolStripMenuItem1.Name = "cutToolStripMenuItem1";
-            this.cutToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(239, 22);
-            this.cutToolStripMenuItem1.Text = "Cut";
-            this.cutToolStripMenuItem1.Click += new System.EventHandler(this.cutToolStripMenuItem1_Click);
+            this.anytoneEncryptorToolStripMenuItem.Name = "anytoneEncryptorToolStripMenuItem";
+            this.anytoneEncryptorToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.anytoneEncryptorToolStripMenuItem.Text = "Anytone Encryptor ...";
+            this.anytoneEncryptorToolStripMenuItem.Click += new System.EventHandler(this.anytoneEncryptorToolStripMenuItem_Click);
             // 
-            // copyToolStripMenuItem1
+            // anytoneEncryptorToolStripMenuItem1
             // 
-            this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
-            this.copyToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(239, 22);
-            this.copyToolStripMenuItem1.Text = "Copy";
-            this.copyToolStripMenuItem1.Click += new System.EventHandler(this.copyToolStripMenuItem1_Click);
-            // 
-            // pasteToolStripMenuItem1
-            // 
-            this.pasteToolStripMenuItem1.Name = "pasteToolStripMenuItem1";
-            this.pasteToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem1.Size = new System.Drawing.Size(239, 22);
-            this.pasteToolStripMenuItem1.Text = "Paste";
-            this.pasteToolStripMenuItem1.Click += new System.EventHandler(this.pasteToolStripMenuItem1_Click);
-            // 
-            // deleteToolStripMenuItem1
-            // 
-            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-            this.deleteToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(239, 22);
-            this.deleteToolStripMenuItem1.Text = "Delete";
-            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.tsbDeleteItem_Click);
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(236, 6);
-            // 
-            // selectAllToolStripMenuItem1
-            // 
-            this.selectAllToolStripMenuItem1.Name = "selectAllToolStripMenuItem1";
-            this.selectAllToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.selectAllToolStripMenuItem1.Size = new System.Drawing.Size(239, 22);
-            this.selectAllToolStripMenuItem1.Text = "Select All";
-            this.selectAllToolStripMenuItem1.Click += new System.EventHandler(this.selectAllToolStripMenuItem1_Click);
-            // 
-            // toolStripSeparator9
-            // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(236, 6);
+            this.anytoneEncryptorToolStripMenuItem1.Name = "anytoneEncryptorToolStripMenuItem1";
+            this.anytoneEncryptorToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
+            this.anytoneEncryptorToolStripMenuItem1.Text = "Anytone Encryptor ...";
+            this.anytoneEncryptorToolStripMenuItem1.Click += new System.EventHandler(this.anytoneEncryptorToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -740,6 +758,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripMenuItem selectAllToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripMenuItem anytoneEncryptorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem anytoneEncryptorToolStripMenuItem1;
     }
 }
 

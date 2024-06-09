@@ -22,6 +22,7 @@ namespace CFT
             MotorolaBP = 2,
             NxdnScrambler = 3,
             MotorolaEP = 4,
+            AnytoneEnc = 5,
         }
 
         public static void Export(Project project, Scanner scanner, string filename)
@@ -92,6 +93,23 @@ namespace CFT
                         bw.Write(item.Key); // key 5 byte
                         bw.Write(item.ActivateOptions.KeyId);
                         bw.Write(new byte[26]); // key remaining part
+                    }
+                    else if (row is AnytoneEncEncryptionRow)
+                    {
+                        var item = row as AnytoneEncEncryptionRow;
+                        bw.Write(Swap((uint)(item.ActivateOptions.Options | DmrSelectedActivateOptionsEnum.Frequency)));
+                        bw.Write((byte)item.ActivateOptions.TrunkSystem);
+                        bw.Write((byte)item.ActivateOptions.MFID);
+                        bw.Write(Swap(UInt32ToFreq(row.Frequency)));
+                        bw.Write((byte)item.ActivateOptions.ColorCode);
+                        bw.Write(Swap(item.ActivateOptions.TGID));
+                        bw.Write((byte)item.ActivateOptions.TimeSlot);
+                        bw.Write((byte)item.ActivateOptions.EncryptionValue);
+                        bw.Write((byte)EncryptionMethodEnum.AnytoneEnc);
+                        bw.Write((uint)0); // fake key length
+                        bw.Write(Swap(item.Key)); // key 2 byte
+                        bw.Write(item.ActivateOptions.KeyId);
+                        bw.Write(new byte[25]); // key remaining part
                     }
                     else if (row is HyteraBPEncryptionRow)
                     {
@@ -229,6 +247,28 @@ namespace CFT
                                     row.Key = br.ReadBytes(5);
                                     row.ActivateOptions.KeyId = br.ReadByte();
                                     br.ReadBytes(26); // key remaining part
+                                    rows.Add(row);
+                                    notesSkipList.Add(false);
+                                    break;
+                                }
+
+                            case EncryptionMethodEnum.AnytoneEnc:
+                                {
+                                    var row = new AnytoneEncEncryptionRow();
+                                    row.ActivateOptions = new DmrActivateOptions();
+                                    row.ActivateOptions.Options = (DmrSelectedActivateOptionsEnum)Swap(br.ReadUInt32());
+                                    row.ActivateOptions.TrunkSystem = (DmrTrunkSystemEnum)br.ReadByte();
+                                    row.ActivateOptions.MFID = (DmrMfidEnum)br.ReadByte();
+                                    row.Frequency = FreqToUint32(Swap(br.ReadUInt32()));
+                                    row.ActivateOptions.ColorCode = (DmrColorCodeEnum)br.ReadByte();
+                                    row.ActivateOptions.TGID = Swap(br.ReadUInt32());
+                                    row.ActivateOptions.TimeSlot = (DmrTimeSlotEnum)br.ReadByte();
+                                    row.ActivateOptions.EncryptionValue = (DmrEncyptionValueEnum)br.ReadByte();
+                                    br.ReadByte(); // skip enc method
+                                    br.ReadUInt32(); // skip key len
+                                    row.Key = Swap(br.ReadUInt16());
+                                    row.ActivateOptions.KeyId = br.ReadByte();
+                                    br.ReadBytes(25); // key remaining part
                                     rows.Add(row);
                                     notesSkipList.Add(false);
                                     break;

@@ -101,6 +101,13 @@
       <DependentUpon>ImportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ImportItem.cs" />
+    <Compile Include="AnytoneEncEncryptionMethodForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnytoneEncEncryptionMethodForm.Designer.cs">
+      <DependentUpon>AnytoneEncEncryptionMethodForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AnytoneEncEncryptionRow.cs" />
     <Compile Include="MotorolaEPEncryptionMethodForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,6 +204,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ImportForm.resx">
       <DependentUpon>ImportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnytoneEncEncryptionMethodForm.resx">
+      <DependentUpon>AnytoneEncEncryptionMethodForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MotorolaEPEncryptionMethodForm.resx">
       <DependentUpon>MotorolaEPEncryptionMethodForm.cs</DependentUpon>

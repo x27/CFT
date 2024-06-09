@@ -326,6 +326,17 @@ namespace CFT
                     ControlsUpdate();
                 }
             }
+            else if (row is AnytoneEncEncryptionRow)
+            {
+                var frm = new AnytoneEncEncryptionMethodForm(row as AnytoneEncEncryptionRow);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    _project.EcryptionRows.Add(frm.EncryptionRow);
+                    UpdateListViewItems();
+                    ListViewNoSort();
+                    ControlsUpdate();
+                }
+            }
         }
 
         private void cmdSelectAll()
@@ -626,6 +637,18 @@ namespace CFT
             else if (row is NxdnScramblerEncryptionRow)
             {
                 var frm = new NxdnScramblerEncryptionMethodForm((NxdnScramblerEncryptionRow)row);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var item = CreateListViewRow(filter, frm.EncryptionRow);
+                    item.Text = listView.SelectedItems[0].Text;
+                    item.Selected = true;
+                    listView.Items[listView.SelectedIndices[0]] = item;
+                    ControlsUpdate();
+                }
+            }
+            else if (row is AnytoneEncEncryptionRow)
+            {
+                var frm = new AnytoneEncEncryptionMethodForm((AnytoneEncEncryptionRow)row);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     var item = CreateListViewRow(filter, frm.EncryptionRow);
@@ -1021,6 +1044,19 @@ namespace CFT
             CopySelectedItemsToClipboard();
             tsbDeleteItem_Click(this, e);
             ControlsUpdate();
+        }
+
+        private void anytoneEncryptorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frm = new AnytoneEncEncryptionMethodForm(null);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                _project.EcryptionRows.Add(frm.EncryptionRow);
+                UpdateListViewItems();
+                ListViewNoSort();
+                ControlsUpdate();
+            }
+
         }
     }
 }
