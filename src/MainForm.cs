@@ -275,6 +275,19 @@ namespace CFT
             }
         }
 
+        private void miP25ADPEncryptionMethod_Click(object sender, EventArgs e)
+        {
+            var frm = new P25ADPEncryptionMethodForm(null);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                _project.EcryptionRows.Add(frm.EncryptionRow);
+                UpdateListViewItems();
+                ListViewNoSort();
+                ControlsUpdate();
+            }
+        }
+
+
         private void tsbDuplicateItem_Click(object sender, EventArgs e)
         {
             if (listView.SelectedItems.Count == 0)
@@ -329,6 +342,17 @@ namespace CFT
             else if (row is AnytoneEncEncryptionRow)
             {
                 var frm = new AnytoneEncEncryptionMethodForm(row as AnytoneEncEncryptionRow);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    _project.EcryptionRows.Add(frm.EncryptionRow);
+                    UpdateListViewItems();
+                    ListViewNoSort();
+                    ControlsUpdate();
+                }
+            }
+            else if (row is P25ADPEncryptionRow)
+            {
+                var frm = new P25ADPEncryptionMethodForm(row as P25ADPEncryptionRow);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     _project.EcryptionRows.Add(frm.EncryptionRow);
@@ -459,6 +483,16 @@ namespace CFT
                         colNotes.AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
                         break;
                     }
+                case ProtocolEnum.P25:
+                    {
+                        listView.Columns.Add("NAC", 100, HorizontalAlignment.Left);
+                        listView.Columns.Add("Group ID", 150, HorizontalAlignment.Left);
+                        listView.Columns.Add("Source ID", 126, HorizontalAlignment.Left);
+                        listView.Columns.Add("Encryption Method", 126, HorizontalAlignment.Left);
+                        var colNotes = listView.Columns.Add("Notes", 150, HorizontalAlignment.Left);
+                        colNotes.AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
+                        break;
+                    }
             }
         }
 
@@ -534,6 +568,35 @@ namespace CFT
                         var listViewSubItem3 = new ListViewItem.ListViewSubItem();
                         listViewSubItem3.Text = options.IsActivated(NxdnSelectedActivateOptionsEnum.GroupID) ? options.GroupID.ToString() : "-";
                         listViewItem.SubItems.Add(listViewSubItem3);
+
+                        var listViewSubItem5 = new ListViewItem.ListViewSubItem();
+                        listViewSubItem5.Text = DisplayNameAttribute.GetName(row);
+                        listViewItem.SubItems.Add(listViewSubItem5);
+
+                        var listViewSubItem6 = new ListViewItem.ListViewSubItem();
+                        listViewSubItem6.Text = row.Notes;
+                        listViewItem.SubItems.Add(listViewSubItem6);
+
+                        break;
+                    }
+                case ProtocolEnum.P25:
+                    {
+                        if (row.Protocol != ProtocolEnum.P25)
+                            return null;
+
+                        var options = ((P25ADPEncryptionRow)row).ActivateOptions;
+
+                        var listViewSubItem0 = new ListViewItem.ListViewSubItem();
+                        listViewSubItem0.Text = options.IsActivated(P25SelectedActivateOptionsEnum.NAC) ? options.NAC.ToString() : "-";
+                        listViewItem.SubItems.Add(listViewSubItem0);
+
+                        var listViewSubItem3 = new ListViewItem.ListViewSubItem();
+                        listViewSubItem3.Text = options.IsActivated(P25SelectedActivateOptionsEnum.GroupID) ? options.GroupID.ToString() : "-";
+                        listViewItem.SubItems.Add(listViewSubItem3);
+
+                        var listViewSubItem4 = new ListViewItem.ListViewSubItem();
+                        listViewSubItem4.Text = options.IsActivated(P25SelectedActivateOptionsEnum.SourceID) ? options.SourceID.ToString() : "-";
+                        listViewItem.SubItems.Add(listViewSubItem4);
 
                         var listViewSubItem5 = new ListViewItem.ListViewSubItem();
                         listViewSubItem5.Text = DisplayNameAttribute.GetName(row);
@@ -649,6 +712,18 @@ namespace CFT
             else if (row is AnytoneEncEncryptionRow)
             {
                 var frm = new AnytoneEncEncryptionMethodForm((AnytoneEncEncryptionRow)row);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var item = CreateListViewRow(filter, frm.EncryptionRow);
+                    item.Text = listView.SelectedItems[0].Text;
+                    item.Selected = true;
+                    listView.Items[listView.SelectedIndices[0]] = item;
+                    ControlsUpdate();
+                }
+            }
+            else if (row is P25ADPEncryptionRow)
+            {
+                var frm = new P25ADPEncryptionMethodForm((P25ADPEncryptionRow)row);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     var item = CreateListViewRow(filter, frm.EncryptionRow);
@@ -877,6 +952,9 @@ namespace CFT
                                     break;
                                 case 3:
                                     miMotorolaEPEncryptionMethod_Click(sender, e);
+                                    break;
+                                case 4:
+                                    miP25ADPEncryptionMethod_Click(sender, e);
                                     break;
                             }
                         }

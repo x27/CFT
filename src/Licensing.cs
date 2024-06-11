@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.ComponentModel;
+
 
 namespace CFT
 {
@@ -16,5 +16,7 @@ namespace CFT
         public byte[] MotorolaEPUnlockKey { get; set; } = new byte[UNLOCK_KEY_LEN];
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public byte[] NxdnScramblerUnlockKey { get; set; } = new byte[UNLOCK_KEY_LEN];
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public byte[] P25ADPUnlockKey { get; set; } = new byte[UNLOCK_KEY_LEN];
     }
 }

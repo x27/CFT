@@ -4,6 +4,7 @@
     {
         All = 0,
         DMR = 1,
-        NXDN = 2
+        NXDN = 2,
+        P25 = 3
     }
 }
