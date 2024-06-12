@@ -37,12 +37,14 @@ The last executable version for Windows you can download [HERE](https://github.c
    * key 40 bit - confirmed
 * NXDN Scrambler, CF v1.99.14 (test) and above
    * key 1-32766 - confirmed
+* Anytone Common Encryption, CF v1.99.18 (test)
+   * key 1-65535 - test 
 
 ### Supported scanner models
 
-* Uniden BCD436HP with [CF 1.99.17](https://github.com/x27/openscanner/releases/tag/v1.99.17)
-* Uniden BCD536HP with [CF 1.99.17](https://github.com/x27/openscanner/releases/tag/v1.99.17)
-* Uniden SDS100 with [CF 1.99.17](https://github.com/x27/openscanner/releases/tag/v1.99.17)
+* Uniden BCD436HP with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
+* Uniden BCD536HP with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
+* Uniden SDS100 with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
 
 ### Supported scanner modes
 
@@ -59,7 +61,7 @@ The last executable version for Windows you can download [HERE](https://github.c
 
 * Conventional repeater (Hytera/Motorola) - confirmed
 * CAP+ - confirmed
-* Connect+ - no data
+* Connect+ - confirmed
 * DMR Tier III (Motorola CapMax/Hytera/other ETSI compatible) - confirmed
 
 ### About Encryption Key
@@ -100,6 +102,8 @@ If your scanner model is not supported, but you want to enjoy these features, or
 But before you do, write me an e-mail.
 
 Licenses for unlocking **Hytera BP**, **Motorola BP**, **Motorola EP**, **NXDN Scrambler** keys are currently available. 
+
+**Anytone Common Encryption** are free.
 
 For obvious reasons, I would like to remain anonymous, so payments are only accepted in cryptocurrency or via intermediary's PayPal
 
