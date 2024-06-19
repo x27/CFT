@@ -18,12 +18,13 @@ namespace CFT
                 tbMotoBPUnlockKey.Text = Utils.IsArrayEmpty(licensing.MotorolaBPUnlockKey) ? string.Empty : Utils.BytesToHexString(licensing.MotorolaBPUnlockKey);
                 tbMotoEPUnlockKey.Text = Utils.IsArrayEmpty(licensing.MotorolaEPUnlockKey) ? string.Empty : Utils.BytesToHexString(licensing.MotorolaEPUnlockKey);
                 tbNxdnScramblerUnlockKey.Text = Utils.IsArrayEmpty(licensing.NxdnScramblerUnlockKey) ? string.Empty : Utils.BytesToHexString(licensing.NxdnScramblerUnlockKey);
+                tbP25ADPUnlockKey.Text = Utils.IsArrayEmpty(licensing.P25ADPUnlockKey) ? string.Empty : Utils.BytesToHexString(licensing.P25ADPUnlockKey);
             }
         }
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            byte[] mb, me, hb, ns;
+            byte[] mb, me, hb, ns, ad;
             try
             {
                 hb = Utils.HexStringToBytes(tbHyteraBPUnlockKey.Text);
@@ -66,6 +67,17 @@ namespace CFT
                 return;
             }
 
+            try
+            {
+                ad = Utils.HexStringToBytes(tbP25ADPUnlockKey.Text);
+            }
+            catch
+            {
+                MessageBox.Show("Wrong P25 ADP Unlock Key format.\r\nMust be HEX!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbP25ADPUnlockKey.Focus();
+                return;
+            }
+
             Licensing = new Licensing();
 
             if (Licensing.HyteraBPUnlockKey == null)
@@ -80,10 +92,14 @@ namespace CFT
             if (Licensing.NxdnScramblerUnlockKey == null)
                 Licensing.NxdnScramblerUnlockKey = new byte[Licensing.UNLOCK_KEY_LEN];
 
+            if (Licensing.P25ADPUnlockKey == null)
+                Licensing.P25ADPUnlockKey = new byte[Licensing.UNLOCK_KEY_LEN];
+
             Buffer.BlockCopy(hb, 0, Licensing.HyteraBPUnlockKey, 0, hb.Length > Licensing.UNLOCK_KEY_LEN ? Licensing.UNLOCK_KEY_LEN : hb.Length);
             Buffer.BlockCopy(mb, 0, Licensing.MotorolaBPUnlockKey, 0, mb.Length > Licensing.UNLOCK_KEY_LEN ? Licensing.UNLOCK_KEY_LEN : mb.Length);
             Buffer.BlockCopy(me, 0, Licensing.MotorolaEPUnlockKey, 0, me.Length > Licensing.UNLOCK_KEY_LEN ? Licensing.UNLOCK_KEY_LEN : me.Length);
             Buffer.BlockCopy(ns, 0, Licensing.NxdnScramblerUnlockKey, 0, ns.Length > Licensing.UNLOCK_KEY_LEN ? Licensing.UNLOCK_KEY_LEN : ns.Length);
+            Buffer.BlockCopy(ad, 0, Licensing.P25ADPUnlockKey, 0, ad.Length > Licensing.UNLOCK_KEY_LEN ? Licensing.UNLOCK_KEY_LEN : ad.Length);
 
             DialogResult = DialogResult.OK;
             Close();

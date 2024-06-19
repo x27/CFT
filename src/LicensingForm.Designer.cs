@@ -38,6 +38,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbMotoEPUnlockKey = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.tbP25ADPUnlockKey = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -78,7 +80,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(25, 422);
+            this.btnCancel.Location = new System.Drawing.Point(25, 514);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(102, 32);
             this.btnCancel.TabIndex = 4;
@@ -88,7 +90,7 @@
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(412, 422);
+            this.btnOk.Location = new System.Drawing.Point(412, 514);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(102, 32);
             this.btnOk.TabIndex = 5;
@@ -130,12 +132,31 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Unlock Key for Motorola EP:";
             // 
+            // tbP25ADPUnlockKey
+            // 
+            this.tbP25ADPUnlockKey.Location = new System.Drawing.Point(25, 423);
+            this.tbP25ADPUnlockKey.Multiline = true;
+            this.tbP25ADPUnlockKey.Name = "tbP25ADPUnlockKey";
+            this.tbP25ADPUnlockKey.Size = new System.Drawing.Size(489, 72);
+            this.tbP25ADPUnlockKey.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(25, 403);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(149, 17);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Unlock Key for P25 ADP:";
+            // 
             // LicensingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(540, 475);
+            this.ClientSize = new System.Drawing.Size(540, 567);
+            this.Controls.Add(this.tbP25ADPUnlockKey);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.tbMotoEPUnlockKey);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.tbNxdnScramblerUnlockKey);
@@ -173,5 +194,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbMotoEPUnlockKey;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tbP25ADPUnlockKey;
+        private System.Windows.Forms.Label label5;
     }
 }
