@@ -21,7 +21,7 @@ namespace CFT
         {
             get
             {
-                return $"P25 ADP: Key({Key}) {ActivateOptions}";
+                return $"P25 ADP: {ActivateOptions}";
             }
         }
     }

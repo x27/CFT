@@ -55,6 +55,7 @@
             this.tbSourceID.Name = "tbSourceID";
             this.tbSourceID.Size = new System.Drawing.Size(179, 25);
             this.tbSourceID.TabIndex = 21;
+            this.tbSourceID.TextChanged += new System.EventHandler(this.eventOptionChanged);
             // 
             // tbKeyID
             // 
@@ -62,6 +63,7 @@
             this.tbKeyID.Name = "tbKeyID";
             this.tbKeyID.Size = new System.Drawing.Size(179, 25);
             this.tbKeyID.TabIndex = 20;
+            this.tbKeyID.TextChanged += new System.EventHandler(this.eventOptionChanged);
             // 
             // tbNAC
             // 
@@ -69,6 +71,7 @@
             this.tbNAC.Name = "tbNAC";
             this.tbNAC.Size = new System.Drawing.Size(179, 25);
             this.tbNAC.TabIndex = 19;
+            this.tbNAC.TextChanged += new System.EventHandler(this.eventOptionChanged);
             // 
             // cbSilence
             // 

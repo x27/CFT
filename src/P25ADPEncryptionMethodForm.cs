@@ -35,6 +35,10 @@ namespace CFT
                     tbFrequency.Text = Utils.GetFrequencyString(row.Frequency);
                 optionsControl.SetOptions(row.ActivateOptions);
 
+                if (Utils.IsArrayEmpty(row.Key))
+                    tbKey.Text = string.Empty;
+                else
+                    tbKey.Text = Utils.BytesToHexString(row.Key);
 
                 tbNotes.Text = row.Notes;
             }
