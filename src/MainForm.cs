@@ -227,15 +227,52 @@ namespace CFT
             }
         }
 
+        private void AddEncryptionRow(IEncryptionRow row)
+        {
+            var added = false;
+            switch(_colFreqSortOrder)
+            {
+                case SortOrder.Ascending:
+                    for(var i=0; i<_project.EcryptionRows.Count; i++)
+                    {
+                        if (_project.EcryptionRows[i].Frequency < row.Frequency)
+                        {
+                            _project.EcryptionRows.Insert(i, row);
+                            added = true;
+                            break;
+                        }
+                    }
+                    if (!added)
+                        _project.EcryptionRows.Add(row);
+                    break;
+                case SortOrder.Descending:
+                    for (var i = 0; i < _project.EcryptionRows.Count; i++)
+                    {
+                        if (_project.EcryptionRows[i].Frequency > row.Frequency)
+                        {
+                            _project.EcryptionRows.Insert(i, row);
+                            added = true;
+                            break;
+                        }
+                    }
+                    if (!added)
+                        _project.EcryptionRows.Add(row);
+                    break;
+                default:
+                    _project.EcryptionRows.Add(row);
+                    break;
+            }
+
+            UpdateListViewItems();
+            ControlsUpdate();
+        }
+
         private void miMotorolaBPEncryptionMethod_Click(object sender, EventArgs e)
         {
             var frm = new MotorolaBPEncryptionMethodForm(null);
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                _project.EcryptionRows.Add(frm.EncryptionRow);
-                UpdateListViewItems();
-                ListViewNoSort();
-                ControlsUpdate();
+                AddEncryptionRow(frm.EncryptionRow);
             }
         }
 
@@ -244,10 +281,7 @@ namespace CFT
             var frm = new MotorolaEPEncryptionMethodForm(null);
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                _project.EcryptionRows.Add(frm.EncryptionRow);
-                UpdateListViewItems();
-                ListViewNoSort();
-                ControlsUpdate();
+                AddEncryptionRow(frm.EncryptionRow);
             }
         }
 
@@ -256,10 +290,7 @@ namespace CFT
             var frm = new HyteraBPEncryptionMethodForm(null);
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                _project.EcryptionRows.Add(frm.EncryptionRow);
-                UpdateListViewItems();
-                ListViewNoSort();
-                ControlsUpdate();
+                AddEncryptionRow(frm.EncryptionRow);
             }
         }
 
@@ -268,10 +299,7 @@ namespace CFT
             var frm = new NxdnScramblerEncryptionMethodForm(null);
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                _project.EcryptionRows.Add(frm.EncryptionRow);
-                UpdateListViewItems();
-                ListViewNoSort();
-                ControlsUpdate();
+                AddEncryptionRow(frm.EncryptionRow);
             }
         }
 
@@ -281,9 +309,16 @@ namespace CFT
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 _project.EcryptionRows.Add(frm.EncryptionRow);
-                UpdateListViewItems();
-                ListViewNoSort();
-                ControlsUpdate();
+                AddEncryptionRow(frm.EncryptionRow);
+            }
+        }
+
+        private void miAnytoneEncryptionMethod_Click(object sender, EventArgs e)
+        {
+            var frm = new AnytoneEncEncryptionMethodForm(null);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                AddEncryptionRow(frm.EncryptionRow);
             }
         }
 
@@ -300,10 +335,7 @@ namespace CFT
                 var frm = new MotorolaBPEncryptionMethodForm(row as MotorolaBPEncryptionRow);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    _project.EcryptionRows.Add(frm.EncryptionRow);
-                    UpdateListViewItems();
-                    ListViewNoSort();
-                    ControlsUpdate();
+                    AddEncryptionRow(frm.EncryptionRow);
                 }
             }
             else if (row is MotorolaEPEncryptionRow)
@@ -311,10 +343,7 @@ namespace CFT
                 var frm = new MotorolaEPEncryptionMethodForm(row as MotorolaEPEncryptionRow);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    _project.EcryptionRows.Add(frm.EncryptionRow);
-                    UpdateListViewItems();
-                    ListViewNoSort();
-                    ControlsUpdate();
+                    AddEncryptionRow(frm.EncryptionRow);
                 }
             }
             else if (row is HyteraBPEncryptionRow)
@@ -322,10 +351,7 @@ namespace CFT
                 var frm = new HyteraBPEncryptionMethodForm(row as HyteraBPEncryptionRow);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    _project.EcryptionRows.Add(frm.EncryptionRow);
-                    UpdateListViewItems();
-                    ListViewNoSort();
-                    ControlsUpdate();
+                    AddEncryptionRow(frm.EncryptionRow);
                 }
             }
             else if (row is NxdnScramblerEncryptionRow)
@@ -333,10 +359,7 @@ namespace CFT
                 var frm = new NxdnScramblerEncryptionMethodForm(row as NxdnScramblerEncryptionRow);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    _project.EcryptionRows.Add(frm.EncryptionRow);
-                    UpdateListViewItems();
-                    ListViewNoSort();
-                    ControlsUpdate();
+                    AddEncryptionRow(frm.EncryptionRow);
                 }
             }
             else if (row is AnytoneEncEncryptionRow)
@@ -344,10 +367,7 @@ namespace CFT
                 var frm = new AnytoneEncEncryptionMethodForm(row as AnytoneEncEncryptionRow);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    _project.EcryptionRows.Add(frm.EncryptionRow);
-                    UpdateListViewItems();
-                    ListViewNoSort();
-                    ControlsUpdate();
+                    AddEncryptionRow(frm.EncryptionRow);
                 }
             }
             else if (row is P25ADPEncryptionRow)
@@ -355,10 +375,7 @@ namespace CFT
                 var frm = new P25ADPEncryptionMethodForm(row as P25ADPEncryptionRow);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    _project.EcryptionRows.Add(frm.EncryptionRow);
-                    UpdateListViewItems();
-                    ListViewNoSort();
-                    ControlsUpdate();
+                    AddEncryptionRow(frm.EncryptionRow);
                 }
             }
         }
@@ -1124,17 +1141,5 @@ namespace CFT
             ControlsUpdate();
         }
 
-        private void anytoneEncryptorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var frm = new AnytoneEncEncryptionMethodForm(null);
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                _project.EcryptionRows.Add(frm.EncryptionRow);
-                UpdateListViewItems();
-                ListViewNoSort();
-                ControlsUpdate();
-            }
-
-        }
     }
 }

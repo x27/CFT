@@ -335,7 +335,7 @@
             this.anytoneEncryptorToolStripMenuItem.Name = "anytoneEncryptorToolStripMenuItem";
             this.anytoneEncryptorToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
             this.anytoneEncryptorToolStripMenuItem.Text = "Anytone Encryptor ...";
-            this.anytoneEncryptorToolStripMenuItem.Click += new System.EventHandler(this.anytoneEncryptorToolStripMenuItem_Click);
+            this.anytoneEncryptorToolStripMenuItem.Click += new System.EventHandler(this.miAnytoneEncryptionMethod_Click);
             // 
             // toolStripSeparator6
             // 
@@ -515,7 +515,7 @@
             this.anytoneEncryptorToolStripMenuItem1.Name = "anytoneEncryptorToolStripMenuItem1";
             this.anytoneEncryptorToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
             this.anytoneEncryptorToolStripMenuItem1.Text = "Anytone Encryptor ...";
-            this.anytoneEncryptorToolStripMenuItem1.Click += new System.EventHandler(this.anytoneEncryptorToolStripMenuItem_Click);
+            this.anytoneEncryptorToolStripMenuItem1.Click += new System.EventHandler(this.miAnytoneEncryptionMethod_Click);
             // 
             // tsbDuplicateItem
             // 
