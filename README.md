@@ -135,11 +135,11 @@ In your e-mail, please specify the serial number of the scanner and which licens
 
 ### Funds
 
-Total: 2815USD 
+Total: 2965USD 
 * Uniden SDS200 (100% of funds raised, ordered (slow delivery))
 * Uniden UBCD3600XLT (ordered, 800USD)
 * Uniden SDS100 (purchased, 900USD)
-* Uniden SDS100E (4% of funds raised)
+* Uniden SDS100E (19% of funds raised)
 * Kenwood NX300 (purchased, 170USD)
 * Motorola XTS1500 ADP (purchased, 250USD)
 
