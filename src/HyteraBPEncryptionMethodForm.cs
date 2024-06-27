@@ -108,8 +108,8 @@ namespace CFT
 
         private void cbNonStandard_CheckedChanged(object sender, EventArgs e)
         {
-            nudKeyLength.Visible = cbNonStandard.Checked;
             cbKeyLength.Visible = !cbNonStandard.Checked;
+            nudKeyLength.Visible = cbNonStandard.Checked;
         }
     }
 }
