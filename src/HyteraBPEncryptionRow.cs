@@ -9,7 +9,7 @@ namespace CFT
     public class HyteraBPEncryptionRow : DmrEncryptionRow
     {
         public const int KEY_SIZE = 32;
-        public HyteraKeyLengthEnum KeyLength { get; set; }
+        public uint KeyLength { get; set; }
 
         public byte[] Key { get; set; }
 

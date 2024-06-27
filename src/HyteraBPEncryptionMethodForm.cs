@@ -38,16 +38,27 @@ namespace CFT
                     tbFrequency.Text = Utils.GetFrequencyString(row.Frequency);
                 optionsControl.SetOptions(row.ActivateOptions);
 
-                if (!Utils.SetComboBoxData(cbKeyLength, row.KeyLength))
-                    cbKeyLength.SelectedIndex = 0;
+                if (row.KeyLength == 40)
+                    Utils.SetComboBoxData(cbKeyLength, HyteraKeyLengthEnum.L40);
+                else if (row.KeyLength == 128)
+                    Utils.SetComboBoxData(cbKeyLength, HyteraKeyLengthEnum.L128);
+                else if (row.KeyLength == 256)
+                    Utils.SetComboBoxData(cbKeyLength, HyteraKeyLengthEnum.L256);
+                else
+                {
+                    nudKeyLength.Value = row.KeyLength;
+                    cbNonStandard.Checked = true;
+                }
 
                 if (Utils.IsArrayEmpty(row.Key))
                     tbKey.Text = string.Empty;
                 else
-                    tbKey.Text = Utils.BytesToHexString(row.Key).Substring(0, (int)row.KeyLength / 4);
+                    tbKey.Text = Utils.BytesToHexString(row.Key).Substring(0, (int)(row.KeyLength / 4 + (row.KeyLength % 4 != 0 ? 1 : 0)));
 
                 tbNotes.Text = row.Notes;
             }
+
+            cbNonStandard_CheckedChanged(this, null);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -83,13 +94,22 @@ namespace CFT
                 return;
             }
 
-            EncryptionRow.KeyLength = (HyteraKeyLengthEnum)(cbKeyLength.SelectedItem as DisplayTagObject).Tag;
+            if (cbNonStandard.Checked)
+                EncryptionRow.KeyLength = (uint)nudKeyLength.Value;
+            else
+                EncryptionRow.KeyLength = (uint)((HyteraKeyLengthEnum)(cbKeyLength.SelectedItem as DisplayTagObject).Tag);
             Buffer.BlockCopy(key, 0, EncryptionRow.Key, 0, key.Length > HyteraBPEncryptionRow.KEY_SIZE ? HyteraBPEncryptionRow.KEY_SIZE : key.Length);
 
             EncryptionRow.Notes = tbNotes.Text.Trim();
 
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void cbNonStandard_CheckedChanged(object sender, EventArgs e)
+        {
+            nudKeyLength.Visible = cbNonStandard.Checked;
+            cbKeyLength.Visible = !cbNonStandard.Checked;
         }
     }
 }

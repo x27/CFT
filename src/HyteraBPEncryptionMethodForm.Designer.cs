@@ -39,6 +39,9 @@
             this.cbKeyLength = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tbKey = new System.Windows.Forms.TextBox();
+            this.cbNonStandard = new System.Windows.Forms.CheckBox();
+            this.nudKeyLength = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.nudKeyLength)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -60,7 +63,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(253, 19);
+            this.label2.Location = new System.Drawing.Point(170, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 17);
             this.label2.TabIndex = 3;
@@ -78,7 +81,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 425);
+            this.label3.Location = new System.Drawing.Point(26, 427);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 17);
             this.label3.TabIndex = 6;
@@ -87,7 +90,7 @@
             // tbNotes
             // 
             this.tbNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.tbNotes.Location = new System.Drawing.Point(29, 446);
+            this.tbNotes.Location = new System.Drawing.Point(29, 448);
             this.tbNotes.Name = "tbNotes";
             this.tbNotes.Size = new System.Drawing.Size(406, 25);
             this.tbNotes.TabIndex = 5;
@@ -96,7 +99,7 @@
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.Location = new System.Drawing.Point(29, 490);
+            this.btnClose.Location = new System.Drawing.Point(29, 492);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(126, 30);
             this.btnClose.TabIndex = 6;
@@ -106,7 +109,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOK.Location = new System.Drawing.Point(309, 490);
+            this.btnOK.Location = new System.Drawing.Point(309, 492);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(126, 30);
             this.btnOK.TabIndex = 0;
@@ -118,9 +121,9 @@
             // 
             this.cbKeyLength.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbKeyLength.FormattingEnabled = true;
-            this.cbKeyLength.Location = new System.Drawing.Point(256, 39);
+            this.cbKeyLength.Location = new System.Drawing.Point(173, 39);
             this.cbKeyLength.Name = "cbKeyLength";
-            this.cbKeyLength.Size = new System.Drawing.Size(179, 25);
+            this.cbKeyLength.Size = new System.Drawing.Size(151, 25);
             this.cbKeyLength.TabIndex = 2;
             // 
             // label4
@@ -141,12 +144,47 @@
             this.tbKey.Size = new System.Drawing.Size(406, 46);
             this.tbKey.TabIndex = 3;
             // 
+            // cbNonStandard
+            // 
+            this.cbNonStandard.AutoSize = true;
+            this.cbNonStandard.Location = new System.Drawing.Point(330, 41);
+            this.cbNonStandard.Name = "cbNonStandard";
+            this.cbNonStandard.Size = new System.Drawing.Size(105, 21);
+            this.cbNonStandard.TabIndex = 12;
+            this.cbNonStandard.Text = "non standard";
+            this.cbNonStandard.UseVisualStyleBackColor = true;
+            this.cbNonStandard.CheckedChanged += new System.EventHandler(this.cbNonStandard_CheckedChanged);
+            // 
+            // nudKeyLength
+            // 
+            this.nudKeyLength.Location = new System.Drawing.Point(173, 39);
+            this.nudKeyLength.Maximum = new decimal(new int[] {
+            256,
+            0,
+            0,
+            0});
+            this.nudKeyLength.Minimum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.nudKeyLength.Name = "nudKeyLength";
+            this.nudKeyLength.Size = new System.Drawing.Size(151, 25);
+            this.nudKeyLength.TabIndex = 13;
+            this.nudKeyLength.Value = new decimal(new int[] {
+            147,
+            0,
+            0,
+            0});
+            // 
             // HyteraBPEncryptionMethodForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(468, 539);
+            this.ClientSize = new System.Drawing.Size(468, 541);
+            this.Controls.Add(this.nudKeyLength);
+            this.Controls.Add(this.cbNonStandard);
             this.Controls.Add(this.tbKey);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cbKeyLength);
@@ -168,6 +206,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Hytera BP Encryption ";
+            ((System.ComponentModel.ISupportInitialize)(this.nudKeyLength)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,5 +225,7 @@
         private System.Windows.Forms.ComboBox cbKeyLength;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbKey;
+        private System.Windows.Forms.CheckBox cbNonStandard;
+        private System.Windows.Forms.NumericUpDown nudKeyLength;
     }
 }

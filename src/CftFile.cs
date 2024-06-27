@@ -125,7 +125,7 @@ namespace CFT
                         bw.Write((byte)item.ActivateOptions.TimeSlot);
                         bw.Write((byte)item.ActivateOptions.EncryptionValue);
                         bw.Write((byte)EncryptionMethodEnum.HyteraBP);
-                        bw.Write(Swap((uint)item.KeyLength));
+                        bw.Write(Swap(item.KeyLength));
                         bw.Write(item.Key);
                     }
                     else if (row is NxdnScramblerEncryptionRow)
@@ -310,7 +310,7 @@ namespace CFT
                                     row.ActivateOptions.TimeSlot = (DmrTimeSlotEnum)br.ReadByte();
                                     row.ActivateOptions.EncryptionValue = (DmrEncyptionValueEnum)br.ReadByte();
                                     br.ReadByte(); // skip enc method
-                                    row.KeyLength = (HyteraKeyLengthEnum)Swap(br.ReadUInt32());
+                                    row.KeyLength = Swap(br.ReadUInt32());
                                     row.Key = br.ReadBytes(32);
                                     rows.Add(row);
                                     notesSkipList.Add(false);
