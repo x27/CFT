@@ -15,6 +15,7 @@ namespace CFT
 
             switch(model)
             {
+                case ScannerModelEnum.UBCD3600XLT:
                 case ScannerModelEnum.BCD436HP:
                     lblKey1.Text = "ZIP";
                     lblKey2.Text = "FUNC+ZIP";
@@ -29,6 +30,7 @@ namespace CFT
                     cbKey3Map.Visible = true;
                     break;
                 case ScannerModelEnum.SDS100:
+                case ScannerModelEnum.SDS100E:
                     lblKey1.Text = "ZIP";
                     lblKey2.Text = "FUNC+ZIP";
                     lblKey3.Visible = false;
