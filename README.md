@@ -45,6 +45,7 @@ The last executable version for Windows you can download [HERE](https://github.c
 * Uniden BCD436HP with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
 * Uniden BCD536HP with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
 * Uniden SDS100 with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
+* Uniden UBCD3600XLT with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/UBCD3600XLT_1.99.18_TEST)
 
 ### Supported scanner modes
 
@@ -137,9 +138,8 @@ In your e-mail, please specify the serial number of the scanner and which licens
 
 Total: 2965USD 
 * Uniden SDS200 (100% of funds raised, ordered (slow delivery))
-* Uniden UBCD3600XLT (ordered, 800USD)
+* Uniden UBCD3600XLT (purchased, 800USD)
 * Uniden SDS100 (purchased, 900USD)
-* Uniden SDS100E (19% of funds raised)
 * Kenwood NX300 (purchased, 170USD)
 * Motorola XTS1500 ADP (purchased, 250USD)
 
