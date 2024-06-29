@@ -45,7 +45,7 @@ The last executable version for Windows you can download [HERE](https://github.c
 * Uniden BCD436HP with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
 * Uniden BCD536HP with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
 * Uniden SDS100 with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
-* Uniden UBCD3600XLT with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/UBCD3600XLT_1.99.18_TEST)
+* Uniden UBCD3600XLT with [CF 1.99.19](https://github.com/x27/openscanner/releases/tag/UBCD3600XLT_1.99.19_TEST)
 
 ### Supported scanner modes
 
