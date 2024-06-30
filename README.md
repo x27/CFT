@@ -1,4 +1,4 @@
-# CFT - Custom Firmware Tuner for Uniden scanners
+# CFT - Custom Firmware Tuner for Uniden Scanners
 
 ![screenshot](img/image.png)
 
@@ -8,19 +8,13 @@ The main purpose of CFT is to select the parameters of digital protocols that wi
 
 Please read the instructions about [How To Get Started with CFT v1](HOWTO.md).
 
-### Prerequisites
+### Supported scanner models
 
-Requires an installed paid [DMR upgrade](https://info.uniden.com/twiki/bin/view/UnidenMan4/DigitalMobileRadioUpgrade) on the scanner for Motorola BP, Motorola EP or Hytera BP.
-
-Requires an installed paid [NXDN upgrade](https://info.uniden.com/twiki/bin/view/UnidenMan4/DigitalMobileRadioUpgrade) on the scanner for NXDN Scrambler.
-
-Requires an installed custom firmware at least version 1.99.08 on the scanner ([BCD436HP](https://github.com/x27/openscanner/tree/main/uniden/bcd436hp/fw/mod), [BCD536HP](https://github.com/x27/openscanner/tree/main/uniden/bcd536hp/fw/mod), [SDS100](https://github.com/x27/openscanner/tree/main/uniden/sds100/fw/mod)).
-
-OS: Windows XP or higher with installed .Net Framework 2.0
-
-### Download 
-
-The last executable version for Windows you can download [HERE](https://github.com/x27/CFT/releases/latest), placed in the file **CFT.zip**
+* Uniden BCD436HP with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
+* Uniden BCD536HP with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
+* Uniden SDS100 with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
+* Uniden UBCD3600XLT with [CF 1.99.19](https://github.com/x27/openscanner/releases/tag/UBCD3600XLT_1.99.19_TEST)
+* Uniden SDS100E with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/SDS100E_1.99.18_TEST)
 
 ### Supported decryption protocols
 
@@ -40,13 +34,14 @@ The last executable version for Windows you can download [HERE](https://github.c
 * Anytone Common Encryption, CF v1.99.18 (test)
    * key 1-65535 - test 
 
-### Supported scanner models
+### About Encryption Key
 
-* Uniden BCD436HP with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
-* Uniden BCD536HP with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
-* Uniden SDS100 with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
-* Uniden UBCD3600XLT with [CF 1.99.19](https://github.com/x27/openscanner/releases/tag/UBCD3600XLT_1.99.19_TEST)
-* Uniden SDS100E with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/SDS100E_1.99.18_TEST)
+> [!IMPORTANT]
+> **Custom Firmware will not find the Encryption Key. It is something that needs to be obtained in other ways.**
+
+### Download 
+
+The last executable version for Windows you can download [HERE](https://github.com/x27/CFT/releases/latest), placed in the file **CFT.zip**
 
 ### Supported scanner modes
 
@@ -57,18 +52,22 @@ The last executable version for Windows you can download [HERE](https://github.c
 * Memory Scan as a Conventional - confirmed
 * Memory Scan as a Digital - confirmed
 
-## Supported trunking modes
-
-### DMR
+### Supported trunking modes DMR
 
 * Conventional repeater (Hytera/Motorola) - confirmed
 * CAP+ - confirmed
 * Connect+ - confirmed
 * DMR Tier III (Motorola CapMax/Hytera/other ETSI compatible) - confirmed
 
-### About Encryption Key
+### Prerequisites
 
-Custom Firmware will not find the Encryption Key. It is something that needs to be obtained in other ways.
+Requires an installed paid [DMR upgrade](https://info.uniden.com/twiki/bin/view/UnidenMan4/DigitalMobileRadioUpgrade) on the scanner for Motorola BP, Motorola EP or Hytera BP.
+
+Requires an installed paid [NXDN upgrade](https://info.uniden.com/twiki/bin/view/UnidenMan4/DigitalMobileRadioUpgrade) on the scanner for NXDN Scrambler.
+
+Requires an installed custom firmware at least version 1.99.08 on the scanner ([BCD436HP](https://github.com/x27/openscanner/tree/main/uniden/bcd436hp/fw/mod), [BCD536HP](https://github.com/x27/openscanner/tree/main/uniden/bcd536hp/fw/mod), [SDS100](https://github.com/x27/openscanner/tree/main/uniden/sds100/fw/mod)).
+
+OS: Windows XP or higher with installed .Net Framework 2.0
 
 ### Debug Logs
 
