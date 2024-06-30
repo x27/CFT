@@ -1,4 +1,4 @@
-# CFT - Custom Firmware Tuner for Uniden BCDx36HP/SDS100
+# CFT - Custom Firmware Tuner for Uniden BCDx36HP/SDS100/UBCD3600XLT
 
 ![screenshot](img/image.png)
 
