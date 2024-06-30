@@ -1,4 +1,4 @@
-# CFT - Custom Firmware Tuner for Uniden BCDx36HP/SDS100/UBCD3600XLT
+# CFT - Custom Firmware Tuner for Uniden scanners
 
 ![screenshot](img/image.png)
 
@@ -46,6 +46,7 @@ The last executable version for Windows you can download [HERE](https://github.c
 * Uniden BCD536HP with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
 * Uniden SDS100 with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
 * Uniden UBCD3600XLT with [CF 1.99.19](https://github.com/x27/openscanner/releases/tag/UBCD3600XLT_1.99.19_TEST)
+* Uniden SDS100E with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/SDS100E_1.99.18_TEST)
 
 ### Supported scanner modes
 
