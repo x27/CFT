@@ -17,12 +17,14 @@ namespace CFT
             {
                 case ScannerModelEnum.UBCD3600XLT:
                 case ScannerModelEnum.BCD436HP:
+                case ScannerModelEnum.UBCD436PT:
                     lblKey1.Text = "ZIP";
                     lblKey2.Text = "FUNC+ZIP";
                     lblKey3.Visible = false;
                     cbKey3Map.Visible = false;
                     break;
                 case ScannerModelEnum.BCD536HP:
+                case ScannerModelEnum.UBCD536PT:
                     lblKey1.Text = "ZIP";
                     lblKey2.Text = "SERV";
                     lblKey3.Text = "RANG";
@@ -31,12 +33,14 @@ namespace CFT
                     break;
                 case ScannerModelEnum.SDS100:
                 case ScannerModelEnum.SDS100E:
+                case ScannerModelEnum.USDS100:
                     lblKey1.Text = "ZIP";
                     lblKey2.Text = "FUNC+ZIP";
                     lblKey3.Visible = false;
                     cbKey3Map.Visible = false;
                     break;
                 case ScannerModelEnum.SDS200:
+                case ScannerModelEnum.SDS200E:
                     lblKey1.Text = "ZIP";
                     lblKey2.Text = "FUNC+ZIP";
                     lblKey3.Visible = false;

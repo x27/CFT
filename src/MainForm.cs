@@ -856,7 +856,10 @@ namespace CFT
         {
             try
             {
-                return JsonConvert.DeserializeObject<List<IEncryptionRow>>(Clipboard.GetData("CFT").ToString(), new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
+                var data = Clipboard.GetData("CFT");
+                if (data == null) 
+                    return null;
+                return JsonConvert.DeserializeObject<List<IEncryptionRow>>(data.ToString(), new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto });
 
             }
             catch { }
