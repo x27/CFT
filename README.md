@@ -15,6 +15,7 @@ Please read the instructions about [How To Get Started with CFT v1](HOWTO.md).
 * Uniden SDS100 with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
 * Uniden UBCD3600XLT with [CF 1.99.19](https://github.com/x27/openscanner/releases/tag/UBCD3600XLT_1.99.19_TEST)
 * Uniden SDS100E with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/SDS100E_1.99.18_TEST)
+* Uniden SDS200 with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/SDS200_1.99.18_TEST)
 
 ### Supported decryption protocols
 
@@ -65,7 +66,7 @@ Requires an installed paid [DMR upgrade](https://info.uniden.com/twiki/bin/view/
 
 Requires an installed paid [NXDN upgrade](https://info.uniden.com/twiki/bin/view/UnidenMan4/DigitalMobileRadioUpgrade) on the scanner for NXDN Scrambler.
 
-Requires an installed custom firmware at least version 1.99.08 on the scanner ([BCD436HP](https://github.com/x27/openscanner/tree/main/uniden/bcd436hp/fw/mod), [BCD536HP](https://github.com/x27/openscanner/tree/main/uniden/bcd536hp/fw/mod), [SDS100](https://github.com/x27/openscanner/tree/main/uniden/sds100/fw/mod)).
+Requires an installed custom firmware at least version 1.99.08 on the scanner ([BCD436HP](https://github.com/x27/openscanner/tree/main/uniden/bcd436hp/fw/mod), [BCD536HP](https://github.com/x27/openscanner/tree/main/uniden/bcd536hp/fw/mod), [SDS100](https://github.com/x27/openscanner/tree/main/uniden/sds100/fw/mod), [SDS100E](https://github.com/x27/openscanner/tree/main/uniden/sds100e/mod), [SDS200](https://github.com/x27/openscanner/tree/main/uniden/sds200/mod)).
 
 OS: Windows XP or higher with installed .Net Framework 2.0
 
@@ -132,16 +133,6 @@ In your e-mail, please specify the serial number of the scanner and which licens
 
 > [!CAUTION]
 > **Please do not include the shipping address when paying via Paypal as the license is a digital service.**
-
-
-### Funds
-
-Total: 2965USD 
-* Uniden SDS200 (100% of funds raised, ordered (slow delivery))
-* Uniden UBCD3600XLT (purchased, 800USD)
-* Uniden SDS100 (purchased, 900USD)
-* Kenwood NX300 (purchased, 170USD)
-* Motorola XTS1500 ADP (purchased, 250USD)
 
 ### Support
 
