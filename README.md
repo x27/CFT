@@ -10,30 +10,36 @@ Please read the instructions about [How To Get Started with CFT v1](HOWTO.md).
 
 ### Supported scanner models
 
-* Uniden BCD436HP with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
+* Uniden BCD436HP with [CF 1.99.20](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.20_TEST)
 * Uniden BCD536HP with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
 * Uniden SDS100 with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
 * Uniden UBCD3600XLT with [CF 1.99.19](https://github.com/x27/openscanner/releases/tag/UBCD3600XLT_1.99.19_TEST)
 * Uniden SDS100E with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/SDS100E_1.99.18_TEST)
 * Uniden SDS200 with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/SDS200_1.99.18_TEST)
+* Uniden SDS200E with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/SDS200E_1.99.18_TEST)
+* Uniden UBCD436PT with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/UBCD436PT_1.99.18_TEST)
+* Uniden USDS100 with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/USDS100_1.99.18_TEST)
+* Uniden UBCD536PT with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/UBCD536PT_1.99.18_TEST)
 
 ### Supported decryption protocols
 
-* Hytera BP (Basic Privacy) CF v1.99.11 and above
+* Hytera BP (Basic Privacy), CF v1.99.11 and above
     * 10 characters (40 bits) - confirmed
     * 10 characters (40 bits) with OTA Encryption - confirmed
     * 32 characters (128 bits) - confirmed
     * 64 characters (256 bits) - confirmed
     * 64 characters (256 bits) with OTA Encryption - confirmed
-* Motorola BP (Basic Privacy) CF v1.99.11 and above
+* Motorola BP (Basic Privacy), CF v1.99.11 and above
    * key 1-255 - confirmed
    * key 1-255 Mixed with Clear voice - confirmed
-* Motorola EP (Enhanced Privacy) CF v1.99.16 (test) and above
+* Motorola EP (Enhanced Privacy), CF v1.99.16 (test) and above
    * key 40 bit - confirmed
 * NXDN Scrambler, CF v1.99.14 (test) and above
    * key 1-32766 - confirmed
 * Anytone Common Encryption, CF v1.99.18 (test)
-   * key 1-65535 - test 
+   * key 1-65535 - test
+* P25 Phase1 ADP, CF v1.99.20 (test) and above
+   * key 10 characters (40 bits) - test 
 
 ### About Encryption Key
 
@@ -103,7 +109,7 @@ If you are not satisfied with the limitations of the demo mode, you can purchase
 If your scanner model is not supported, but you want to enjoy these features, or you just want to support the project, you are more than welcome to donate or purchase unlock keys.
 But before you do, write me an e-mail.
 
-Licenses for unlocking **Hytera BP**, **Motorola BP**, **Motorola EP**, **NXDN Scrambler** keys are currently available. 
+Licenses for unlocking **Hytera BP**, **Motorola BP**, **Motorola EP**, **NXDN Scrambler**, **ADP** keys are currently available. 
 
 **Anytone Common Encryption** are free.
 
