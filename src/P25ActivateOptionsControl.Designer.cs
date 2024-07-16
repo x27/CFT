@@ -131,9 +131,9 @@
             this.cbNAC.AutoSize = true;
             this.cbNAC.Location = new System.Drawing.Point(31, 41);
             this.cbNAC.Name = "cbNAC";
-            this.cbNAC.Size = new System.Drawing.Size(53, 21);
+            this.cbNAC.Size = new System.Drawing.Size(89, 21);
             this.cbNAC.TabIndex = 4;
-            this.cbNAC.Text = "NAC";
+            this.cbNAC.Text = "NAC (HEX)";
             this.cbNAC.UseVisualStyleBackColor = true;
             this.cbNAC.CheckedChanged += new System.EventHandler(this.eventOptionChanged);
             // 

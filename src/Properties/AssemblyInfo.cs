@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 [assembly: AssemblyTitle("CFT")]
-[assembly: AssemblyDescription("Custom Firmware Tuner for Uniden BCDx36HP/SDS100")]
+[assembly: AssemblyDescription("Custom Firmware Tuner for Uniden Scanners")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("JD")]
 [assembly: AssemblyProduct("CFT")]
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.0.19")]
-[assembly: AssemblyFileVersion("2.0.0.19")]
+[assembly: AssemblyVersion("2.0.0.20")]
+[assembly: AssemblyFileVersion("2.0.0.20")]

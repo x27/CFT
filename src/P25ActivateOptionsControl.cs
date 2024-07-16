@@ -39,7 +39,7 @@ namespace CFT
             cbGroupID.Checked = Options.IsActivated(P25SelectedActivateOptionsEnum.GroupID);
             cbSilence.Checked = Options.IsActivated(P25SelectedActivateOptionsEnum.Silence);
 
-            tbNAC.Text = Options.NAC.ToString();
+            tbNAC.Text = Options.NAC.ToString("X");
             tbGroupID.Text = Options.GroupID.ToString();
             tbKeyID.Text = Options.KeyID.ToString();
             tbSourceID.Text = Options.SourceID.ToString();
@@ -72,7 +72,7 @@ namespace CFT
             if (cbSourceID.Checked && uint.TryParse(tbSourceID.Text.Trim(), NumberStyles.Number, null, out uint sourceID))
                 Options.SourceID = sourceID;
 
-            if (cbNAC.Checked && ushort.TryParse(tbNAC.Text.Trim(), NumberStyles.Number, null, out ushort nac))
+            if (cbNAC.Checked && ushort.TryParse(tbNAC.Text.Trim(), NumberStyles.HexNumber, null, out ushort nac))
                 Options.NAC = nac;
 
             if (cbKeyID.Checked && ushort.TryParse(tbKeyID.Text.Trim(), NumberStyles.Number, null, out ushort keyID))
@@ -123,7 +123,7 @@ namespace CFT
             }
 
             ushort nac = 0;
-            if (cbNAC.Checked && !ushort.TryParse(tbNAC.Text.Trim(), NumberStyles.Number, null, out nac))
+            if (cbNAC.Checked && !ushort.TryParse(tbNAC.Text.Trim(), NumberStyles.HexNumber, null, out nac))
             {
                 tbNAC.Focus();
                 errorStr = "Wrong NAC value!";
@@ -133,7 +133,7 @@ namespace CFT
             if (nac > 4095)
             {
                 tbNAC.Focus();
-                errorStr = $"Wrong NAC value (0-4096): {nac}!";
+                errorStr = $"Wrong NAC value (0-0xFFF): {nac}!";
                 return true;
             }
 

@@ -26,7 +26,7 @@ namespace CFT
         {
             var sb = new StringBuilder();
             if (IsActivated(P25SelectedActivateOptionsEnum.NAC))
-                sb.Append($"NAC({NAC}) ");
+                sb.Append($"NAC({NAC:X}) ");
             if (IsActivated(P25SelectedActivateOptionsEnum.GroupID))
                 sb.Append($"GroupID({GroupID}) ");
             if (IsActivated(P25SelectedActivateOptionsEnum.KeyID))

@@ -308,7 +308,6 @@ namespace CFT
             var frm = new P25ADPEncryptionMethodForm(null);
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                _project.EcryptionRows.Add(frm.EncryptionRow);
                 AddEncryptionRow(frm.EncryptionRow);
             }
         }
