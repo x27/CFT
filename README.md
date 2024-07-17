@@ -10,7 +10,7 @@ Please read the instructions about [How To Get Started with CFT v1](HOWTO.md).
 
 ### Supported scanner models
 
-* Uniden BCD436HP with [CF 1.99.20](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.20_TEST)
+* Uniden BCD436HP with [CF 1.99.21](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.21_TEST)
 * Uniden BCD536HP with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
 * Uniden SDS100 with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
 * Uniden UBCD3600XLT with [CF 1.99.19](https://github.com/x27/openscanner/releases/tag/UBCD3600XLT_1.99.19_TEST)
@@ -72,7 +72,7 @@ Requires an installed paid [DMR upgrade](https://info.uniden.com/twiki/bin/view/
 
 Requires an installed paid [NXDN upgrade](https://info.uniden.com/twiki/bin/view/UnidenMan4/DigitalMobileRadioUpgrade) on the scanner for NXDN Scrambler.
 
-Requires an installed custom firmware at least version 1.99.08 on the scanner ([BCD436HP](https://github.com/x27/openscanner/tree/main/uniden/bcd436hp/fw/mod), [BCD536HP](https://github.com/x27/openscanner/tree/main/uniden/bcd536hp/fw/mod), [SDS100](https://github.com/x27/openscanner/tree/main/uniden/sds100/fw/mod), [SDS100E](https://github.com/x27/openscanner/tree/main/uniden/sds100e/mod), [SDS200](https://github.com/x27/openscanner/tree/main/uniden/sds200/mod)).
+Requires an installed Custom Firmware (CF) on your scanner.
 
 OS: Windows XP or higher with installed .Net Framework 2.0
 
