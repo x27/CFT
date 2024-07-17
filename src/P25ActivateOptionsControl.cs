@@ -41,7 +41,7 @@ namespace CFT
 
             tbNAC.Text = Options.NAC.ToString("X");
             tbGroupID.Text = Options.GroupID.ToString();
-            tbKeyID.Text = Options.KeyID.ToString();
+            tbKeyID.Text = Options.KeyID.ToString("X");
             tbSourceID.Text = Options.SourceID.ToString();
 
             ControlsEnabled();
@@ -75,7 +75,7 @@ namespace CFT
             if (cbNAC.Checked && ushort.TryParse(tbNAC.Text.Trim(), NumberStyles.HexNumber, null, out ushort nac))
                 Options.NAC = nac;
 
-            if (cbKeyID.Checked && ushort.TryParse(tbKeyID.Text.Trim(), NumberStyles.Number, null, out ushort keyID))
+            if (cbKeyID.Checked && ushort.TryParse(tbKeyID.Text.Trim(), NumberStyles.HexNumber, null, out ushort keyID))
                 Options.KeyID = keyID;
 
             ControlsEnabled();
@@ -115,10 +115,10 @@ namespace CFT
                 return true;
             }
 
-            if (cbKeyID.Checked && !ushort.TryParse(tbKeyID.Text.Trim(), NumberStyles.Number, null, out ushort keyID))
+            if (cbKeyID.Checked && !ushort.TryParse(tbKeyID.Text.Trim(), NumberStyles.HexNumber, null, out ushort keyID))
             {
                 tbKeyID.Focus();
-                errorStr = "Wrong KeyID value!";
+                errorStr = "Wrong KeyID value (0-0xFFFF)!";
                 return true;
             }
 

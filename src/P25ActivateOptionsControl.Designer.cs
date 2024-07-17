@@ -98,9 +98,9 @@
             this.cbGroupID.AutoSize = true;
             this.cbGroupID.Location = new System.Drawing.Point(31, 135);
             this.cbGroupID.Name = "cbGroupID";
-            this.cbGroupID.Size = new System.Drawing.Size(80, 21);
+            this.cbGroupID.Size = new System.Drawing.Size(116, 21);
             this.cbGroupID.TabIndex = 12;
-            this.cbGroupID.Text = "Group ID";
+            this.cbGroupID.Text = "Group ID (DEC)";
             this.cbGroupID.UseVisualStyleBackColor = true;
             this.cbGroupID.CheckedChanged += new System.EventHandler(this.eventOptionChanged);
             // 
@@ -109,9 +109,9 @@
             this.cbSourceID.AutoSize = true;
             this.cbSourceID.Location = new System.Drawing.Point(31, 104);
             this.cbSourceID.Name = "cbSourceID";
-            this.cbSourceID.Size = new System.Drawing.Size(83, 21);
+            this.cbSourceID.Size = new System.Drawing.Size(119, 21);
             this.cbSourceID.TabIndex = 10;
-            this.cbSourceID.Text = "Source ID";
+            this.cbSourceID.Text = "Source ID (DEC)";
             this.cbSourceID.UseVisualStyleBackColor = true;
             this.cbSourceID.CheckedChanged += new System.EventHandler(this.eventOptionChanged);
             // 
@@ -120,9 +120,9 @@
             this.cbKeyID.AutoSize = true;
             this.cbKeyID.Location = new System.Drawing.Point(31, 72);
             this.cbKeyID.Name = "cbKeyID";
-            this.cbKeyID.Size = new System.Drawing.Size(64, 21);
+            this.cbKeyID.Size = new System.Drawing.Size(100, 21);
             this.cbKeyID.TabIndex = 6;
-            this.cbKeyID.Text = "Key ID";
+            this.cbKeyID.Text = "Key ID (HEX)";
             this.cbKeyID.UseVisualStyleBackColor = true;
             this.cbKeyID.CheckedChanged += new System.EventHandler(this.eventOptionChanged);
             // 

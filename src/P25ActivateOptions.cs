@@ -30,7 +30,7 @@ namespace CFT
             if (IsActivated(P25SelectedActivateOptionsEnum.GroupID))
                 sb.Append($"GroupID({GroupID}) ");
             if (IsActivated(P25SelectedActivateOptionsEnum.KeyID))
-                sb.Append($"KeyID({KeyID}) ");
+                sb.Append($"KeyID({KeyID:X}) ");
             if (IsActivated(P25SelectedActivateOptionsEnum.SourceID))
                 sb.Append($"SourceID({SourceID}) ");
             if (IsActivated(P25SelectedActivateOptionsEnum.Silence))
