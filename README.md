@@ -10,16 +10,16 @@ Please read the instructions about [How To Get Started with CFT v1](HOWTO.md).
 
 ### Supported scanner models
 
-* Uniden BCD436HP with [CF 1.99.21](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.21_TEST)
-* Uniden BCD536HP with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
-* Uniden SDS100 with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/v1.99.18)
-* Uniden UBCD3600XLT with [CF 1.99.19](https://github.com/x27/openscanner/releases/tag/UBCD3600XLT_1.99.19_TEST)
-* Uniden SDS100E with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/SDS100E_1.99.18_TEST)
-* Uniden SDS200 with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/SDS200_1.99.18_TEST)
-* Uniden SDS200E with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/SDS200E_1.99.18_TEST)
-* Uniden UBCD436PT with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/UBCD436PT_1.99.18_TEST)
-* Uniden USDS100 with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/USDS100_1.99.18_TEST)
-* Uniden UBCD536PT with [CF 1.99.18](https://github.com/x27/openscanner/releases/tag/UBCD536PT_1.99.18_TEST)
+* Uniden BCD436HP with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.22_TEST)
+* Uniden BCD536HP with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/v1.99.22)
+* Uniden SDS100 with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/SDS100_1.99.22_TEST)
+* Uniden UBCD3600XLT with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/UBCD3600XLT_1.99.23_TEST)
+* Uniden SDS100E with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/v1.99.22)
+* Uniden SDS200 with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/v1.99.22)
+* Uniden SDS200E with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/v1.99.22)
+* Uniden UBCD436PT with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/v1.99.22)
+* Uniden USDS100 with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/v1.99.22)
+* Uniden UBCD536PT with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/v1.99.22)
 
 ### Supported decryption protocols
 
