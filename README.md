@@ -8,6 +8,8 @@ The main purpose of CFT is to select the parameters of digital protocols that wi
 
 Please read the instructions about [How To Get Started with CFT v1](HOWTO.md).
 
+Video tutorial: [How strart to using the OpenScanner Custom Firmware for Uniden Scanners](https://www.youtube.com/watch?v=alfvpBevngc)
+
 ### Supported scanner models
 
 * Uniden BCD436HP with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.22_TEST)
