@@ -40,12 +40,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tbP25ADPUnlockKey = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.tbP25DESUnlockKey = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 22);
+            this.label1.Location = new System.Drawing.Point(22, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(173, 17);
             this.label1.TabIndex = 0;
@@ -53,16 +55,16 @@
             // 
             // tbMotoBPUnlockKey
             // 
-            this.tbMotoBPUnlockKey.Location = new System.Drawing.Point(25, 42);
+            this.tbMotoBPUnlockKey.Location = new System.Drawing.Point(22, 42);
             this.tbMotoBPUnlockKey.Multiline = true;
             this.tbMotoBPUnlockKey.Name = "tbMotoBPUnlockKey";
-            this.tbMotoBPUnlockKey.Size = new System.Drawing.Size(489, 72);
+            this.tbMotoBPUnlockKey.Size = new System.Drawing.Size(489, 46);
             this.tbMotoBPUnlockKey.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 212);
+            this.label2.Location = new System.Drawing.Point(22, 160);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(156, 17);
             this.label2.TabIndex = 2;
@@ -70,17 +72,17 @@
             // 
             // tbHyteraBPUnlockKey
             // 
-            this.tbHyteraBPUnlockKey.Location = new System.Drawing.Point(25, 232);
+            this.tbHyteraBPUnlockKey.Location = new System.Drawing.Point(22, 180);
             this.tbHyteraBPUnlockKey.Multiline = true;
             this.tbHyteraBPUnlockKey.Name = "tbHyteraBPUnlockKey";
-            this.tbHyteraBPUnlockKey.Size = new System.Drawing.Size(489, 72);
+            this.tbHyteraBPUnlockKey.Size = new System.Drawing.Size(489, 46);
             this.tbHyteraBPUnlockKey.TabIndex = 3;
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(25, 514);
+            this.btnCancel.Location = new System.Drawing.Point(25, 453);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(102, 32);
             this.btnCancel.TabIndex = 4;
@@ -90,7 +92,7 @@
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(412, 514);
+            this.btnOk.Location = new System.Drawing.Point(412, 453);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(102, 32);
             this.btnOk.TabIndex = 5;
@@ -100,16 +102,16 @@
             // 
             // tbNxdnScramblerUnlockKey
             // 
-            this.tbNxdnScramblerUnlockKey.Location = new System.Drawing.Point(25, 327);
+            this.tbNxdnScramblerUnlockKey.Location = new System.Drawing.Point(22, 249);
             this.tbNxdnScramblerUnlockKey.Multiline = true;
             this.tbNxdnScramblerUnlockKey.Name = "tbNxdnScramblerUnlockKey";
-            this.tbNxdnScramblerUnlockKey.Size = new System.Drawing.Size(489, 72);
+            this.tbNxdnScramblerUnlockKey.Size = new System.Drawing.Size(489, 46);
             this.tbNxdnScramblerUnlockKey.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 307);
+            this.label3.Location = new System.Drawing.Point(22, 229);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(200, 17);
             this.label3.TabIndex = 6;
@@ -117,16 +119,16 @@
             // 
             // tbMotoEPUnlockKey
             // 
-            this.tbMotoEPUnlockKey.Location = new System.Drawing.Point(25, 137);
+            this.tbMotoEPUnlockKey.Location = new System.Drawing.Point(22, 111);
             this.tbMotoEPUnlockKey.Multiline = true;
             this.tbMotoEPUnlockKey.Name = "tbMotoEPUnlockKey";
-            this.tbMotoEPUnlockKey.Size = new System.Drawing.Size(489, 72);
+            this.tbMotoEPUnlockKey.Size = new System.Drawing.Size(489, 46);
             this.tbMotoEPUnlockKey.TabIndex = 9;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 117);
+            this.label4.Location = new System.Drawing.Point(22, 91);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(173, 17);
             this.label4.TabIndex = 8;
@@ -134,27 +136,46 @@
             // 
             // tbP25ADPUnlockKey
             // 
-            this.tbP25ADPUnlockKey.Location = new System.Drawing.Point(25, 423);
+            this.tbP25ADPUnlockKey.Location = new System.Drawing.Point(22, 318);
             this.tbP25ADPUnlockKey.Multiline = true;
             this.tbP25ADPUnlockKey.Name = "tbP25ADPUnlockKey";
-            this.tbP25ADPUnlockKey.Size = new System.Drawing.Size(489, 72);
+            this.tbP25ADPUnlockKey.Size = new System.Drawing.Size(489, 46);
             this.tbP25ADPUnlockKey.TabIndex = 11;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 403);
+            this.label5.Location = new System.Drawing.Point(22, 298);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(149, 17);
             this.label5.TabIndex = 10;
             this.label5.Text = "Unlock Key for P25 ADP:";
+            // 
+            // tbP25DESUnlockKey
+            // 
+            this.tbP25DESUnlockKey.Location = new System.Drawing.Point(22, 387);
+            this.tbP25DESUnlockKey.Multiline = true;
+            this.tbP25DESUnlockKey.Name = "tbP25DESUnlockKey";
+            this.tbP25DESUnlockKey.Size = new System.Drawing.Size(489, 46);
+            this.tbP25DESUnlockKey.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(22, 367);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(148, 17);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Unlock Key for P25 DES:";
             // 
             // LicensingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(540, 567);
+            this.ClientSize = new System.Drawing.Size(540, 506);
+            this.Controls.Add(this.tbP25DESUnlockKey);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.tbP25ADPUnlockKey);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tbMotoEPUnlockKey);
@@ -196,5 +217,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox tbP25ADPUnlockKey;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tbP25DESUnlockKey;
+        private System.Windows.Forms.Label label6;
     }
 }

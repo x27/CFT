@@ -81,6 +81,12 @@
     <Compile Include="DebugLogsFilteringForm.Designer.cs">
       <DependentUpon>DebugLogsFilteringForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="P25DESEncryptionMethodForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P25DESEncryptionMethodForm.Designer.cs">
+      <DependentUpon>P25DESEncryptionMethodForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="P25ADPEncryptionMethodForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +155,7 @@
     </Compile>
     <Compile Include="NxdnActivateOptions.cs" />
     <Compile Include="NxdnCypherTypeEnum.cs" />
+    <Compile Include="P25DESEncryptionRow.cs" />
     <Compile Include="P25ADPEncryptionRow.cs" />
     <Compile Include="P25SelectedActivateOptionsEnum.cs" />
     <Compile Include="NxdnSelectedActivateOptionsEnum.cs" />
@@ -213,6 +220,10 @@
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P25DESEncryptionMethodForm.resx">
+      <DependentUpon>P25DESEncryptionMethodForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="P25ADPEncryptionMethodForm.resx">
       <DependentUpon>P25ADPEncryptionMethodForm.cs</DependentUpon>

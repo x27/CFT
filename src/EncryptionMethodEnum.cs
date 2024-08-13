@@ -11,6 +11,10 @@
         [DisplayName("Motorola EP")]
         MotorolaEP = 4,
         [DisplayName("Anytone Enc")]
-        EnytoneEnc = 5
+        AnytoneEnc = 5,
+        [DisplayName("P25 ADP")]
+        P25ADP = 6,
+        [DisplayName("P25 DES")]
+        P25DES = 7,
     }
 }

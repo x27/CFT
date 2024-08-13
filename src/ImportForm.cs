@@ -106,6 +106,24 @@ namespace CFT
                         }
                         break;
                     }
+                case EncryptionMethodEnum.P25ADP:
+                    {
+                        var frm = new P25ADPEncryptionMethodForm(_batchEncryptionRow as P25ADPEncryptionRow, true);
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            _batchEncryptionRow = frm.EncryptionRow;
+                        }
+                        break;
+                    }
+                case EncryptionMethodEnum.P25DES:
+                    {
+                        var frm = new P25DESEncryptionMethodForm(_batchEncryptionRow as P25DESEncryptionRow, true);
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            _batchEncryptionRow = frm.EncryptionRow;
+                        }
+                        break;
+                    }
             }
             UpdateControls();
         }

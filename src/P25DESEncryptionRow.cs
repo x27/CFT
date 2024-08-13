@@ -3,11 +3,11 @@ using System;
 
 namespace CFT
 {
-    [DisplayName("P25 ADP")]
+    [DisplayName("P25 DES")]
     [Serializable]
-    public class P25ADPEncryptionRow : BaseEncryptionRow
+    public class P25DESEncryptionRow : BaseEncryptionRow
     {
-        public const int KEY_SIZE = 5;
+        public const int KEY_SIZE = 8;
 
         public byte[] Key { get; set; }
 
@@ -22,9 +22,9 @@ namespace CFT
             get
             {
                 if (!string.IsNullOrEmpty($"{ActivateOptions}"))
-                    return $"P25 ADP: {ActivateOptions}";
+                    return $"P25 DES: {ActivateOptions}";
                 else
-                    return $"P25 ADP";
+                    return $"P25 DES";
             }
         }
     }

@@ -24,6 +24,7 @@ namespace CFT
             MotorolaEP = 4,
             AnytoneEnc = 5,
             P25ADP = 6,
+            P25DES = 7
         }
 
         public static void Export(Project project, Scanner scanner, string filename)
@@ -45,6 +46,7 @@ namespace CFT
                     bw.Write(scanner.Licensing.NxdnScramblerUnlockKey);
                     bw.Write(scanner.Licensing.MotorolaEPUnlockKey);
                     bw.Write(scanner.Licensing.P25ADPUnlockKey);
+                    bw.Write(scanner.Licensing.P25DESUnlockKey);
                 }
 
                 // KEY MAPPING && MUTE
@@ -161,6 +163,22 @@ namespace CFT
                         bw.Write(Swap(item.ActivateOptions.KeyID));
                         bw.Write(new byte[25]); // key remaining part
                     }
+                    else if (row is P25DESEncryptionRow)
+                    {
+                        var item = row as P25DESEncryptionRow;
+                        bw.Write(Swap((uint)(item.ActivateOptions.Options | P25SelectedActivateOptionsEnum.Frequency)));
+                        bw.Write(Swap(item.ActivateOptions.NAC));
+                        bw.Write(Swap(UInt32ToFreq(row.Frequency)));
+                        bw.Write(Swap(item.ActivateOptions.SourceID));
+                        bw.Write((byte)0);
+                        bw.Write((byte)0);
+                        bw.Write((byte)0);
+                        bw.Write((byte)EncryptionMethodEnum.P25DES);
+                        bw.Write(Swap(item.ActivateOptions.GroupID));
+                        bw.Write(item.Key); // key 8 byte
+                        bw.Write(Swap(item.ActivateOptions.KeyID));
+                        bw.Write(new byte[22]); // key remaining part
+                    }
 
                     else
                         bw.BaseStream.Position += ENC_METHOD_STRUCT_SIZE; // enc method struct size
@@ -184,6 +202,7 @@ namespace CFT
                 licensing.HyteraBPUnlockKey = new byte[Licensing.UNLOCK_KEY_LEN];
                 licensing.NxdnScramblerUnlockKey = new byte[Licensing.UNLOCK_KEY_LEN];
                 licensing.P25ADPUnlockKey = new byte[Licensing.UNLOCK_KEY_LEN];
+                licensing.P25DESUnlockKey = new byte[Licensing.UNLOCK_KEY_LEN];
 
                 var keyMapping = new KeyMapping();
                 var rows = new List<IEncryptionRow>();
@@ -210,6 +229,8 @@ namespace CFT
                     Buffer.BlockCopy(bs, 0, licensing.MotorolaEPUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
                     bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
                     Buffer.BlockCopy(bs, 0, licensing.P25ADPUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
+                    bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
+                    Buffer.BlockCopy(bs, 0, licensing.P25DESUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
 
                     br.BaseStream.Position = ZIPKEY_OFFSET;
                     muteEncrypted = br.ReadByte() == 1;
@@ -354,6 +375,26 @@ namespace CFT
                                     row.Key = br.ReadBytes(5);
                                     row.ActivateOptions.KeyID = Swap(br.ReadUInt16());
                                     br.ReadBytes(25); // key remaining part
+                                    rows.Add(row);
+                                    notesSkipList.Add(false);
+                                    break;
+                                }
+                            case EncryptionMethodEnum.P25DES:
+                                {
+                                    var row = new P25DESEncryptionRow();
+                                    row.ActivateOptions = new P25ActivateOptions();
+                                    row.ActivateOptions.Options = (P25SelectedActivateOptionsEnum)Swap(br.ReadUInt32());
+                                    row.ActivateOptions.NAC = Swap(br.ReadUInt16());
+                                    row.Frequency = FreqToUint32(Swap(br.ReadUInt32()));
+                                    row.ActivateOptions.SourceID = Swap(br.ReadUInt32());
+                                    br.ReadByte(); // skip 
+                                    br.ReadByte(); // skip 
+                                    br.ReadByte(); // skip 
+                                    br.ReadByte(); // skip enc method
+                                    row.ActivateOptions.GroupID = Swap(br.ReadUInt32());
+                                    row.Key = br.ReadBytes(8);
+                                    row.ActivateOptions.KeyID = Swap(br.ReadUInt16());
+                                    br.ReadBytes(22); // key remaining part
                                     rows.Add(row);
                                     notesSkipList.Add(false);
                                     break;

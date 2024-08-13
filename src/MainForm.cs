@@ -62,6 +62,8 @@ namespace CFT
                     var licensing = ((cbScanners.Items[cbScanners.SelectedIndex] as DisplayTagObject).Tag as Scanner).Licensing;
                     if (!Utils.IsArrayEmpty(licensing.MotorolaBPUnlockKey) ||
                         !Utils.IsArrayEmpty(licensing.HyteraBPUnlockKey) ||
+                        !Utils.IsArrayEmpty(licensing.P25ADPUnlockKey) ||
+                        !Utils.IsArrayEmpty(licensing.P25DESUnlockKey) ||
                         !Utils.IsArrayEmpty(licensing.NxdnScramblerUnlockKey))
                     {
                         show = false;
@@ -321,6 +323,15 @@ namespace CFT
             }
         }
 
+        private void miP25DESEncryptionMethod_Click(object sender, EventArgs e)
+        {
+            var frm = new P25DESEncryptionMethodForm(null);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                AddEncryptionRow(frm.EncryptionRow);
+            }
+        }
+
 
         private void tsbDuplicateItem_Click(object sender, EventArgs e)
         {
@@ -372,6 +383,14 @@ namespace CFT
             else if (row is P25ADPEncryptionRow)
             {
                 var frm = new P25ADPEncryptionMethodForm(row as P25ADPEncryptionRow);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    AddEncryptionRow(frm.EncryptionRow);
+                }
+            }
+            else if (row is P25DESEncryptionRow)
+            {
+                var frm = new P25DESEncryptionMethodForm(row as P25DESEncryptionRow);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     AddEncryptionRow(frm.EncryptionRow);
@@ -749,6 +768,18 @@ namespace CFT
                     ControlsUpdate();
                 }
             }
+            else if (row is P25DESEncryptionRow)
+            {
+                var frm = new P25DESEncryptionMethodForm((P25DESEncryptionRow)row);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var item = CreateListViewRow(filter, frm.EncryptionRow);
+                    item.Text = listView.SelectedItems[0].Text;
+                    item.Selected = true;
+                    listView.Items[listView.SelectedIndices[0]] = item;
+                    ControlsUpdate();
+                }
+            }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -958,22 +989,28 @@ namespace CFT
                         var frm = new SelectEncryptionMethodForm();
                         if (frm.ShowDialog() == DialogResult.OK)
                         {
-                            switch (frm.Selection)
+                            switch ((EncryptionMethodEnum)(frm.Selection+1))
                             {
-                                case 0:
+                                case EncryptionMethodEnum.MotorolaBP:
                                     miMotorolaBPEncryptionMethod_Click(sender, e);
                                     break;
-                                case 1:
+                                case EncryptionMethodEnum.HyteraBP:
                                     miHyteraBPEncryptionMethod_Click(sender, e);
                                     break;
-                                case 2:
+                                case EncryptionMethodEnum.NxdnScrambler:
                                     miNxdnScramblerMethod_Click(sender, e);
                                     break;
-                                case 3:
+                                case EncryptionMethodEnum.MotorolaEP:
                                     miMotorolaEPEncryptionMethod_Click(sender, e);
                                     break;
-                                case 4:
+                                case EncryptionMethodEnum.AnytoneEnc:
+                                    miAnytoneEncryptionMethod_Click(sender, e);
+                                    break;
+                                case EncryptionMethodEnum.P25ADP:
                                     miP25ADPEncryptionMethod_Click(sender, e);
+                                    break;
+                                case EncryptionMethodEnum.P25DES:
+                                    miP25DESEncryptionMethod_Click(sender, e);
                                     break;
                             }
                         }

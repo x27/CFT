@@ -3,12 +3,12 @@ using System.Windows.Forms;
 
 namespace CFT
 {
-    public partial class P25ADPEncryptionMethodForm : Form
+    public partial class P25DESEncryptionMethodForm : Form
     {
-        public P25ADPEncryptionRow EncryptionRow { get; private set; }
+        public P25DESEncryptionRow EncryptionRow { get; private set; }
         public bool IsBatchMode { get; private set; }
 
-        public P25ADPEncryptionMethodForm(P25ADPEncryptionRow row = null, bool batchMode = false)
+        public P25DESEncryptionMethodForm(P25DESEncryptionRow row = null, bool batchMode = false)
         {
             InitializeComponent();
 
@@ -22,8 +22,8 @@ namespace CFT
 
             if (row == null)
             {
-                EncryptionRow = new P25ADPEncryptionRow();
-                EncryptionRow.Key = new byte[P25ADPEncryptionRow.KEY_SIZE];
+                EncryptionRow = new P25DESEncryptionRow();
+                EncryptionRow.Key = new byte[P25DESEncryptionRow.KEY_SIZE];
                 if (!IsBatchMode)
                     tbFrequency.Text = Utils.GetFrequencyString(145500000);
                 optionsControl.SetOptions(null);
@@ -76,7 +76,7 @@ namespace CFT
 
             Array.Clear(EncryptionRow.Key, 0, 5);
             if (key.Length > 0)
-                Buffer.BlockCopy(key, 0, EncryptionRow.Key, 0, key.Length > P25ADPEncryptionRow.KEY_SIZE ? P25ADPEncryptionRow.KEY_SIZE : key.Length);
+                Buffer.BlockCopy(key, 0, EncryptionRow.Key, 0, key.Length > P25DESEncryptionRow.KEY_SIZE ? P25DESEncryptionRow.KEY_SIZE : key.Length);
 
             EncryptionRow.Frequency = freq;
             EncryptionRow.ActivateOptions = optionsControl.Options;

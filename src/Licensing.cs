@@ -18,5 +18,6 @@ namespace CFT
         public byte[] NxdnScramblerUnlockKey { get; set; } = new byte[UNLOCK_KEY_LEN];
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public byte[] P25ADPUnlockKey { get; set; } = new byte[UNLOCK_KEY_LEN];
+        public byte[] P25DESUnlockKey { get; set; } = new byte[UNLOCK_KEY_LEN];
     }
 }
