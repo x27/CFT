@@ -15,10 +15,13 @@ namespace CFT
 
         public bool MuteEncryptedVoiceTraffic { get; set; }
 
+        public byte[] MacAddress { get; set; }
+
         public Scanner()
         {
             Model = ScannerModelEnum.BCD436HP;
             Name = "Scanner";
+            MacAddress = new byte[6];
         }
 
         public override string ToString()

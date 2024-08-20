@@ -49,5 +49,28 @@ namespace CFT
                 _keyMapping = frm.KeyMapping;
             }
         }
+
+        private void cbModel_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            try
+            {
+                var model = (ScannerModelEnum)Utils.GetComboBoxData(cbModel.SelectedItem);
+                btnMacAddress.Enabled = model == ScannerModelEnum.SDS200 || model == ScannerModelEnum.SDS200E;
+
+            }
+            catch 
+            {
+                btnMacAddress.Enabled = false;
+            }
+        }
+
+        private void btnMacAddress_Click(object sender, System.EventArgs e)
+        {
+            var frm = new MacAddressForm(Scanner.MacAddress);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                Scanner.MacAddress = frm.MacAddress;
+            }
+        }
     }
 }

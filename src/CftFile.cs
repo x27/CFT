@@ -13,6 +13,8 @@ namespace CFT
         const int KEY_STORAGE_OFFSET = 0x10;
         const int AGLO_TABLE_OFFSET = 0x200;
         const int ZIPKEY_OFFSET = 0x1FC;
+        const int MAC_ADDRESS_OFFSET = 0x1F0;
+        const int SCANNER_MODEL_OFFSET = 0x1F8;
 
         const int ENC_METHOD_STRUCT_SIZE = 54;
         private enum EncryptionMethodEnum
@@ -58,6 +60,22 @@ namespace CFT
                     bw.Write((byte)scanner.KeyMapping.Key3);
                     bw.Write((byte)scanner.KeyMapping.Key1);
                     bw.Write((byte)scanner.KeyMapping.Key2);
+                }
+
+                // MAC ADDRESS
+                if (scanner != null && scanner.MacAddress != null && scanner.MacAddress.Length == 6)
+                {
+                    bw.BaseStream.Position = MAC_ADDRESS_OFFSET;
+
+                    bw.Write(scanner.MacAddress);
+                }
+
+                // SCANNER MODEL
+                if (scanner != null)
+                {
+                    bw.BaseStream.Position = SCANNER_MODEL_OFFSET;
+
+                    bw.Write((byte)scanner.Model);
                 }
 
                 // ENCRYPTION ROWS
@@ -206,6 +224,8 @@ namespace CFT
 
                 var keyMapping = new KeyMapping();
                 var rows = new List<IEncryptionRow>();
+                byte [] macAddress = null;
+                ScannerModelEnum scannerModel;
 
                 var muteEncrypted = false;
 
@@ -237,6 +257,12 @@ namespace CFT
                     keyMapping.Key3 = (KeyMapFunctionEnum)br.ReadByte();
                     keyMapping.Key1 = (KeyMapFunctionEnum)br.ReadByte();
                     keyMapping.Key2 = (KeyMapFunctionEnum)br.ReadByte();
+
+                    br.BaseStream.Position = MAC_ADDRESS_OFFSET;
+                    macAddress = br.ReadBytes(6);
+
+                    br.BaseStream.Position = SCANNER_MODEL_OFFSET;
+                    scannerModel = (ScannerModelEnum)br.ReadByte();
 
                     br.BaseStream.Position = AGLO_TABLE_OFFSET;
                     var rowCount = Swap(br.ReadUInt32());
@@ -425,9 +451,11 @@ namespace CFT
                     {
                         new Scanner
                         {
+                            Model = scannerModel,
                             KeyMapping = keyMapping,
                             Licensing = licensing,
-                            MuteEncryptedVoiceTraffic = muteEncrypted
+                            MuteEncryptedVoiceTraffic = muteEncrypted,
+                            MacAddress = macAddress,
                         }
 
                     },

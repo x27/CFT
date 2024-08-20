@@ -1,6 +1,6 @@
 ﻿namespace CFT
 {
-    public enum ScannerModelEnum
+    public enum ScannerModelEnum : byte
     {
         BCD436HP = 1,
         BCD536HP = 2,
