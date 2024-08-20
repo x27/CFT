@@ -263,6 +263,8 @@ namespace CFT
 
                     br.BaseStream.Position = SCANNER_MODEL_OFFSET;
                     scannerModel = (ScannerModelEnum)br.ReadByte();
+                    if (scannerModel == 0)
+                        scannerModel = ScannerModelEnum.BCD436HP;
 
                     br.BaseStream.Position = AGLO_TABLE_OFFSET;
                     var rowCount = Swap(br.ReadUInt32());
