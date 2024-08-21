@@ -8,6 +8,10 @@
         [Scanner(ScannerModelEnum.SDS200)]
         [Scanner(ScannerModelEnum.UBCD3600XLT)]
         [Scanner(ScannerModelEnum.SDS100E)]
+        [Scanner(ScannerModelEnum.SDS200E)]
+        [Scanner(ScannerModelEnum.UBCD436PT)]
+        [Scanner(ScannerModelEnum.UBCD536PT)]
+        [Scanner(ScannerModelEnum.USDS100)]
         [DisplayName("DEFAULT")]
         Default = 0,
         [Scanner(ScannerModelEnum.BCD436HP)]
