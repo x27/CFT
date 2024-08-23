@@ -12,16 +12,16 @@ Video tutorial: [How strart to using the OpenScanner Custom Firmware for Uniden 
 
 ### Supported scanner models
 
-* Uniden BCD436HP with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/BCD436HP_1.99.22_TEST)
-* Uniden BCD536HP with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/v1.99.22)
-* Uniden SDS100 with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/SDS100_1.99.22_TEST)
-* Uniden UBCD3600XLT with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/UBCD3600XLT_1.99.23_TEST)
-* Uniden SDS100E with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/v1.99.22)
-* Uniden SDS200 with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/v1.99.22)
-* Uniden SDS200E with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/v1.99.22)
-* Uniden UBCD436PT with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/v1.99.22)
-* Uniden USDS100 with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/v1.99.22)
-* Uniden UBCD536PT with [CF 1.99.22](https://github.com/x27/openscanner/releases/tag/v1.99.22)
+* Uniden BCD436HP with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden BCD536HP with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden SDS100 with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden UBCD3600XLT with [CF 1.99.24](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden SDS100E with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden SDS200 with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden SDS200E with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden UBCD436PT with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden USDS100 with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden UBCD536PT with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
 
 ### Supported decryption protocols
 
@@ -41,7 +41,9 @@ Video tutorial: [How strart to using the OpenScanner Custom Firmware for Uniden 
 * Anytone Common Encryption, CF v1.99.18 (test)
    * key 1-65535 - test
 * P25 Phase1 ADP, CF v1.99.20 (test) and above
-   * key 10 characters (40 bits) - test 
+   * key 10 characters (40 bits) - confirmed 
+* P25 DES OFB, CF v1.99.23 and anove
+   * key 16 characters (56 bits + 8 bits parity) - confirmed 
 
 ### About Encryption Key
 
@@ -111,7 +113,7 @@ If you are not satisfied with the limitations of the demo mode, you can purchase
 If your scanner model is not supported, but you want to enjoy these features, or you just want to support the project, you are more than welcome to donate or purchase unlock keys.
 But before you do, write me an e-mail.
 
-Licenses for unlocking **Hytera BP**, **Motorola BP**, **Motorola EP**, **NXDN Scrambler**, **ADP** keys are currently available. 
+Licenses for unlocking **Hytera BP**, **Motorola BP**, **Motorola EP**, **NXDN Scrambler**, **ADP**, **P25 DES** keys are currently available. 
 
 **Anytone Common Encryption** are free.
 
