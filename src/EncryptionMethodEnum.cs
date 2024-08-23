@@ -16,5 +16,7 @@
         P25ADP = 6,
         [DisplayName("P25 DES")]
         P25DES = 7,
+        [DisplayName("Tytera EP")]
+        TyteraEP = 8,
     }
 }

@@ -59,6 +59,7 @@
             this.miNxdnScramblerMethod = new System.Windows.Forms.ToolStripMenuItem();
             this.anytoneEncryptorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.p25ADPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.p25DESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.miScanners = new System.Windows.Forms.ToolStripMenuItem();
             this.miTools = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,6 +82,7 @@
             this.nXDNScramblerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.anytoneEncryptorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.p25ADPToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.p25DESToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbDuplicateItem = new System.Windows.Forms.ToolStripButton();
             this.tsbDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
@@ -98,8 +100,8 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.p25DESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.p25DESToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tyteraEPEnhancedPrivacyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tyteraEPEnhancedPrivacyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.mainStatus.SuspendLayout();
             this.mainToolbar.SuspendLayout();
@@ -300,7 +302,8 @@
             this.miNxdnScramblerMethod,
             this.anytoneEncryptorToolStripMenuItem,
             this.p25ADPToolStripMenuItem,
-            this.p25DESToolStripMenuItem});
+            this.p25DESToolStripMenuItem,
+            this.tyteraEPEnhancedPrivacyToolStripMenuItem});
             this.miAddEncryptionMethodRow.Name = "miAddEncryptionMethodRow";
             this.miAddEncryptionMethodRow.Size = new System.Drawing.Size(239, 22);
             this.miAddEncryptionMethodRow.Text = "Add Encryption Row";
@@ -346,6 +349,13 @@
             this.p25ADPToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
             this.p25ADPToolStripMenuItem.Text = "P25 ADP ...";
             this.p25ADPToolStripMenuItem.Click += new System.EventHandler(this.miP25ADPEncryptionMethod_Click);
+            // 
+            // p25DESToolStripMenuItem
+            // 
+            this.p25DESToolStripMenuItem.Name = "p25DESToolStripMenuItem";
+            this.p25DESToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.p25DESToolStripMenuItem.Text = "P25 DES ...";
+            this.p25DESToolStripMenuItem.Click += new System.EventHandler(this.miP25DESEncryptionMethod_Click);
             // 
             // toolStripSeparator6
             // 
@@ -486,7 +496,8 @@
             this.nXDNScramblerToolStripMenuItem,
             this.anytoneEncryptorToolStripMenuItem1,
             this.p25ADPToolStripMenuItem1,
-            this.p25DESToolStripMenuItem1});
+            this.p25DESToolStripMenuItem1,
+            this.tyteraEPEnhancedPrivacyToolStripMenuItem1});
             this.tsbAddEncryptionRow.Image = global::CFT.Properties.Resources.add;
             this.tsbAddEncryptionRow.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAddEncryptionRow.Name = "tsbAddEncryptionRow";
@@ -534,6 +545,13 @@
             this.p25ADPToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
             this.p25ADPToolStripMenuItem1.Text = "P25 ADP ...";
             this.p25ADPToolStripMenuItem1.Click += new System.EventHandler(this.miP25ADPEncryptionMethod_Click);
+            // 
+            // p25DESToolStripMenuItem1
+            // 
+            this.p25DESToolStripMenuItem1.Name = "p25DESToolStripMenuItem1";
+            this.p25DESToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
+            this.p25DESToolStripMenuItem1.Text = "P25 DES ...";
+            this.p25DESToolStripMenuItem1.Click += new System.EventHandler(this.miP25DESEncryptionMethod_Click);
             // 
             // tsbDuplicateItem
             // 
@@ -683,19 +701,19 @@
             this.selectAllToolStripMenuItem.Text = "Select All";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem1_Click);
             // 
-            // p25DESToolStripMenuItem
+            // tyteraEPEnhancedPrivacyToolStripMenuItem
             // 
-            this.p25DESToolStripMenuItem.Name = "p25DESToolStripMenuItem";
-            this.p25DESToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
-            this.p25DESToolStripMenuItem.Text = "P25 DES ...";
-            this.p25DESToolStripMenuItem.Click += new System.EventHandler(this.miP25DESEncryptionMethod_Click);
+            this.tyteraEPEnhancedPrivacyToolStripMenuItem.Name = "tyteraEPEnhancedPrivacyToolStripMenuItem";
+            this.tyteraEPEnhancedPrivacyToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.tyteraEPEnhancedPrivacyToolStripMenuItem.Text = "Tytera EP (Enhanced Privacy) ...";
+            this.tyteraEPEnhancedPrivacyToolStripMenuItem.Click += new System.EventHandler(this.miTyteraEPEncryptionMethod_Click);
             // 
-            // p25DESToolStripMenuItem1
+            // tyteraEPEnhancedPrivacyToolStripMenuItem1
             // 
-            this.p25DESToolStripMenuItem1.Name = "p25DESToolStripMenuItem1";
-            this.p25DESToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
-            this.p25DESToolStripMenuItem1.Text = "P25 DES ...";
-            this.p25DESToolStripMenuItem1.Click += new System.EventHandler(this.miP25DESEncryptionMethod_Click);
+            this.tyteraEPEnhancedPrivacyToolStripMenuItem1.Name = "tyteraEPEnhancedPrivacyToolStripMenuItem1";
+            this.tyteraEPEnhancedPrivacyToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
+            this.tyteraEPEnhancedPrivacyToolStripMenuItem1.Text = "Tytera EP (Enhanced Privacy) ...";
+            this.tyteraEPEnhancedPrivacyToolStripMenuItem1.Click += new System.EventHandler(this.miTyteraEPEncryptionMethod_Click);
             // 
             // MainForm
             // 
@@ -800,6 +818,8 @@
         private System.Windows.Forms.ToolStripMenuItem p25ADPToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem p25DESToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem p25DESToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tyteraEPEnhancedPrivacyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tyteraEPEnhancedPrivacyToolStripMenuItem1;
     }
 }
 

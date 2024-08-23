@@ -74,6 +74,12 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TyteraEPEncryptionMethodForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TyteraEPEncryptionMethodForm.Designer.cs">
+      <DependentUpon>TyteraEPEncryptionMethodForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CFTFile.cs" />
     <Compile Include="DebugLogsFilteringForm.cs">
       <SubType>Form</SubType>
@@ -161,6 +167,7 @@
     </Compile>
     <Compile Include="NxdnActivateOptions.cs" />
     <Compile Include="NxdnCypherTypeEnum.cs" />
+    <Compile Include="TyteraEPEncryptionRow.cs" />
     <Compile Include="P25DESEncryptionRow.cs" />
     <Compile Include="P25ADPEncryptionRow.cs" />
     <Compile Include="P25SelectedActivateOptionsEnum.cs" />
@@ -226,6 +233,10 @@
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TyteraEPEncryptionMethodForm.resx">
+      <DependentUpon>TyteraEPEncryptionMethodForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MacAddressForm.resx">
       <DependentUpon>MacAddressForm.cs</DependentUpon>

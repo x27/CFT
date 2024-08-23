@@ -332,6 +332,15 @@ namespace CFT
             }
         }
 
+        private void miTyteraEPEncryptionMethod_Click(object sender, EventArgs e)
+        {
+            var frm = new TyteraEPEncryptionMethodForm(null);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                AddEncryptionRow(frm.EncryptionRow);
+            }
+        }
+
 
         private void tsbDuplicateItem_Click(object sender, EventArgs e)
         {
@@ -391,6 +400,14 @@ namespace CFT
             else if (row is P25DESEncryptionRow)
             {
                 var frm = new P25DESEncryptionMethodForm(row as P25DESEncryptionRow);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    AddEncryptionRow(frm.EncryptionRow);
+                }
+            }
+            else if (row is TyteraEPEncryptionRow)
+            {
+                var frm = new TyteraEPEncryptionMethodForm(row as TyteraEPEncryptionRow);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     AddEncryptionRow(frm.EncryptionRow);
@@ -780,6 +797,18 @@ namespace CFT
                     ControlsUpdate();
                 }
             }
+            else if (row is TyteraEPEncryptionRow)
+            {
+                var frm = new TyteraEPEncryptionMethodForm((TyteraEPEncryptionRow)row);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var item = CreateListViewRow(filter, frm.EncryptionRow);
+                    item.Text = listView.SelectedItems[0].Text;
+                    item.Selected = true;
+                    listView.Items[listView.SelectedIndices[0]] = item;
+                    ControlsUpdate();
+                }
+            }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -1011,6 +1040,9 @@ namespace CFT
                                     break;
                                 case EncryptionMethodEnum.P25DES:
                                     miP25DESEncryptionMethod_Click(sender, e);
+                                    break;
+                                case EncryptionMethodEnum.TyteraEP:
+                                    miTyteraEPEncryptionMethod_Click(sender, e);
                                     break;
                             }
                         }

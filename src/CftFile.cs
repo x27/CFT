@@ -26,7 +26,8 @@ namespace CFT
             MotorolaEP = 4,
             AnytoneEnc = 5,
             P25ADP = 6,
-            P25DES = 7
+            P25DES = 7,
+            TytEP = 8
         }
 
         public static void Export(Project project, Scanner scanner, string filename)
@@ -196,6 +197,21 @@ namespace CFT
                         bw.Write(item.Key); // key 8 byte
                         bw.Write(Swap(item.ActivateOptions.KeyID));
                         bw.Write(new byte[22]); // key remaining part
+                    }
+                    else if (row is TyteraEPEncryptionRow)
+                    {
+                        var item = row as TyteraEPEncryptionRow;
+                        bw.Write(Swap((uint)(item.ActivateOptions.Options | DmrSelectedActivateOptionsEnum.Frequency)));
+                        bw.Write((byte)item.ActivateOptions.TrunkSystem);
+                        bw.Write((byte)item.ActivateOptions.MFID);
+                        bw.Write(Swap(UInt32ToFreq(row.Frequency)));
+                        bw.Write((byte)item.ActivateOptions.ColorCode);
+                        bw.Write(Swap(item.ActivateOptions.TGID));
+                        bw.Write((byte)item.ActivateOptions.TimeSlot);
+                        bw.Write((byte)item.ActivateOptions.EncryptionValue);
+                        bw.Write((byte)EncryptionMethodEnum.TytEP);
+                        bw.Write(new byte[20]); 
+                        bw.Write(Swap(item.Key)); 
                     }
 
                     else
@@ -427,6 +443,25 @@ namespace CFT
                                     notesSkipList.Add(false);
                                     break;
                                 }
+                            case EncryptionMethodEnum.TytEP:
+                                {
+                                    var row = new TyteraEPEncryptionRow();
+                                    row.ActivateOptions = new DmrActivateOptions();
+                                    row.ActivateOptions.Options = (DmrSelectedActivateOptionsEnum)Swap(br.ReadUInt32());
+                                    row.ActivateOptions.TrunkSystem = (DmrTrunkSystemEnum)br.ReadByte();
+                                    row.ActivateOptions.MFID = (DmrMfidEnum)br.ReadByte();
+                                    row.Frequency = FreqToUint32(Swap(br.ReadUInt32()));
+                                    row.ActivateOptions.ColorCode = (DmrColorCodeEnum)br.ReadByte();
+                                    row.ActivateOptions.TGID = Swap(br.ReadUInt32());
+                                    row.ActivateOptions.TimeSlot = (DmrTimeSlotEnum)br.ReadByte();
+                                    row.ActivateOptions.EncryptionValue = (DmrEncyptionValueEnum)br.ReadByte();
+                                    br.ReadByte(); // skip enc method
+                                    br.ReadBytes(20);
+                                    row.Key = Swap(br.ReadBytes(16));
+                                    rows.Add(row);
+                                    notesSkipList.Add(false);
+                                    break;
+                                }
 
                             default:
                                 br.BaseStream.Position += ENC_METHOD_STRUCT_SIZE;
@@ -478,6 +513,16 @@ namespace CFT
         private static UInt32 UInt32ToFreq(UInt32 value)
         {
             return uint.Parse((value / 100).ToString(), NumberStyles.HexNumber);
+        }
+
+        private static byte[] Swap(byte[] data)
+        {
+            var res = new byte[data.Length];
+
+            for(var i=0; i<data.Length; i++)
+                res[data.Length - i - 1] = data[i];
+
+            return res;
         }
 
         private static uint Swap(uint value)
