@@ -64,6 +64,7 @@ namespace CFT
                         !Utils.IsArrayEmpty(licensing.HyteraBPUnlockKey) ||
                         !Utils.IsArrayEmpty(licensing.P25ADPUnlockKey) ||
                         !Utils.IsArrayEmpty(licensing.P25DESUnlockKey) ||
+                        !Utils.IsArrayEmpty(licensing.DMRAESUnlockKey) ||
                         !Utils.IsArrayEmpty(licensing.NxdnScramblerUnlockKey))
                     {
                         show = false;
@@ -341,6 +342,14 @@ namespace CFT
             }
         }
 
+        private void miDmrAesEncryptionMethod_Click(object sender, EventArgs e)
+        {
+            var frm = new DmrAesEncryptionMethodForm(null);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                AddEncryptionRow(frm.EncryptionRow);
+            }
+        }
 
         private void tsbDuplicateItem_Click(object sender, EventArgs e)
         {
@@ -408,6 +417,14 @@ namespace CFT
             else if (row is TyteraEPEncryptionRow)
             {
                 var frm = new TyteraEPEncryptionMethodForm(row as TyteraEPEncryptionRow);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    AddEncryptionRow(frm.EncryptionRow);
+                }
+            }
+            else if (row is DmrAesEncryptionRow)
+            {
+                var frm = new DmrAesEncryptionMethodForm(row as DmrAesEncryptionRow);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     AddEncryptionRow(frm.EncryptionRow);
@@ -809,6 +826,18 @@ namespace CFT
                     ControlsUpdate();
                 }
             }
+            else if (row is DmrAesEncryptionRow)
+            {
+                var frm = new DmrAesEncryptionMethodForm((DmrAesEncryptionRow)row);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var item = CreateListViewRow(filter, frm.EncryptionRow);
+                    item.Text = listView.SelectedItems[0].Text;
+                    item.Selected = true;
+                    listView.Items[listView.SelectedIndices[0]] = item;
+                    ControlsUpdate();
+                }
+            }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -1043,6 +1072,9 @@ namespace CFT
                                     break;
                                 case EncryptionMethodEnum.TyteraEP:
                                     miTyteraEPEncryptionMethod_Click(sender, e);
+                                    break;
+                                case EncryptionMethodEnum.DMRAES:
+                                    miDmrAesEncryptionMethod_Click(sender, e);
                                     break;
                             }
                         }

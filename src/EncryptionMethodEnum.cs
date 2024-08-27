@@ -18,5 +18,7 @@
         P25DES = 7,
         [DisplayName("Tytera EP")]
         TyteraEP = 8,
+        [DisplayName("DMR AES")]
+        DMRAES = 9,
     }
 }

@@ -27,7 +27,8 @@ namespace CFT
             AnytoneEnc = 5,
             P25ADP = 6,
             P25DES = 7,
-            TytEP = 8
+            TytEP = 8,
+            DmrAes = 9,
         }
 
         public static void Export(Project project, Scanner scanner, string filename)
@@ -50,6 +51,7 @@ namespace CFT
                     bw.Write(scanner.Licensing.MotorolaEPUnlockKey);
                     bw.Write(scanner.Licensing.P25ADPUnlockKey);
                     bw.Write(scanner.Licensing.P25DESUnlockKey);
+                    bw.Write(scanner.Licensing.DMRAESUnlockKey);
                 }
 
                 // KEY MAPPING && MUTE
@@ -213,6 +215,23 @@ namespace CFT
                         bw.Write(new byte[20]); 
                         bw.Write(Swap(item.Key)); 
                     }
+                    else if (row is DmrAesEncryptionRow)
+                    {
+                        var item = row as DmrAesEncryptionRow;
+                        bw.Write(Swap((uint)(item.ActivateOptions.Options | DmrSelectedActivateOptionsEnum.Frequency)));
+                        bw.Write((byte)item.ActivateOptions.TrunkSystem);
+                        bw.Write((byte)item.ActivateOptions.MFID);
+                        bw.Write(Swap(UInt32ToFreq(row.Frequency)));
+                        bw.Write((byte)item.ActivateOptions.ColorCode);
+                        bw.Write(Swap(item.ActivateOptions.TGID));
+                        bw.Write((byte)item.ActivateOptions.TimeSlot);
+                        bw.Write((byte)item.ActivateOptions.EncryptionValue);
+                        bw.Write((byte)EncryptionMethodEnum.DmrAes);
+                        bw.Write(Swap(item.KeyLength));
+                        bw.Write(item.ActivateOptions.KeyId);
+                        bw.Write((byte)0);
+                        bw.Write(item.Key);
+                    }
 
                     else
                         bw.BaseStream.Position += ENC_METHOD_STRUCT_SIZE; // enc method struct size
@@ -237,6 +256,7 @@ namespace CFT
                 licensing.NxdnScramblerUnlockKey = new byte[Licensing.UNLOCK_KEY_LEN];
                 licensing.P25ADPUnlockKey = new byte[Licensing.UNLOCK_KEY_LEN];
                 licensing.P25DESUnlockKey = new byte[Licensing.UNLOCK_KEY_LEN];
+                licensing.DMRAESUnlockKey = new byte[Licensing.UNLOCK_KEY_LEN];
 
                 var keyMapping = new KeyMapping();
                 var rows = new List<IEncryptionRow>();
@@ -267,6 +287,8 @@ namespace CFT
                     Buffer.BlockCopy(bs, 0, licensing.P25ADPUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
                     bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
                     Buffer.BlockCopy(bs, 0, licensing.P25DESUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
+                    bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
+                    Buffer.BlockCopy(bs, 0, licensing.DMRAESUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
 
                     br.BaseStream.Position = ZIPKEY_OFFSET;
                     muteEncrypted = br.ReadByte() == 1;
@@ -458,6 +480,27 @@ namespace CFT
                                     br.ReadByte(); // skip enc method
                                     br.ReadBytes(20);
                                     row.Key = Swap(br.ReadBytes(16));
+                                    rows.Add(row);
+                                    notesSkipList.Add(false);
+                                    break;
+                                }
+                            case EncryptionMethodEnum.DmrAes:
+                                {
+                                    var row = new DmrAesEncryptionRow();
+                                    row.ActivateOptions = new DmrActivateOptions();
+                                    row.ActivateOptions.Options = (DmrSelectedActivateOptionsEnum)Swap(br.ReadUInt32());
+                                    row.ActivateOptions.TrunkSystem = (DmrTrunkSystemEnum)br.ReadByte();
+                                    row.ActivateOptions.MFID = (DmrMfidEnum)br.ReadByte();
+                                    row.Frequency = FreqToUint32(Swap(br.ReadUInt32()));
+                                    row.ActivateOptions.ColorCode = (DmrColorCodeEnum)br.ReadByte();
+                                    row.ActivateOptions.TGID = Swap(br.ReadUInt32());
+                                    row.ActivateOptions.TimeSlot = (DmrTimeSlotEnum)br.ReadByte();
+                                    row.ActivateOptions.EncryptionValue = (DmrEncyptionValueEnum)br.ReadByte();
+                                    br.ReadByte(); // skip enc method
+                                    row.KeyLength = Swap(br.ReadUInt16());
+                                    row.ActivateOptions.KeyId = br.ReadByte();
+                                    br.ReadByte(); // skip 
+                                    row.Key = br.ReadBytes(32);
                                     rows.Add(row);
                                     notesSkipList.Add(false);
                                     break;

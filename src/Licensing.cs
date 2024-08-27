@@ -19,5 +19,6 @@ namespace CFT
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public byte[] P25ADPUnlockKey { get; set; } = new byte[UNLOCK_KEY_LEN];
         public byte[] P25DESUnlockKey { get; set; } = new byte[UNLOCK_KEY_LEN];
+        public byte[] DMRAESUnlockKey { get; set; } = new byte[UNLOCK_KEY_LEN];
     }
 }
