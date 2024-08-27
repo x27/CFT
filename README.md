@@ -43,7 +43,9 @@ Video tutorial: [How strart to using the OpenScanner Custom Firmware for Uniden 
 * P25 Phase1 ADP, CF v1.99.20 (test) and above
    * key 10 characters (40 bits) - confirmed 
 * P25 DES OFB, CF v1.99.23 and anove
-   * key 16 characters (56 bits + 8 bits parity) - confirmed 
+   * key 16 characters (56 bits + 8 bits parity) - confirmed
+* Tytera EP, CF v1.99.25 and above
+   * key 32 characters (128 bits) - test    
 
 ### About Encryption Key
 
@@ -115,7 +117,7 @@ But before you do, write me an e-mail.
 
 Licenses for unlocking **Hytera BP**, **Motorola BP**, **Motorola EP**, **NXDN Scrambler**, **ADP**, **P25 DES** keys are currently available. 
 
-**Anytone Common Encryption** are free.
+**Anytone Common Encryption**, **Tytera EP**  are free for users who have purchased paid licenses.
 
 For obvious reasons, I would like to remain anonymous, so payments are only accepted in cryptocurrency or via intermediary's PayPal
 
