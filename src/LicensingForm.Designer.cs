@@ -42,6 +42,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tbP25DESUnlockKey = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.tbDMRAESUnlockKey = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -82,7 +84,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(25, 453);
+            this.btnCancel.Location = new System.Drawing.Point(25, 521);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(102, 32);
             this.btnCancel.TabIndex = 4;
@@ -92,7 +94,7 @@
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(412, 453);
+            this.btnOk.Location = new System.Drawing.Point(412, 521);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(102, 32);
             this.btnOk.TabIndex = 5;
@@ -168,12 +170,31 @@
             this.label6.TabIndex = 12;
             this.label6.Text = "Unlock Key for P25 DES:";
             // 
+            // tbDMRAESUnlockKey
+            // 
+            this.tbDMRAESUnlockKey.Location = new System.Drawing.Point(22, 456);
+            this.tbDMRAESUnlockKey.Multiline = true;
+            this.tbDMRAESUnlockKey.Name = "tbDMRAESUnlockKey";
+            this.tbDMRAESUnlockKey.Size = new System.Drawing.Size(489, 46);
+            this.tbDMRAESUnlockKey.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(22, 436);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(155, 17);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Unlock Key for DMR AES:";
+            // 
             // LicensingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(540, 506);
+            this.ClientSize = new System.Drawing.Size(540, 574);
+            this.Controls.Add(this.tbDMRAESUnlockKey);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.tbP25DESUnlockKey);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.tbP25ADPUnlockKey);
@@ -219,5 +240,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbP25DESUnlockKey;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tbDMRAESUnlockKey;
+        private System.Windows.Forms.Label label7;
     }
 }
