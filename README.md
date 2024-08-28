@@ -12,15 +12,15 @@ Video tutorial: [How strart to using the OpenScanner Custom Firmware for Uniden 
 
 ### Supported scanner models
 
-* Uniden BCD436HP with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
-* Uniden BCD536HP with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
-* Uniden SDS100 with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
-* Uniden UBCD3600XLT with [CF 1.99.24](https://github.com/x27/openscanner/releases/tag/v1.99.23)
-* Uniden SDS100E with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
-* Uniden SDS200 with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
-* Uniden SDS200E with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden BCD436HP with [CF 1.99.27](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden BCD536HP with [CF 1.99.27](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden SDS100 with [CF 1.99.27](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden UBCD3600XLT with [CF 1.99.27](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden SDS100E with [CF 1.99.27](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden SDS200 with [CF 1.99.27](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden SDS200E with [CF 1.99.27](https://github.com/x27/openscanner/releases/tag/v1.99.23)
 * Uniden UBCD436PT with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
-* Uniden USDS100 with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden USDS100 with [CF 1.99.27](https://github.com/x27/openscanner/releases/tag/v1.99.23)
 * Uniden UBCD536PT with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
 
 ### Supported decryption protocols
@@ -46,6 +46,12 @@ Video tutorial: [How strart to using the OpenScanner Custom Firmware for Uniden 
    * key 16 characters (56 bits + 8 bits parity) - confirmed
 * Tytera EP, CF v1.99.25 and above
    * key 32 characters (128 bits) - test    
+* DMR AES, CF v1.99.27 and above
+   * key 32 characters (128 bits) - test    
+   * key 48 characters (192 bits) - test    
+   * key 64 characters (256 bits) - test    
+* Tytera BP, CF v1.99.27 and above
+   * key 16 bits (1-FFFF) - test    
 
 ### About Encryption Key
 
@@ -115,9 +121,9 @@ If you are not satisfied with the limitations of the demo mode, you can purchase
 If your scanner model is not supported, but you want to enjoy these features, or you just want to support the project, you are more than welcome to donate or purchase unlock keys.
 But before you do, write me an e-mail.
 
-Licenses for unlocking **Hytera BP**, **Motorola BP**, **Motorola EP**, **NXDN Scrambler**, **ADP**, **P25 DES** keys are currently available. 
+Licenses for unlocking **Hytera BP**, **Motorola BP**, **Motorola EP**, **NXDN Scrambler**, **ADP**, **P25 DES**, **DMR AES** keys are currently available. 
 
-**Anytone Common Encryption**, **Tytera EP**  are free for users who have purchased paid licenses.
+**Anytone Common Encryption**, **Tytera BP**, **Tytera EP**  are free for users who have purchased paid licenses.
 
 For obvious reasons, I would like to remain anonymous, so payments are only accepted in cryptocurrency or via intermediary's PayPal
 
