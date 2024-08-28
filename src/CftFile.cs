@@ -29,6 +29,7 @@ namespace CFT
             P25DES = 7,
             TytEP = 8,
             DmrAes = 9,
+            TytBP = 10
         }
 
         public static void Export(Project project, Scanner scanner, string filename)
@@ -231,6 +232,22 @@ namespace CFT
                         bw.Write(item.ActivateOptions.KeyId);
                         bw.Write((byte)0);
                         bw.Write(item.Key);
+                    }
+                    else if (row is TyteraBPEncryptionRow)
+                    {
+                        var item = row as TyteraBPEncryptionRow;
+                        bw.Write(Swap((uint)(item.ActivateOptions.Options | DmrSelectedActivateOptionsEnum.Frequency)));
+                        bw.Write((byte)item.ActivateOptions.TrunkSystem);
+                        bw.Write((byte)item.ActivateOptions.MFID);
+                        bw.Write(Swap(UInt32ToFreq(row.Frequency)));
+                        bw.Write((byte)item.ActivateOptions.ColorCode);
+                        bw.Write(Swap(item.ActivateOptions.TGID));
+                        bw.Write((byte)item.ActivateOptions.TimeSlot);
+                        bw.Write((byte)item.ActivateOptions.EncryptionValue);
+                        bw.Write((byte)EncryptionMethodEnum.TytBP);
+                        bw.Write((uint)0); // fake key length
+                        bw.Write(item.Key); // key 2 bytes
+                        bw.Write(new byte[30]); // key remaining part
                     }
 
                     else
@@ -501,6 +518,27 @@ namespace CFT
                                     row.ActivateOptions.KeyId = br.ReadByte();
                                     br.ReadByte(); // skip 
                                     row.Key = br.ReadBytes(32);
+                                    rows.Add(row);
+                                    notesSkipList.Add(false);
+                                    break;
+                                }
+
+                            case EncryptionMethodEnum.TytBP:
+                                {
+                                    var row = new TyteraBPEncryptionRow();
+                                    row.ActivateOptions = new DmrActivateOptions();
+                                    row.ActivateOptions.Options = (DmrSelectedActivateOptionsEnum)Swap(br.ReadUInt32());
+                                    row.ActivateOptions.TrunkSystem = (DmrTrunkSystemEnum)br.ReadByte();
+                                    row.ActivateOptions.MFID = (DmrMfidEnum)br.ReadByte();
+                                    row.Frequency = FreqToUint32(Swap(br.ReadUInt32()));
+                                    row.ActivateOptions.ColorCode = (DmrColorCodeEnum)br.ReadByte();
+                                    row.ActivateOptions.TGID = Swap(br.ReadUInt32());
+                                    row.ActivateOptions.TimeSlot = (DmrTimeSlotEnum)br.ReadByte();
+                                    row.ActivateOptions.EncryptionValue = (DmrEncyptionValueEnum)br.ReadByte();
+                                    br.ReadByte(); // skip enc method
+                                    br.ReadUInt32(); // skip key len
+                                    row.Key = br.ReadUInt16();
+                                    br.ReadBytes(30); // key remaining part
                                     rows.Add(row);
                                     notesSkipList.Add(false);
                                     break;

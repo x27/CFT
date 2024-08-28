@@ -351,6 +351,15 @@ namespace CFT
             }
         }
 
+        private void miTyteraBPEncryptionMethod_Click(object sender, EventArgs e)
+        {
+            var frm = new TyteraBPEncryptionMethodForm(null);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                AddEncryptionRow(frm.EncryptionRow);
+            }
+        }
+
         private void tsbDuplicateItem_Click(object sender, EventArgs e)
         {
             if (listView.SelectedItems.Count == 0)
@@ -425,6 +434,14 @@ namespace CFT
             else if (row is DmrAesEncryptionRow)
             {
                 var frm = new DmrAesEncryptionMethodForm(row as DmrAesEncryptionRow);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    AddEncryptionRow(frm.EncryptionRow);
+                }
+            }
+            else if (row is TyteraBPEncryptionRow)
+            {
+                var frm = new TyteraBPEncryptionMethodForm(row as TyteraBPEncryptionRow);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     AddEncryptionRow(frm.EncryptionRow);
@@ -838,6 +855,18 @@ namespace CFT
                     ControlsUpdate();
                 }
             }
+            else if (row is TyteraBPEncryptionRow)
+            {
+                var frm = new TyteraBPEncryptionMethodForm((TyteraBPEncryptionRow)row);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var item = CreateListViewRow(filter, frm.EncryptionRow);
+                    item.Text = listView.SelectedItems[0].Text;
+                    item.Selected = true;
+                    listView.Items[listView.SelectedIndices[0]] = item;
+                    ControlsUpdate();
+                }
+            }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -1075,6 +1104,9 @@ namespace CFT
                                     break;
                                 case EncryptionMethodEnum.DMRAES:
                                     miDmrAesEncryptionMethod_Click(sender, e);
+                                    break;
+                                case EncryptionMethodEnum.TyteraBP:
+                                    miTyteraBPEncryptionMethod_Click(sender, e);
                                     break;
                             }
                         }
