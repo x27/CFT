@@ -160,7 +160,7 @@ namespace CFT
 
             if (uintFreq <= 25e6 || uintFreq > 1300e6)
             {
-                errorString = "Wrong frequency value (must be between 25MHz and 1300Mhz)!";
+                errorString = $"Wrong frequency value (must be between 25MHz and 1300Mhz)!\r\nValue: {frequency}\r\nDecimal separator: {Convert.ToChar(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator)}";
                 return false;
             }
             return true;
