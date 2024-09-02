@@ -139,7 +139,8 @@ namespace CFT
         {
             int mhz = (int)(frequency / 1e6);
             var khz = (int)(frequency % 1e6 / 1e2);
-            return $"{mhz:D03}.{khz:D04}";
+            var sep = Convert.ToChar(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator);
+            return $"{mhz:D03}{sep}{khz:D04}";
         }
 
         public static bool ParseFrequency(string value, out uint uintFreq,  out string errorString)
@@ -160,7 +161,7 @@ namespace CFT
 
             if (uintFreq <= 25e6 || uintFreq > 1300e6)
             {
-                errorString = $"Wrong frequency value (must be between 25MHz and 1300Mhz)!\r\nValue: {frequency}\r\nDecimal separator: {Convert.ToChar(CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator)}";
+                errorString = $"Wrong frequency value (must be between 25MHz and 1300Mhz)!";
                 return false;
             }
             return true;
