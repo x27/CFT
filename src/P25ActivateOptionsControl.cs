@@ -11,6 +11,8 @@ namespace CFT
 
         private bool _changedByUser = true;
 
+        public event EventHandler OptionChanged;
+
         public P25ActivateOptionsControl()
         {
             InitializeComponent();
@@ -37,7 +39,8 @@ namespace CFT
             cbKeyID.Checked = Options.IsActivated(P25SelectedActivateOptionsEnum.KeyID);
             cbSourceID.Checked = Options.IsActivated(P25SelectedActivateOptionsEnum.SourceID);
             cbGroupID.Checked = Options.IsActivated(P25SelectedActivateOptionsEnum.GroupID);
-            cbSilence.Checked = Options.IsActivated(P25SelectedActivateOptionsEnum.Silence);
+            cbForceMute.Checked = Options.IsActivated(P25SelectedActivateOptionsEnum.ForceMute);
+            cbFrequency.Checked = Options.IsActivated(P25SelectedActivateOptionsEnum.Frequency);
 
             tbNAC.Text = Options.NAC.ToString("X");
             tbGroupID.Text = Options.GroupID.ToString();
@@ -61,8 +64,10 @@ namespace CFT
                 options |= (int)P25SelectedActivateOptionsEnum.SourceID;
             if (cbGroupID.Checked)
                 options |= (int)P25SelectedActivateOptionsEnum.GroupID;
-            if (cbSilence.Checked)
-                options |= (int)DmrSelectedActivateOptionsEnum.Silence;
+            if (cbForceMute.Checked)
+                options |= (int)DmrSelectedActivateOptionsEnum.ForceMute;
+            if (cbFrequency.Checked)
+                options |= (int)DmrSelectedActivateOptionsEnum.Frequency;
 
             Options.Options = (P25SelectedActivateOptionsEnum)options;
 
@@ -79,6 +84,9 @@ namespace CFT
                 Options.KeyID = keyID;
 
             ControlsEnabled();
+
+            if (OptionChanged != null)
+                OptionChanged(this, EventArgs.Empty);
         }
 
         public bool IsExistErrors(out string errorStr)
@@ -137,6 +145,11 @@ namespace CFT
                 return true;
             }
 
+            if (!cbFrequency.Checked && !(cbNAC.Checked || cbGroupID.Checked || cbSourceID.Checked || cbKeyID.Checked))
+            {
+                errorStr = "When no Frequency is selected then NAC, Group ID, Source ID or Key ID must be selected!";
+                return true;
+            }
 
             return false;
         }

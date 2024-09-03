@@ -26,17 +26,20 @@ namespace CFT
                 EncryptionRow.ActivateOptions = new NxdnActivateOptions();
                 if (!IsBatchMode)
                     tbFrequency.Text = Utils.GetFrequencyString(145500000);
+                cbFrequency.Checked = EncryptionRow.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.Frequency);
             }
             else
             {
                 EncryptionRow = row;
                 if (!IsBatchMode)
                     tbFrequency.Text = Utils.GetFrequencyString(row.Frequency);
+
                 cbRAN.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.RAN);
                 cbGroupID.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.GroupID);
                 cbKeyId.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.KeyID);
                 cbSourceID.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.SourceID);
-                cbSilence.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.Silence);
+                cbForceMute.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.ForceMute);
+                cbFrequency.Checked = row.ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.Frequency);
 
                 if (cbRAN.Checked) 
                     tbRAN.Text = row.ActivateOptions.RAN.ToString();
@@ -110,6 +113,11 @@ namespace CFT
                 return;
             }
 
+            if (!cbFrequency.Checked && !(cbRAN.Checked || cbGroupID.Checked || cbSourceID.Checked || cbKeyId.Checked))
+            {
+                MessageBox.Show("When no Frequency is selected then RAN, Group ID, Source ID or Key ID must be selected!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             EncryptionRow.ActivateOptions.Options = 0;
             if (cbGroupID.Checked)
@@ -120,8 +128,10 @@ namespace CFT
                 EncryptionRow.ActivateOptions.Options |= NxdnSelectedActivateOptionsEnum.KeyID;
             if (cbSourceID.Checked)
                 EncryptionRow.ActivateOptions.Options |= NxdnSelectedActivateOptionsEnum.SourceID;
-            if (cbSilence.Checked)
-                EncryptionRow.ActivateOptions.Options |= NxdnSelectedActivateOptionsEnum.Silence;
+            if (cbForceMute.Checked)
+                EncryptionRow.ActivateOptions.Options |= NxdnSelectedActivateOptionsEnum.ForceMute;
+            if (cbFrequency.Checked)
+                EncryptionRow.ActivateOptions.Options |= NxdnSelectedActivateOptionsEnum.Frequency;
 
             EncryptionRow.Frequency = freq;
             EncryptionRow.ActivateOptions.RAN = ran;
@@ -141,7 +151,8 @@ namespace CFT
             tbGroupID.Enabled = cbGroupID.Checked;
             tbKeyId.Enabled = cbKeyId.Checked;
             tbSourceID.Enabled = cbSourceID.Checked;
-            nudKey.Enabled = !cbSilence.Checked;
+            nudKey.Enabled = !cbForceMute.Checked;
+            tbFrequency.Enabled = cbFrequency.Checked;
         }
     }
 }

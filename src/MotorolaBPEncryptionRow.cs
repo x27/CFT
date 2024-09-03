@@ -17,6 +17,15 @@ namespace CFT
         }
 
         [JsonIgnore]
-        public override string Description => $"Motorola BP: Key({Key}) {ActivateOptions}";
+        public override string Description
+        {
+            get
+            { 
+                if (ActivateOptions.IsActivated(DmrSelectedActivateOptionsEnum.ForceMute))
+                    return $"Motorola BP: {ActivateOptions}";
+                else
+                    return $"Motorola BP: Key({Key}) {ActivateOptions}";
+            }
+        }
     }
 }

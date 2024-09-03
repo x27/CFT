@@ -27,5 +27,6 @@ namespace CFT
                     return $"P25 DES";
             }
         }
+        public override bool IsFrequencyNeed => ActivateOptions == null ? true : ActivateOptions.IsActivated(P25SelectedActivateOptionsEnum.Frequency);
     }
 }

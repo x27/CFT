@@ -9,6 +9,8 @@
         ProtocolEnum Protocol { get; }
 
         string Description { get; }
+
+        bool IsFrequencyNeed { get; }
     }
 
 }

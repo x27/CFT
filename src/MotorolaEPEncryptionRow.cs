@@ -12,6 +12,15 @@ namespace CFT
         public byte[] Key { get; set; }
 
         [JsonIgnore]
-        public override string Description =>  $"Motorola EP: Key({Utils.BytesToHexString(Key)}) {ActivateOptions}";
+        public override string Description
+        {
+            get
+            {
+                if (ActivateOptions.IsActivated(DmrSelectedActivateOptionsEnum.ForceMute))
+                    return $"Motorola EP: {ActivateOptions}";
+                else
+                    return $"Motorola EP: Key({Utils.BytesToHexString(Key)}) {ActivateOptions}";
+            }
+        }
     }
 }

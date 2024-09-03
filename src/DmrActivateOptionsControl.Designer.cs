@@ -18,7 +18,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DmrActivateOptionsControl));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbSilence = new System.Windows.Forms.CheckBox();
+            this.cbFrequency = new System.Windows.Forms.CheckBox();
+            this.cbForceMute = new System.Windows.Forms.CheckBox();
             this.cbbEncryptionValue = new System.Windows.Forms.ComboBox();
             this.cbbTimeSlot = new System.Windows.Forms.ComboBox();
             this.tbTGID = new System.Windows.Forms.TextBox();
@@ -37,7 +38,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cbSilence);
+            this.groupBox1.Controls.Add(this.cbFrequency);
+            this.groupBox1.Controls.Add(this.cbForceMute);
             this.groupBox1.Controls.Add(this.cbbEncryptionValue);
             this.groupBox1.Controls.Add(this.cbbTimeSlot);
             this.groupBox1.Controls.Add(this.tbTGID);
@@ -58,23 +60,35 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DMR Activate Options";
             // 
-            // cbSilence
+            // cbFrequency
             // 
-            this.cbSilence.AutoSize = true;
-            this.cbSilence.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbSilence.Location = new System.Drawing.Point(31, 230);
-            this.cbSilence.Name = "cbSilence";
-            this.cbSilence.Size = new System.Drawing.Size(68, 21);
-            this.cbSilence.TabIndex = 18;
-            this.cbSilence.Text = "Silence";
-            this.cbSilence.UseVisualStyleBackColor = true;
-            this.cbSilence.CheckedChanged += new System.EventHandler(this.eventOptionChanged);
+            this.cbFrequency.AutoSize = true;
+            this.cbFrequency.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbFrequency.Location = new System.Drawing.Point(31, 37);
+            this.cbFrequency.Name = "cbFrequency";
+            this.cbFrequency.Size = new System.Drawing.Size(90, 21);
+            this.cbFrequency.TabIndex = 19;
+            this.cbFrequency.Text = "Frequency";
+            this.cbFrequency.UseVisualStyleBackColor = true;
+            this.cbFrequency.CheckedChanged += new System.EventHandler(this.eventOptionChanged);
+            // 
+            // cbForceMute
+            // 
+            this.cbForceMute.AutoSize = true;
+            this.cbForceMute.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbForceMute.Location = new System.Drawing.Point(191, 37);
+            this.cbForceMute.Name = "cbForceMute";
+            this.cbForceMute.Size = new System.Drawing.Size(96, 21);
+            this.cbForceMute.TabIndex = 18;
+            this.cbForceMute.Text = "Force mute";
+            this.cbForceMute.UseVisualStyleBackColor = true;
+            this.cbForceMute.CheckedChanged += new System.EventHandler(this.eventOptionChanged);
             // 
             // cbbEncryptionValue
             // 
             this.cbbEncryptionValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbEncryptionValue.FormattingEnabled = true;
-            this.cbbEncryptionValue.Location = new System.Drawing.Point(191, 195);
+            this.cbbEncryptionValue.Location = new System.Drawing.Point(191, 224);
             this.cbbEncryptionValue.Name = "cbbEncryptionValue";
             this.cbbEncryptionValue.Size = new System.Drawing.Size(179, 25);
             this.cbbEncryptionValue.TabIndex = 17;
@@ -85,7 +99,7 @@
             // 
             this.cbbTimeSlot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbTimeSlot.FormattingEnabled = true;
-            this.cbbTimeSlot.Location = new System.Drawing.Point(191, 164);
+            this.cbbTimeSlot.Location = new System.Drawing.Point(191, 193);
             this.cbbTimeSlot.Name = "cbbTimeSlot";
             this.cbbTimeSlot.Size = new System.Drawing.Size(179, 25);
             this.cbbTimeSlot.TabIndex = 15;
@@ -93,7 +107,7 @@
             // 
             // tbTGID
             // 
-            this.tbTGID.Location = new System.Drawing.Point(191, 133);
+            this.tbTGID.Location = new System.Drawing.Point(191, 162);
             this.tbTGID.Name = "tbTGID";
             this.tbTGID.Size = new System.Drawing.Size(179, 25);
             this.tbTGID.TabIndex = 13;
@@ -103,7 +117,7 @@
             // 
             this.cbbColorCode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbColorCode.FormattingEnabled = true;
-            this.cbbColorCode.Location = new System.Drawing.Point(191, 102);
+            this.cbbColorCode.Location = new System.Drawing.Point(191, 131);
             this.cbbColorCode.Name = "cbbColorCode";
             this.cbbColorCode.Size = new System.Drawing.Size(179, 25);
             this.cbbColorCode.TabIndex = 11;
@@ -113,7 +127,7 @@
             // 
             this.cbbMfid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbMfid.FormattingEnabled = true;
-            this.cbbMfid.Location = new System.Drawing.Point(191, 70);
+            this.cbbMfid.Location = new System.Drawing.Point(191, 99);
             this.cbbMfid.Name = "cbbMfid";
             this.cbbMfid.Size = new System.Drawing.Size(179, 25);
             this.cbbMfid.TabIndex = 7;
@@ -123,7 +137,7 @@
             // 
             this.cbbTrunkSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbTrunkSystem.FormattingEnabled = true;
-            this.cbbTrunkSystem.Location = new System.Drawing.Point(191, 39);
+            this.cbbTrunkSystem.Location = new System.Drawing.Point(191, 68);
             this.cbbTrunkSystem.Name = "cbbTrunkSystem";
             this.cbbTrunkSystem.Size = new System.Drawing.Size(179, 25);
             this.cbbTrunkSystem.TabIndex = 5;
@@ -132,7 +146,7 @@
             // cbEncryptionValue
             // 
             this.cbEncryptionValue.AutoSize = true;
-            this.cbEncryptionValue.Location = new System.Drawing.Point(31, 197);
+            this.cbEncryptionValue.Location = new System.Drawing.Point(31, 226);
             this.cbEncryptionValue.Name = "cbEncryptionValue";
             this.cbEncryptionValue.Size = new System.Drawing.Size(123, 21);
             this.cbEncryptionValue.TabIndex = 16;
@@ -143,7 +157,7 @@
             // cbTimeSlot
             // 
             this.cbTimeSlot.AutoSize = true;
-            this.cbTimeSlot.Location = new System.Drawing.Point(31, 166);
+            this.cbTimeSlot.Location = new System.Drawing.Point(31, 195);
             this.cbTimeSlot.Name = "cbTimeSlot";
             this.cbTimeSlot.Size = new System.Drawing.Size(81, 21);
             this.cbTimeSlot.TabIndex = 14;
@@ -154,7 +168,7 @@
             // cbTGID
             // 
             this.cbTGID.AutoSize = true;
-            this.cbTGID.Location = new System.Drawing.Point(31, 135);
+            this.cbTGID.Location = new System.Drawing.Point(31, 164);
             this.cbTGID.Name = "cbTGID";
             this.cbTGID.Size = new System.Drawing.Size(88, 21);
             this.cbTGID.TabIndex = 12;
@@ -165,7 +179,7 @@
             // cbColorCode
             // 
             this.cbColorCode.AutoSize = true;
-            this.cbColorCode.Location = new System.Drawing.Point(31, 104);
+            this.cbColorCode.Location = new System.Drawing.Point(31, 133);
             this.cbColorCode.Name = "cbColorCode";
             this.cbColorCode.Size = new System.Drawing.Size(94, 21);
             this.cbColorCode.TabIndex = 10;
@@ -176,7 +190,7 @@
             // cbMFID
             // 
             this.cbMFID.AutoSize = true;
-            this.cbMFID.Location = new System.Drawing.Point(31, 72);
+            this.cbMFID.Location = new System.Drawing.Point(31, 101);
             this.cbMFID.Name = "cbMFID";
             this.cbMFID.Size = new System.Drawing.Size(57, 21);
             this.cbMFID.TabIndex = 6;
@@ -187,7 +201,7 @@
             // cbTrunkSystem
             // 
             this.cbTrunkSystem.AutoSize = true;
-            this.cbTrunkSystem.Location = new System.Drawing.Point(31, 41);
+            this.cbTrunkSystem.Location = new System.Drawing.Point(31, 70);
             this.cbTrunkSystem.Name = "cbTrunkSystem";
             this.cbTrunkSystem.Size = new System.Drawing.Size(103, 21);
             this.cbTrunkSystem.TabIndex = 4;
@@ -221,6 +235,7 @@
         private System.Windows.Forms.ComboBox cbbTimeSlot;
         private System.Windows.Forms.CheckBox cbTimeSlot;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.CheckBox cbSilence;
+        private System.Windows.Forms.CheckBox cbForceMute;
+        private System.Windows.Forms.CheckBox cbFrequency;
     }
 }

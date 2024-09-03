@@ -17,6 +17,15 @@ namespace CFT
         }
 
         [JsonIgnore]
-        public override string Description => $"Anytone Enc: Key({Key:X04}) {ActivateOptions}";
+        public override string Description
+        {
+            get
+            { 
+                if (ActivateOptions.IsActivated(DmrSelectedActivateOptionsEnum.ForceMute))
+                    return $"Anytone Enc: {ActivateOptions}";
+                else
+                    return $"Anytone Enc: Key({Key:X04}) {ActivateOptions}";
+            }
+        }
     }
 }

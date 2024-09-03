@@ -12,6 +12,11 @@ namespace CFT
         public byte KeyID { get; set; }
         public ushort SourceID { get; set; }
 
+        public NxdnActivateOptions()
+        {
+            Options = NxdnSelectedActivateOptionsEnum.Frequency;
+        }
+
         public bool IsActivated(NxdnSelectedActivateOptionsEnum option)
         {
             return (Options & option) == option;
@@ -33,8 +38,8 @@ namespace CFT
                 sb.Append($"KeyID({KeyID}) ");
             if (IsActivated(NxdnSelectedActivateOptionsEnum.SourceID))
                 sb.Append($"SourceID({SourceID}) ");
-            if (IsActivated(NxdnSelectedActivateOptionsEnum.Silence))
-                sb.Append($"Silence");
+            if (IsActivated(NxdnSelectedActivateOptionsEnum.ForceMute))
+                sb.Append($"Force Mute");
             return sb.ToString();
         }
 

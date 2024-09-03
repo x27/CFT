@@ -12,6 +12,6 @@
         EncryptValue        = 1 << 6,
         KeyId               = 1 << 7,
 
-        Silence = 1 << 15
+        ForceMute = 1 << 15
     }
 }

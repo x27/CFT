@@ -10,6 +10,6 @@ namespace CFT
         public override ProtocolEnum Protocol => ProtocolEnum.DMR;
 
         public DmrActivateOptions ActivateOptions { get; set; }
-
+        public override bool IsFrequencyNeed => ActivateOptions == null ? true : ActivateOptions.IsActivated(DmrSelectedActivateOptionsEnum.Frequency);
     }
 }

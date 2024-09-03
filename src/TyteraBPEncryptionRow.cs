@@ -5,14 +5,9 @@ namespace CFT
 {
     [DisplayName("TYT BP")]
     [Serializable]
-    public class TyteraBPEncryptionRow : BaseEncryptionRow
+    public class TyteraBPEncryptionRow : DmrEncryptionRow
     {
         public ushort Key { get; set; }
-
-        public DmrActivateOptions ActivateOptions { get; set; }
-
-        [JsonIgnore]
-        public override ProtocolEnum Protocol => ProtocolEnum.DMR;
 
         [JsonIgnore]
         public override string Description

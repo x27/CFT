@@ -12,6 +12,8 @@ namespace CFT
         {
             InitializeComponent();
 
+            optionsControl.OptionChanged += OptionsControl_OptionChanged;
+
             IsBatchMode = batchMode;
             if (IsBatchMode)
             {
@@ -59,6 +61,16 @@ namespace CFT
             }
 
             cbNonStandard_CheckedChanged(this, null);
+            OptionsControl_OptionChanged(this, null);
+        }
+
+        private void OptionsControl_OptionChanged(object sender, EventArgs e)
+        {
+            tbFrequency.Enabled = optionsControl.Options.IsActivated(DmrSelectedActivateOptionsEnum.Frequency);
+            cbKeyLength.Enabled = !optionsControl.Options.IsActivated(DmrSelectedActivateOptionsEnum.ForceMute);
+            nudKeyLength.Enabled = !optionsControl.Options.IsActivated(DmrSelectedActivateOptionsEnum.ForceMute);
+            cbNonStandard.Enabled = !optionsControl.Options.IsActivated(DmrSelectedActivateOptionsEnum.ForceMute);
+            tbKey.Enabled = !optionsControl.Options.IsActivated(DmrSelectedActivateOptionsEnum.ForceMute);
         }
 
         private void btnOK_Click(object sender, EventArgs e)

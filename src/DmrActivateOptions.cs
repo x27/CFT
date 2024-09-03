@@ -16,6 +16,11 @@ namespace CFT
 
         public byte KeyId { get; set; }
 
+        public DmrActivateOptions()
+        {
+            Activate(DmrSelectedActivateOptionsEnum.Frequency);
+        }
+
         public bool IsActivated(DmrSelectedActivateOptionsEnum option)
         {
             return (Options & option) == option;
@@ -39,8 +44,8 @@ namespace CFT
                 sb.Append($"CC({(int)ColorCode}) ");
             if (IsActivated(DmrSelectedActivateOptionsEnum.KeyId))
                 sb.Append($"KeyID({KeyId}) ");
-            if (IsActivated(DmrSelectedActivateOptionsEnum.Silence))
-                sb.Append($"Silence");
+            if (IsActivated(DmrSelectedActivateOptionsEnum.ForceMute))
+                sb.Append($"Force Mute");
             return sb.ToString();
         }
 

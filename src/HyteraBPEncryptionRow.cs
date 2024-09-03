@@ -13,6 +13,15 @@ namespace CFT
         public byte[] Key { get; set; }
 
         [JsonIgnore]
-        public override string Description =>  $"Hytera BP: KeyLen({(int)KeyLength}) {ActivateOptions}";
+        public override string Description
+        {
+            get
+            {
+                if (ActivateOptions.IsActivated(DmrSelectedActivateOptionsEnum.ForceMute))
+                    return $"Hytera BP: {ActivateOptions}";
+                else
+                    return $"Hytera BP: KeyLen({(int)KeyLength}) {ActivateOptions}";
+            }
+        }
     }
 }

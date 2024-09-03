@@ -37,7 +37,8 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbSilence = new System.Windows.Forms.CheckBox();
+            this.cbFrequency = new System.Windows.Forms.CheckBox();
+            this.cbForceMute = new System.Windows.Forms.CheckBox();
             this.cbSourceID = new System.Windows.Forms.CheckBox();
             this.tbSourceID = new System.Windows.Forms.TextBox();
             this.tbKeyId = new System.Windows.Forms.TextBox();
@@ -144,7 +145,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cbSilence);
+            this.groupBox1.Controls.Add(this.cbFrequency);
+            this.groupBox1.Controls.Add(this.cbForceMute);
             this.groupBox1.Controls.Add(this.cbSourceID);
             this.groupBox1.Controls.Add(this.tbSourceID);
             this.groupBox1.Controls.Add(this.tbKeyId);
@@ -161,22 +163,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "NXDN Activate Options";
             // 
-            // cbSilence
+            // cbFrequency
             // 
-            this.cbSilence.AutoSize = true;
-            this.cbSilence.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbSilence.Location = new System.Drawing.Point(19, 184);
-            this.cbSilence.Name = "cbSilence";
-            this.cbSilence.Size = new System.Drawing.Size(68, 21);
-            this.cbSilence.TabIndex = 8;
-            this.cbSilence.Text = "Silence";
-            this.cbSilence.UseVisualStyleBackColor = true;
-            this.cbSilence.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
+            this.cbFrequency.AutoSize = true;
+            this.cbFrequency.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbFrequency.Location = new System.Drawing.Point(17, 35);
+            this.cbFrequency.Name = "cbFrequency";
+            this.cbFrequency.Size = new System.Drawing.Size(90, 21);
+            this.cbFrequency.TabIndex = 9;
+            this.cbFrequency.Text = "Frequency";
+            this.cbFrequency.UseVisualStyleBackColor = true;
+            this.cbFrequency.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
+            // 
+            // cbForceMute
+            // 
+            this.cbForceMute.AutoSize = true;
+            this.cbForceMute.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbForceMute.Location = new System.Drawing.Point(187, 35);
+            this.cbForceMute.Name = "cbForceMute";
+            this.cbForceMute.Size = new System.Drawing.Size(96, 21);
+            this.cbForceMute.TabIndex = 8;
+            this.cbForceMute.Text = "Force Mute";
+            this.cbForceMute.UseVisualStyleBackColor = true;
+            this.cbForceMute.CheckedChanged += new System.EventHandler(this.cb_CheckedChanged);
             // 
             // cbSourceID
             // 
             this.cbSourceID.AutoSize = true;
-            this.cbSourceID.Location = new System.Drawing.Point(19, 148);
+            this.cbSourceID.Location = new System.Drawing.Point(17, 181);
             this.cbSourceID.Name = "cbSourceID";
             this.cbSourceID.Size = new System.Drawing.Size(83, 21);
             this.cbSourceID.TabIndex = 7;
@@ -187,7 +201,7 @@
             // tbSourceID
             // 
             this.tbSourceID.Enabled = false;
-            this.tbSourceID.Location = new System.Drawing.Point(189, 146);
+            this.tbSourceID.Location = new System.Drawing.Point(187, 179);
             this.tbSourceID.Name = "tbSourceID";
             this.tbSourceID.Size = new System.Drawing.Size(197, 25);
             this.tbSourceID.TabIndex = 6;
@@ -195,14 +209,14 @@
             // tbKeyId
             // 
             this.tbKeyId.Enabled = false;
-            this.tbKeyId.Location = new System.Drawing.Point(189, 107);
+            this.tbKeyId.Location = new System.Drawing.Point(187, 140);
             this.tbKeyId.Name = "tbKeyId";
             this.tbKeyId.Size = new System.Drawing.Size(197, 25);
             this.tbKeyId.TabIndex = 5;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(189, 107);
+            this.textBox1.Location = new System.Drawing.Point(187, 140);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(197, 25);
             this.textBox1.TabIndex = 5;
@@ -210,7 +224,7 @@
             // cbKeyId
             // 
             this.cbKeyId.AutoSize = true;
-            this.cbKeyId.Location = new System.Drawing.Point(19, 109);
+            this.cbKeyId.Location = new System.Drawing.Point(17, 142);
             this.cbKeyId.Name = "cbKeyId";
             this.cbKeyId.Size = new System.Drawing.Size(64, 21);
             this.cbKeyId.TabIndex = 4;
@@ -221,7 +235,7 @@
             // cbGroupID
             // 
             this.cbGroupID.AutoSize = true;
-            this.cbGroupID.Location = new System.Drawing.Point(19, 71);
+            this.cbGroupID.Location = new System.Drawing.Point(17, 104);
             this.cbGroupID.Name = "cbGroupID";
             this.cbGroupID.Size = new System.Drawing.Size(80, 21);
             this.cbGroupID.TabIndex = 2;
@@ -231,14 +245,14 @@
             // 
             // tbGroupID
             // 
-            this.tbGroupID.Location = new System.Drawing.Point(189, 69);
+            this.tbGroupID.Location = new System.Drawing.Point(187, 102);
             this.tbGroupID.Name = "tbGroupID";
             this.tbGroupID.Size = new System.Drawing.Size(197, 25);
             this.tbGroupID.TabIndex = 3;
             // 
             // tbRAN
             // 
-            this.tbRAN.Location = new System.Drawing.Point(189, 32);
+            this.tbRAN.Location = new System.Drawing.Point(187, 65);
             this.tbRAN.Name = "tbRAN";
             this.tbRAN.Size = new System.Drawing.Size(197, 25);
             this.tbRAN.TabIndex = 1;
@@ -246,7 +260,7 @@
             // cbRAN
             // 
             this.cbRAN.AutoSize = true;
-            this.cbRAN.Location = new System.Drawing.Point(19, 34);
+            this.cbRAN.Location = new System.Drawing.Point(17, 67);
             this.cbRAN.Name = "cbRAN";
             this.cbRAN.Size = new System.Drawing.Size(53, 21);
             this.cbRAN.TabIndex = 0;
@@ -305,8 +319,9 @@
         private System.Windows.Forms.TextBox tbKeyId;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.CheckBox cbKeyId;
-        private System.Windows.Forms.CheckBox cbSilence;
+        private System.Windows.Forms.CheckBox cbForceMute;
         private System.Windows.Forms.CheckBox cbSourceID;
         private System.Windows.Forms.TextBox tbSourceID;
+        private System.Windows.Forms.CheckBox cbFrequency;
     }
 }

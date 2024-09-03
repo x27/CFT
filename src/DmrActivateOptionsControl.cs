@@ -8,6 +8,8 @@ namespace CFT
         public DmrActivateOptions Options { get; set; }
         public bool HasErrors { get; private set; }
 
+        public event EventHandler OptionChanged;
+
         private bool _changedByUser = true;
 
         public DmrActivateOptionsControl()
@@ -51,7 +53,8 @@ namespace CFT
             cbTGID.Checked = Options.IsActivated(DmrSelectedActivateOptionsEnum.TGID);
             cbTimeSlot.Checked = Options.IsActivated(DmrSelectedActivateOptionsEnum.TimeSlot);
             cbEncryptionValue.Checked = Options.IsActivated(DmrSelectedActivateOptionsEnum.EncryptValue);
-            cbSilence.Checked = Options.IsActivated(DmrSelectedActivateOptionsEnum.Silence);
+            cbForceMute.Checked = Options.IsActivated(DmrSelectedActivateOptionsEnum.ForceMute);
+            cbFrequency.Checked = Options.IsActivated(DmrSelectedActivateOptionsEnum.Frequency);
 
             if (!Utils.SetComboBoxData(cbbTrunkSystem, Options.TrunkSystem))
                 cbbTrunkSystem.SelectedIndex = 0;
@@ -87,8 +90,10 @@ namespace CFT
                 options |= (int)DmrSelectedActivateOptionsEnum.TimeSlot;
             if (cbEncryptionValue.Checked)
                 options |= (int)DmrSelectedActivateOptionsEnum.EncryptValue;
-            if (cbSilence.Checked)
-                options |= (int)DmrSelectedActivateOptionsEnum.Silence;
+            if (cbForceMute.Checked)
+                options |= (int)DmrSelectedActivateOptionsEnum.ForceMute;
+            if (cbFrequency.Checked)
+                options |= (int)DmrSelectedActivateOptionsEnum.Frequency;
 
             Options.Options = (DmrSelectedActivateOptionsEnum)options;
 
@@ -102,6 +107,9 @@ namespace CFT
                 Options.TGID = tgid;
             
             ControlsEnabled();
+
+            if (OptionChanged != null)
+                OptionChanged(this, EventArgs.Empty);
         }
 
         public bool IsExistErrors(out string errorStr)
@@ -113,6 +121,13 @@ namespace CFT
                 errorStr = "Wrong TGID value!";
                 return true;
             }
+
+            if (!cbFrequency.Checked && !(cbTrunkSystem.Checked || cbMFID.Checked || cbColorCode.Checked || cbTGID.Checked))
+            {
+                errorStr = "When no Frequency is selected then Trunk System, MFID, Color Code or TGID must be selected!";
+                return true;
+            }
+
             return false;
         }
     }

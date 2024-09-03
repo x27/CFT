@@ -588,7 +588,7 @@ namespace CFT
             listViewItem.Tag = row;
 
             var freqItem = new ListViewItem.ListViewSubItem();
-            freqItem.Text = Utils.GetFrequencyString(row.Frequency);
+            freqItem.Text = row.IsFrequencyNeed ? Utils.GetFrequencyString(row.Frequency) : string.Empty;
             listViewItem.SubItems.Add(freqItem);
 
             switch (filter)
@@ -933,6 +933,20 @@ namespace CFT
             ListViewExtensions.SetSortIcon(listView, 0, _colFreqSortOrder);
         }
 
+        private static int FrequencyCompare(IEncryptionRow a, IEncryptionRow b)
+        {
+            if (!a.IsFrequencyNeed && !b.IsFrequencyNeed)
+                return 0;
+
+            if (!a.IsFrequencyNeed)
+                return -1;
+
+            if (!b.IsFrequencyNeed)
+                return 1;
+
+            return (int)a.Frequency-(int)b.Frequency;
+        }
+
         private void listView_ColumnClick(object sender, ColumnClickEventArgs e)
         {
             if (e.Column == 1)
@@ -941,13 +955,13 @@ namespace CFT
                 {
                     _colFreqSortOrder = SortOrder.Descending;
                     ListViewExtensions.SetSortIcon(listView, 1, _colFreqSortOrder);
-                    _project.EcryptionRows.Sort((a, b) => a.Frequency.CompareTo(b.Frequency));
+                    _project.EcryptionRows.Sort((a, b) => FrequencyCompare(a,b));
                 }
                 else
                 {
                     _colFreqSortOrder = SortOrder.Ascending;
                     ListViewExtensions.SetSortIcon(listView, 1, _colFreqSortOrder);
-                    _project.EcryptionRows.Sort((a, b) => b.Frequency.CompareTo(a.Frequency));
+                    _project.EcryptionRows.Sort((a, b) => FrequencyCompare(b,a));
                 }
                 UpdateListViewItems();
                 listView.Invalidate();

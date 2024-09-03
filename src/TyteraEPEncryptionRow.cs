@@ -5,16 +5,11 @@ namespace CFT
 {
     [DisplayName("TYT EP")]
     [Serializable]
-    public class TyteraEPEncryptionRow : BaseEncryptionRow
+    public class TyteraEPEncryptionRow : DmrEncryptionRow
     {
         public const int KEY_SIZE = 16;
 
         public byte[] Key { get; set; }
-
-        public DmrActivateOptions ActivateOptions { get; set; }
-
-        [JsonIgnore]
-        public override ProtocolEnum Protocol => ProtocolEnum.DMR;
 
         [JsonIgnore]
         public override string Description

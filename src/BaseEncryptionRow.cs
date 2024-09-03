@@ -12,5 +12,7 @@ namespace CFT
         public abstract ProtocolEnum Protocol { get; }
 
         public abstract string Description { get; }
+
+        public abstract bool IsFrequencyNeed { get; }
     }
 }

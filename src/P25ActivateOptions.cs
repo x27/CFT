@@ -12,6 +12,11 @@ namespace CFT
         public ushort KeyID { get; set; }
         public uint SourceID { get; set; }
 
+        public P25ActivateOptions()
+        {
+            Options = P25SelectedActivateOptionsEnum.Frequency;
+        }
+
         public bool IsActivated(P25SelectedActivateOptionsEnum option)
         {
             return (Options & option) == option;
@@ -33,8 +38,8 @@ namespace CFT
                 sb.Append($"KeyID({KeyID:X}) ");
             if (IsActivated(P25SelectedActivateOptionsEnum.SourceID))
                 sb.Append($"SourceID({SourceID}) ");
-            if (IsActivated(P25SelectedActivateOptionsEnum.Silence))
-                sb.Append($"Silence");
+            if (IsActivated(P25SelectedActivateOptionsEnum.ForceMute))
+                sb.Append($"Force Mute");
             return sb.ToString();
         }
 

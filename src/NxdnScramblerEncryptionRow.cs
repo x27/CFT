@@ -19,8 +19,14 @@ namespace CFT
         {
             get
             {
-                return $"NXDN Scrambler: Key({Key}) {ActivateOptions}";
+                if (ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.ForceMute))
+                    return $"NXDN Scrambler: {ActivateOptions}";
+                else
+                    return $"NXDN Scrambler: Key({Key}) {ActivateOptions}";
             }
         }
+
+        public override bool IsFrequencyNeed => ActivateOptions == null ? true : ActivateOptions.IsActivated(NxdnSelectedActivateOptionsEnum.Frequency);
+
     }
 }

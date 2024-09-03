@@ -12,6 +12,8 @@ namespace CFT
         {
             InitializeComponent();
 
+            optionsControl.OptionChanged += OptionsControl_OptionChanged;
+
             IsBatchMode = batchMode;
             if (IsBatchMode)
             {
@@ -47,6 +49,13 @@ namespace CFT
                 tbNotes.Text = row.Notes;
             }
             cbKeyID_CheckedChanged(this, null);
+            OptionsControl_OptionChanged(this, null);
+        }
+
+        private void OptionsControl_OptionChanged(object sender, EventArgs e)
+        {
+            tbFrequency.Enabled = optionsControl.Options.IsActivated(DmrSelectedActivateOptionsEnum.Frequency);
+            tbKey.Enabled = !optionsControl.Options.IsActivated(DmrSelectedActivateOptionsEnum.ForceMute);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
@@ -55,8 +64,11 @@ namespace CFT
 
             if (optionsControl.IsExistErrors(out errorStr))
             {
-                MessageBox.Show(errorStr, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                if (!errorStr.Contains("no Frequency") || !cbKeyID.Checked)
+                {
+                    MessageBox.Show(errorStr, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
 
             uint freq = 0;

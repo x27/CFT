@@ -12,6 +12,8 @@ namespace CFT
         {
             InitializeComponent();
 
+            optionsControl.OptionChanged += OptionsControl_OptionChanged;
+
             IsBatchMode = batchMode;
             if (IsBatchMode)
             {
@@ -42,6 +44,13 @@ namespace CFT
 
                 tbNotes.Text = row.Notes;
             }
+            OptionsControl_OptionChanged(this, null);
+        }
+
+        private void OptionsControl_OptionChanged(object sender, EventArgs e)
+        {
+            tbFrequency.Enabled = optionsControl.Options.IsActivated(P25SelectedActivateOptionsEnum.Frequency);
+            tbKey.Enabled = !optionsControl.Options.IsActivated(P25SelectedActivateOptionsEnum.ForceMute);
         }
 
         private void btnOK_Click(object sender, EventArgs e)

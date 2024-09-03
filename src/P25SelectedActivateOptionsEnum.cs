@@ -9,6 +9,6 @@
         KeyID               = 1 << 3,
         SourceID            = 1 << 4,
 
-        Silence             = 1 << 15
+        ForceMute             = 1 << 15
     }
 }

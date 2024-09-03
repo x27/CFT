@@ -90,7 +90,7 @@ namespace CFT
                     if (row is MotorolaBPEncryptionRow)
                     {
                         var item = row as MotorolaBPEncryptionRow;
-                        bw.Write(Swap((uint)(item.ActivateOptions.Options | DmrSelectedActivateOptionsEnum.Frequency)));
+                        bw.Write(Swap((uint)item.ActivateOptions.Options));
                         bw.Write((byte)item.ActivateOptions.TrunkSystem);
                         bw.Write((byte)item.ActivateOptions.MFID);
                         bw.Write(Swap(UInt32ToFreq(row.Frequency)));
@@ -106,7 +106,7 @@ namespace CFT
                     else if (row is MotorolaEPEncryptionRow)
                     {
                         var item = row as MotorolaEPEncryptionRow;
-                        bw.Write(Swap((uint)(item.ActivateOptions.Options | DmrSelectedActivateOptionsEnum.Frequency)));
+                        bw.Write(Swap((uint)item.ActivateOptions.Options));
                         bw.Write((byte)item.ActivateOptions.TrunkSystem);
                         bw.Write((byte)item.ActivateOptions.MFID);
                         bw.Write(Swap(UInt32ToFreq(row.Frequency)));
@@ -123,7 +123,7 @@ namespace CFT
                     else if (row is AnytoneEncEncryptionRow)
                     {
                         var item = row as AnytoneEncEncryptionRow;
-                        bw.Write(Swap((uint)(item.ActivateOptions.Options | DmrSelectedActivateOptionsEnum.Frequency)));
+                        bw.Write(Swap((uint)item.ActivateOptions.Options));
                         bw.Write((byte)item.ActivateOptions.TrunkSystem);
                         bw.Write((byte)item.ActivateOptions.MFID);
                         bw.Write(Swap(UInt32ToFreq(row.Frequency)));
@@ -140,7 +140,7 @@ namespace CFT
                     else if (row is HyteraBPEncryptionRow)
                     {
                         var item = row as HyteraBPEncryptionRow;
-                        bw.Write(Swap((uint)(item.ActivateOptions.Options | DmrSelectedActivateOptionsEnum.Frequency)));
+                        bw.Write(Swap((uint)item.ActivateOptions.Options));
                         bw.Write((byte)item.ActivateOptions.TrunkSystem);
                         bw.Write((byte)item.ActivateOptions.MFID);
                         bw.Write(Swap(UInt32ToFreq(row.Frequency)));
@@ -172,7 +172,7 @@ namespace CFT
                     else if (row is P25ADPEncryptionRow)
                     {
                         var item = row as P25ADPEncryptionRow;
-                        bw.Write(Swap((uint)(item.ActivateOptions.Options | P25SelectedActivateOptionsEnum.Frequency)));
+                        bw.Write(Swap((uint)item.ActivateOptions.Options));
                         bw.Write(Swap(item.ActivateOptions.NAC));
                         bw.Write(Swap(UInt32ToFreq(row.Frequency)));
                         bw.Write(Swap(item.ActivateOptions.SourceID));
@@ -188,7 +188,7 @@ namespace CFT
                     else if (row is P25DESEncryptionRow)
                     {
                         var item = row as P25DESEncryptionRow;
-                        bw.Write(Swap((uint)(item.ActivateOptions.Options | P25SelectedActivateOptionsEnum.Frequency)));
+                        bw.Write(Swap((uint)item.ActivateOptions.Options));
                         bw.Write(Swap(item.ActivateOptions.NAC));
                         bw.Write(Swap(UInt32ToFreq(row.Frequency)));
                         bw.Write(Swap(item.ActivateOptions.SourceID));
@@ -204,7 +204,7 @@ namespace CFT
                     else if (row is TyteraEPEncryptionRow)
                     {
                         var item = row as TyteraEPEncryptionRow;
-                        bw.Write(Swap((uint)(item.ActivateOptions.Options | DmrSelectedActivateOptionsEnum.Frequency)));
+                        bw.Write(Swap((uint)item.ActivateOptions.Options));
                         bw.Write((byte)item.ActivateOptions.TrunkSystem);
                         bw.Write((byte)item.ActivateOptions.MFID);
                         bw.Write(Swap(UInt32ToFreq(row.Frequency)));
@@ -219,7 +219,7 @@ namespace CFT
                     else if (row is DmrAesEncryptionRow)
                     {
                         var item = row as DmrAesEncryptionRow;
-                        bw.Write(Swap((uint)(item.ActivateOptions.Options | DmrSelectedActivateOptionsEnum.Frequency)));
+                        bw.Write(Swap((uint)item.ActivateOptions.Options));
                         bw.Write((byte)item.ActivateOptions.TrunkSystem);
                         bw.Write((byte)item.ActivateOptions.MFID);
                         bw.Write(Swap(UInt32ToFreq(row.Frequency)));
@@ -236,7 +236,7 @@ namespace CFT
                     else if (row is TyteraBPEncryptionRow)
                     {
                         var item = row as TyteraBPEncryptionRow;
-                        bw.Write(Swap((uint)(item.ActivateOptions.Options | DmrSelectedActivateOptionsEnum.Frequency)));
+                        bw.Write(Swap((uint)item.ActivateOptions.Options));
                         bw.Write((byte)item.ActivateOptions.TrunkSystem);
                         bw.Write((byte)item.ActivateOptions.MFID);
                         bw.Write(Swap(UInt32ToFreq(row.Frequency)));
