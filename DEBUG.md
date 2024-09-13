@@ -9,6 +9,7 @@ The generated debug logs can then be found on the scanner SD Card in the /BCDx36
 #### Debug Log String Format
 
 0201377 :D1 04404400 1 1F 0 01 C 8 68 0000214D 002628B2 0000 1 1 0 0000 0000 0000 D E1F9DA3443BF80 27C2718F2D3600 2F18B5E5C67080 
+1       2   3        4 5  6 7  8 9 10 11       12       13   14151617   18   19   2021             22             23
 
 The debug output string consists of 23 fields separated by a space.
 
@@ -16,7 +17,14 @@ The debug output string consists of 23 fields separated by a space.
 1 - Time stamp in microseconds
 2 - Signature ":D1" - DMR protocol, version 1
 3 - Frequency in 100 Hz scale (DEC)
-4 - Data type
+4 - Trunk system type
+    0 - DMR One?
+    1 - Simple DMR
+    2 - Capacity+
+    3 - Connect+
+    4 - DMR Tier III
+    5 - Hytera XPT
+5 - Data type
     0 - PI Header
     1 - Voice LC Header
     2 - Terminator with LC
@@ -33,13 +41,8 @@ The debug output string consists of 23 fields separated by a space.
     D - Reserved for future use
     E - Reserved for future use
     F - Reserved for future use
-5 - Trunk system type
-    0 - DMR One?
-    1 - Simple DMR
-    2 - Capacity+
-    3 - Connect+
-    4 - DMR Tier III
-    5 - Hytera XPT
+    1E - ?
+    1F - ?
 6 - TDMA channel number
 7 - Call type (HEX)
 8 - Color code (HEX)
