@@ -8,8 +8,10 @@ The generated debug logs can then be found on the scanner SD Card in the /BCDx36
 
 #### Debug Log String Format
 
+```
 0201377 :D1 04404400 1 1F 0 01 C 8 68 0000214D 002628B2 0000 1 1 0 0000 0000 0000 D E1F9DA3443BF80 27C2718F2D3600 2F18B5E5C67080 
 1       2   3        4 5  6 7  8 9 10 11       12       13   14151617   18   19   2021             22             23
+```
 
 The debug output string consists of 23 fields separated by a space.
 
