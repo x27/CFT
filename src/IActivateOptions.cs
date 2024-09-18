@@ -1,6 +1,8 @@
-﻿namespace CFT
+﻿using System;
+
+namespace CFT
 {
-    public interface IActivateOptions
+    public interface IActivateOptions : IComparable
     {
     }
 }

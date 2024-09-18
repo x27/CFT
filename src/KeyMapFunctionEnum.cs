@@ -26,6 +26,7 @@
         [Scanner(ScannerModelEnum.SDS200)]
         [Scanner(ScannerModelEnum.UBCD3600XLT)]
         [Scanner(ScannerModelEnum.SDS100E)]
+        [Scanner(ScannerModelEnum.SDS200E)]
         [DisplayName("Select Service")]
         SelectServiceMenu = 2,
         [Scanner(ScannerModelEnum.BCD436HP)]
@@ -34,6 +35,7 @@
         [Scanner(ScannerModelEnum.SDS200)]
         [Scanner(ScannerModelEnum.UBCD3600XLT)]
         [Scanner(ScannerModelEnum.SDS100E)]
+        [Scanner(ScannerModelEnum.SDS200E)]
         [DisplayName("Search For ...")]
         SearchForMenu = 3,
         [Scanner(ScannerModelEnum.BCD436HP)]
@@ -42,6 +44,7 @@
         [Scanner(ScannerModelEnum.SDS200)]
         [Scanner(ScannerModelEnum.UBCD3600XLT)]
         [Scanner(ScannerModelEnum.SDS100E)]
+        [Scanner(ScannerModelEnum.SDS200E)]
         [DisplayName("Select Lists to Monitor")]
         SelectListsToMonitorMenu = 4,
         [Scanner(ScannerModelEnum.BCD436HP)]
@@ -55,6 +58,7 @@
         [Scanner(ScannerModelEnum.SDS200)]
         [Scanner(ScannerModelEnum.UBCD3600XLT)]
         [Scanner(ScannerModelEnum.SDS100E)]
+        [Scanner(ScannerModelEnum.SDS200E)]
         [DisplayName("Set Dimmer")]
         SetDimmerMenu = 6,
         [Scanner(ScannerModelEnum.BCD436HP)]
@@ -63,16 +67,19 @@
         [Scanner(ScannerModelEnum.SDS200)]
         [Scanner(ScannerModelEnum.UBCD3600XLT)]
         [Scanner(ScannerModelEnum.SDS100E)]
+        [Scanner(ScannerModelEnum.SDS200E)]
         [DisplayName("Set CC Mode")]
         SetCCModeMenu = 7,
         [Scanner(ScannerModelEnum.SDS100)]
         [Scanner(ScannerModelEnum.SDS200)]
         [Scanner(ScannerModelEnum.SDS100E)]
+        [Scanner(ScannerModelEnum.SDS200E)]
         [DisplayName("Waterfall")]
         WaterfallMenu = 8,
         [Scanner(ScannerModelEnum.SDS100)]
         [Scanner(ScannerModelEnum.SDS200)]
         [Scanner(ScannerModelEnum.SDS100E)]
+        [Scanner(ScannerModelEnum.SDS200E)]
         [DisplayName("Filter")]
         FilterMenu = 9,
         [Scanner(ScannerModelEnum.BCD536HP)]

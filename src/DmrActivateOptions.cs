@@ -53,5 +53,45 @@ namespace CFT
         {
             Options &= ~option;
         }
+
+        public int CompareTo(object obj)
+        {
+            var o = obj as DmrActivateOptions;
+            if (o == null) 
+                return 1;
+
+            if (o.Options != Options) 
+                return 1;
+
+            if (IsActivated(DmrSelectedActivateOptionsEnum.TrunkSystem) && 
+                o.TrunkSystem != TrunkSystem)
+                return 1;
+
+            if (IsActivated(DmrSelectedActivateOptionsEnum.MFID) &&
+                o.MFID != MFID)
+                return 1;
+
+            if (IsActivated(DmrSelectedActivateOptionsEnum.ColorCode) &&
+                o.ColorCode != ColorCode)
+                return 1;
+
+            if (IsActivated(DmrSelectedActivateOptionsEnum.TGID) &&
+                o.TGID != TGID)
+                return 1;
+
+            if (IsActivated(DmrSelectedActivateOptionsEnum.TimeSlot) &&
+                o.TimeSlot != TimeSlot)
+                return 1;
+
+            if (IsActivated(DmrSelectedActivateOptionsEnum.EncryptValue) &&
+                o.EncryptionValue != EncryptionValue)
+                return 1;
+
+            if (IsActivated(DmrSelectedActivateOptionsEnum.KeyId) &&
+                o.KeyId != KeyId)
+                return 1;
+
+            return 0;
+        }
     }
 }

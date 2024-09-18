@@ -43,5 +43,32 @@ namespace CFT
             return sb.ToString();
         }
 
+        public int CompareTo(object obj)
+        {
+            var o = obj as NxdnActivateOptions;
+            if (o == null)
+                return 1;
+
+            if (o.Options != Options)
+                return 1;
+
+            if (IsActivated(NxdnSelectedActivateOptionsEnum.RAN) &&
+                o.RAN != RAN)
+                return 1;
+
+            if (IsActivated(NxdnSelectedActivateOptionsEnum.GroupID) &&
+                o.GroupID != GroupID)
+                return 1;
+
+            if (IsActivated(NxdnSelectedActivateOptionsEnum.KeyID) &&
+                o.KeyID != KeyID)
+                return 1;
+
+            if (IsActivated(NxdnSelectedActivateOptionsEnum.SourceID) &&
+                o.SourceID != SourceID)
+                return 1;
+
+            return 0;
+        }
     }
 }
