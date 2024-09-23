@@ -24,6 +24,10 @@ namespace CFT
 
         private void btnOk_Click(object sender, System.EventArgs e)
         {
+            MacAddress[0] = byte.Parse(tbMAC0.Text, System.Globalization.NumberStyles.HexNumber);
+            MacAddress[1] = byte.Parse(tbMAC1.Text, System.Globalization.NumberStyles.HexNumber);
+            MacAddress[2] = byte.Parse(tbMAC2.Text, System.Globalization.NumberStyles.HexNumber);
+
             try
             {
                 MacAddress[3] = byte.Parse(tbMAC3.Text, System.Globalization.NumberStyles.HexNumber);

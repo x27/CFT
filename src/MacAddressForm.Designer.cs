@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbMAC0 = new System.Windows.Forms.TextBox();
+            this.tbMAC1 = new System.Windows.Forms.TextBox();
+            this.tbMAC2 = new System.Windows.Forms.TextBox();
             this.tbMAC3 = new System.Windows.Forms.TextBox();
             this.tbMAC4 = new System.Windows.Forms.TextBox();
             this.tbMAC5 = new System.Windows.Forms.TextBox();
@@ -40,35 +40,35 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // tbMAC0
             // 
-            this.textBox1.Location = new System.Drawing.Point(17, 37);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(41, 25);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "00";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbMAC0.Location = new System.Drawing.Point(17, 37);
+            this.tbMAC0.Name = "tbMAC0";
+            this.tbMAC0.ReadOnly = true;
+            this.tbMAC0.Size = new System.Drawing.Size(41, 25);
+            this.tbMAC0.TabIndex = 2;
+            this.tbMAC0.Text = "00";
+            this.tbMAC0.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox2
+            // tbMAC1
             // 
-            this.textBox2.Location = new System.Drawing.Point(64, 37);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(41, 25);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "E0";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbMAC1.Location = new System.Drawing.Point(64, 37);
+            this.tbMAC1.Name = "tbMAC1";
+            this.tbMAC1.ReadOnly = true;
+            this.tbMAC1.Size = new System.Drawing.Size(41, 25);
+            this.tbMAC1.TabIndex = 3;
+            this.tbMAC1.Text = "E0";
+            this.tbMAC1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox3
+            // tbMAC2
             // 
-            this.textBox3.Location = new System.Drawing.Point(111, 37);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(41, 25);
-            this.textBox3.TabIndex = 4;
-            this.textBox3.Text = "11";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbMAC2.Location = new System.Drawing.Point(111, 37);
+            this.tbMAC2.Name = "tbMAC2";
+            this.tbMAC2.ReadOnly = true;
+            this.tbMAC2.Size = new System.Drawing.Size(41, 25);
+            this.tbMAC2.TabIndex = 4;
+            this.tbMAC2.Text = "11";
+            this.tbMAC2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tbMAC3
             // 
@@ -105,9 +105,9 @@
             this.groupBox1.Controls.Add(this.tbMAC5);
             this.groupBox1.Controls.Add(this.tbMAC4);
             this.groupBox1.Controls.Add(this.tbMAC3);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tbMAC2);
+            this.groupBox1.Controls.Add(this.tbMAC1);
+            this.groupBox1.Controls.Add(this.tbMAC0);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(311, 85);
@@ -162,9 +162,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbMAC0;
+        private System.Windows.Forms.TextBox tbMAC1;
+        private System.Windows.Forms.TextBox tbMAC2;
         private System.Windows.Forms.TextBox tbMAC3;
         private System.Windows.Forms.TextBox tbMAC4;
         private System.Windows.Forms.TextBox tbMAC5;
