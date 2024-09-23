@@ -85,5 +85,18 @@
         [Scanner(ScannerModelEnum.BCD536HP)]
         [DisplayName("Range")]
         SelectRange = 10,
+
+        [Scanner(ScannerModelEnum.BCD436HP)]
+        [Scanner(ScannerModelEnum.BCD536HP)]
+        [Scanner(ScannerModelEnum.SDS100)]
+        [Scanner(ScannerModelEnum.SDS200)]
+        [Scanner(ScannerModelEnum.UBCD3600XLT)]
+        [Scanner(ScannerModelEnum.SDS100E)]
+        [Scanner(ScannerModelEnum.SDS200E)]
+        [Scanner(ScannerModelEnum.UBCD436PT)]
+        [Scanner(ScannerModelEnum.UBCD536PT)]
+        [Scanner(ScannerModelEnum.USDS100)]
+        [DisplayName("Debug Logs")]
+        DebugLogs = 11,
     }
 }
