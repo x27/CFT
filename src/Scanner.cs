@@ -17,6 +17,8 @@ namespace CFT
 
         public byte[] MacAddress { get; set; }
 
+        public DisplayAdditionalInfo DisplayAdditionalInfo { get; set; }
+
         public Scanner()
         {
             Model = ScannerModelEnum.BCD436HP;

@@ -15,6 +15,7 @@ namespace CFT
         const int ZIPKEY_OFFSET = 0x1FC;
         const int MAC_ADDRESS_OFFSET = 0x1F0;
         const int SCANNER_MODEL_OFFSET = 0x1F8;
+        const int DISPLAY_ADD_INFO_OFFSET = 0x1EE;
 
         const int ENC_METHOD_STRUCT_SIZE = 54;
         private enum EncryptionMethodEnum
@@ -29,7 +30,8 @@ namespace CFT
             P25DES = 7,
             TytEP = 8,
             DmrAes = 9,
-            TytBP = 10
+            TytBP = 10,
+            KirisunBP = 11
         }
 
         public static void Export(Project project, Scanner scanner, string filename)
@@ -53,6 +55,15 @@ namespace CFT
                     bw.Write(scanner.Licensing.P25ADPUnlockKey);
                     bw.Write(scanner.Licensing.P25DESUnlockKey);
                     bw.Write(scanner.Licensing.DMRAESUnlockKey);
+                }
+
+                // DISPLAY ADDITIONAL INFO
+                if (scanner != null && scanner.DisplayAdditionalInfo != null)
+                {
+                    bw.BaseStream.Position = DISPLAY_ADD_INFO_OFFSET;
+
+                    bw.Write((byte)scanner.DisplayAdditionalInfo.Line1);
+                    bw.Write((byte)scanner.DisplayAdditionalInfo.Line0);
                 }
 
                 // KEY MAPPING && MUTE
@@ -249,6 +260,21 @@ namespace CFT
                         bw.Write(item.Key); // key 2 bytes
                         bw.Write(new byte[30]); // key remaining part
                     }
+                    else if (row is KirisunBPEncryptionRow)
+                    {
+                        var item = row as KirisunBPEncryptionRow;
+                        bw.Write(Swap((uint)item.ActivateOptions.Options));
+                        bw.Write((byte)item.ActivateOptions.TrunkSystem);
+                        bw.Write((byte)item.ActivateOptions.MFID);
+                        bw.Write(Swap(UInt32ToFreq(row.Frequency)));
+                        bw.Write((byte)item.ActivateOptions.ColorCode);
+                        bw.Write(Swap(item.ActivateOptions.TGID));
+                        bw.Write((byte)item.ActivateOptions.TimeSlot);
+                        bw.Write((byte)item.ActivateOptions.EncryptionValue);
+                        bw.Write((byte)EncryptionMethodEnum.KirisunBP);
+                        bw.Write(Swap(item.KeyLength));
+                        bw.Write(item.Key);
+                    }
 
                     else
                         bw.BaseStream.Position += ENC_METHOD_STRUCT_SIZE; // enc method struct size
@@ -279,6 +305,7 @@ namespace CFT
                 var rows = new List<IEncryptionRow>();
                 byte [] macAddress = null;
                 ScannerModelEnum scannerModel;
+                DisplayAdditionalInfo displayAdditionalInfo = new DisplayAdditionalInfo();
 
                 var muteEncrypted = false;
 
@@ -306,6 +333,10 @@ namespace CFT
                     Buffer.BlockCopy(bs, 0, licensing.P25DESUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
                     bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
                     Buffer.BlockCopy(bs, 0, licensing.DMRAESUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
+
+                    br.BaseStream.Position = DISPLAY_ADD_INFO_OFFSET;
+                    displayAdditionalInfo.Line1 = (DisplayAdditionalInfoValuesEnum)br.ReadByte();
+                    displayAdditionalInfo.Line0 = (DisplayAdditionalInfoValuesEnum)br.ReadByte();
 
                     br.BaseStream.Position = ZIPKEY_OFFSET;
                     muteEncrypted = br.ReadByte() == 1;
@@ -543,6 +574,25 @@ namespace CFT
                                     notesSkipList.Add(false);
                                     break;
                                 }
+                            case EncryptionMethodEnum.KirisunBP:
+                                {
+                                    var row = new KirisunBPEncryptionRow();
+                                    row.ActivateOptions = new DmrActivateOptions();
+                                    row.ActivateOptions.Options = (DmrSelectedActivateOptionsEnum)Swap(br.ReadUInt32());
+                                    row.ActivateOptions.TrunkSystem = (DmrTrunkSystemEnum)br.ReadByte();
+                                    row.ActivateOptions.MFID = (DmrMfidEnum)br.ReadByte();
+                                    row.Frequency = FreqToUint32(Swap(br.ReadUInt32()));
+                                    row.ActivateOptions.ColorCode = (DmrColorCodeEnum)br.ReadByte();
+                                    row.ActivateOptions.TGID = Swap(br.ReadUInt32());
+                                    row.ActivateOptions.TimeSlot = (DmrTimeSlotEnum)br.ReadByte();
+                                    row.ActivateOptions.EncryptionValue = (DmrEncyptionValueEnum)br.ReadByte();
+                                    br.ReadByte(); // skip enc method
+                                    row.KeyLength = Swap(br.ReadUInt32());
+                                    row.Key = br.ReadBytes(32);
+                                    rows.Add(row);
+                                    notesSkipList.Add(false);
+                                    break;
+                                }
 
                             default:
                                 br.BaseStream.Position += ENC_METHOD_STRUCT_SIZE;
@@ -574,6 +624,7 @@ namespace CFT
                             Licensing = licensing,
                             MuteEncryptedVoiceTraffic = muteEncrypted,
                             MacAddress = macAddress,
+                            DisplayAdditionalInfo = displayAdditionalInfo,
                         }
 
                     },

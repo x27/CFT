@@ -21,6 +21,8 @@
         [DisplayName("DMR AES")]
         DMRAES = 9,
         [DisplayName("Tytera BP")]
-        TyteraBP = 10
+        TyteraBP = 10,
+        [DisplayName("Kirisun BP")]
+        KirisunBP = 11
     }
 }

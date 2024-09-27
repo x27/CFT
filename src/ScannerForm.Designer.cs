@@ -35,10 +35,11 @@
             this.btnLicenses = new System.Windows.Forms.Button();
             this.btnKeyMappings = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnMacAddress = new System.Windows.Forms.Button();
             this.cbMute = new System.Windows.Forms.CheckBox();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnMacAddress = new System.Windows.Forms.Button();
+            this.btnDisplayAdditionalInfo = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,49 +100,17 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnDisplayAdditionalInfo);
             this.groupBox1.Controls.Add(this.btnMacAddress);
             this.groupBox1.Controls.Add(this.cbMute);
             this.groupBox1.Controls.Add(this.btnKeyMappings);
             this.groupBox1.Controls.Add(this.btnLicenses);
             this.groupBox1.Location = new System.Drawing.Point(29, 112);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(293, 222);
+            this.groupBox1.Size = new System.Drawing.Size(293, 274);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
-            // 
-            // cbMute
-            // 
-            this.cbMute.AutoSize = true;
-            this.cbMute.Location = new System.Drawing.Point(19, 182);
-            this.cbMute.Name = "cbMute";
-            this.cbMute.Size = new System.Drawing.Size(193, 21);
-            this.cbMute.TabIndex = 6;
-            this.cbMute.Text = "Mute Encrypted Voice Traffic";
-            this.cbMute.UseVisualStyleBackColor = true;
-            // 
-            // btnOk
-            // 
-            this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(220, 351);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(102, 32);
-            this.btnOk.TabIndex = 8;
-            this.btnOk.Text = "OK";
-            this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(28, 351);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(102, 32);
-            this.btnCancel.TabIndex = 7;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // btnMacAddress
             // 
@@ -153,13 +122,56 @@
             this.btnMacAddress.UseVisualStyleBackColor = true;
             this.btnMacAddress.Click += new System.EventHandler(this.btnMacAddress_Click);
             // 
+            // cbMute
+            // 
+            this.cbMute.AutoSize = true;
+            this.cbMute.Location = new System.Drawing.Point(19, 231);
+            this.cbMute.Name = "cbMute";
+            this.cbMute.Size = new System.Drawing.Size(193, 21);
+            this.cbMute.TabIndex = 6;
+            this.cbMute.Text = "Mute Encrypted Voice Traffic";
+            this.cbMute.UseVisualStyleBackColor = true;
+            // 
+            // btnOk
+            // 
+            this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnOk.Location = new System.Drawing.Point(220, 408);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(102, 32);
+            this.btnOk.TabIndex = 8;
+            this.btnOk.Text = "OK";
+            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(28, 408);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(102, 32);
+            this.btnCancel.TabIndex = 7;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // btnDisplayAdditionalInfo
+            // 
+            this.btnDisplayAdditionalInfo.Location = new System.Drawing.Point(19, 180);
+            this.btnDisplayAdditionalInfo.Name = "btnDisplayAdditionalInfo";
+            this.btnDisplayAdditionalInfo.Size = new System.Drawing.Size(257, 33);
+            this.btnDisplayAdditionalInfo.TabIndex = 8;
+            this.btnDisplayAdditionalInfo.Text = "Display Additional Info ...";
+            this.btnDisplayAdditionalInfo.UseVisualStyleBackColor = true;
+            this.btnDisplayAdditionalInfo.Click += new System.EventHandler(this.btnDisplayAdditionalInfo_Click);
+            // 
             // ScannerForm
             // 
             this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(354, 406);
+            this.ClientSize = new System.Drawing.Size(354, 463);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.groupBox1);
@@ -197,5 +209,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckBox cbMute;
         private System.Windows.Forms.Button btnMacAddress;
+        private System.Windows.Forms.Button btnDisplayAdditionalInfo;
     }
 }
