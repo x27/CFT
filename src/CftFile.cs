@@ -67,11 +67,11 @@ namespace CFT
                 }
 
                 // KEY MAPPING && MUTE
+                bw.BaseStream.Position = ZIPKEY_OFFSET;
+                bw.Write((byte)(scanner.MuteEncryptedVoiceTraffic ? 1 : 0));
+
                 if (scanner != null && scanner.KeyMapping != null)
                 {
-                    bw.BaseStream.Position = ZIPKEY_OFFSET;
-
-                    bw.Write((byte)(scanner.MuteEncryptedVoiceTraffic?1:0));
                     bw.Write((byte)scanner.KeyMapping.Key3);
                     bw.Write((byte)scanner.KeyMapping.Key1);
                     bw.Write((byte)scanner.KeyMapping.Key2);
