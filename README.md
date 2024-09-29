@@ -53,7 +53,7 @@ Video tutorial: [How strart to using the OpenScanner Custom Firmware for Uniden 
 * **Tytera BP**, CF v1.99.27 and later
    * key 16 bits (1-FFFF) - test
 * **Kirisun/Caltta BP**, CF v1.99.33 and later
-   * key 40, 64, 128, 192, 256 bits - consfirmed        
+   * key 40, 64, 128, 192, 256 bits - confirmed        
 
 ### About Encryption Key
 
