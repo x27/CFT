@@ -12,13 +12,13 @@ Video tutorial: [How strart to using the OpenScanner Custom Firmware for Uniden 
 
 ### Supported scanner models
 
-* Uniden BCD436HP with [CF 1.99.27](https://github.com/x27/openscanner/releases/tag/v1.99.23)
-* Uniden BCD536HP with [CF 1.99.27](https://github.com/x27/openscanner/releases/tag/v1.99.23)
-* Uniden SDS100 with [CF 1.99.27](https://github.com/x27/openscanner/releases/tag/v1.99.23)
-* Uniden UBCD3600XLT with [CF 1.99.27](https://github.com/x27/openscanner/releases/tag/v1.99.23)
-* Uniden SDS100E with [CF 1.99.27](https://github.com/x27/openscanner/releases/tag/v1.99.23)
-* Uniden SDS200 with [CF 1.99.27](https://github.com/x27/openscanner/releases/tag/v1.99.23)
-* Uniden SDS200E with [CF 1.99.27](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden BCD436HP with [CF 1.99.33](https://github.com/x27/openscanner/releases/tag/v1.99.33)
+* Uniden BCD536HP with [CF 1.99.32](https://github.com/x27/openscanner/releases/tag/v1.99.32)
+* Uniden SDS100 with [CF 1.99.29](https://github.com/x27/openscanner/releases/tag/v1.99.29)
+* Uniden UBCD3600XLT with [CF 1.99.30](https://github.com/x27/openscanner/releases/tag/v1.99.30_EUROPE)
+* Uniden SDS100E with [CF 1.99.31](https://github.com/x27/openscanner/releases/tag/SDSx00E_v1.99.31)
+* Uniden SDS200 with [CF 1.99.32](https://github.com/x27/openscanner/releases/tag/v1.99.32)
+* Uniden SDS200E with [CF 1.99.32](https://github.com/x27/openscanner/releases/tag/v1.99.32)
 * Uniden UBCD436PT with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
 * Uniden USDS100 with [CF 1.99.27](https://github.com/x27/openscanner/releases/tag/v1.99.23)
 * Uniden UBCD536PT with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
@@ -51,7 +51,9 @@ Video tutorial: [How strart to using the OpenScanner Custom Firmware for Uniden 
    * key 48 characters (192 bits) - test    
    * key 64 characters (256 bits) - test    
 * Tytera BP, CF v1.99.27 and above
-   * key 16 bits (1-FFFF) - test    
+   * key 16 bits (1-FFFF) - test
+* Kirisun/Caltta BP, CF v1.99.33
+   * key 40, 64, 128, 192, 256 bits - consfirmed        
 
 ### About Encryption Key
 
@@ -123,7 +125,7 @@ But before you do, write me an e-mail.
 
 Licenses for unlocking **Hytera BP**, **Motorola BP**, **Motorola EP**, **NXDN Scrambler**, **ADP**, **P25 DES**, **DMR AES** keys are currently available. 
 
-**Anytone Common Encryption**, **Tytera BP**, **Tytera EP**  are free for users who have purchased paid licenses.
+**Anytone Common Encryption**, **Tytera BP**, **Tytera EP**, **Kirisun/Caltta BP**  are free for users who have purchased paid licenses.
 
 For obvious reasons, I would like to remain anonymous, so payments are only accepted in cryptocurrency or via intermediary's PayPal
 
