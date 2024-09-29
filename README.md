@@ -25,34 +25,34 @@ Video tutorial: [How strart to using the OpenScanner Custom Firmware for Uniden 
 
 ### Supported decryption protocols
 
-* Hytera BP (Basic Privacy), CF v1.99.11 and above
+* **Hytera BP** (Basic Privacy), CF v1.99.11 and later
     * 10 characters (40 bits) - confirmed
     * 10 characters (40 bits) with OTA Encryption - confirmed
     * 32 characters (128 bits) - confirmed
     * 64 characters (256 bits) - confirmed
     * 64 characters (256 bits) with OTA Encryption - confirmed
-* Motorola BP (Basic Privacy), CF v1.99.11 and above
+* **Motorola BP** (Basic Privacy), CF v1.99.11 and later
    * key 1-255 - confirmed
    * key 1-255 Mixed with Clear voice - confirmed
-* Motorola EP (Enhanced Privacy), CF v1.99.16 (test) and above
+* **Motorola EP** (Enhanced Privacy), CF v1.99.16 (test) and later
    * key 40 bit - confirmed
-* NXDN Scrambler, CF v1.99.14 (test) and above
+* **NXDN Scrambler**, CF v1.99.14 (test) and later
    * key 1-32766 - confirmed
-* Anytone Common Encryption, CF v1.99.18 (test)
+* **Anytone Common Encryption**, CF v1.99.18 (test)
    * key 1-65535 - test
-* P25 Phase1 ADP, CF v1.99.20 (test) and above
+* **P25 Phase1 ADP**, CF v1.99.20 (test) and later
    * key 10 characters (40 bits) - confirmed 
-* P25 DES OFB, CF v1.99.23 and anove
+* **P25 DES OFB**, CF v1.99.23 and anove
    * key 16 characters (56 bits + 8 bits parity) - confirmed
-* Tytera EP, CF v1.99.25 and above
+* **Tytera EP**, CF v1.99.25 and later
    * key 32 characters (128 bits) - test    
-* DMR AES, CF v1.99.27 and above
+* **DMR AES**, CF v1.99.27 and above
    * key 32 characters (128 bits) - test    
    * key 48 characters (192 bits) - test    
    * key 64 characters (256 bits) - test    
-* Tytera BP, CF v1.99.27 and above
+* **Tytera BP**, CF v1.99.27 and later
    * key 16 bits (1-FFFF) - test
-* Kirisun/Caltta BP, CF v1.99.33
+* **Kirisun/Caltta BP**, CF v1.99.33 and later
    * key 40, 64, 128, 192, 256 bits - consfirmed        
 
 ### About Encryption Key
