@@ -6,7 +6,9 @@
         Default = 0,
         [DisplayName("RSSI")]
         RSSI = 1,
-        [DisplayName("Encryption Algo and KeyID")]
-        EncAlgoKeyId = 2
+        [DisplayName("Encryption Algo and KeyID (HEX)")]
+        EncAlgoKeyIdHex = 2,
+        [DisplayName("Encryption Algo and KeyID (DEC)")]
+        EncAlgoKeyIdDec = 3
     }
 }

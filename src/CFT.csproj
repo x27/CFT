@@ -98,6 +98,7 @@
     </Compile>
     <Compile Include="KirisunBPEncryptionRow.cs" />
     <Compile Include="KirisunKeyLengthEnum.cs" />
+    <Compile Include="ScannerBaseModelEnum.cs" />
     <Compile Include="TyteraBPEncryptionMethodForm.cs">
       <SubType>Form</SubType>
     </Compile>

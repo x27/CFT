@@ -32,5 +32,22 @@ namespace CFT
                 return $"{Model}";
             return $"{Name.Trim()} ({Model})";
         }
+
+        public static ScannerBaseModelEnum GetBaseModel(ScannerModelEnum model)
+        {
+            switch(model)
+            {
+                case ScannerModelEnum.BCD436HP:
+                case ScannerModelEnum.BCD536HP:
+                case ScannerModelEnum.UBCD3600XLT:
+                case ScannerModelEnum.UBCD436PT:
+                case ScannerModelEnum.UBCD536PT:
+                    return ScannerBaseModelEnum.BCD;
+
+                default:
+                    return ScannerBaseModelEnum.SDS;
+            }
+        }
+
     }
 }

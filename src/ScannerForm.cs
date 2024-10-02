@@ -57,8 +57,6 @@ namespace CFT
                 var model = (ScannerModelEnum)Utils.GetComboBoxData(cbModel.SelectedItem);
                 // todo selecting from ScannerModelEnum
                 btnMacAddress.Enabled = model == ScannerModelEnum.SDS200 || model == ScannerModelEnum.SDS200E;
-                // todo selecting from ScannerModelEnum
-                btnDisplayAdditionalInfo.Enabled = model == ScannerModelEnum.BCD436HP || model == ScannerModelEnum.BCD536HP || model == ScannerModelEnum.UBCD3600XLT;
             }
             catch 
             {
@@ -77,7 +75,9 @@ namespace CFT
 
         private void btnDisplayAdditionalInfo_Click(object sender, System.EventArgs e)
         {
-            var frm = new DisplayAdditionalInfoForm(Scanner.DisplayAdditionalInfo);
+            var model = (ScannerModelEnum)Utils.GetComboBoxData(cbModel.SelectedItem);
+
+            var frm = new DisplayAdditionalInfoForm(model, Scanner.DisplayAdditionalInfo);
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 Scanner.DisplayAdditionalInfo = frm.DisplayAdditionalInfo;
