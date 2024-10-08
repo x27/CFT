@@ -63,6 +63,7 @@
             this.tyteraEPEnhancedPrivacyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dMRAESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tyteraBPBasicPrivacyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kirisunBPBasicPrivacyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.miScanners = new System.Windows.Forms.ToolStripMenuItem();
             this.miTools = new System.Windows.Forms.ToolStripMenuItem();
@@ -89,6 +90,7 @@
             this.tyteraEPEnhancedPrivacyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dMRAESToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tyteraBPBasicPrivacyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.kirisunBPBasicPrivacyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbDuplicateItem = new System.Windows.Forms.ToolStripButton();
             this.tsbDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
@@ -106,8 +108,8 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.selectAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.kirisunBPBasicPrivacyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.kirisunBPBasicPrivacyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.hyteraEPEnhancedPrivacyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hyteraEPEnhancedPrivacyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.mainStatus.SuspendLayout();
             this.mainToolbar.SuspendLayout();
@@ -312,7 +314,8 @@
             this.tyteraEPEnhancedPrivacyToolStripMenuItem,
             this.dMRAESToolStripMenuItem,
             this.tyteraBPBasicPrivacyToolStripMenuItem,
-            this.kirisunBPBasicPrivacyToolStripMenuItem});
+            this.kirisunBPBasicPrivacyToolStripMenuItem,
+            this.hyteraEPEnhancedPrivacyToolStripMenuItem});
             this.miAddEncryptionMethodRow.Name = "miAddEncryptionMethodRow";
             this.miAddEncryptionMethodRow.Size = new System.Drawing.Size(239, 22);
             this.miAddEncryptionMethodRow.Text = "Add Encryption Row";
@@ -386,6 +389,13 @@
             this.tyteraBPBasicPrivacyToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
             this.tyteraBPBasicPrivacyToolStripMenuItem.Text = "Tytera BP (Basic Privacy) ...";
             this.tyteraBPBasicPrivacyToolStripMenuItem.Click += new System.EventHandler(this.miTyteraBPEncryptionMethod_Click);
+            // 
+            // kirisunBPBasicPrivacyToolStripMenuItem
+            // 
+            this.kirisunBPBasicPrivacyToolStripMenuItem.Name = "kirisunBPBasicPrivacyToolStripMenuItem";
+            this.kirisunBPBasicPrivacyToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.kirisunBPBasicPrivacyToolStripMenuItem.Text = "Kirisun BP (Basic Privacy) ...";
+            this.kirisunBPBasicPrivacyToolStripMenuItem.Click += new System.EventHandler(this.miKirisunBPEncryptionMethod_Click);
             // 
             // toolStripSeparator6
             // 
@@ -530,7 +540,8 @@
             this.tyteraEPEnhancedPrivacyToolStripMenuItem1,
             this.dMRAESToolStripMenuItem1,
             this.tyteraBPBasicPrivacyToolStripMenuItem1,
-            this.kirisunBPBasicPrivacyToolStripMenuItem1});
+            this.kirisunBPBasicPrivacyToolStripMenuItem1,
+            this.hyteraEPEnhancedPrivacyToolStripMenuItem1});
             this.tsbAddEncryptionRow.Image = global::CFT.Properties.Resources.add;
             this.tsbAddEncryptionRow.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAddEncryptionRow.Name = "tsbAddEncryptionRow";
@@ -606,6 +617,13 @@
             this.tyteraBPBasicPrivacyToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
             this.tyteraBPBasicPrivacyToolStripMenuItem1.Text = "Tytera BP (Basic Privacy) ...";
             this.tyteraBPBasicPrivacyToolStripMenuItem1.Click += new System.EventHandler(this.miTyteraBPEncryptionMethod_Click);
+            // 
+            // kirisunBPBasicPrivacyToolStripMenuItem1
+            // 
+            this.kirisunBPBasicPrivacyToolStripMenuItem1.Name = "kirisunBPBasicPrivacyToolStripMenuItem1";
+            this.kirisunBPBasicPrivacyToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
+            this.kirisunBPBasicPrivacyToolStripMenuItem1.Text = "Kirisun BP (Basic Privacy) ...";
+            this.kirisunBPBasicPrivacyToolStripMenuItem1.Click += new System.EventHandler(this.miKirisunBPEncryptionMethod_Click);
             // 
             // tsbDuplicateItem
             // 
@@ -755,19 +773,19 @@
             this.selectAllToolStripMenuItem.Text = "Select All";
             this.selectAllToolStripMenuItem.Click += new System.EventHandler(this.selectAllToolStripMenuItem1_Click);
             // 
-            // kirisunBPBasicPrivacyToolStripMenuItem
+            // hyteraEPEnhancedPrivacyToolStripMenuItem
             // 
-            this.kirisunBPBasicPrivacyToolStripMenuItem.Name = "kirisunBPBasicPrivacyToolStripMenuItem";
-            this.kirisunBPBasicPrivacyToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
-            this.kirisunBPBasicPrivacyToolStripMenuItem.Text = "Kirisun BP (Basic Privacy) ...";
-            this.kirisunBPBasicPrivacyToolStripMenuItem.Click += new System.EventHandler(this.miKirisunBPEncryptionMethod_Click);
+            this.hyteraEPEnhancedPrivacyToolStripMenuItem.Name = "hyteraEPEnhancedPrivacyToolStripMenuItem";
+            this.hyteraEPEnhancedPrivacyToolStripMenuItem.Size = new System.Drawing.Size(255, 22);
+            this.hyteraEPEnhancedPrivacyToolStripMenuItem.Text = "Hytera EP (Enhanced Privacy) ...";
+            this.hyteraEPEnhancedPrivacyToolStripMenuItem.Click += new System.EventHandler(this.miHyteraEPEncryptionMethod_Click);
             // 
-            // kirisunBPBasicPrivacyToolStripMenuItem1
+            // hyteraEPEnhancedPrivacyToolStripMenuItem1
             // 
-            this.kirisunBPBasicPrivacyToolStripMenuItem1.Name = "kirisunBPBasicPrivacyToolStripMenuItem1";
-            this.kirisunBPBasicPrivacyToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
-            this.kirisunBPBasicPrivacyToolStripMenuItem1.Text = "Kirisun BP (Basic Privacy) ...";
-            this.kirisunBPBasicPrivacyToolStripMenuItem1.Click += new System.EventHandler(this.miKirisunBPEncryptionMethod_Click);
+            this.hyteraEPEnhancedPrivacyToolStripMenuItem1.Name = "hyteraEPEnhancedPrivacyToolStripMenuItem1";
+            this.hyteraEPEnhancedPrivacyToolStripMenuItem1.Size = new System.Drawing.Size(255, 22);
+            this.hyteraEPEnhancedPrivacyToolStripMenuItem1.Text = "Hytera EP (Enhanced Privacy) ...";
+            this.hyteraEPEnhancedPrivacyToolStripMenuItem1.Click += new System.EventHandler(this.miHyteraEPEncryptionMethod_Click);
             // 
             // MainForm
             // 
@@ -880,6 +898,8 @@
         private System.Windows.Forms.ToolStripMenuItem tyteraBPBasicPrivacyToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem kirisunBPBasicPrivacyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kirisunBPBasicPrivacyToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem hyteraEPEnhancedPrivacyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hyteraEPEnhancedPrivacyToolStripMenuItem1;
     }
 }
 

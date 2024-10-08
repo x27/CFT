@@ -62,6 +62,7 @@ namespace CFT
                     var licensing = ((cbScanners.Items[cbScanners.SelectedIndex] as DisplayTagObject).Tag as Scanner).Licensing;
                     if (!Utils.IsArrayEmpty(licensing.MotorolaBPUnlockKey) ||
                         !Utils.IsArrayEmpty(licensing.HyteraBPUnlockKey) ||
+                        !Utils.IsArrayEmpty(licensing.HyteraEPUnlockKey) ||
                         !Utils.IsArrayEmpty(licensing.MotorolaEPUnlockKey) ||
                         !Utils.IsArrayEmpty(licensing.P25ADPUnlockKey) ||
                         !Utils.IsArrayEmpty(licensing.P25DESUnlockKey) ||
@@ -370,6 +371,15 @@ namespace CFT
             }
         }
 
+        private void miHyteraEPEncryptionMethod_Click(object sender, EventArgs e)
+        {
+            var frm = new HyteraEPEncryptionMethodForm(null);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                AddEncryptionRow(frm.EncryptionRow);
+            }
+        }
+
         private void tsbDuplicateItem_Click(object sender, EventArgs e)
         {
             if (listView.SelectedItems.Count == 0)
@@ -460,6 +470,14 @@ namespace CFT
             else if (row is KirisunBPEncryptionRow)
             {
                 var frm = new KirisunBPEncryptionMethodForm(row as KirisunBPEncryptionRow);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    AddEncryptionRow(frm.EncryptionRow);
+                }
+            }
+            else if (row is HyteraEPEncryptionRow)
+            {
+                var frm = new HyteraEPEncryptionMethodForm(row as HyteraEPEncryptionRow);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     AddEncryptionRow(frm.EncryptionRow);
@@ -897,6 +915,18 @@ namespace CFT
                     ControlsUpdate();
                 }
             }
+            else if (row is HyteraEPEncryptionRow)
+            {
+                var frm = new HyteraEPEncryptionMethodForm((HyteraEPEncryptionRow)row);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var item = CreateListViewRow(filter, frm.EncryptionRow);
+                    item.Text = listView.SelectedItems[0].Text;
+                    item.Selected = true;
+                    listView.Items[listView.SelectedIndices[0]] = item;
+                    ControlsUpdate();
+                }
+            }
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -1154,6 +1184,9 @@ namespace CFT
                                     break;
                                 case EncryptionMethodEnum.KirisunBP:
                                     miKirisunBPEncryptionMethod_Click(sender, e);
+                                    break;
+                                case EncryptionMethodEnum.HyteraEP:
+                                    miHyteraEPEncryptionMethod_Click(sender, e);
                                     break;
                             }
                         }

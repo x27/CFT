@@ -90,6 +90,13 @@
     <Compile Include="DisplayAdditionalInfoForm.Designer.cs">
       <DependentUpon>DisplayAdditionalInfoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="HyteraEPEncryptionMethodForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HyteraEPEncryptionMethodForm.Designer.cs">
+      <DependentUpon>HyteraEPEncryptionMethodForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HyteraEPEncryptionRow.cs" />
     <Compile Include="KirisunBPEncryptionMethodForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DisplayAdditionalInfoForm.resx">
       <DependentUpon>DisplayAdditionalInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HyteraEPEncryptionMethodForm.resx">
+      <DependentUpon>HyteraEPEncryptionMethodForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KirisunBPEncryptionMethodForm.resx">
       <DependentUpon>KirisunBPEncryptionMethodForm.cs</DependentUpon>

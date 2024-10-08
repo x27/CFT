@@ -23,6 +23,8 @@
         [DisplayName("Tytera BP")]
         TyteraBP = 10,
         [DisplayName("Kirisun BP")]
-        KirisunBP = 11
+        KirisunBP = 11,
+        [DisplayName("Hytera EP")]
+        HyteraEP = 12
     }
 }

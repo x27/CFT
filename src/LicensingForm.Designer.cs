@@ -44,6 +44,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tbDMRAESUnlockKey = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.tbHyteraEPUnlockKey = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -84,7 +86,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(25, 521);
+            this.btnCancel.Location = new System.Drawing.Point(25, 592);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(102, 32);
             this.btnCancel.TabIndex = 4;
@@ -94,7 +96,7 @@
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(412, 521);
+            this.btnOk.Location = new System.Drawing.Point(412, 592);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(102, 32);
             this.btnOk.TabIndex = 5;
@@ -187,12 +189,31 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "Unlock Key for DMR AES:";
             // 
+            // tbHyteraEPUnlockKey
+            // 
+            this.tbHyteraEPUnlockKey.Location = new System.Drawing.Point(22, 525);
+            this.tbHyteraEPUnlockKey.Multiline = true;
+            this.tbHyteraEPUnlockKey.Name = "tbHyteraEPUnlockKey";
+            this.tbHyteraEPUnlockKey.Size = new System.Drawing.Size(489, 46);
+            this.tbHyteraEPUnlockKey.TabIndex = 17;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(22, 505);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(156, 17);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Unlock Key for Hytera EP:";
+            // 
             // LicensingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(540, 574);
+            this.ClientSize = new System.Drawing.Size(540, 645);
+            this.Controls.Add(this.tbHyteraEPUnlockKey);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.tbDMRAESUnlockKey);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tbP25DESUnlockKey);
@@ -242,5 +263,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbDMRAESUnlockKey;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbHyteraEPUnlockKey;
+        private System.Windows.Forms.Label label8;
     }
 }
