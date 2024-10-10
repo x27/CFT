@@ -6,7 +6,7 @@ namespace CFT
 {
     public partial class DebugLogsFilteringForm : Form
     {
-        static readonly string [] DEBUG_LINE_SIGNATURES = { ":D", ":B", ":N", ":R" };
+        static readonly string [] DEBUG_LINE_SIGNATURES = { ":D", ":B", ":N", ":R", ":P", ":C", ":A", ":M" };
 
         public DebugLogsFilteringForm()
         {
