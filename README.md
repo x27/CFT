@@ -12,15 +12,15 @@ Video tutorial: [How strart to using the OpenScanner Custom Firmware for Uniden 
 
 ### Supported scanner models
 
-* Uniden BCD436HP with [CF 1.99.33](https://github.com/x27/openscanner/releases/tag/v1.99.33)
+* Uniden BCD436HP with [CF 1.99.36](https://github.com/x27/openscanner/releases/tag/v1.99.33)
 * Uniden BCD536HP with [CF 1.99.32](https://github.com/x27/openscanner/releases/tag/v1.99.32)
 * Uniden SDS100 with [CF 1.99.29](https://github.com/x27/openscanner/releases/tag/v1.99.29)
-* Uniden UBCD3600XLT with [CF 1.99.30](https://github.com/x27/openscanner/releases/tag/v1.99.30_EUROPE)
-* Uniden SDS100E with [CF 1.99.31](https://github.com/x27/openscanner/releases/tag/SDSx00E_v1.99.31)
+* Uniden UBCD3600XLT with [CF 1.99.36](https://github.com/x27/openscanner/releases/tag/v1.99.30_EUROPE)
+* Uniden SDS100E with [CF 1.99.36](https://github.com/x27/openscanner/releases/tag/SDSx00E_v1.99.31)
 * Uniden SDS200 with [CF 1.99.32](https://github.com/x27/openscanner/releases/tag/v1.99.32)
 * Uniden SDS200E with [CF 1.99.32](https://github.com/x27/openscanner/releases/tag/v1.99.32)
-* Uniden UBCD436PT with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
-* Uniden USDS100 with [CF 1.99.27](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden UBCD436PT with [CF 1.99.37](https://github.com/x27/openscanner/releases/tag/v1.99.37)
+* Uniden USDS100 with [CF 1.99.37](https://github.com/x27/openscanner/releases/tag/v1.99.37)
 * Uniden UBCD536PT with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
 
 ### Supported decryption protocols
@@ -54,6 +54,8 @@ Video tutorial: [How strart to using the OpenScanner Custom Firmware for Uniden 
    * key 16 bits (1-FFFF) - test
 * **Kirisun/Caltta BP**, CF v1.99.33 and later
    * key 40, 64, 128, 192, 256 bits - confirmed        
+* **Hytera EP** (Enhanced Privacy), CF v1.99.36 and later
+   * key 10 characters (40 bits) - test 
 
 ### About Encryption Key
 
