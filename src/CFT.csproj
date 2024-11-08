@@ -105,6 +105,13 @@
     </Compile>
     <Compile Include="KirisunBPEncryptionRow.cs" />
     <Compile Include="KirisunKeyLengthEnum.cs" />
+    <Compile Include="P25AESEncryptionRow.cs" />
+    <Compile Include="P25AESEncryptionMethodForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="P25AESEncryptionMethodForm.Designer.cs">
+      <DependentUpon>P25AESEncryptionMethodForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScannerBaseModelEnum.cs" />
     <Compile Include="TyteraBPEncryptionMethodForm.cs">
       <SubType>Form</SubType>
@@ -285,6 +292,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KirisunBPEncryptionMethodForm.resx">
       <DependentUpon>KirisunBPEncryptionMethodForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="P25AESEncryptionMethodForm.resx">
+      <DependentUpon>P25AESEncryptionMethodForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="TyteraBPEncryptionMethodForm.resx">

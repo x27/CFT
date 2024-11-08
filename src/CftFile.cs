@@ -32,7 +32,8 @@ namespace CFT
             DmrAes = 9,
             TytBP = 10,
             KirisunBP = 11,
-            HyteraEP = 12
+            HyteraEP = 12,
+            P25AES = 13
         }
 
         public static void Export(Project project, Scanner scanner, string filename)
@@ -57,6 +58,7 @@ namespace CFT
                     bw.Write(scanner.Licensing.P25DESUnlockKey);
                     bw.Write(scanner.Licensing.DMRAESUnlockKey);
                     bw.Write(scanner.Licensing.HyteraEPUnlockKey);
+                    bw.Write(scanner.Licensing.P25AESUnlockKey);
                 }
 
                 // DISPLAY ADDITIONAL INFO
@@ -295,6 +297,19 @@ namespace CFT
                         bw.Write(item.ActivateOptions.KeyId);
                         bw.Write(new byte[26]); // key remaining part
                     }
+                    else if (row is P25AESEncryptionRow)
+                    {
+                        var item = row as P25AESEncryptionRow;
+                        bw.Write(Swap((uint)item.ActivateOptions.Options));
+                        bw.Write(Swap(item.ActivateOptions.NAC));
+                        bw.Write(Swap(UInt32ToFreq(row.Frequency)));
+                        bw.Write(Swap(item.ActivateOptions.SourceID));
+                        bw.Write(Swap(item.ActivateOptions.KeyID));
+                        bw.Write((byte)0);
+                        bw.Write((byte)EncryptionMethodEnum.P25AES);
+                        bw.Write(Swap(item.ActivateOptions.GroupID));
+                        bw.Write(item.Key); // key 32 byte
+                    }
 
                     else
                         bw.BaseStream.Position += ENC_METHOD_STRUCT_SIZE; // enc method struct size
@@ -321,6 +336,7 @@ namespace CFT
                 licensing.P25DESUnlockKey = new byte[Licensing.UNLOCK_KEY_LEN];
                 licensing.DMRAESUnlockKey = new byte[Licensing.UNLOCK_KEY_LEN];
                 licensing.HyteraEPUnlockKey = new byte[Licensing.UNLOCK_KEY_LEN];
+                licensing.P25AESUnlockKey = new byte[Licensing.UNLOCK_KEY_LEN];
 
                 var keyMapping = new KeyMapping();
                 var rows = new List<IEncryptionRow>();
@@ -356,6 +372,8 @@ namespace CFT
                     Buffer.BlockCopy(bs, 0, licensing.DMRAESUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
                     bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
                     Buffer.BlockCopy(bs, 0, licensing.HyteraEPUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
+                    bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
+                    Buffer.BlockCopy(bs, 0, licensing.P25AESUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
 
                     br.BaseStream.Position = DISPLAY_ADD_INFO_OFFSET;
                     displayAdditionalInfo.Line1 = (DisplayAdditionalInfoValuesEnum)br.ReadByte();
@@ -634,6 +652,23 @@ namespace CFT
                                     row.Key = br.ReadBytes(5);
                                     row.ActivateOptions.KeyId = br.ReadByte();
                                     br.ReadBytes(26); // key remaining part
+                                    rows.Add(row);
+                                    notesSkipList.Add(false);
+                                    break;
+                                }
+                            case EncryptionMethodEnum.P25AES:
+                                {
+                                    var row = new P25AESEncryptionRow();
+                                    row.ActivateOptions = new P25ActivateOptions();
+                                    row.ActivateOptions.Options = (P25SelectedActivateOptionsEnum)Swap(br.ReadUInt32());
+                                    row.ActivateOptions.NAC = Swap(br.ReadUInt16());
+                                    row.Frequency = FreqToUint32(Swap(br.ReadUInt32()));
+                                    row.ActivateOptions.SourceID = Swap(br.ReadUInt32());
+                                    row.ActivateOptions.KeyID = Swap(br.ReadUInt16());
+                                    br.ReadByte(); // skip 
+                                    br.ReadByte(); // skip enc method
+                                    row.ActivateOptions.GroupID = Swap(br.ReadUInt32());
+                                    row.Key = br.ReadBytes(32);
                                     rows.Add(row);
                                     notesSkipList.Add(false);
                                     break;

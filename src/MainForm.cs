@@ -67,7 +67,8 @@ namespace CFT
                         !Utils.IsArrayEmpty(licensing.P25ADPUnlockKey) ||
                         !Utils.IsArrayEmpty(licensing.P25DESUnlockKey) ||
                         !Utils.IsArrayEmpty(licensing.DMRAESUnlockKey) ||
-                        !Utils.IsArrayEmpty(licensing.NxdnScramblerUnlockKey))
+                        !Utils.IsArrayEmpty(licensing.NxdnScramblerUnlockKey) ||
+                        !Utils.IsArrayEmpty(licensing.P25AESUnlockKey))
                     {
                         show = false;
                     }
@@ -380,6 +381,15 @@ namespace CFT
             }
         }
 
+        private void miP25AESEncryptionMethod_Click(object sender, EventArgs e)
+        {
+            var frm = new P25AESEncryptionMethodForm(null);
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                AddEncryptionRow(frm.EncryptionRow);
+            }
+        }
+
         private void tsbDuplicateItem_Click(object sender, EventArgs e)
         {
             if (listView.SelectedItems.Count == 0)
@@ -438,6 +448,14 @@ namespace CFT
             else if (row is P25DESEncryptionRow)
             {
                 var frm = new P25DESEncryptionMethodForm(row as P25DESEncryptionRow);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    AddEncryptionRow(frm.EncryptionRow);
+                }
+            }
+            else if (row is P25AESEncryptionRow)
+            {
+                var frm = new P25AESEncryptionMethodForm(row as P25AESEncryptionRow);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     AddEncryptionRow(frm.EncryptionRow);
@@ -867,6 +885,18 @@ namespace CFT
                     ControlsUpdate();
                 }
             }
+            else if (row is P25AESEncryptionRow)
+            {
+                var frm = new P25AESEncryptionMethodForm((P25AESEncryptionRow)row);
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    var item = CreateListViewRow(filter, frm.EncryptionRow);
+                    item.Text = listView.SelectedItems[0].Text;
+                    item.Selected = true;
+                    listView.Items[listView.SelectedIndices[0]] = item;
+                    ControlsUpdate();
+                }
+            }
             else if (row is TyteraEPEncryptionRow)
             {
                 var frm = new TyteraEPEncryptionMethodForm((TyteraEPEncryptionRow)row);
@@ -1187,6 +1217,9 @@ namespace CFT
                                     break;
                                 case EncryptionMethodEnum.HyteraEP:
                                     miHyteraEPEncryptionMethod_Click(sender, e);
+                                    break;
+                                case EncryptionMethodEnum.P25AES:
+                                    miP25AESEncryptionMethod_Click(sender, e);
                                     break;
                             }
                         }

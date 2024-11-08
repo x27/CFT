@@ -25,6 +25,8 @@
         [DisplayName("Kirisun BP")]
         KirisunBP = 11,
         [DisplayName("Hytera EP")]
-        HyteraEP = 12
+        HyteraEP = 12,
+        [DisplayName("P25 AES")]
+        P25AES = 13
     }
 }
