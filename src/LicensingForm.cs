@@ -161,7 +161,7 @@ namespace CFT
             Buffer.BlockCopy(de, 0, Licensing.P25DESUnlockKey, 0, de.Length > Licensing.UNLOCK_KEY_LEN ? Licensing.UNLOCK_KEY_LEN : de.Length);
             Buffer.BlockCopy(da, 0, Licensing.DMRAESUnlockKey, 0, da.Length > Licensing.UNLOCK_KEY_LEN ? Licensing.UNLOCK_KEY_LEN : da.Length);
             Buffer.BlockCopy(he, 0, Licensing.HyteraEPUnlockKey, 0, he.Length > Licensing.UNLOCK_KEY_LEN ? Licensing.UNLOCK_KEY_LEN : he.Length);
-            Buffer.BlockCopy(de, 0, Licensing.P25AESUnlockKey, 0, ae.Length > Licensing.UNLOCK_KEY_LEN ? Licensing.UNLOCK_KEY_LEN : ae.Length);
+            Buffer.BlockCopy(ae, 0, Licensing.P25AESUnlockKey, 0, ae.Length > Licensing.UNLOCK_KEY_LEN ? Licensing.UNLOCK_KEY_LEN : ae.Length);
 
             DialogResult = DialogResult.OK;
             Close();
