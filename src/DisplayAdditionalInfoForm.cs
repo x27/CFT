@@ -39,19 +39,19 @@ namespace CFT
                 lblLine0.Text = "ALGO";
                 lblLine1.Visible = false;
                 cbLine1.Visible = false;
-                cbLine0.Items.Add(new DisplayTagObject(DisplayAdditionalInfoValuesEnum.EncAlgoKeyIdHex));
-                cbLine0.Items.Add(new DisplayTagObject(DisplayAdditionalInfoValuesEnum.EncAlgoKeyIdDec));
+                cbLine0.Items.Add(new DisplayTagObject(DisplayAdditionalInfoValuesEnum.MfidEncAlgoKeyIdHex));
+                cbLine0.Items.Add(new DisplayTagObject(DisplayAdditionalInfoValuesEnum.MfidEncAlgoKeyIdDec));
 
                 if (DisplayAdditionalInfo != null)
                 {
-                    if (DisplayAdditionalInfo.Line0 == DisplayAdditionalInfoValuesEnum.EncAlgoKeyIdDec)
-                        Utils.SetComboBoxData(cbLine0, DisplayAdditionalInfoValuesEnum.EncAlgoKeyIdDec);
+                    if (DisplayAdditionalInfo.Line0 == DisplayAdditionalInfoValuesEnum.MfidEncAlgoKeyIdDec)
+                        Utils.SetComboBoxData(cbLine0, DisplayAdditionalInfoValuesEnum.MfidEncAlgoKeyIdDec);
                     else
-                        Utils.SetComboBoxData(cbLine0, DisplayAdditionalInfoValuesEnum.EncAlgoKeyIdHex);
+                        Utils.SetComboBoxData(cbLine0, DisplayAdditionalInfoValuesEnum.MfidEncAlgoKeyIdHex);
                 }
                 else
                 {
-                    Utils.SetComboBoxData(cbLine0, DisplayAdditionalInfoValuesEnum.EncAlgoKeyIdHex);
+                    Utils.SetComboBoxData(cbLine0, DisplayAdditionalInfoValuesEnum.MfidEncAlgoKeyIdHex);
                 }
             }
         }
