@@ -12,16 +12,16 @@ Video tutorial: [How strart to using the OpenScanner Custom Firmware for Uniden 
 
 ### Supported scanner models
 
-* Uniden BCD436HP with [CF 1.99.36](https://github.com/x27/openscanner/releases/tag/v1.99.33)
-* Uniden BCD536HP with [CF 1.99.32](https://github.com/x27/openscanner/releases/tag/v1.99.32)
-* Uniden SDS100 with [CF 1.99.29](https://github.com/x27/openscanner/releases/tag/v1.99.29)
-* Uniden UBCD3600XLT with [CF 1.99.36](https://github.com/x27/openscanner/releases/tag/v1.99.30_EUROPE)
-* Uniden SDS100E with [CF 1.99.36](https://github.com/x27/openscanner/releases/tag/SDSx00E_v1.99.31)
-* Uniden SDS200 with [CF 1.99.32](https://github.com/x27/openscanner/releases/tag/v1.99.32)
-* Uniden SDS200E with [CF 1.99.32](https://github.com/x27/openscanner/releases/tag/v1.99.32)
-* Uniden UBCD436PT with [CF 1.99.37](https://github.com/x27/openscanner/releases/tag/v1.99.37)
-* Uniden USDS100 with [CF 1.99.37](https://github.com/x27/openscanner/releases/tag/v1.99.37)
-* Uniden UBCD536PT with [CF 1.99.23](https://github.com/x27/openscanner/releases/tag/v1.99.23)
+* Uniden BCD436HP with [CF 1.99.40](https://github.com/x27/openscanner/releases/tag/v1.99.40)
+* Uniden BCD536HP with [CF 1.99.40](https://github.com/x27/openscanner/releases/tag/v1.99.40)
+* Uniden SDS100 with [CF 1.99.40](https://github.com/x27/openscanner/releases/tag/v1.99.40)
+* Uniden UBCD3600XLT with [CF 1.99.40](https://github.com/x27/openscanner/releases/tag/v1.99.40)
+* Uniden SDS100E with [CF 1.99.40](https://github.com/x27/openscanner/releases/tag/SDSx00E_v1.99.40)
+* Uniden SDS200 with [CF 1.99.40](https://github.com/x27/openscanner/releases/tag/v1.99.40)
+* Uniden SDS200E with [CF 1.99.40](https://github.com/x27/openscanner/releases/tag/v1.99.40)
+* Uniden UBCD436PT with [CF 1.99.40](https://github.com/x27/openscanner/releases/tag/v1.99.40)
+* Uniden USDS100 with [CF 1.99.40](https://github.com/x27/openscanner/releases/tag/v1.99.40)
+* Uniden UBCD536PT with [CF 1.99.24](https://github.com/x27/openscanner/releases/tag/v1.99.24)
 
 ### Supported decryption protocols
 
