@@ -30,8 +30,54 @@ The debug output string consists of 8 fields separated by a space.
     25 - AES256
 8 - KeyID
 ```
+##### N0 - NXDN Control and Voice Info
 
-##### D1
+```
+0067268 :N0 04307750 02 04 02 02 00 00 0000 00000000 00000003 D 1 01 28139 0 105D02A0246A00 90FF381CC07A00 C32EA656008700 98B3C2806C4200 
+1       2   3        4  5  6  7  8  9  10   11       12       131415 16    1718             19             20             21
+```
+The debug output string consists of 21 fields separated by a space.
+
+```
+1 - Time stamp in microseconds
+2 - Signature ":N0" - NXDN protocol, version 0
+3 - Frequency in 100 Hz scale (DEC)
+4 - NXDN Frame Type
+    Range: 0-8
+5 - NXDN Data Type
+    0 - SACCH
+    1,5,6 - FACCH1
+    2 - FACCH2
+    3 - CAC
+6 - NXDN Vocoder Mode
+    Range: 0-3
+7 - RAN
+8 - AREA
+9 - SITE
+10 - SYSTEM
+11 - GROUP ID
+12 - UID
+13 - Voice traffic decryption identifier
+  D - Parameters are not defined
+  U - Protocol unlocked
+  A - Allowed
+  S - Time session restriction
+14 - NXDN Cypher Type
+    0 - Non Ciphered
+    1 - Scrambler
+    2 - Des
+    3 - Aes
+15 - Key ID
+16 - NXDN Current Scrambler Key (DEC)
+17 - NXDN Scrambler Key Offset
+    Inner control data
+18 - Voice packet 0, 49 bits (HEX)
+19 - Voice packet 1, 49 bits (HEX)
+20 - Voice packet 2, 49 bits (HEX)
+21 - Voice packet 3, 49 bits (HEX)
+```
+
+##### D1 - DMR Control and Voice Info
 
 ```
 0201377 :D1 04404400 1 1F 0 01 C 8 68 0000214D 002628B2 0000 1 1 0 0000 0000 0000 D E1F9DA3443BF80 27C2718F2D3600 2F18B5E5C67080 
