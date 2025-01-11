@@ -60,18 +60,7 @@ namespace CFT
                 try
                 {
                     var licensing = ((cbScanners.Items[cbScanners.SelectedIndex] as DisplayTagObject).Tag as Scanner).Licensing;
-                    if (!Utils.IsArrayEmpty(licensing.MotorolaBPUnlockKey) ||
-                        !Utils.IsArrayEmpty(licensing.HyteraBPUnlockKey) ||
-                        !Utils.IsArrayEmpty(licensing.HyteraEPUnlockKey) ||
-                        !Utils.IsArrayEmpty(licensing.MotorolaEPUnlockKey) ||
-                        !Utils.IsArrayEmpty(licensing.P25ADPUnlockKey) ||
-                        !Utils.IsArrayEmpty(licensing.P25DESUnlockKey) ||
-                        !Utils.IsArrayEmpty(licensing.DMRAESUnlockKey) ||
-                        !Utils.IsArrayEmpty(licensing.NxdnScramblerUnlockKey) ||
-                        !Utils.IsArrayEmpty(licensing.P25AESUnlockKey))
-                    {
-                        show = false;
-                    }
+                    show = licensing.IsKeysExist;
                 }
                 catch {}
                 finally

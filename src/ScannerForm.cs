@@ -20,8 +20,8 @@ namespace CFT
 
             cbMute.Checked = Scanner.MuteEncryptedVoiceTraffic;
             cbLedAlertWhile.Checked = Scanner.LEDAlertWhileDigitalVoiceGoesOn;
-
             tbName.Text = Scanner.Name;
+            UpdateControls();
         }
 
         private void btnOk_Click(object sender, System.EventArgs e)
@@ -39,6 +39,7 @@ namespace CFT
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 Scanner.Licensing = frm.Licensing;
+                UpdateControls();
             }
         }
 
@@ -84,6 +85,11 @@ namespace CFT
             {
                 Scanner.DisplayAdditionalInfo = frm.DisplayAdditionalInfo;
             }
+        }
+
+        private void UpdateControls()
+        {
+            cbLedAlertWhile.Enabled = Scanner.Licensing == null ? false : Scanner.Licensing.IsKeysExist;
         }
     }
 }
