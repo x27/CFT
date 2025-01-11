@@ -19,6 +19,7 @@ namespace CFT
                 cbModel.SelectedIndex = 0;
 
             cbMute.Checked = Scanner.MuteEncryptedVoiceTraffic;
+            cbLedAlertWhile.Checked = Scanner.LEDAlertWhileDigitalVoiceGoesOn;
 
             tbName.Text = Scanner.Name;
         }
@@ -29,6 +30,7 @@ namespace CFT
             Scanner.Name = tbName.Text.Trim();
             Scanner.KeyMapping = _keyMapping;
             Scanner.MuteEncryptedVoiceTraffic = cbMute.Checked;
+            Scanner.LEDAlertWhileDigitalVoiceGoesOn = cbLedAlertWhile.Checked;
         }
 
         private void btnLicenses_Click(object sender, System.EventArgs e)

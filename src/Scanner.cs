@@ -19,6 +19,8 @@ namespace CFT
 
         public DisplayAdditionalInfo DisplayAdditionalInfo { get; set; }
 
+        public bool LEDAlertWhileDigitalVoiceGoesOn { get; set; }
+
         public Scanner()
         {
             Model = ScannerModelEnum.BCD436HP;

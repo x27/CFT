@@ -16,6 +16,7 @@ namespace CFT
         const int MAC_ADDRESS_OFFSET = 0x1F0;
         const int SCANNER_MODEL_OFFSET = 0x1F8;
         const int DISPLAY_ADD_INFO_OFFSET = 0x1EE;
+        const int LED_ALERT_WHILE_DIGITAL_VOICE_GO_ON_OFFSET = 0x1ED;
 
         const int ENC_METHOD_STRUCT_SIZE = 54;
         private enum EncryptionMethodEnum
@@ -59,6 +60,12 @@ namespace CFT
                     bw.Write(scanner.Licensing.DMRAESUnlockKey);
                     bw.Write(scanner.Licensing.HyteraEPUnlockKey);
                     bw.Write(scanner.Licensing.P25AESUnlockKey);
+                }
+
+                if (scanner != null)
+                {
+                    bw.BaseStream.Position = LED_ALERT_WHILE_DIGITAL_VOICE_GO_ON_OFFSET;
+                    bw.Write((byte)(scanner.LEDAlertWhileDigitalVoiceGoesOn ? 1 : 0));
                 }
 
                 // DISPLAY ADDITIONAL INFO
@@ -345,6 +352,7 @@ namespace CFT
                 DisplayAdditionalInfo displayAdditionalInfo = new DisplayAdditionalInfo();
 
                 var muteEncrypted = false;
+                var ledAlertWhile = false;
 
                 using (BinaryReader br = new BinaryReader(new FileStream(filename, FileMode.Open, FileAccess.Read)))
                 {
@@ -374,6 +382,9 @@ namespace CFT
                     Buffer.BlockCopy(bs, 0, licensing.HyteraEPUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
                     bs = br.ReadBytes(Licensing.UNLOCK_KEY_LEN);
                     Buffer.BlockCopy(bs, 0, licensing.P25AESUnlockKey, 0, Licensing.UNLOCK_KEY_LEN);
+
+                    br.BaseStream.Position = LED_ALERT_WHILE_DIGITAL_VOICE_GO_ON_OFFSET;
+                    ledAlertWhile = br.ReadByte() == 1;
 
                     br.BaseStream.Position = DISPLAY_ADD_INFO_OFFSET;
                     displayAdditionalInfo.Line1 = (DisplayAdditionalInfoValuesEnum)br.ReadByte();
@@ -705,6 +716,7 @@ namespace CFT
                             MuteEncryptedVoiceTraffic = muteEncrypted,
                             MacAddress = macAddress,
                             DisplayAdditionalInfo = displayAdditionalInfo,
+                            LEDAlertWhileDigitalVoiceGoesOn = ledAlertWhile
                         }
 
                     },
