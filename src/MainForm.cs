@@ -65,7 +65,7 @@ namespace CFT
                 catch {}
                 finally
                 {
-                    if (show)
+                    if (!show)
                         lblStatusL.Text = "WARNING: In DEMO mode, the firmware considers the first 5 rows only.";
                     else
                         lblStatusL.Text = string.Empty;
