@@ -713,7 +713,7 @@ namespace CFT
                         if (row.Protocol != ProtocolEnum.P25)
                             return null;
 
-                        var options = ((P25ADPEncryptionRow)row).ActivateOptions;
+                        var options = ((P25EncryptionRow)row).ActivateOptions;
 
                         var listViewSubItem0 = new ListViewItem.ListViewSubItem();
                         listViewSubItem0.Text = options.IsActivated(P25SelectedActivateOptionsEnum.NAC) ? options.NAC.ToString() : "-";

@@ -105,6 +105,7 @@
     </Compile>
     <Compile Include="KirisunBPEncryptionRow.cs" />
     <Compile Include="KirisunKeyLengthEnum.cs" />
+    <Compile Include="P25EncryptionRow.cs" />
     <Compile Include="P25AESEncryptionRow.cs" />
     <Compile Include="P25AESEncryptionMethodForm.cs">
       <SubType>Form</SubType>
