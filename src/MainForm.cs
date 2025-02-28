@@ -716,7 +716,7 @@ namespace CFT
                         var options = ((P25EncryptionRow)row).ActivateOptions;
 
                         var listViewSubItem0 = new ListViewItem.ListViewSubItem();
-                        listViewSubItem0.Text = options.IsActivated(P25SelectedActivateOptionsEnum.NAC) ? options.NAC.ToString() : "-";
+                        listViewSubItem0.Text = options.IsActivated(P25SelectedActivateOptionsEnum.NAC) ? options.NAC.ToString("X") : "-";
                         listViewItem.SubItems.Add(listViewSubItem0);
 
                         var listViewSubItem3 = new ListViewItem.ListViewSubItem();
