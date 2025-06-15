@@ -8,7 +8,77 @@ The generated debug logs can then be found on the scanner SD Card in the /BCDx36
 
 #### Debug Log String Format
 
-##### MI
+##### AE1 - P25 Phase 1 - Raw Data
+
+```
+0223347 :AE1 05 00 FEC1DB87A5C81DBB
+1       2    3  4  5 
+```
+The debug output string consists of 5 fields separated by a space.
+```
+1 - Time stamp in microseconds
+2 - Signature ":AE1"
+3 - DATA UNIT ID. 00 - HDU, 05 - LDU1, 0A - LDU2 
+4 - STATE MACHINE NUMBER
+5 - 8 bytes raw data
+```
+
+##### AV1 - P25 Phase 1 - Voice Data Debug Info
+
+```
+0224382 :AV1 04460062 0293 0001 00770BB2 00000000 00 00AA 0000 07 A25A2BA4DC65CB98E486A4277769A17DA642
+1       2    3        4    5    6        7        8  9    10   11 12
+```
+The debug output string consists of 12 fields separated by a space.
+```
+1 - Time stamp in microseconds
+2 - Signature ":AV1"
+3 - Frequency in 100 Hz scale (DEC)
+4 - NAC
+5 - TGID
+6 - SID
+7 - DID
+8 - KID
+9 - ALGID
+    80 - CLEAR
+    81 - DES
+    83 - 3DES
+    84 - AES256
+    AA - ADP
+10 - MFID
+11 - Processing Number, 1-9
+12 - Voice Packet IMBE, 88 bits
+```
+
+##### AL1 - P25 Phase 1 - MI
+
+```
+0224382 :AL1 000000000000000000 111111111111111111
+1       2    3                  4
+```
+The debug output string consists of 4 fields separated by a space.
+```
+1 - Time stamp in microseconds
+2 - Signature ":AL1" - MI from air and LFSR calculated from previous value
+3 - MI from air, 9 bytes
+4 - MI, LSFR calculated from previous value, 9 bytes
+```
+
+##### AM1 - P25 Phase 1 - MI (valid), ALGID, KID
+```
+0224382 :AM1 000000000000000000 80 0000
+1       2    3                  4  5
+```
+The debug output string consists of 5 fields separated by a space.
+```
+1 - Time stamp in microseconds
+2 - Signature ":AM1" - MI, ALGID, KID
+3 - MI, 9 bytes 
+4 - ALGID
+5 - KID
+```
+
+##### MI - DMR
 
 ```
 0066766 :MI 0 9974B94B 9974B94B  0 21 01
