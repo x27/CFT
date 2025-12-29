@@ -12,9 +12,9 @@ Video tutorial: [How strart to using the OpenScanner Custom Firmware for Uniden 
 
 ### Supported scanner models
 
-* Uniden BCD436HP with [CF 1.99.42](https://github.com/x27/openscanner/releases/tag/v1.99.44)
+* Uniden BCD436HP with [CF 1.99.44](https://github.com/x27/openscanner/releases/tag/v1.99.44)
 * Uniden BCD536HP with [CF 1.99.41](https://github.com/x27/openscanner/releases/tag/v1.99.41)
-* Uniden SDS100 with [CF 1.99.41](https://github.com/x27/openscanner/releases/tag/v1.99.45)
+* Uniden SDS100 with [CF 1.99.45](https://github.com/x27/openscanner/releases/tag/v1.99.45)
 * Uniden UBCD3600XLT with [CF 1.99.42](https://github.com/x27/openscanner/releases/tag/v1.99.42)
 * Uniden SDS100E with [CF 1.99.41](https://github.com/x27/openscanner/releases/tag/SDSx00E_v1.99.41)
 * Uniden SDS200 with [CF 1.99.41](https://github.com/x27/openscanner/releases/tag/v1.99.41)
